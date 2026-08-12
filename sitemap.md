@@ -3,13 +3,6 @@
 ```txt
 TOAMHOANHAO.VN
 ├── Trang chủ
-│   ├── Dịch vụ chính
-│   ├── Dự án tiêu biểu
-│   ├── Mẫu thiết kế nổi bật
-│   ├── Quy trình làm việc
-│   ├── Xưởng sản xuất
-│   ├── Báo giá nhanh
-│   └── Liên hệ tư vấn
 │
 ├── Giới thiệu
 │   ├── Về Tổ Ấm Hoàn Hảo
@@ -180,3 +173,4 @@ TOAMHOANHAO.VN
 - URL thực tế nên dùng tiếng Việt không dấu, chữ thường, ngăn cách bằng dấu gạch ngang.
 - Không đưa trang test, trang cảm ơn form, tag mỏng nội dung, category rác vào sitemap XML.
 - Các URL cũ còn traffic hoặc backlink cần redirect 301 sang trang mới tương ứng.
+- Các khối nội dung trong Trang chủ như Dịch vụ chính, Dự án tiêu biểu, Mẫu thiết kế nổi bật, Quy trình làm việc, Xưởng sản xuất, Báo giá nhanh, Liên hệ tư vấn là section của homepage, không tính là page con trong sitemap.
