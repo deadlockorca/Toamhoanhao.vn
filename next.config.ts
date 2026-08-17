@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
-const r2PublicUrl = process.env.R2_PUBLIC_BASE_URL
-  ? new URL(process.env.R2_PUBLIC_BASE_URL)
-  : undefined;
-const r2RemotePattern = r2PublicUrl
-  ? ({
-      protocol: r2PublicUrl.protocol === "http:" ? "http" : "https",
-      hostname: r2PublicUrl.hostname,
-      pathname: "/**",
-    } as const)
-  : undefined;
+const defaultR2PublicUrl = "https://pub-b6d77d3bc0a843b0ae7d1e61de9c768b.r2.dev";
+const r2PublicUrl = new URL(
+  process.env.R2_PUBLIC_BASE_URL || defaultR2PublicUrl,
+);
+const r2RemotePattern = {
+  protocol: r2PublicUrl.protocol === "http:" ? "http" : "https",
+  hostname: r2PublicUrl.hostname,
+  pathname: "/**",
+} as const;
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -23,7 +22,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.unsplash.com",
       },
-      ...(r2RemotePattern ? [r2RemotePattern] : []),
+      r2RemotePattern,
     ],
   },
 };
