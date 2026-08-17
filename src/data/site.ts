@@ -40,8 +40,14 @@ export const navigation: NavigationItem[] = [
     href: "/gioi-thieu",
     children: [
       { label: "Về Tổ Ấm Hoàn Hảo", href: "/gioi-thieu" },
-      { label: "Năng lực thiết kế và thi công" },
-      { label: "Đội ngũ kiến trúc sư" },
+      {
+        label: "Năng lực thiết kế và thi công",
+        href: "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+      },
+      {
+        label: "Đội ngũ kiến trúc sư",
+        href: "/gioi-thieu/doi-ngu-kien-truc-su",
+      },
       { label: "Xưởng sản xuất nội thất" },
       { label: "Tuyển dụng" },
     ],
@@ -135,12 +141,8 @@ export const navigation: NavigationItem[] = [
   {
     label: "Báo giá",
     children: [
-      { label: "Báo giá thiết kế nội thất" },
-      { label: "Báo giá thi công nội thất" },
-      { label: "Báo giá xây nhà trọn gói" },
-      { label: "Báo giá thi công phần thô" },
-      { label: "Báo giá hoàn thiện nhà" },
-      { label: "Báo giá đồ gỗ nội thất" },
+      { label: "Báo giá thiết kế thi công nội thất" },
+      { label: "Báo giá thiết kế kiến trúc và xây dựng trọn gói" },
     ],
   },
   {
@@ -308,8 +310,12 @@ export const footerColumns = [
     title: "Về chúng tôi",
     links: [
       { label: "Giới thiệu", href: "/gioi-thieu" },
+      {
+        label: "Năng lực thiết kế & thi công",
+        href: "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+      },
       { label: "Tầm nhìn · Sứ mệnh" },
-      { label: "Đội ngũ nhân sự" },
+      { label: "Đội ngũ nhân sự", href: "/gioi-thieu/doi-ngu-kien-truc-su" },
       { label: "Quy trình làm việc" },
     ],
   },
