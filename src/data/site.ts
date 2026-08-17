@@ -110,20 +110,20 @@ export const navigation: NavigationItem[] = [
   },
   {
     label: "Dự án",
+    href: "/du-an",
     children: [
-      { label: "Tất cả dự án" },
-      { label: "Căn hộ" },
-      { label: "Biệt thự" },
-      { label: "Nhà phố" },
-      { label: "Văn phòng" },
+      { label: "Tất cả dự án", href: "/du-an" },
+      { label: "Căn hộ", href: "/du-an?danh-muc=can-ho" },
+      { label: "Biệt thự", href: "/du-an?danh-muc=biet-thu" },
+      { label: "Nhà phố", href: "/du-an?danh-muc=nha-pho" },
+      { label: "Văn phòng", href: "/du-an?danh-muc=van-phong" },
       {
         label: "Không gian kinh doanh",
-        children: [
-          { label: "Quán cafe" },
-          { label: "Showroom" },
-          { label: "Spa" },
-          { label: "Nhà hàng / khách sạn" },
-        ],
+        href: "/du-an?danh-muc=khong-gian-kinh-doanh",
+      },
+      {
+        label: "Nội thất trọn gói",
+        href: "/du-an?danh-muc=noi-that-tron-goi",
       },
     ],
   },
@@ -151,12 +151,13 @@ export const navigation: NavigationItem[] = [
   {
     label: "Kiến thức",
     children: [
-      { label: "Kinh nghiệm xây nhà" },
-      { label: "Kinh nghiệm thiết kế nội thất" },
-      { label: "Kinh nghiệm thi công nội thất" },
-      { label: "Pháp lý xây dựng" },
-      { label: "Vật liệu nội thất" },
-      { label: "Phong thủy nhà ở" },
+      { label: "Kinh nghiệm xây nhà", href: "/kien-thuc/kinh-nghiem-xay-nha" },
+      {
+        label: "Kinh nghiệm thi công, thiết kế nội thất",
+        href: "/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
+      },
+      { label: "Pháp lý xây dựng", href: "/kien-thuc/phap-ly-xay-dung" },
+      { label: "Kiến thức nhà đẹp", href: "/kien-thuc/kien-thuc-nha-dep" },
     ],
   },
   {

@@ -16,6 +16,25 @@ export type LibraryCategory =
   | "Tủ bếp"
   | "Phòng trẻ em";
 
+const projectCategoryQueryMap = {
+  "can-ho": "Căn hộ",
+  "biet-thu": "Biệt thự",
+  "nha-pho": "Nhà phố",
+  "van-phong": "Văn phòng",
+  "khong-gian-kinh-doanh": "Không gian kinh doanh",
+  "noi-that-tron-goi": "Nội thất trọn gói",
+} as const satisfies Record<string, LibraryCategory>;
+
+export function getProjectCategoryFromQuery(
+  value: string | undefined,
+): LibraryCategory | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  return projectCategoryQueryMap[value as keyof typeof projectCategoryQueryMap];
+}
+
 export type LibraryItem = {
   contentType: LibraryContentType;
   category: LibraryCategory;

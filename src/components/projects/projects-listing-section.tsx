@@ -34,6 +34,7 @@ import {
 type ProjectsListingSectionProps = {
   projects: Project[];
   designSamples: DesignSample[];
+  initialCategory?: LibraryCategory;
 };
 
 type AreaRange = {
@@ -86,10 +87,11 @@ const areaRanges: AreaRange[] = [
 export function ProjectsListingSection({
   projects,
   designSamples,
+  initialCategory,
 }: ProjectsListingSectionProps) {
   const [contentType, setContentType] = useState<"all" | LibraryContentType>("all");
   const [category, setCategory] = useState<LibraryCategory | typeof allCategoriesValue>(
-    allCategoriesValue,
+    initialCategory ?? allCategoriesValue,
   );
   const [areaRange, setAreaRange] = useState(areaRanges[0].label);
   const [style, setStyle] = useState(allValue);
