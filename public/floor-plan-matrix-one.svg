@@ -1,0 +1,33 @@
+<svg width="960" height="520" viewBox="0 0 960 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="520" fill="#F4EEE6"/>
+  <rect x="58" y="54" width="844" height="412" fill="#FBF7F1" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M58 182H348V54" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M348 54V296H612V54" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M612 176H902" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M612 296H902" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M348 296H58" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M230 296V466" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M612 296V466" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M58 378H230" stroke="#CDBFA9" stroke-width="4"/>
+  <path d="M420 296V466" stroke="#CDBFA9" stroke-width="4"/>
+  <rect x="86" y="82" width="218" height="72" rx="8" stroke="#D8CCBB" stroke-width="3"/>
+  <rect x="660" y="80" width="188" height="62" rx="8" stroke="#D8CCBB" stroke-width="3"/>
+  <rect x="676" y="330" width="160" height="92" rx="8" stroke="#D8CCBB" stroke-width="3"/>
+  <rect x="92" y="322" width="90" height="120" rx="8" stroke="#D8CCBB" stroke-width="3"/>
+  <rect x="460" y="338" width="96" height="88" rx="8" stroke="#D8CCBB" stroke-width="3"/>
+  <ellipse cx="480" cy="190" rx="86" ry="48" stroke="#D8CCBB" stroke-width="3"/>
+  <circle cx="480" cy="190" r="16" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M706 176V296" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M786 176V296" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M58 466C146 414 242 414 330 466" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M612 466C694 416 820 416 902 466" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M348 296C390 264 422 264 464 296" stroke="#D8CCBB" stroke-width="3"/>
+  <path d="M612 176C648 148 676 148 712 176" stroke="#D8CCBB" stroke-width="3"/>
+  <text x="158" y="126" fill="#A89578" font-family="Arial, sans-serif" font-size="26">PHÒNG NGỦ</text>
+  <text x="412" y="196" fill="#A89578" font-family="Arial, sans-serif" font-size="26">PHÒNG KHÁCH</text>
+  <text x="704" y="116" fill="#A89578" font-family="Arial, sans-serif" font-size="26">BẾP</text>
+  <text x="704" y="238" fill="#A89578" font-family="Arial, sans-serif" font-size="24">ĂN</text>
+  <text x="92" y="386" fill="#A89578" font-family="Arial, sans-serif" font-size="24">WC</text>
+  <text x="470" y="390" fill="#A89578" font-family="Arial, sans-serif" font-size="24">WC</text>
+  <text x="690" y="390" fill="#A89578" font-family="Arial, sans-serif" font-size="24">PHÒNG NGỦ</text>
+</svg>

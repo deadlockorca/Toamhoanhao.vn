@@ -1,0 +1,326 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum ContentStatus {
+  draft
+  published
+}
+
+enum ImageSide {
+  left
+  right
+}
+
+enum ProjectCategory {
+  apartment
+  villa
+  townhouse
+  office
+  businessSpace
+  turnkeyInterior
+}
+
+enum DesignSampleCategory {
+  apartment
+  townhouse
+  villa
+  livingRoom
+  bedroom
+  kitchen
+  kitchenCabinet
+  childrenRoom
+}
+
+model Project {
+  id          String          @id @default(cuid())
+  title       String
+  slug        String          @unique
+  category    ProjectCategory
+  location    String
+  area        String
+  year        String
+  style       String
+  thumbnail   String          @db.Text
+  summary     String          @db.Text
+  featured    Boolean         @default(false)
+  sortOrder   Int             @default(0)
+  status      ContentStatus   @default(draft)
+  publishedAt DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  detail          ProjectDetail?
+  metrics         ProjectMetric[]
+  infoRows        ProjectInfoRow[]
+  spaces          ProjectSpace[]
+  storyBlocks     ProjectStoryBlock[]
+  floorPlanNotes  ProjectFloorPlanNote[]
+  relatedProjects ProjectRelated[]       @relation("ProjectRelatedSource")
+  relatedBy        ProjectRelated[]       @relation("ProjectRelatedTarget")
+
+  @@index([category])
+  @@index([featured])
+  @@index([status])
+  @@index([sortOrder])
+}
+
+model ProjectDetail {
+  id                 String  @id @default(cuid())
+  projectId          String  @unique
+  eyebrow            String
+  displayTitle       String
+  italicTitle        String
+  heroImage          String  @db.Text
+  description        String  @db.Text
+  bedrooms           String?
+  bathrooms          String?
+  duration           String?
+  scope              String
+  overviewTitle      String
+  overviewParagraphs Json
+  floorPlanImage     String? @db.Text
+  seoTitle           String?
+  seoDescription     String? @db.Text
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+}
+
+model ProjectMetric {
+  id        String @id @default(cuid())
+  projectId String
+  label     String
+  value     String
+  sortOrder Int    @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectInfoRow {
+  id        String @id @default(cuid())
+  projectId String
+  label     String
+  value     String
+  sortOrder Int    @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectSpace {
+  id        String @id @default(cuid())
+  projectId String
+  title     String
+  image     String @db.Text
+  sortOrder Int    @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectStoryBlock {
+  id          String    @id @default(cuid())
+  projectId   String
+  index       String
+  title       String
+  description String    @db.Text
+  image       String    @db.Text
+  imageSide   ImageSide
+  sortOrder   Int       @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectFloorPlanNote {
+  id        String @id @default(cuid())
+  projectId String
+  label     String
+  value     String @db.Text
+  sortOrder Int    @default(0)
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([projectId, sortOrder])
+}
+
+model ProjectRelated {
+  id               String @id @default(cuid())
+  projectId        String
+  relatedProjectId String
+  sortOrder        Int    @default(0)
+
+  project        Project @relation("ProjectRelatedSource", fields: [projectId], references: [id], onDelete: Cascade)
+  relatedProject Project @relation("ProjectRelatedTarget", fields: [relatedProjectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, relatedProjectId])
+  @@index([projectId, sortOrder])
+  @@index([relatedProjectId])
+}
+
+model DesignSample {
+  id          String               @id @default(cuid())
+  title       String
+  slug        String               @unique
+  category    DesignSampleCategory
+  type        String
+  style       String
+  area        String?
+  thumbnail   String               @db.Text
+  summary     String               @db.Text
+  featured    Boolean              @default(false)
+  sortOrder   Int                  @default(0)
+  status      ContentStatus        @default(draft)
+  publishedAt DateTime?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  detail         DesignSampleDetail?
+  metrics        DesignSampleMetric[]
+  infoRows       DesignSampleInfoRow[]
+  gallery        DesignSampleGalleryItem[]
+  features       DesignFeature[]
+  floorPlanNotes DesignFloorPlanNote[]
+  packages       SuggestedPackage[]
+  relatedSamples DesignSampleRelated[]      @relation("DesignSampleRelatedSource")
+  relatedBy       DesignSampleRelated[]      @relation("DesignSampleRelatedTarget")
+
+  @@index([category])
+  @@index([featured])
+  @@index([status])
+  @@index([sortOrder])
+}
+
+model DesignSampleDetail {
+  id                 String  @id @default(cuid())
+  sampleId           String  @unique
+  eyebrow            String
+  displayTitle       String
+  italicTitle        String
+  heroImage          String  @db.Text
+  description        String  @db.Text
+  propertyType       String
+  bedrooms           String?
+  bathrooms          String?
+  budgetRange        String?
+  suitableFor        String?
+  overviewTitle      String
+  overviewParagraphs Json
+  floorPlanImage     String? @db.Text
+  seoTitle           String?
+  seoDescription     String? @db.Text
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+}
+
+model DesignSampleMetric {
+  id        String @id @default(cuid())
+  sampleId  String
+  label     String
+  value     String
+  sortOrder Int    @default(0)
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@index([sampleId, sortOrder])
+}
+
+model DesignSampleInfoRow {
+  id        String @id @default(cuid())
+  sampleId  String
+  label     String
+  value     String
+  sortOrder Int    @default(0)
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@index([sampleId, sortOrder])
+}
+
+model DesignSampleGalleryItem {
+  id        String @id @default(cuid())
+  sampleId  String
+  title     String
+  image     String @db.Text
+  sortOrder Int    @default(0)
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@index([sampleId, sortOrder])
+}
+
+model DesignFeature {
+  id          String    @id @default(cuid())
+  sampleId    String
+  index       String
+  title       String
+  description String    @db.Text
+  image       String    @db.Text
+  imageSide   ImageSide
+  sortOrder   Int       @default(0)
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@index([sampleId, sortOrder])
+}
+
+model DesignFloorPlanNote {
+  id        String @id @default(cuid())
+  sampleId  String
+  label     String
+  value     String @db.Text
+  sortOrder Int    @default(0)
+
+  sample DesignSample @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+
+  @@index([sampleId, sortOrder])
+}
+
+model SuggestedPackage {
+  id        String  @id @default(cuid())
+  sampleId  String
+  title     String
+  price     String
+  featured  Boolean @default(false)
+  sortOrder Int     @default(0)
+
+  sample DesignSample           @relation(fields: [sampleId], references: [id], onDelete: Cascade)
+  items  SuggestedPackageItem[]
+
+  @@index([sampleId, sortOrder])
+}
+
+model SuggestedPackageItem {
+  id        String @id @default(cuid())
+  packageId String
+  content   String
+  sortOrder Int    @default(0)
+
+  package SuggestedPackage @relation(fields: [packageId], references: [id], onDelete: Cascade)
+
+  @@index([packageId, sortOrder])
+}
+
+model DesignSampleRelated {
+  id              String @id @default(cuid())
+  sampleId        String
+  relatedSampleId String
+  sortOrder       Int    @default(0)
+
+  sample        DesignSample @relation("DesignSampleRelatedSource", fields: [sampleId], references: [id], onDelete: Cascade)
+  relatedSample DesignSample @relation("DesignSampleRelatedTarget", fields: [relatedSampleId], references: [id], onDelete: Cascade)
+
+  @@unique([sampleId, relatedSampleId])
+  @@index([sampleId, sortOrder])
+  @@index([relatedSampleId])
+}

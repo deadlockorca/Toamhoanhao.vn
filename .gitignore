@@ -32,6 +32,15 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# local mysql data
+.mysql-data/
+.mysql-run/
+content-import/
+/public/uploads/
+.mysql-data.failed-*/
+.mysql-run.failed-*/
 
 # vercel
 .vercel
@@ -39,3 +48,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated prisma client
+src/generated/

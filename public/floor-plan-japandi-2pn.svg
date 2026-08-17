@@ -1,0 +1,40 @@
+<svg width="900" height="560" viewBox="0 0 900 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="560" fill="#fbf7f1"/>
+  <rect x="70" y="72" width="760" height="416" stroke="#cdbfa9" stroke-width="4"/>
+  <path d="M70 254H338V488" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M338 254H598V488" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M598 254H830" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M338 72V254" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M598 72V254" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M70 160H338" stroke="#d8cbbb" stroke-width="3"/>
+  <path d="M598 150H830" stroke="#d8cbbb" stroke-width="3"/>
+  <rect x="102" y="102" width="90" height="42" rx="4" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="204" y="102" width="90" height="42" rx="4" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="104" y="298" width="118" height="72" rx="4" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="126" y="390" width="76" height="54" rx="4" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="390" y="112" width="150" height="84" rx="6" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="394" y="384" width="144" height="64" rx="4" stroke="#b7a58c" stroke-width="3"/>
+  <rect x="646" y="288" width="130" height="82" rx="6" stroke="#b7a58c" stroke-width="3"/>
+  <circle cx="708" cy="415" r="38" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M656 416H760" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M708 363V466" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M386 298H548" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M386 318H548" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M386 338H548" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M632 100H800" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M632 124H800" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M632 190H800" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M632 212H800" stroke="#b7a58c" stroke-width="3"/>
+  <path d="M338 210C378 210 408 224 424 254" stroke="#c3b49d" stroke-width="3"/>
+  <path d="M598 214C558 214 528 226 512 254" stroke="#c3b49d" stroke-width="3"/>
+  <path d="M338 396C302 396 274 410 260 440" stroke="#c3b49d" stroke-width="3"/>
+  <path d="M598 365C634 365 662 380 676 410" stroke="#c3b49d" stroke-width="3"/>
+  <text x="145" y="212" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">PN 01</text>
+  <text x="205" y="456" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">PN 02</text>
+  <text x="466" y="224" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Khách</text>
+  <text x="468" y="470" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Bếp</text>
+  <text x="715" y="232" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">WC</text>
+  <text x="718" y="470" fill="#8c7e6d" font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">Ăn</text>
+  <rect x="68" y="488" width="762" height="8" fill="#c9b99f"/>
+  <rect x="70" y="496" width="760" height="24" fill="#e7dccd"/>
+</svg>

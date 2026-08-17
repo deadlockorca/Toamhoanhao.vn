@@ -17,23 +17,168 @@ import {
   Sparkles,
 } from "lucide-react";
 
-export const navigation = [
-  "Trang chủ",
-  "Giới thiệu",
-  "Dịch vụ",
-  "Dự án",
-  "Mẫu thiết kế",
-  "Báo giá",
-  "Kiến thức",
-  "Liên hệ",
+export type NavigationItem = {
+  label: string;
+  href?: string;
+  children?: Array<{
+    label: string;
+    href?: string;
+    children?: Array<{
+      label: string;
+      href?: string;
+    }>;
+  }>;
+};
+
+export const navigation: NavigationItem[] = [
+  {
+    label: "Trang chủ",
+    href: "/",
+  },
+  {
+    label: "Giới thiệu",
+    href: "/gioi-thieu",
+    children: [
+      { label: "Về Tổ Ấm Hoàn Hảo", href: "/gioi-thieu" },
+      { label: "Năng lực thiết kế và thi công" },
+      { label: "Đội ngũ kiến trúc sư" },
+      { label: "Xưởng sản xuất nội thất" },
+      { label: "Tuyển dụng" },
+    ],
+  },
+  {
+    label: "Dịch vụ",
+    children: [
+      {
+        label: "Thiết kế nội thất",
+        children: [
+          { label: "Thiết kế nội thất chung cư" },
+          { label: "Thiết kế nội thất nhà phố" },
+          { label: "Thiết kế nội thất biệt thự" },
+          { label: "Thiết kế nội thất văn phòng" },
+          { label: "Thiết kế nội thất showroom, cửa hàng" },
+        ],
+      },
+      {
+        label: "Thi công nội thất",
+        children: [
+          { label: "Thi công nội thất chung cư" },
+          { label: "Thi công nội thất nhà phố" },
+          { label: "Thi công nội thất biệt thự" },
+          { label: "Thi công nội thất văn phòng" },
+          { label: "Thi công đồ gỗ nội thất" },
+        ],
+      },
+      {
+        label: "Xây nhà trọn gói",
+        children: [
+          { label: "Xây nhà phố trọn gói" },
+          { label: "Xây biệt thự trọn gói" },
+          { label: "Thi công phần thô" },
+          { label: "Hoàn thiện nhà" },
+        ],
+      },
+      {
+        label: "Cải tạo nhà",
+        children: [
+          { label: "Cải tạo chung cư" },
+          { label: "Cải tạo nhà phố" },
+          { label: "Cải tạo biệt thự" },
+          { label: "Cải tạo văn phòng, cửa hàng" },
+        ],
+      },
+      {
+        label: "Sản xuất đồ gỗ nội thất",
+        children: [
+          { label: "Tủ bếp" },
+          { label: "Tủ quần áo" },
+          { label: "Kệ tivi" },
+          { label: "Giường ngủ" },
+          { label: "Nội thất đặt đóng theo yêu cầu" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Dự án",
+    children: [
+      { label: "Tất cả dự án" },
+      { label: "Căn hộ" },
+      { label: "Biệt thự" },
+      { label: "Nhà phố" },
+      { label: "Văn phòng" },
+      {
+        label: "Không gian kinh doanh",
+        children: [
+          { label: "Quán cafe" },
+          { label: "Showroom" },
+          { label: "Spa" },
+          { label: "Nhà hàng / khách sạn" },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Mẫu thiết kế",
+    children: [
+      { label: "Tất cả mẫu thiết kế" },
+      { label: "Mẫu thiết kế nội thất chung cư" },
+      { label: "Mẫu thiết kế nhà phố" },
+      { label: "Mẫu thiết kế biệt thự" },
+      { label: "Mẫu phòng khách" },
+      { label: "Mẫu phòng ngủ" },
+      { label: "Mẫu phòng bếp" },
+      { label: "Mẫu tủ bếp" },
+      { label: "Mẫu phòng trẻ em" },
+    ],
+  },
+  {
+    label: "Báo giá",
+    children: [
+      { label: "Báo giá thiết kế nội thất" },
+      { label: "Báo giá thi công nội thất" },
+      { label: "Báo giá xây nhà trọn gói" },
+      { label: "Báo giá thi công phần thô" },
+      { label: "Báo giá hoàn thiện nhà" },
+      { label: "Báo giá đồ gỗ nội thất" },
+    ],
+  },
+  {
+    label: "Kiến thức",
+    children: [
+      { label: "Kinh nghiệm xây nhà" },
+      { label: "Kinh nghiệm thiết kế nội thất" },
+      { label: "Kinh nghiệm thi công nội thất" },
+      { label: "Pháp lý xây dựng" },
+      { label: "Vật liệu nội thất" },
+      { label: "Phong thủy nhà ở" },
+    ],
+  },
+  {
+    label: "Liên hệ",
+    children: [
+      { label: "Thông tin liên hệ" },
+      { label: "Form tư vấn" },
+      { label: "Bản đồ" },
+      { label: "Kênh mạng xã hội" },
+    ],
+  },
 ];
 
-export const projectCategories = ["Căn hộ", "Biệt thự", "Nhà phố", "Văn phòng"];
+export const projectCategories = [
+  "Căn hộ",
+  "Biệt thự",
+  "Nhà phố",
+  "Văn phòng",
+  "Không gian kinh doanh",
+  "Nội thất trọn gói",
+];
 
 export const featuredProjects = [
   {
     category: "Căn hộ chung cư",
     title: "The Matrix One",
+    slug: "can-ho-the-matrix-one",
     meta: "Hà Nội · 120m²",
     image:
       "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=900&q=85",
@@ -41,6 +186,7 @@ export const featuredProjects = [
   {
     category: "Căn hộ chung cư",
     title: "Vinhomes Ocean Park",
+    slug: "vinhomes-ocean-park",
     meta: "Hà Nội · 90m²",
     image:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
@@ -48,6 +194,7 @@ export const featuredProjects = [
   {
     category: "Biệt thự",
     title: "Vinhomes Riverside",
+    slug: "biet-thu-riverside",
     meta: "Hà Nội · 250m²",
     image:
       "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=900&q=85",
@@ -160,29 +307,29 @@ export const footerColumns = [
   {
     title: "Về chúng tôi",
     links: [
-      "Giới thiệu",
-      "Tầm nhìn · Sứ mệnh",
-      "Đội ngũ nhân sự",
-      "Quy trình làm việc",
+      { label: "Giới thiệu", href: "/gioi-thieu" },
+      { label: "Tầm nhìn · Sứ mệnh" },
+      { label: "Đội ngũ nhân sự" },
+      { label: "Quy trình làm việc" },
     ],
   },
   {
     title: "Dịch vụ",
     links: [
-      "Thiết kế nội thất",
-      "Thi công nội thất",
-      "Sản xuất nội thất",
-      "Nội thất trọn gói",
-      "Tư vấn phong thủy",
+      { label: "Thiết kế nội thất" },
+      { label: "Thi công nội thất" },
+      { label: "Sản xuất nội thất" },
+      { label: "Nội thất trọn gói" },
+      { label: "Tư vấn phong thủy" },
     ],
   },
   {
     title: "Hỗ trợ",
     links: [
-      "Câu hỏi thường gặp",
-      "Chính sách bảo hành",
-      "Chính sách bảo mật",
-      "Điều khoản sử dụng",
+      { label: "Câu hỏi thường gặp" },
+      { label: "Chính sách bảo hành" },
+      { label: "Chính sách bảo mật" },
+      { label: "Điều khoản sử dụng" },
     ],
   },
 ];

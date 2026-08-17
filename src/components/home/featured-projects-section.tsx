@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { featuredProjects, projectCategories } from "@/data/site";
 
@@ -45,13 +46,13 @@ export function FeaturedProjectsSection() {
             </div>
           </div>
 
-          <a
-            href="#"
+          <Link
+            href="/du-an"
             className="inline-flex w-fit items-center gap-4 border-b border-[#b7a98f] pb-2 text-xs font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:text-[#9a732f]"
           >
             Xem tất cả dự án
             <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         </aside>
 
         <div className="grid gap-3 md:grid-cols-3">
@@ -60,7 +61,11 @@ export function FeaturedProjectsSection() {
               key={project.title}
               className="group border border-[#ded4c4] bg-[#fbf7f1]/72"
             >
-              <div className="relative aspect-[1.32] overflow-hidden">
+              <Link
+                href={`/du-an/${project.slug}`}
+                aria-label={`Xem dự án ${project.title}`}
+                className="relative block aspect-[1.32] overflow-hidden"
+              >
                 <Image
                   src={project.image}
                   alt={`${project.category} ${project.title}`}
@@ -68,28 +73,31 @@ export function FeaturedProjectsSection() {
                   sizes="(min-width: 1024px) 28vw, (min-width: 768px) 33vw, 100vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
-              </div>
+              </Link>
               <div className="flex min-h-[132px] flex-col justify-between px-6 py-5">
                 <div>
                   <p className="text-base font-semibold leading-7 text-[#27231c]">
                     {project.category}
                   </p>
-                  <h3 className="text-base font-semibold leading-7 text-[#27231c]">
+                  <Link
+                    href={`/du-an/${project.slug}`}
+                    className="block text-base font-semibold leading-7 text-[#27231c] transition hover:text-[#7c5f2c]"
+                  >
                     {project.title}
-                  </h3>
+                  </Link>
                 </div>
 
                 <div className="flex items-end justify-between gap-4">
                   <p className="text-xs font-semibold text-[#96784c]">
                     {project.meta}
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/du-an/${project.slug}`}
                     aria-label={`Xem dự án ${project.title}`}
                     className="text-2xl leading-none text-[#b19060] transition group-hover:translate-x-1 group-hover:text-[#7c5f2c]"
                   >
                     →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>

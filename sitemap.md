@@ -54,26 +54,27 @@ TOAMHOANHAO.VN
 │   └── Báo giá đồ gỗ nội thất
 │
 ├── Dự án
-│   ├── Dự án chung cư
-│   │   └── Chi tiết dự án chung cư
-│   ├── Dự án nhà phố
-│   │   └── Chi tiết dự án nhà phố
-│   ├── Dự án biệt thự
-│   │   └── Chi tiết dự án biệt thự
-│   ├── Dự án văn phòng, showroom
-│   │   └── Chi tiết dự án văn phòng, showroom
-│   └── Dự án cafe, nhà hàng
-│       └── Chi tiết dự án cafe, nhà hàng
+│   ├── Tất cả dự án
+│   ├── Căn hộ
+│   ├── Biệt thự
+│   ├── Nhà phố
+│   ├── Văn phòng
+│   └── Không gian kinh doanh
+│       ├── Quán cafe
+│       ├── Showroom
+│       ├── Spa
+│       └── Nhà hàng / khách sạn
 │
 ├── Mẫu thiết kế
-│   ├── Mẫu thiết kế chung cư
+│   ├── Tất cả mẫu thiết kế
+│   ├── Mẫu thiết kế nội thất chung cư
 │   ├── Mẫu thiết kế nhà phố
 │   ├── Mẫu thiết kế biệt thự
 │   ├── Mẫu phòng khách
 │   ├── Mẫu phòng ngủ
 │   ├── Mẫu phòng bếp
 │   ├── Mẫu tủ bếp
-│   └── Mẫu đồ gỗ nội thất
+│   └── Mẫu phòng trẻ em
 │
 ├── Kiến thức
 │   ├── Kinh nghiệm xây nhà
@@ -137,22 +138,26 @@ TOAMHOANHAO.VN
 /bao-gia/do-go-noi-that
 
 /du-an
-/du-an/chung-cu
-/du-an/nha-pho
+/du-an/can-ho
 /du-an/biet-thu
-/du-an/van-phong-showroom
-/du-an/cafe-nha-hang
+/du-an/nha-pho
+/du-an/van-phong
+/du-an/khong-gian-kinh-doanh
+/du-an/khong-gian-kinh-doanh/quan-cafe
+/du-an/khong-gian-kinh-doanh/showroom
+/du-an/khong-gian-kinh-doanh/spa
+/du-an/khong-gian-kinh-doanh/nha-hang-khach-san
 /du-an/[slug]
 
 /mau-thiet-ke
-/mau-thiet-ke/chung-cu
+/mau-thiet-ke/noi-that-chung-cu
 /mau-thiet-ke/nha-pho
 /mau-thiet-ke/biet-thu
 /mau-thiet-ke/phong-khach
 /mau-thiet-ke/phong-ngu
 /mau-thiet-ke/phong-bep
 /mau-thiet-ke/tu-bep
-/mau-thiet-ke/do-go-noi-that
+/mau-thiet-ke/phong-tre-em
 
 /kien-thuc
 /kien-thuc/kinh-nghiem-xay-nha

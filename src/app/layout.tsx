@@ -15,6 +15,22 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Tổ Ấm Hoàn Hảo",
   description: "Thiết kế, thi công và sản xuất nội thất trọn gói.",
+  icons: {
+    icon: [
+      {
+        url: "/icon.png",
+        sizes: "108x108",
+        type: "image/png",
+      },
+    ],
+    apple: [
+      {
+        url: "/apple-icon.png",
+        sizes: "108x108",
+        type: "image/png",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
