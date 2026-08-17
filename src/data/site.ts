@@ -48,7 +48,10 @@ export const navigation: NavigationItem[] = [
         label: "Đội ngũ kiến trúc sư",
         href: "/gioi-thieu/doi-ngu-kien-truc-su",
       },
-      { label: "Xưởng sản xuất nội thất" },
+      {
+        label: "Xưởng sản xuất nội thất",
+        href: "/gioi-thieu/xuong-san-xuat-noi-that",
+      },
       { label: "Tuyển dụng" },
     ],
   },
@@ -158,12 +161,7 @@ export const navigation: NavigationItem[] = [
   },
   {
     label: "Liên hệ",
-    children: [
-      { label: "Thông tin liên hệ" },
-      { label: "Form tư vấn" },
-      { label: "Bản đồ" },
-      { label: "Kênh mạng xã hội" },
-    ],
+    href: "/lien-he",
   },
 ];
 
@@ -313,6 +311,10 @@ export const footerColumns = [
       {
         label: "Năng lực thiết kế & thi công",
         href: "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+      },
+      {
+        label: "Xưởng sản xuất nội thất",
+        href: "/gioi-thieu/xuong-san-xuat-noi-that",
       },
       { label: "Tầm nhìn · Sứ mệnh" },
       { label: "Đội ngũ nhân sự", href: "/gioi-thieu/doi-ngu-kien-truc-su" },
