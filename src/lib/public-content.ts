@@ -1,9 +1,4 @@
 import {
-  designSamples as mockDesignSamples,
-  getDesignSampleBySlug,
-} from "@/data/design-samples";
-import { getProjectBySlug, projects as mockProjects } from "@/data/projects";
-import {
   mapDbDesignSampleToDesignSample,
   mapDbProjectToProject,
 } from "@/lib/admin-data-mappers";
@@ -46,9 +41,7 @@ export async function getPublicProjects() {
     include: projectInclude,
   });
 
-  return dbProjects.length > 0
-    ? dbProjects.map(mapDbProjectToProject)
-    : mockProjects.filter((project) => project.status === "published");
+  return dbProjects.map(mapDbProjectToProject);
 }
 
 export async function getPublicProjectBySlug(slug: string) {
@@ -63,7 +56,7 @@ export async function getPublicProjectBySlug(slug: string) {
       : undefined;
   }
 
-  return getProjectBySlug(slug);
+  return undefined;
 }
 
 export async function getPublicDesignSamples() {
@@ -73,9 +66,7 @@ export async function getPublicDesignSamples() {
     include: designSampleInclude,
   });
 
-  return dbSamples.length > 0
-    ? dbSamples.map(mapDbDesignSampleToDesignSample)
-    : mockDesignSamples.filter((sample) => sample.status === "published");
+  return dbSamples.map(mapDbDesignSampleToDesignSample);
 }
 
 export async function getPublicDesignSampleBySlug(slug: string) {
@@ -90,5 +81,5 @@ export async function getPublicDesignSampleBySlug(slug: string) {
       : undefined;
   }
 
-  return getDesignSampleBySlug(slug);
+  return undefined;
 }

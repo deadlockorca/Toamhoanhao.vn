@@ -2,11 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 
 import {
-  featuredHomeDesignSamples,
   homeDesignCategories,
+  type DesignSample,
 } from "@/data/design-samples";
 
-export function FeaturedDesignSamplesSection() {
+type FeaturedDesignSamplesSectionProps = {
+  samples: DesignSample[];
+};
+
+export function FeaturedDesignSamplesSection({
+  samples,
+}: FeaturedDesignSamplesSectionProps) {
+  const featuredDesignSamples = samples.filter((sample) => sample.featured).slice(0, 3);
+
+  if (featuredDesignSamples.length === 0) {
+    return null;
+  }
+
   return (
     <section className="bg-[#f7f1e9] px-5 pb-16 sm:px-8 lg:pb-20">
       <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[220px_1fr] xl:grid-cols-[240px_1fr]">
@@ -59,12 +71,16 @@ export function FeaturedDesignSamplesSection() {
         </aside>
 
         <div className="grid gap-3 md:grid-cols-3">
-          {featuredHomeDesignSamples.map((sample) => (
+          {featuredDesignSamples.map((sample) => (
             <article
               key={sample.slug}
               className="group border border-[#ded4c4] bg-[#fbf7f1]/72"
             >
-              <div className="relative aspect-[1.32] overflow-hidden">
+              <Link
+                href={`/mau-thiet-ke/${sample.slug}`}
+                aria-label={`Xem mẫu thiết kế ${sample.title}`}
+                className="relative block aspect-[1.32] overflow-hidden"
+              >
                 <Image
                   src={sample.thumbnail}
                   alt={sample.title}
@@ -72,15 +88,18 @@ export function FeaturedDesignSamplesSection() {
                   sizes="(min-width: 1024px) 28vw, (min-width: 768px) 33vw, 100vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
                 />
-              </div>
+              </Link>
               <div className="flex min-h-[132px] flex-col justify-between px-6 py-5">
                 <div>
                   <p className="text-base font-semibold leading-7 text-[#27231c]">
                     {sample.category}
                   </p>
-                  <h3 className="text-base font-semibold leading-7 text-[#27231c]">
+                  <Link
+                    href={`/mau-thiet-ke/${sample.slug}`}
+                    className="block text-base font-semibold leading-7 text-[#27231c] transition hover:text-[#7c5f2c]"
+                  >
                     {sample.title}
-                  </h3>
+                  </Link>
                 </div>
 
                 <div className="flex items-end justify-between gap-4">
@@ -88,13 +107,13 @@ export function FeaturedDesignSamplesSection() {
                     {sample.area ? `${sample.area} · ` : ""}
                     {sample.style}
                   </p>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/mau-thiet-ke/${sample.slug}`}
                     aria-label={`Xem mẫu thiết kế ${sample.title}`}
                     className="text-2xl leading-none text-[#b19060] transition group-hover:translate-x-1 group-hover:text-[#7c5f2c]"
                   >
                     →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>

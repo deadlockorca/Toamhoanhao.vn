@@ -1,9 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { featuredProjects, projectCategories } from "@/data/site";
+import type { Project } from "@/data/projects";
+import { projectCategories } from "@/data/site";
 
-export function FeaturedProjectsSection() {
+type FeaturedProjectsSectionProps = {
+  projects: Project[];
+};
+
+export function FeaturedProjectsSection({
+  projects,
+}: FeaturedProjectsSectionProps) {
+  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+
+  if (featuredProjects.length === 0) {
+    return null;
+  }
+
   return (
     <section className="bg-[#f7f1e9] px-5 py-16 sm:px-8 lg:py-20">
       <div className="mx-auto grid max-w-[1320px] gap-10 lg:grid-cols-[220px_1fr] xl:grid-cols-[240px_1fr]">
@@ -58,7 +71,7 @@ export function FeaturedProjectsSection() {
         <div className="grid gap-3 md:grid-cols-3">
           {featuredProjects.map((project) => (
             <article
-              key={project.title}
+              key={project.slug}
               className="group border border-[#ded4c4] bg-[#fbf7f1]/72"
             >
               <Link
@@ -67,8 +80,8 @@ export function FeaturedProjectsSection() {
                 className="relative block aspect-[1.32] overflow-hidden"
               >
                 <Image
-                  src={project.image}
-                  alt={`${project.category} ${project.title}`}
+                  src={project.thumbnail}
+                  alt={project.title}
                   fill
                   sizes="(min-width: 1024px) 28vw, (min-width: 768px) 33vw, 100vw"
                   className="object-cover transition duration-500 group-hover:scale-[1.04]"
@@ -89,7 +102,7 @@ export function FeaturedProjectsSection() {
 
                 <div className="flex items-end justify-between gap-4">
                   <p className="text-xs font-semibold text-[#96784c]">
-                    {project.meta}
+                    {project.location} · {project.area}
                   </p>
                   <Link
                     href={`/du-an/${project.slug}`}
