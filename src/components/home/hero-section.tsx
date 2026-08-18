@@ -1,67 +1,139 @@
+"use client";
+
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { SiteHeader } from "@/components/site-header";
 
+const slides = [
+  {
+    image: "/images/trang-chu/nha-pho-dep-1.jpg",
+    alt: "Khoảng sân xanh trong thiết kế nhà phố",
+    title: "Tận tâm - Minh bạch - Đúng giờ",
+    description: "Làm chân thành - Nhận nhà ngon lành.",
+    cta: "Khám phá dự án",
+    href: "/du-an",
+  },
+  {
+    image: "/images/trang-chu/thiet-ke-noi-that-go-oc-cho.jpg",
+    alt: "Phòng ngủ sử dụng nội thất gỗ óc chó",
+    title: "Thiết kế của bạn là duy nhất",
+    description:
+      "Mỗi giải pháp được phát triển riêng cho nhu cầu, lối sống và không gian của bạn.",
+    cta: "Khám phá dự án",
+    href: "/du-an",
+  },
+  {
+    image: "/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg",
+    alt: "Phối cảnh thiết kế và thi công nhà phố hiện đại",
+    title: "Minh bạch mọi thông tin",
+    description:
+      "Dự toán rõ ràng trước khi triển khai, đồng hành xuyên suốt công trình.",
+    cta: "Xem quy trình làm việc",
+    href: "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+  },
+] as const;
+
 export function HeroSection() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % slides.length);
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  function showPreviousSlide() {
+    setActiveSlide((current) => (current - 1 + slides.length) % slides.length);
+  }
+
+  function showNextSlide() {
+    setActiveSlide((current) => (current + 1) % slides.length);
+  }
+
+  const slide = slides[activeSlide];
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#f7f1e9]">
+    <section className="relative min-h-[640px] overflow-hidden bg-[#17140f] sm:min-h-[680px] lg:min-h-[720px]">
+      <div className="absolute inset-x-0 top-0 z-10 h-20 bg-[#fbf7f1]/92 backdrop-blur-sm" />
       <SiteHeader />
 
-      <div className="grid min-h-screen lg:grid-cols-[44%_56%]">
-        <div className="relative z-10 flex items-center px-6 pb-16 pt-36 sm:px-10 lg:px-0 lg:pb-0 lg:pl-[max(2rem,calc((100vw-1180px)/2))] lg:pr-12">
-          <div className="max-w-[560px]">
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.32em] text-[#a27b3c]">
-              Tổ Ấm Hoàn Hảo
-            </p>
-            <h1 className="font-serif text-[56px] leading-[0.98] tracking-normal text-[#15120e] sm:text-[76px] lg:text-[86px]">
-              Một không gian
-              <span className="mt-3 block italic text-[#7e8268]">
-                để trở về.
-              </span>
-            </h1>
-            <p className="mt-9 max-w-[430px] text-base leading-8 text-[#3d382f]">
-              Tổ Ấm Hoàn Hảo kiến tạo những không gian sống hài hòa giữa thẩm
-              mỹ, công năng và cảm xúc.
-            </p>
+      {slides.map((item, index) => (
+        <Image
+          key={item.image}
+          src={item.image}
+          alt={index === activeSlide ? item.alt : ""}
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          className={`object-cover transition-opacity duration-700 ${
+            index === activeSlide ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
 
-            <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
-              <a
-                href="#"
-                className="inline-flex h-14 items-center justify-center border border-[#6e735e] bg-[#6e735e] px-8 text-sm font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#5d624f]"
-              >
-                Khám phá dự án
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-4 text-sm font-semibold uppercase tracking-[0.04em] text-[#5a5144]"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#b7aa92] bg-[#fbf7f0]/80 text-[#8c6f3e]">
-                  ▶
-                </span>
-                Xem video giới thiệu
-              </a>
-            </div>
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-black/35" />
 
-            <div className="mt-20 flex items-center gap-5 text-sm font-semibold text-[#8a7658]">
-              <span>01</span>
-              <span>/</span>
-              <span>04</span>
-              <span className="h-px w-20 bg-[#9c8d74]" />
-            </div>
-          </div>
+      <div className="relative z-10 mx-auto flex min-h-[640px] max-w-[1180px] items-center justify-center px-6 pb-16 pt-32 text-center sm:min-h-[680px] sm:px-10 lg:min-h-[720px]">
+        <div className="max-w-[720px] text-white">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ead2aa]">
+            Tổ Ấm Hoàn Hảo
+          </p>
+          <h1 className="mt-6 font-serif text-4xl leading-tight sm:text-6xl lg:text-7xl">
+            {slide.title}
+          </h1>
+          <p className="mx-auto mt-6 max-w-[580px] text-base leading-7 text-white/90 sm:text-lg sm:leading-8">
+            {slide.description}
+          </p>
+          <Link
+            href={slide.href}
+            className="mt-9 inline-flex h-12 items-center justify-center border border-[#d7ad6e] bg-[#b88642] px-7 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#976d34] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            {slide.cta}
+          </Link>
+        </div>
+      </div>
+
+      <div className="absolute inset-x-0 bottom-8 z-10 mx-auto flex max-w-[1320px] items-center justify-between px-5 sm:px-8">
+        <div className="flex items-center gap-3" aria-label="Chọn banner">
+          {slides.map((item, index) => (
+            <button
+              key={item.image}
+              type="button"
+              aria-label={`Hiển thị banner ${index + 1}`}
+              aria-pressed={index === activeSlide}
+              onClick={() => setActiveSlide(index)}
+              className={`h-2.5 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white ${
+                index === activeSlide
+                  ? "w-10 bg-[#e5c48f]"
+                  : "w-2.5 bg-white/65 hover:bg-white"
+              }`}
+            />
+          ))}
         </div>
 
-        <div className="relative min-h-[46vh] lg:min-h-screen">
-          <Image
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85"
-            alt="Phòng khách sáng với sofa màu kem và cửa kính nhìn ra vườn"
-            fill
-            priority
-            sizes="(min-width: 1024px) 56vw, 100vw"
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#f7f1e9] via-[#f7f1e9]/10 to-transparent lg:hidden" />
-          <div className="absolute inset-y-0 left-0 hidden w-24 bg-gradient-to-r from-[#f7f1e9] to-transparent lg:block" />
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={showPreviousSlide}
+            aria-label="Banner trước"
+            className="flex h-11 w-11 items-center justify-center border border-white/70 bg-black/20 text-white transition hover:bg-white hover:text-[#211b12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            <ArrowLeft aria-hidden="true" className="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            onClick={showNextSlide}
+            aria-label="Banner tiếp theo"
+            className="flex h-11 w-11 items-center justify-center border border-white/70 bg-black/20 text-white transition hover:bg-white hover:text-[#211b12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            <ArrowRight aria-hidden="true" className="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>
