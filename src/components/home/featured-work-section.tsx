@@ -15,6 +15,7 @@ type FeaturedWorkSectionProps = {
 
 type GalleryCategory = {
   label: string;
+  href: string;
   projectCategories?: Exclude<ProjectCategory, "Tất cả dự án">[];
   sampleCategories?: Exclude<DesignSampleCategory, "Tất cả">[];
 };
@@ -30,15 +31,38 @@ type GalleryItem = {
 };
 
 const galleryCategories: GalleryCategory[] = [
-  { label: "Chung cư", projectCategories: ["Căn hộ"], sampleCategories: ["Chung cư"] },
-  { label: "Biệt thự", projectCategories: ["Biệt thự"], sampleCategories: ["Biệt thự"] },
-  { label: "Nhà phố", projectCategories: ["Nhà phố"], sampleCategories: ["Nhà phố"] },
-  { label: "Văn phòng", projectCategories: ["Văn phòng"] },
-  { label: "Phòng khách", sampleCategories: ["Phòng khách"] },
-  { label: "Phòng ngủ", sampleCategories: ["Phòng ngủ"] },
-  { label: "Phòng bếp", sampleCategories: ["Phòng bếp"] },
-  { label: "Không gian kinh doanh", projectCategories: ["Không gian kinh doanh"] },
-  { label: "Nội thất trọn gói", projectCategories: ["Nội thất trọn gói"] },
+  {
+    label: "Chung cư",
+    href: "/du-an?danh-muc=can-ho",
+    projectCategories: ["Căn hộ"],
+    sampleCategories: ["Chung cư"],
+  },
+  {
+    label: "Biệt thự",
+    href: "/du-an?danh-muc=biet-thu",
+    projectCategories: ["Biệt thự"],
+    sampleCategories: ["Biệt thự"],
+  },
+  {
+    label: "Nhà phố",
+    href: "/du-an?danh-muc=nha-pho",
+    projectCategories: ["Nhà phố"],
+    sampleCategories: ["Nhà phố"],
+  },
+  { label: "Văn phòng", href: "/du-an?danh-muc=van-phong", projectCategories: ["Văn phòng"] },
+  { label: "Phòng khách", href: "/du-an?danh-muc=phong-khach", sampleCategories: ["Phòng khách"] },
+  { label: "Phòng ngủ", href: "/du-an?danh-muc=phong-ngu", sampleCategories: ["Phòng ngủ"] },
+  { label: "Phòng bếp", href: "/du-an?danh-muc=phong-bep", sampleCategories: ["Phòng bếp"] },
+  {
+    label: "Không gian kinh doanh",
+    href: "/du-an?danh-muc=khong-gian-kinh-doanh",
+    projectCategories: ["Không gian kinh doanh"],
+  },
+  {
+    label: "Nội thất trọn gói",
+    href: "/du-an?danh-muc=noi-that-tron-goi",
+    projectCategories: ["Nội thất trọn gói"],
+  },
 ];
 
 export function FeaturedWorkSection({
@@ -88,7 +112,7 @@ export function FeaturedWorkSection({
   const activeDefinition = categories.find(
     (category) => category.label === activeCategory,
   );
-  const visibleItems = items
+  const categoryItems = items
     .filter((item) => {
       if (item.kind === "Dự án") {
         return activeDefinition?.projectCategories?.includes(
@@ -100,8 +124,8 @@ export function FeaturedWorkSection({
         item.category as Exclude<DesignSampleCategory, "Tất cả">,
       );
     })
-    .sort((left, right) => Number(right.featured) - Number(left.featured))
-    .slice(0, 6);
+    .sort((left, right) => Number(right.featured) - Number(left.featured));
+  const visibleItems = categoryItems.slice(0, 6);
 
   if (categories.length === 0 || visibleItems.length === 0) {
     return null;
@@ -153,7 +177,9 @@ export function FeaturedWorkSection({
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  onClick={() => setActiveCategory(category.label)}
+                  onClick={() => {
+                    setActiveCategory(category.label);
+                  }}
                   className={`relative shrink-0 border-x border-t px-5 py-4 text-sm font-bold transition sm:px-7 sm:text-base ${
                     isActive
                       ? "-mb-px border-[#d8ccbb] bg-[#fcf9f4] text-[#746536]"
@@ -209,6 +235,18 @@ export function FeaturedWorkSection({
                 </article>
               ))}
             </div>
+
+            {categoryItems.length > visibleItems.length ? (
+              <div className="flex justify-center pt-7 sm:pt-9">
+                <Link
+                  href={activeDefinition?.href ?? "/du-an"}
+                  className="inline-flex min-h-11 items-center gap-2 border border-[#b9a889] bg-[#fffdf9] px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#6a5533] transition hover:border-[#80612e] hover:bg-[#eee4d5]"
+                >
+                  Xem thêm
+                  <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
+                </Link>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

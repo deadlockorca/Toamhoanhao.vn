@@ -23,6 +23,9 @@ const projectCategoryQueryMap = {
   "van-phong": "Văn phòng",
   "khong-gian-kinh-doanh": "Không gian kinh doanh",
   "noi-that-tron-goi": "Nội thất trọn gói",
+  "phong-khach": "Phòng khách",
+  "phong-ngu": "Phòng ngủ",
+  "phong-bep": "Phòng bếp",
 } as const satisfies Record<string, LibraryCategory>;
 
 export function getProjectCategoryFromQuery(
