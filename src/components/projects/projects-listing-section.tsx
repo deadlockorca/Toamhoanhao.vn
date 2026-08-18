@@ -60,8 +60,6 @@ const categoryFilters: Array<{
   { label: "Phòng khách", icon: Sofa },
   { label: "Phòng ngủ", icon: BedDouble },
   { label: "Phòng bếp", icon: ChefHat },
-  { label: "Tủ bếp", icon: ChefHat },
-  { label: "Phòng trẻ em", icon: BedDouble },
 ];
 
 const areaRanges: AreaRange[] = [

@@ -1,9 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  Armchair,
   BedDouble,
   Building2,
-  ChefHat,
   Home,
   House,
   LampFloor,
@@ -107,8 +105,6 @@ export const designCategoryCards: DesignCategoryCard[] = [
   { title: "Mẫu phòng khách", href: "#", icon: Sofa },
   { title: "Mẫu phòng ngủ", href: "#", icon: BedDouble },
   { title: "Mẫu phòng bếp", href: "#", icon: Utensils },
-  { title: "Mẫu tủ bếp", href: "#", icon: ChefHat },
-  { title: "Mẫu phòng trẻ em", href: "#", icon: Armchair },
 ];
 
 export const designFilterCategories: DesignSampleCategory[] = [

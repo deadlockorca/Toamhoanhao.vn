@@ -137,8 +137,6 @@ export const navigation: NavigationItem[] = [
       { label: "Mẫu phòng khách" },
       { label: "Mẫu phòng ngủ" },
       { label: "Mẫu phòng bếp" },
-      { label: "Mẫu tủ bếp" },
-      { label: "Mẫu phòng trẻ em" },
     ],
   },
   {
