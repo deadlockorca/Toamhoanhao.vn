@@ -9,7 +9,7 @@ export function DesignSamplesHero() {
     <section className="relative overflow-hidden bg-[#f7f1e9]">
       <SiteHeader />
 
-      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[46%_54%]">
+      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[46%_54%] xl:pt-[120px]">
         <div className="flex items-center px-6 py-16 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-14">
           <div className="max-w-[560px]">
             <div className="mb-10 flex items-center gap-3 text-xs text-[#7d715f]">

@@ -81,7 +81,7 @@ export default function BuildingExperiencePage() {
     <main className="min-h-screen bg-[#f8f3ec] text-[#2c261e]">
       <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]">
         <SiteHeader />
-        <div className="mx-auto grid min-h-[520px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto grid min-h-[520px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]">
           <div className="relative z-10 flex items-end bg-[#f8f3ec]/90 px-6 pb-14 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0"><div className="max-w-[525px]"><nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]"><Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link><span className="mx-3">/</span><span>Kinh nghiệm xây nhà</span></nav><p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Kiến thức</p><h1 className="mt-4 font-serif text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">Kinh nghiệm xây nhà</h1><p className="mt-6 max-w-[455px] text-base leading-8 text-[#584f43]">Cẩm nang xây nhà thực tế và dễ hiểu từ Tổ Ấm Hoàn Hảo. Chia sẻ quy trình, chi phí, lưu ý quan trọng giúp bạn xây nhà đúng kế hoạch, tiết kiệm và bền vững.</p></div></div>
           <div className="relative min-h-[320px] lg:min-h-full"><Image src="/images/gioi-thieu/thuong-hieu.png" alt="Công trình nhà ở hiện đại" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover object-center" /></div>
         </div>

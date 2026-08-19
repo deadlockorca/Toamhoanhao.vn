@@ -59,7 +59,6 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-[640px] overflow-hidden bg-[#17140f] sm:min-h-[680px] lg:min-h-[720px]">
-      <div className="absolute inset-x-0 top-0 z-10 h-20 bg-[#fbf7f1]/92 backdrop-blur-sm" />
       <SiteHeader />
 
       {slides.map((item, index) => (

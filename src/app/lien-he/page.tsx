@@ -62,7 +62,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#f8f3ec] text-[#2b251d]">
       <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]">
         <SiteHeader />
-        <div className="mx-auto grid min-h-[610px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto grid min-h-[610px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]">
           <div className="relative z-10 flex items-end bg-[#f8f3ec]/88 px-6 pb-16 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0">
             <div className="max-w-[535px]">
               <nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]"><Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link><span className="mx-3">/</span><span>Liên hệ</span></nav>

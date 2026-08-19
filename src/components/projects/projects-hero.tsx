@@ -7,7 +7,7 @@ export function ProjectsHero() {
     <section className="relative overflow-hidden bg-[#f7f1e9]">
       <SiteHeader />
 
-      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[47%_53%]">
+      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[47%_53%] xl:pt-[120px]">
         <div className="flex items-center px-6 py-16 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-16">
           <div className="max-w-[540px]">
             <h1 className="font-serif text-[62px] leading-[0.98] tracking-normal text-[#15120e] sm:text-[86px]">

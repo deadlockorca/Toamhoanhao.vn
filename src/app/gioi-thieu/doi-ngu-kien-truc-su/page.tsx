@@ -128,7 +128,7 @@ export default function ArchitectureTeamPage() {
     <main className="min-h-screen bg-[#f8f3ec] text-[#28221a]">
       <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]">
         <SiteHeader />
-        <div className="mx-auto grid min-h-[590px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="mx-auto grid min-h-[590px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]">
           <div className="flex items-end px-6 pb-16 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0">
             <div className="max-w-[540px]">
               <nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]">
