@@ -2,6 +2,7 @@ import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { MobileNavigation } from "@/components/mobile-navigation";
 import { navigation } from "@/data/site";
 
 export function SiteHeader() {
@@ -44,6 +45,8 @@ export function SiteHeader() {
               thiết kế hợp kinh phí, báo giá tốt nhất vào việc luôn!
             </p>
           </div>
+
+          <MobileNavigation items={navigation} />
         </div>
 
         <nav
