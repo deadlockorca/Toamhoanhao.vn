@@ -16,7 +16,7 @@ export function ProjectDetailHero({ project }: ProjectDetailHeroProps) {
     <section className="relative overflow-hidden bg-[#f7f1e9]">
       <SiteHeader />
 
-      <div className="grid min-h-[660px] pt-20 lg:grid-cols-[46%_54%] xl:pt-[120px]">
+      <div className="grid pt-20 lg:min-h-[660px] lg:grid-cols-[46%_54%] xl:pt-[120px]">
         <div className="flex items-center px-6 py-14 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-14">
           <div className="max-w-[560px]">
             <div className="mb-10 flex flex-wrap items-center gap-3 text-xs text-[#7d715f]">
@@ -78,7 +78,7 @@ export function ProjectDetailHero({ project }: ProjectDetailHeroProps) {
           </div>
         </div>
 
-        <div className="relative min-h-[420px] lg:min-h-[660px]">
+        <div className="relative hidden min-h-[420px] md:block lg:min-h-[660px]">
           <Image
             src={detail?.heroImage ?? project.thumbnail}
             alt={project.title}

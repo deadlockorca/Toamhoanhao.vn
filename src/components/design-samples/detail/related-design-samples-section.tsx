@@ -30,7 +30,7 @@ export function RelatedDesignSamplesSection({
   return (
     <section className="bg-[#f7f1e9] px-5 pb-16 sm:px-8 lg:pb-20">
       <div className="mx-auto max-w-[1120px]">
-        <h2 className="text-center font-serif text-2xl uppercase tracking-[0.04em] text-[#2d281f]">
+        <h2 className="text-xs font-bold uppercase tracking-[0.1em] text-[#7a6d5c]">
           Mẫu thiết kế liên quan
         </h2>
 

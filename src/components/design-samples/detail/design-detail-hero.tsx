@@ -1,4 +1,4 @@
-import { Camera, House, MapPin, Ruler, Sofa } from "lucide-react";
+import { House, MapPin, Ruler, Sofa } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,14 +11,19 @@ type DesignDetailHeroProps = {
 
 export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
   const detail = sample.detail;
+  const titleLength = `${detail?.displayTitle ?? sample.title} ${detail?.italicTitle ?? ""}`.length;
+  const titleSize =
+    titleLength > 72
+      ? "text-[38px] sm:text-[52px]"
+      : "text-[44px] sm:text-[62px]";
 
   return (
     <section className="relative overflow-hidden bg-[#f7f1e9]">
       <SiteHeader />
 
-      <div className="grid min-h-[660px] pt-20 lg:grid-cols-[46%_54%] xl:pt-[120px]">
-        <div className="flex items-center px-6 py-14 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-14">
-          <div className="max-w-[560px]">
+      <div className="grid pt-20 lg:min-h-[660px] lg:grid-cols-[46%_54%] xl:pt-[120px]">
+        <div className="min-w-0 px-6 py-14 sm:px-10 lg:flex lg:items-center lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-14">
+          <div className="min-w-0 max-w-full lg:max-w-[560px]">
             <div className="mb-10 flex flex-wrap items-center gap-3 text-xs text-[#7d715f]">
               <Link href="/" className="transition hover:text-[#9a732f]">
                 Trang chủ
@@ -31,14 +36,18 @@ export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
                 Mẫu thiết kế
               </Link>
               <span>/</span>
-              <span className="text-[#4e463a]">{sample.title}</span>
+              <span className="min-w-0 break-words text-[#4e463a]">
+                {sample.title}
+              </span>
             </div>
 
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#a47b45]">
               {detail?.eyebrow ?? sample.category}
             </p>
 
-            <h1 className="mt-5 font-serif text-[48px] leading-[1.02] text-[#15120e] sm:text-[66px]">
+            <h1
+              className={`mt-5 max-w-full break-words font-serif leading-[1.02] text-[#15120e] ${titleSize}`}
+            >
               {detail?.displayTitle ?? sample.title}
               {detail ? (
                 <span className="block italic text-[#7e8268]">
@@ -81,18 +90,11 @@ export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
               >
                 Nhận tư vấn
               </a>
-              <a
-                href="#gallery"
-                className="inline-flex h-12 items-center justify-center gap-3 border border-[#d2c3ad] bg-[#fbf7f1] px-8 text-sm font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#b89765]"
-              >
-                <Camera aria-hidden="true" className="h-4 w-4" />
-                Xem phối cảnh
-              </a>
             </div>
           </div>
         </div>
 
-        <div className="relative min-h-[420px] lg:min-h-[660px]">
+        <div className="relative hidden min-h-[420px] md:block lg:min-h-[660px]">
           <Image
             src={detail?.heroImage ?? sample.thumbnail}
             alt={sample.title}

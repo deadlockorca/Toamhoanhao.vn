@@ -3,11 +3,9 @@ import { notFound } from "next/navigation";
 
 import { DesignDetailHero } from "@/components/design-samples/detail/design-detail-hero";
 import { DesignDetailMetrics } from "@/components/design-samples/detail/design-detail-metrics";
-import { DesignFeaturesSection } from "@/components/design-samples/detail/design-features-section";
 import { DesignFloorPlanSection } from "@/components/design-samples/detail/design-floor-plan-section";
-import { DesignGallerySection } from "@/components/design-samples/detail/design-gallery-section";
 import { DesignOverviewSection } from "@/components/design-samples/detail/design-overview-section";
-import { DesignPackagesSection } from "@/components/design-samples/detail/design-packages-section";
+import { DesignStorySection } from "@/components/design-samples/detail/design-story-section";
 import { RelatedDesignSamplesSection } from "@/components/design-samples/detail/related-design-samples-section";
 import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
@@ -59,10 +57,8 @@ export default async function DesignSampleDetailPage({
       <DesignDetailHero sample={sample} />
       <DesignDetailMetrics sample={sample} />
       <DesignOverviewSection sample={sample} />
-      <DesignGallerySection sample={sample} />
-      <DesignFeaturesSection sample={sample} />
+      <DesignStorySection sample={sample} />
       <DesignFloorPlanSection sample={sample} />
-      <DesignPackagesSection sample={sample} />
       <RelatedDesignSamplesSection sample={sample} samples={publicSamples} />
       <div id="consultation">
         <ConsultationCta />

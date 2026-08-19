@@ -159,8 +159,10 @@ try {
           },
           floorPlanNotes: {
             create: [
-              { label: "Công năng linh hoạt", value: "Lựa chọn phương án theo hiện trạng và nhu cầu sử dụng.", sortOrder: 0 },
-              { label: "Ánh sáng hài hoà", value: "Ưu tiên giải pháp tạo cảm giác thoáng sáng cho không gian.", sortOrder: 1 },
+              { label: "Tối ưu giao thông", value: "Bố trí lối di chuyển thông thoáng giữa các khu vực.", sortOrder: 0 },
+              { label: "Tăng sáng tự nhiên", value: "Ưu tiên mảng sáng và vật liệu giúp không gian rộng hơn.", sortOrder: 1 },
+              { label: "Lưu trữ hợp lý", value: "Tận dụng hệ tủ để không gian gọn gàng trong sử dụng hằng ngày.", sortOrder: 2 },
+              { label: "Đồng nhất vật liệu", value: "Giữ bảng màu và vật liệu xuyên suốt để tổng thể hài hòa.", sortOrder: 3 },
             ],
           },
         },
