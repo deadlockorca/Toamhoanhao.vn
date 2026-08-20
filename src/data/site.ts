@@ -142,8 +142,14 @@ export const navigation: NavigationItem[] = [
   {
     label: "Báo giá",
     children: [
-      { label: "Báo giá thiết kế thi công nội thất" },
-      { label: "Báo giá thiết kế kiến trúc và xây dựng trọn gói" },
+      {
+        label: "Báo giá thiết kế thi công nội thất",
+        href: "/bao-gia/thiet-ke-thi-cong-noi-that",
+      },
+      {
+        label: "Báo giá thiết kế kiến trúc và xây dựng trọn gói",
+        href: "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+      },
     ],
   },
   {
