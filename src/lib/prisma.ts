@@ -5,7 +5,13 @@ const globalForPrisma = globalThis as unknown as {
   prisma?: PrismaClient;
 };
 
-const databaseUrl = new URL(process.env.DATABASE_URL);
+const databaseConnectionString = process.env.DATABASE_URL;
+
+if (!databaseConnectionString) {
+  throw new Error("DATABASE_URL is required to initialize Prisma.");
+}
+
+const databaseUrl = new URL(databaseConnectionString);
 const adapter = new PrismaMariaDb({
   host: databaseUrl.hostname,
   port: Number(databaseUrl.port || 3306),
