@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { ConsultationButton } from "@/components/consultation-popup";
+
 export function ConsultationCta() {
   return (
     <section className="relative min-h-[180px] overflow-hidden px-5 py-9 sm:px-8">
@@ -17,12 +19,9 @@ export function ConsultationCta() {
           Hãy kể chúng tôi nghe
           <span className="block">về ngôi nhà của bạn.</span>
         </h2>
-        <a
-          href="#"
-          className="mt-7 inline-flex h-12 items-center justify-center bg-[#7a7f63] px-8 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#686d55]"
-        >
+        <ConsultationButton className="mt-7 inline-flex h-12 items-center justify-center bg-[#7a7f63] px-8 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#686d55]">
           Đặt lịch tư vấn ngay
-        </a>
+        </ConsultationButton>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { ArrowRight, HandHeart, ShieldCheck, TimerReset, Wallet } from "lucide-react";
 import Link from "next/link";
+import { ConsultationButton } from "@/components/consultation-popup";
 
 const commitments = [
   {
@@ -66,13 +67,12 @@ export function AspirationBeliefSection() {
             Từ bản vẽ đầu tiên đến khi không gian đi vào sử dụng, từng quyết
             định đều hướng tới trải nghiệm sống lâu dài của gia đình bạn.
           </p>
-          <Link
-            href="/lien-he"
+          <ConsultationButton
             className="inline-flex w-fit items-center gap-3 bg-[#d9b777] px-5 py-3 text-xs font-bold uppercase tracking-[0.08em] text-[#31291e] transition hover:bg-[#ebca8a]"
           >
             Nhận tư vấn
             <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
-          </Link>
+          </ConsultationButton>
         </div>
       </div>
     </section>

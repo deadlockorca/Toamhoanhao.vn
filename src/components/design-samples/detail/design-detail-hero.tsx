@@ -2,6 +2,7 @@ import { House, MapPin, Ruler, Sofa } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteHeader } from "@/components/site-header";
 import type { DesignSample } from "@/data/design-samples";
 
@@ -84,12 +85,9 @@ export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
             </div>
 
             <div className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center">
-              <a
-                href="#consultation"
-                className="inline-flex h-12 items-center justify-center bg-[#6f765b] px-8 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5f654e]"
-              >
+              <ConsultationButton className="inline-flex h-12 items-center justify-center bg-[#6f765b] px-8 text-sm font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5f654e]">
                 Nhận tư vấn
-              </a>
+              </ConsultationButton>
             </div>
           </div>
         </div>

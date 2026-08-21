@@ -22,6 +22,7 @@ import {
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ConsultationButton } from "@/components/consultation-popup";
 import {
   getPricingArticleHref,
   pricingArticles,
@@ -157,13 +158,12 @@ export default function InteriorPricingPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/lien-he"
+                <ConsultationButton
                   className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
                 >
                   Nhận báo giá
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
+                </ConsultationButton>
                 <a
                   href="tel:0903897555"
                   className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]"
@@ -391,13 +391,12 @@ export default function InteriorPricingPage() {
             bảng khối lượng chi tiết cho công trình của bạn.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/lien-he"
+            <ConsultationButton
               className="inline-flex min-h-12 items-center gap-2 bg-[#858a6c] px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#969c78]"
             >
               Yêu cầu báo giá
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            </ConsultationButton>
             <a
               href="tel:0903897555"
               className="inline-flex min-h-12 items-center gap-2 border border-white/50 px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10"

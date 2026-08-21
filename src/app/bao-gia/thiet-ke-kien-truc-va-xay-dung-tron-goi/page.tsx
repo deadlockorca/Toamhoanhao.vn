@@ -14,6 +14,7 @@ import {
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { constructionPricingArticles } from "@/data/construction-pricing-articles";
+import { ConsultationButton } from "@/components/consultation-popup";
 
 export const metadata: Metadata = {
   title: "Báo giá thiết kế kiến trúc và xây dựng trọn gói | Tổ Ấm Hoàn Hảo",
@@ -101,10 +102,10 @@ export default function ArchitectureConstructionPricingPage() {
                 phù hợp với cách gia đình bạn muốn sống.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/lien-he" className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
+                <ConsultationButton className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
                   Nhận tư vấn
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
+                </ConsultationButton>
                 <a href="tel:0903897555" className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]">
                   <Phone aria-hidden="true" className="h-4 w-4" />
                   0903.897.555
@@ -223,10 +224,10 @@ export default function ArchitectureConstructionPricingPage() {
             <h2 className="mt-3 font-serif text-4xl leading-tight">Gửi nhu cầu để nhận tư vấn xây dựng phù hợp</h2>
             <p className="mt-4 max-w-[650px] text-sm leading-7 text-[#e8e0d5]">Đội ngũ sẽ trao đổi về loại hình nhà, diện tích, mức đầu tư và các điều kiện thực tế trước khi lên dự toán.</p>
           </div>
-          <Link href="/lien-he" className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#858a6c] px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#969c78]">
+          <ConsultationButton className="inline-flex min-h-12 items-center justify-center gap-2 bg-[#858a6c] px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#969c78]">
             Yêu cầu báo giá
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
+          </ConsultationButton>
         </div>
       </section>
       <SiteFooter />

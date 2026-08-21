@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Check, ChefHat, Phone, Ruler, Sparkles } from "lucide-react";
 
+import { ConsultationButton } from "@/components/consultation-popup";
 import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -75,10 +76,10 @@ export default async function KitchenSpaceArticlePage({
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/lien-he" className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
+                <ConsultationButton className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
                   Nhận tư vấn
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
+                </ConsultationButton>
                 <a href="tel:0903897555" className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]">
                   <Phone aria-hidden="true" className="h-4 w-4" />
                   0903.897.555
@@ -220,10 +221,10 @@ export default async function KitchenSpaceArticlePage({
               <strong className="mt-1 block">Thiết kế, sản xuất và thi công</strong>
             </p>
           </div>
-          <Link href="/lien-he" className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
+          <ConsultationButton className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
             Gửi yêu cầu tư vấn
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
+          </ConsultationButton>
         </aside>
       </div>
 

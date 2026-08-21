@@ -2,6 +2,7 @@ import { CirclePlay } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteHeader } from "@/components/site-header";
 
 export function DesignSamplesHero() {
@@ -41,13 +42,10 @@ export function DesignSamplesHero() {
               >
                 Khám phá mẫu
               </a>
-              <a
-                href="#"
-                className="inline-flex h-12 items-center justify-center gap-3 border border-[#d2c3ad] bg-[#fbf7f1] px-8 text-sm font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#b89765]"
-              >
+              <ConsultationButton className="inline-flex h-12 items-center justify-center gap-3 border border-[#d2c3ad] bg-[#fbf7f1] px-8 text-sm font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#b89765]">
                 <CirclePlay aria-hidden="true" className="h-4 w-4" />
                 Nhận tư vấn
-              </a>
+              </ConsultationButton>
             </div>
           </div>
         </div>

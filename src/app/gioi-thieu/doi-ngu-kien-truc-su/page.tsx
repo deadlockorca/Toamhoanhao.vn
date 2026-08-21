@@ -21,6 +21,7 @@ import {
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ConsultationButton } from "@/components/consultation-popup";
 
 export const metadata: Metadata = {
   title: "Đội ngũ kiến trúc sư | Tổ Ấm Hoàn Hảo",
@@ -145,7 +146,7 @@ export default function ArchitectureTeamPage() {
               <p className="mt-7 max-w-[470px] text-base leading-8 text-[#584f43]">
                 Những kiến trúc sư và kỹ sư giàu kinh nghiệm, đồng hành cùng bạn từ ý tưởng đến khi tổ ấm hoàn thiện.
               </p>
-              <a href="#tu-van" className="mt-9 inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Liên hệ tư vấn</a>
+              <ConsultationButton className="mt-9 inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Liên hệ tư vấn</ConsultationButton>
             </div>
           </div>
           <div className="relative min-h-[380px] overflow-hidden lg:min-h-full">
@@ -218,7 +219,7 @@ export default function ArchitectureTeamPage() {
 
       <section className="border-y border-[#dfd3c3] bg-[#fdfaf6] px-5 py-10 sm:px-8"><div className="mx-auto grid max-w-[1320px] gap-7 sm:grid-cols-2 lg:grid-cols-4">{metrics.map((metric) => { const Icon = metric.icon; return <div key={metric.title} className="flex items-center gap-4 lg:justify-center"><Icon aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.25} /><div><p className="font-serif text-3xl text-[#30291f]">{metric.title}</p><p className="text-xs leading-5 text-[#756b5e]">{metric.content}</p></div></div>; })}</div></section>
 
-      <section id="tu-van" className="bg-[#6f745e] px-5 py-16 text-white sm:px-8"><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Sparkles aria-hidden="true" className="h-9 w-9 text-white/80" strokeWidth={1.25} /><h2 className="mt-5 max-w-[680px] font-serif text-4xl leading-tight sm:text-5xl">Gặp gỡ đội ngũ đồng hành cùng tổ ấm của bạn</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Chia sẻ mong muốn của bạn để chúng tôi tư vấn hướng đi phù hợp cho không gian sắp tới.</p><a href="#" className="mt-8 inline-flex h-11 items-center bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]">Đặt lịch tư vấn ngay</a></div></section>
+      <section id="tu-van" className="bg-[#6f745e] px-5 py-16 text-white sm:px-8"><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Sparkles aria-hidden="true" className="h-9 w-9 text-white/80" strokeWidth={1.25} /><h2 className="mt-5 max-w-[680px] font-serif text-4xl leading-tight sm:text-5xl">Gặp gỡ đội ngũ đồng hành cùng tổ ấm của bạn</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Chia sẻ mong muốn của bạn để chúng tôi tư vấn hướng đi phù hợp cho không gian sắp tới.</p><ConsultationButton className="mt-8 inline-flex h-11 items-center bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]">Đặt lịch tư vấn ngay</ConsultationButton></div></section>
       <SiteFooter />
     </main>
   );

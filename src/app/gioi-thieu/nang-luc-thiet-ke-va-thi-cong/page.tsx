@@ -22,6 +22,7 @@ import {
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ConsultationButton } from "@/components/consultation-popup";
 
 export const metadata: Metadata = {
   title: "Năng lực thiết kế và thi công | Tổ Ấm Hoàn Hảo",
@@ -169,7 +170,7 @@ export default function CapabilityPage() {
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a href="#nang-luc-thiet-ke" className="inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Xem hồ sơ năng lực</a>
-              <a href="#tu-van" className="inline-flex h-11 items-center border border-[#cdbda8] px-5 text-xs font-bold uppercase tracking-[0.06em] text-[#6b5231] transition hover:border-[#9a733e] hover:text-[#8a6536]">Liên hệ tư vấn</a>
+              <ConsultationButton className="inline-flex h-11 items-center border border-[#cdbda8] px-5 text-xs font-bold uppercase tracking-[0.06em] text-[#6b5231] transition hover:border-[#9a733e] hover:text-[#8a6536]">Liên hệ tư vấn</ConsultationButton>
             </div>
           </div>
         </div>
@@ -216,7 +217,7 @@ export default function CapabilityPage() {
         </section>
 
         <section className="border-t border-[#dfd3c3] py-16 lg:py-20">
-          <div className="grid gap-9 lg:grid-cols-[0.76fr_1.24fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Nhà máy & sản xuất nội thất</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Chủ động từ xưởng đến công trình</h2><p className="mt-5 text-sm leading-7 text-[#61584b]">Xưởng sản xuất giúp chúng tôi kiểm soát tiến độ, chất lượng hoàn thiện và sự đồng bộ giữa phương án thiết kế với sản phẩm thực tế.</p><a href="#tu-van" className="mt-7 inline-flex h-10 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Tham quan xưởng sản xuất</a></div><div className="grid gap-3 sm:grid-cols-3"><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /></div></div>
+          <div className="grid gap-9 lg:grid-cols-[0.76fr_1.24fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Nhà máy & sản xuất nội thất</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Chủ động từ xưởng đến công trình</h2><p className="mt-5 text-sm leading-7 text-[#61584b]">Xưởng sản xuất giúp chúng tôi kiểm soát tiến độ, chất lượng hoàn thiện và sự đồng bộ giữa phương án thiết kế với sản phẩm thực tế.</p><ConsultationButton className="mt-7 inline-flex h-10 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Tham quan xưởng sản xuất</ConsultationButton></div><div className="grid gap-3 sm:grid-cols-3"><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /></div></div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{factoryMetrics.map((metric) => { const Icon = metric.icon; return <article key={metric.title} className="flex items-center gap-4 border border-[#e0d5c6] bg-[#fdfaf6] p-5"><Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.3} /><div><p className="font-serif text-xl text-[#332c22]">{metric.title}</p><p className="text-xs leading-5 text-[#756b5e]">{metric.content}</p></div></article>; })}</div>
         </section>
 
@@ -226,7 +227,7 @@ export default function CapabilityPage() {
 
       </div>
 
-      <section id="tu-van" className="bg-[#6f745e] px-5 py-16 text-white sm:px-8"><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Sparkles aria-hidden="true" className="h-9 w-9 text-white/80" strokeWidth={1.25} /><h2 className="mt-5 max-w-[680px] font-serif text-4xl leading-tight sm:text-5xl">Sẵn sàng đồng hành cùng công trình của bạn?</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Chia sẻ nhu cầu của bạn, đội ngũ Tổ Ấm Hoàn Hảo sẽ tư vấn lộ trình phù hợp cho không gian sắp tới.</p><a href="#" className="mt-8 inline-flex h-11 items-center bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]">Đặt lịch tư vấn ngay</a></div></section>
+      <section id="tu-van" className="bg-[#6f745e] px-5 py-16 text-white sm:px-8"><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Sparkles aria-hidden="true" className="h-9 w-9 text-white/80" strokeWidth={1.25} /><h2 className="mt-5 max-w-[680px] font-serif text-4xl leading-tight sm:text-5xl">Sẵn sàng đồng hành cùng công trình của bạn?</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Chia sẻ nhu cầu của bạn, đội ngũ Tổ Ấm Hoàn Hảo sẽ tư vấn lộ trình phù hợp cho không gian sắp tới.</p><ConsultationButton className="mt-8 inline-flex h-11 items-center bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]">Đặt lịch tư vấn ngay</ConsultationButton></div></section>
       <SiteFooter />
     </main>
   );

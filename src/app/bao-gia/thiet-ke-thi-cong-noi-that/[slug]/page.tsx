@@ -16,6 +16,7 @@ import {
 import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ConsultationButton } from "@/components/consultation-popup";
 import {
   getPricingArticleBySlug,
   getPricingArticleHref,
@@ -92,13 +93,12 @@ export default async function PricingArticlePage({
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  href="/lien-he"
+                <ConsultationButton
                   className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
                 >
                   Nhận báo giá mới
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </Link>
+                </ConsultationButton>
                 <a
                   href="tel:0903897555"
                   className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]"
@@ -289,13 +289,12 @@ export default async function PricingArticlePage({
               <strong className="mt-1 block">{article.pricingBasis}</strong>
             </p>
           </div>
-          <Link
-            href="/lien-he"
+          <ConsultationButton
             className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
           >
             Gửi yêu cầu báo giá
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </Link>
+          </ConsultationButton>
         </aside>
       </div>
 
