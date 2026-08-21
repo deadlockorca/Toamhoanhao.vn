@@ -50,21 +50,21 @@ const projectTypes = [
     title: "Nhà phố hiện đại",
     description:
       "Phương án theo mặt tiền, số tầng và nhu cầu sinh hoạt của từng gia đình.",
-    image: "/images/bao-gia/xay-dung/nha-pho.jpg",
+    image: "/images/bao-gia/xay-dung/nha-pho.webp",
   },
   {
     number: "02",
     title: "Biệt thự gia đình",
     description:
       "Làm rõ quy hoạch không gian, kết cấu, sân vườn và mức độ hoàn thiện.",
-    image: "/images/bao-gia/xay-dung/kien-truc.jpg",
+    image: "/images/bao-gia/xay-dung/kien-truc.webp",
   },
   {
     number: "03",
     title: "Cải tạo và hoàn thiện",
     description:
       "Khảo sát hiện trạng kỹ hơn để kiểm soát phương án, chi phí và tiến độ.",
-    image: "/images/bao-gia/xay-dung/thiet-ke-nha-pho.jpg",
+    image: "/images/bao-gia/xay-dung/thiet-ke-nha-pho.webp",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function ArchitectureConstructionPricingPage() {
             </div>
           </div>
           <div className="relative min-h-[340px] lg:min-h-full">
-            <Image src="/images/bao-gia/xay-dung/nha-pho.jpg" alt="Thiết kế nhà phố" fill priority sizes="(min-width: 1024px) 56vw, 100vw" className="object-cover" />
+            <Image src="/images/bao-gia/xay-dung/nha-pho.webp" alt="Thiết kế nhà phố" fill priority sizes="(min-width: 1024px) 56vw, 100vw" className="object-cover" />
             <div className="absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-[#f8f3ec] to-transparent lg:block" />
           </div>
         </div>

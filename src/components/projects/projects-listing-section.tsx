@@ -94,6 +94,8 @@ export function ProjectsListingSection({
   const [areaRange, setAreaRange] = useState(areaRanges[0].label);
   const [style, setStyle] = useState(allValue);
   const [bedrooms, setBedrooms] = useState(allValue);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   const libraryItems = useMemo(
     () => createContentLibrary(projects, designSamples),
@@ -141,12 +143,26 @@ export function ProjectsListingSection({
     bedrooms !== allValue;
   const SupportIcon = projectSupport.icon;
 
+  const pageCount = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
+  const safePage = Math.min(currentPage, pageCount);
+  const visibleItems = filteredItems.slice(
+    (safePage - 1) * itemsPerPage,
+    safePage * itemsPerPage,
+  );
+  const pageNumbers = getPageNumbers(pageCount, safePage);
+
+  function updateFilter(update: () => void) {
+    update();
+    setCurrentPage(1);
+  }
+
   function resetFilters() {
     setContentType("all");
     setCategory(allCategoriesValue);
     setAreaRange(areaRanges[0].label);
     setStyle(allValue);
     setBedrooms(allValue);
+    setCurrentPage(1);
   }
 
   return (
@@ -171,7 +187,7 @@ export function ProjectsListingSection({
                 <button
                   key={item.value}
                   type="button"
-                  onClick={() => setContentType(item.value)}
+                  onClick={() => updateFilter(() => setContentType(item.value))}
                   className={`h-10 border px-3 text-left text-xs font-bold uppercase tracking-[0.06em] transition ${
                     isActive
                       ? "border-[#6f765b] bg-[#6f765b] text-white"
@@ -193,7 +209,7 @@ export function ProjectsListingSection({
                 <button
                   key={item.label}
                   type="button"
-                  onClick={() => setCategory(item.label)}
+                  onClick={() => updateFilter(() => setCategory(item.label))}
                   className={`flex w-full items-center gap-3 px-4 py-4 text-left text-sm font-medium transition ${
                     isActive
                       ? "bg-[#e7dccb] text-[#7b5a2f]"
@@ -212,19 +228,19 @@ export function ProjectsListingSection({
               label="Diện tích"
               value={areaRange}
               options={areaRanges.map((range) => range.label)}
-              onChange={setAreaRange}
+              onChange={(value) => updateFilter(() => setAreaRange(value))}
             />
             <FilterSelect
               label="Phong cách"
               value={style}
               options={[allValue, ...styleOptions]}
-              onChange={setStyle}
+              onChange={(value) => updateFilter(() => setStyle(value))}
             />
             <FilterSelect
               label="Số phòng ngủ"
               value={bedrooms}
               options={[allValue, ...bedroomOptions]}
-              onChange={setBedrooms}
+              onChange={(value) => updateFilter(() => setBedrooms(value))}
             />
           </div>
 
@@ -277,8 +293,8 @@ export function ProjectsListingSection({
             </button>
           </div>
 
-          <div className="mt-7 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {filteredItems.map((item) => (
+          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {visibleItems.map((item) => (
               <ContentLibraryCard key={`${item.contentType}-${item.slug}`} item={item} />
             ))}
           </div>
@@ -286,6 +302,54 @@ export function ProjectsListingSection({
           {filteredItems.length === 0 ? (
             <div className="mt-7 border border-dashed border-[#d7cbb9] bg-[#fbf7f1]/70 px-6 py-12 text-center text-sm text-[#6f665a]">
               Chưa có nội dung phù hợp với bộ lọc hiện tại.
+            </div>
+          ) : null}
+
+          {pageCount > 1 ? (
+            <div className="mt-10 flex items-center justify-center gap-2">
+              <button
+                type="button"
+                onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
+                disabled={safePage === 1}
+                className="inline-flex h-10 w-10 items-center justify-center border border-[#d7cbb9] bg-[#fbf7f1] text-sm font-semibold text-[#62584b] transition hover:border-[#b89765] hover:text-[#7b5a2f] disabled:cursor-not-allowed disabled:opacity-40"
+                aria-label="Trang trước"
+              >
+                ←
+              </button>
+              {pageNumbers.map((page, index) =>
+                page === "ellipsis" ? (
+                  <span
+                    key={`ellipsis-${index}`}
+                    className="inline-flex h-10 w-10 items-center justify-center text-sm text-[#62584b]"
+                    aria-hidden="true"
+                  >
+                    …
+                  </span>
+                ) : (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => setCurrentPage(page)}
+                    aria-current={page === safePage ? "page" : undefined}
+                    className={`inline-flex h-10 w-10 items-center justify-center border text-sm font-semibold transition ${
+                      page === safePage
+                        ? "border-[#6f765b] bg-[#6f765b] text-white"
+                        : "border-[#d7cbb9] bg-[#fbf7f1] text-[#62584b] hover:border-[#b89765] hover:text-[#7b5a2f]"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ),
+              )}
+              <button
+                type="button"
+                onClick={() => setCurrentPage((page) => Math.min(pageCount, page + 1))}
+                disabled={safePage === pageCount}
+                className="inline-flex h-10 w-10 items-center justify-center border border-[#d7cbb9] bg-[#fbf7f1] text-sm font-semibold text-[#62584b] transition hover:border-[#b89765] hover:text-[#7b5a2f] disabled:cursor-not-allowed disabled:opacity-40"
+                aria-label="Trang sau"
+              >
+                →
+              </button>
             </div>
           ) : null}
         </div>
@@ -332,6 +396,30 @@ function uniqueValues(values: string[]) {
   return Array.from(
     new Set(values.map((value) => value.trim()).filter(Boolean)),
   ).sort((first, second) => first.localeCompare(second, "vi"));
+}
+
+function getPageNumbers(pageCount: number, currentPage: number): Array<number | "ellipsis"> {
+  if (pageCount <= 7) {
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
+  }
+
+  const pages = new Set<number>([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
+  const sorted = Array.from(pages)
+    .filter((page) => page >= 1 && page <= pageCount)
+    .sort((first, second) => first - second);
+
+  const result: Array<number | "ellipsis"> = [];
+  let previous = 0;
+
+  for (const page of sorted) {
+    if (page - previous > 1) {
+      result.push("ellipsis");
+    }
+    result.push(page);
+    previous = page;
+  }
+
+  return result;
 }
 
 function matchesAreaRange(area: string, selectedRange: string) {

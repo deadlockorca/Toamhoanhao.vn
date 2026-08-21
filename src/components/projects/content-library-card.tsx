@@ -16,7 +16,7 @@ export function ContentLibraryCard({ item }: ContentLibraryCardProps) {
       <Link
         href={item.href}
         aria-label={`Xem ${isDesignSample ? "mẫu thiết kế" : "dự án"} ${item.title}`}
-        className="relative block aspect-[1.36] overflow-hidden"
+        className="relative block aspect-[1.55] overflow-hidden"
       >
         <Image
           src={item.thumbnail}
@@ -30,15 +30,15 @@ export function ContentLibraryCard({ item }: ContentLibraryCardProps) {
         </span>
       </Link>
 
-      <div className="px-5 py-5">
+      <div className="px-4 py-4">
         <Link
           href={item.href}
-          className="block text-lg font-semibold leading-7 text-[#2a251e] transition hover:text-[#7c5f2c]"
+          className="block text-base font-semibold leading-6 text-[#2a251e] transition hover:text-[#7c5f2c]"
         >
           {item.title}
         </Link>
 
-        <div className="mt-4 flex items-center justify-between gap-4">
+        <div className="mt-3 flex items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-[#7d715f]">
             {item.location ? (
               <span className="inline-flex items-center gap-1.5">
