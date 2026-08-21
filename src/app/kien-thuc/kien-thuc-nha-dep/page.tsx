@@ -82,9 +82,10 @@ export default async function BeautifulHomeKnowledgePage({
   searchParams,
 }: PageProps<"/kien-thuc/kien-thuc-nha-dep">) {
   const { trang } = await searchParams;
+  const trangValue = Array.isArray(trang) ? trang[0] : trang;
   const articlesPerPage = 15;
   const pageCount = Math.max(1, Math.ceil(beautifulHomeArticles.length / articlesPerPage));
-  const requestedPage = Number.parseInt(trang ?? "1", 10);
+  const requestedPage = Number.parseInt(trangValue ?? "1", 10);
   const currentPage = Number.isFinite(requestedPage)
     ? Math.min(Math.max(requestedPage, 1), pageCount)
     : 1;
