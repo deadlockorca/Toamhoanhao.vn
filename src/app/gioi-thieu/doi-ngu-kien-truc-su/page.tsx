@@ -115,15 +115,6 @@ const metrics: IconCard[] = [
   { icon: ShieldCheck, title: "100%", content: "Minh bạch tiến độ" },
 ];
 
-function MediaSlot({ className = "" }: { className?: string }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`border border-dashed border-[#d7c8b4] bg-[#efe5d7]/55 ${className}`}
-    />
-  );
-}
-
 export default function ArchitectureTeamPage() {
   return (
     <main className="min-h-screen bg-[#f8f3ec] text-[#28221a]">
@@ -164,7 +155,7 @@ export default function ArchitectureTeamPage() {
 
       <div className="mx-auto max-w-[1320px] px-5 py-14 sm:px-8 lg:py-20">
         <section className="grid gap-8 border-b border-[#dfd3c3] pb-16 lg:grid-cols-[0.48fr_1.2fr_0.18fr] lg:items-center">
-          <MediaSlot className="aspect-square max-h-[230px]" />
+          <div className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><UsersRound aria-hidden="true" className="h-10 w-10 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-8 font-serif text-3xl text-[#322b21]">30+</p><p className="mt-2 text-xs leading-5 text-[#756b5e]">Kiến trúc sư, kỹ sư và chuyên gia phối hợp trong từng dự án</p></div>
           <div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Cách chúng tôi làm nghề</p><h2 className="mt-4 font-serif text-3xl leading-tight text-[#30291f]">Tư duy sáng tạo, giải pháp thực tiễn và sự đồng hành tận tâm</h2><p className="mt-4 text-sm leading-7 text-[#61584b]">Mỗi dự án là một câu chuyện riêng. Đội ngũ của Tổ Ấm Hoàn Hảo lắng nghe nhu cầu, phát triển giải pháp phù hợp với hiện trạng, ngân sách và nhịp sống của từng gia chủ.</p><p className="mt-4 text-sm leading-7 text-[#61584b]">Chúng tôi kết nối thiết kế, kỹ thuật và thi công trong một quy trình nhất quán để tạo nên không gian đẹp, bền vững và dễ sử dụng.</p></div>
           <HeartHandshake aria-hidden="true" className="hidden h-16 w-16 text-[#a0783e] lg:block" strokeWidth={1.15} />
         </section>
@@ -208,11 +199,11 @@ export default function ArchitectureTeamPage() {
         <section className="py-16 lg:py-20">
           <p className="text-center text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Dấu ấn trong từng thiết kế</p>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-[0.8fr_0.8fr_1.5fr_0.8fr_0.8fr]">
-            <MediaSlot className="aspect-[0.78]" />
-            <MediaSlot className="aspect-[0.78]" />
-            <MediaSlot className="aspect-[1.18] lg:aspect-auto" />
-            <MediaSlot className="aspect-[0.78]" />
-            <MediaSlot className="aspect-[0.78]" />
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-5"><Building2 aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Kiến trúc cá tính</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Mỗi công trình mang dấu ấn riêng, phù hợp với phong cách sống của gia chủ.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-5"><House aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Nội thất tinh tế</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Không gian sống được chăm chút từ chất liệu, ánh sáng đến từng chi tiết.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-5 lg:px-7"><DraftingCompass aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Đồng bộ từ thiết kế đến thi công</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Sự phối hợp chặt chẽ giữa các bộ môn giúp công trình đạt kết quả chuẩn xác, đúng tiến độ và minh bạch chi phí.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-5"><Ruler aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Tối ưu ngân sách</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Dự toán chi tiết, đề xuất giải pháp tiết kiệm mà vẫn đảm bảo thẩm mỹ.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-5"><BadgeCheck aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Cam kết bảo hành</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Đồng hành dài lâu, hỗ trợ nhanh chóng sau khi bàn giao công trình.</p></article>
           </div>
         </section>
       </div>

@@ -39,7 +39,7 @@ type IconCard = {
 const overviewMetrics: IconCard[] = [
   { icon: BadgeCheck, title: "15+ năm", content: "Kinh nghiệm triển khai" },
   { icon: Building2, title: "500+", content: "Công trình hoàn thiện" },
-  { icon: Factory, title: "500m²+", content: "Quy mô xưởng sản xuất" },
+  { icon: Factory, title: "5000m²+", content: "Quy mô xưởng sản xuất" },
   { icon: UsersRound, title: "98%", content: "Khách hàng hài lòng" },
   {
     icon: MapPinned,
@@ -115,15 +115,6 @@ const customerReasons: IconCard[] = [
   { icon: Factory, title: "Chủ động sản xuất", content: "Kiểm soát tiến độ và chất lượng từng hạng mục nội thất." },
   { icon: ShieldCheck, title: "Bảo hành tận tâm", content: "Hỗ trợ nhanh chóng sau khi công trình hoàn thiện." },
 ];
-
-function MediaSlot({ className = "" }: { className?: string }) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`border border-dashed border-[#d7c8b4] bg-[#efe5d7]/55 ${className}`}
-    />
-  );
-}
 
 function CheckList({ items }: { items: string[] }) {
   return (
@@ -208,16 +199,23 @@ export default function CapabilityPage() {
             <p className="mt-5 text-sm leading-7 text-[#61584b]">Mỗi phương án thiết kế được phát triển từ hiện trạng, nhu cầu sử dụng, gu thẩm mỹ và mức đầu tư thực tế của gia chủ.</p>
             <div className="mt-7"><CheckList items={designPrinciples} /></div>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3"><MediaSlot className="aspect-[1.08]" /><MediaSlot className="aspect-[1.08]" /><MediaSlot className="aspect-[1.08]" /></div>
-        </section>
-
-        <section className="grid gap-9 border-t border-[#dfd3c3] py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-          <MediaSlot className="min-h-[390px]" />
-          <div className="lg:py-8"><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Năng lực thi công</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Kiểm soát chất lượng ở từng hạng mục</h2><p className="mt-5 text-sm leading-7 text-[#61584b]">Quy trình thi công chuyên nghiệp kết nối từ vật tư, nhân công, giám sát đến nghiệm thu, giúp công trình đạt đúng cam kết đã thống nhất.</p><div className="mt-7"><CheckList items={constructionPrinciples} /></div><div className="mt-9 grid grid-cols-3 gap-3">{["Đúng tiến độ", "Đúng bản vẽ", "Đúng chất lượng"].map((item) => <div key={item} className="border border-[#e0d5c6] bg-[#fdfaf6] px-3 py-4 text-center text-[10px] font-bold uppercase tracking-[0.06em] text-[#755d3c]">{item}</div>)}</div></div>
+          <div className="grid gap-3 sm:grid-cols-3">
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><PencilRuler aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Kiến trúc & nội thất</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Phát triển phương án kiến trúc và nội thất đồng bộ, tối ưu công năng và thẩm mỹ.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><BadgeCheck aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Hồ sơ kỹ thuật</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Bản vẽ 2D, phối cảnh 3D và hồ sơ chi tiết từng hạng mục nội thất.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><Lightbulb aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Tư vấn vật liệu</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Đề xuất chất liệu phù hợp với ngân sách, phong cách và điều kiện sử dụng thực tế.</p></article>
+          </div>
         </section>
 
         <section className="border-t border-[#dfd3c3] py-16 lg:py-20">
-          <div className="grid gap-9 lg:grid-cols-[0.76fr_1.24fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Nhà máy & sản xuất nội thất</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Chủ động từ xưởng đến công trình</h2><p className="mt-5 text-sm leading-7 text-[#61584b]">Xưởng sản xuất giúp chúng tôi kiểm soát tiến độ, chất lượng hoàn thiện và sự đồng bộ giữa phương án thiết kế với sản phẩm thực tế.</p><ConsultationButton className="mt-7 inline-flex h-10 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Tham quan xưởng sản xuất</ConsultationButton></div><div className="grid gap-3 sm:grid-cols-3"><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /><MediaSlot className="aspect-[1.28]" /></div></div>
+          <div className="lg:py-4"><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Năng lực thi công</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Kiểm soát chất lượng ở từng hạng mục</h2><p className="mt-5 max-w-[760px] text-sm leading-7 text-[#61584b]">Quy trình thi công chuyên nghiệp kết nối từ vật tư, nhân công, giám sát đến nghiệm thu, giúp công trình đạt đúng cam kết đã thống nhất.</p><div className="mt-7"><CheckList items={constructionPrinciples} /></div><div className="mt-9 grid max-w-[760px] grid-cols-3 gap-3">{["Đúng tiến độ", "Đúng bản vẽ", "Đúng chất lượng"].map((item) => <div key={item} className="border border-[#e0d5c6] bg-[#fdfaf6] px-3 py-4 text-center text-[10px] font-bold uppercase tracking-[0.06em] text-[#755d3c]">{item}</div>)}</div></div>
+        </section>
+
+        <section className="border-t border-[#dfd3c3] py-16 lg:py-20">
+          <div className="grid gap-9 lg:grid-cols-[0.76fr_1.24fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Nhà máy & sản xuất nội thất</p><h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f]">Chủ động từ xưởng đến công trình</h2><p className="mt-5 text-sm leading-7 text-[#61584b]">Xưởng sản xuất giúp chúng tôi kiểm soát tiến độ, chất lượng hoàn thiện và sự đồng bộ giữa phương án thiết kế với sản phẩm thực tế.</p><Link href="/gioi-thieu/xuong-san-xuat-noi-that" className="mt-7 inline-flex h-10 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Tham quan xưởng sản xuất</Link></div><div className="grid gap-3 sm:grid-cols-3">
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><Factory aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Dây chuyền hiện đại</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Máy móc tiên tiến, vận hành bởi đội ngũ thợ lành nghề qua đào tạo bài bản.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><Box aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Đa dạng vật liệu</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Gỗ công nghiệp, gỗ tự nhiên và nhiều phương án hoàn thiện bề mặt.</p></article>
+            <article className="border border-[#e0d5c6] bg-[#fdfaf6] p-6"><ShieldCheck aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.3} /><p className="mt-6 text-sm font-bold text-[#3a3126]">Kiểm soát chất lượng</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">Kiểm tra từng công đoạn và nghiệm thu trước khi xuất xưởng lắp đặt.</p></article>
+          </div></div>
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{factoryMetrics.map((metric) => { const Icon = metric.icon; return <article key={metric.title} className="flex items-center gap-4 border border-[#e0d5c6] bg-[#fdfaf6] p-5"><Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.3} /><div><p className="font-serif text-xl text-[#332c22]">{metric.title}</p><p className="text-xs leading-5 text-[#756b5e]">{metric.content}</p></div></article>; })}</div>
         </section>
 

@@ -52,7 +52,7 @@ export const navigation: NavigationItem[] = [
         label: "Xưởng sản xuất nội thất",
         href: "/gioi-thieu/xuong-san-xuat-noi-that",
       },
-      { label: "Tuyển dụng" },
+      { label: "Tuyển dụng", href: "/gioi-thieu/tuyen-dung" },
     ],
   },
   {
