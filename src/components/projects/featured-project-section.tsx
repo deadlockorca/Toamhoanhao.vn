@@ -34,7 +34,7 @@ export function FeaturedProjectSection({ project }: FeaturedProjectSectionProps)
               {project.summary}
             </p>
 
-            <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-8 grid gap-5 grid-cols-2 xl:grid-cols-4">
               {[
                 { icon: MapPin, label: "Vị trí", value: project.location },
                 { icon: Ruler, label: "Diện tích", value: project.area },

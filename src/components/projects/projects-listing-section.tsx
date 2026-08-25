@@ -4,6 +4,7 @@ import {
   BedDouble,
   BriefcaseBusiness,
   Building2,
+  Check,
   ChefHat,
   ChevronDown,
   Grid2X2,
@@ -16,11 +17,10 @@ import {
   Store,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ContentLibraryCard } from "@/components/projects/content-library-card";
 import {
-  projectSupport,
   type Project,
 } from "@/data/projects";
 import type { DesignSample } from "@/data/design-samples";
@@ -45,6 +45,42 @@ type AreaRange = {
 
 const allValue = "Tất cả";
 const allCategoriesValue = "Tất cả danh mục";
+
+const sortOptions = [
+  { value: "newest", label: "Mới nhất" },
+  { value: "oldest", label: "Cũ nhất" },
+  { value: "area-desc", label: "Diện tích lớn nhất" },
+  { value: "area-asc", label: "Diện tích nhỏ nhất" },
+  { value: "name-asc", label: "Tên A-Z" },
+  { value: "name-desc", label: "Tên Z-A" },
+];
+
+function parseArea(area: string): number | null {
+  const match = area.match(/([\d.,]+)\s*m/);
+  if (!match) return null;
+  return Number.parseFloat(match[1].replace(/\./g, "").replace(",", "."));
+}
+
+function sortLibraryItems<T extends { title: string; area?: string }>(
+  items: T[],
+  sortBy: string,
+): T[] {
+  const sorted = [...items];
+  switch (sortBy) {
+    case "oldest":
+      return sorted.reverse();
+    case "area-desc":
+      return sorted.sort((a, b) => (parseArea(b.area ?? "") ?? 0) - (parseArea(a.area ?? "") ?? 0));
+    case "area-asc":
+      return sorted.sort((a, b) => (parseArea(a.area ?? "") ?? 0) - (parseArea(b.area ?? "") ?? 0));
+    case "name-asc":
+      return sorted.sort((a, b) => a.title.localeCompare(b.title, "vi"));
+    case "name-desc":
+      return sorted.sort((a, b) => b.title.localeCompare(a.title, "vi"));
+    default:
+      return sorted;
+  }
+}
 
 const categoryFilters: Array<{
   label: LibraryCategory | typeof allCategoriesValue;
@@ -94,8 +130,21 @@ export function ProjectsListingSection({
   const [areaRange, setAreaRange] = useState(areaRanges[0].label);
   const [style, setStyle] = useState(allValue);
   const [bedrooms, setBedrooms] = useState(allValue);
+  const [sortBy, setSortBy] = useState("newest");
+  const [sortOpen, setSortOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
+  const sortRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(event.target as Node)) {
+        setSortOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const libraryItems = useMemo(
     () => createContentLibrary(projects, designSamples),
@@ -141,11 +190,15 @@ export function ProjectsListingSection({
     areaRange !== areaRanges[0].label ||
     style !== allValue ||
     bedrooms !== allValue;
-  const SupportIcon = projectSupport.icon;
 
-  const pageCount = Math.max(1, Math.ceil(filteredItems.length / itemsPerPage));
+  const sortedItems = useMemo(
+    () => sortLibraryItems(filteredItems, sortBy),
+    [filteredItems, sortBy],
+  );
+
+  const pageCount = Math.max(1, Math.ceil(sortedItems.length / itemsPerPage));
   const safePage = Math.min(currentPage, pageCount);
-  const visibleItems = filteredItems.slice(
+  const visibleItems = sortedItems.slice(
     (safePage - 1) * itemsPerPage,
     safePage * itemsPerPage,
   );
@@ -162,6 +215,7 @@ export function ProjectsListingSection({
     setAreaRange(areaRanges[0].label);
     setStyle(allValue);
     setBedrooms(allValue);
+    setSortBy("newest");
     setCurrentPage(1);
   }
 
@@ -255,45 +309,61 @@ export function ProjectsListingSection({
             </button>
           ) : null}
 
-          <div className="mt-10 border border-[#ded4c4] bg-[#fbf7f1]/72 px-6 py-8 text-center">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[#d5c7b2] text-[#9f7a45]">
-              <SupportIcon
-                aria-hidden="true"
-                strokeWidth={1.35}
-                className="h-7 w-7"
-              />
-            </div>
-            <p className="mt-6 text-sm font-medium leading-6 text-[#62584b]">
-              {projectSupport.title}
-            </p>
-            <a
-              href="#"
-              className="mt-5 inline-flex items-center gap-3 text-sm font-semibold text-[#7b5a2f] transition hover:text-[#9a732f]"
-            >
-              {projectSupport.cta}
-              <span aria-hidden="true">→</span>
-            </a>
-          </div>
-        </aside>
+          </aside>
 
         <div>
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-base font-medium text-[#5d5448]">
               Hiển thị{" "}
-              <span className="text-[#2d281f]">{filteredItems.length}</span>{" "}
+              <span className="text-[#2d281f]">{sortedItems.length}</span>{" "}
               nội dung
             </p>
 
-            <button
-              type="button"
-              className="inline-flex h-10 w-fit items-center gap-3 border border-[#d7cbb9] bg-[#fbf7f1] px-4 text-sm text-[#62584b]"
-            >
-              Sắp xếp: Mới nhất
-              <ChevronDown aria-hidden="true" className="h-4 w-4" />
-            </button>
+            <div ref={sortRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setSortOpen((open) => !open)}
+                className="inline-flex h-10 w-fit items-center gap-3 border border-[#d7cbb9] bg-[#fbf7f1] px-4 text-sm text-[#62584b]"
+              >
+                Sắp xếp:{" "}
+                <span className="font-semibold text-[#4a4034]">
+                  {sortOptions.find((option) => option.value === sortBy)?.label}
+                </span>
+                <ChevronDown
+                  aria-hidden="true"
+                  className={`h-4 w-4 transition ${sortOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+
+              {sortOpen ? (
+                <div className="absolute right-0 top-full z-20 mt-1 w-56 border border-[#d7cbb9] bg-[#fbf7f1] shadow-[0_14px_40px_rgba(70,55,35,0.14)]">
+                  {sortOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => {
+                        setSortBy(option.value);
+                        setSortOpen(false);
+                        setCurrentPage(1);
+                      }}
+                      className={`flex w-full items-center justify-between px-4 py-3 text-left text-sm transition hover:bg-[#f0e6d8] ${
+                        sortBy === option.value
+                          ? "font-semibold text-[#7b5a2f]"
+                          : "text-[#62584b]"
+                      }`}
+                    >
+                      {option.label}
+                      {sortBy === option.value ? (
+                        <Check aria-hidden="true" className="h-4 w-4 text-[#a0783e]" />
+                      ) : null}
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
 
-          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-7 grid gap-5 min-w-0 grid-cols-2 lg:grid-cols-3">
             {visibleItems.map((item) => (
               <ContentLibraryCard key={`${item.contentType}-${item.slug}`} item={item} />
             ))}
