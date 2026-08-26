@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 type ArticlePaginationProps = {
+  anchor?: string;
   basePath: string;
   currentPage: number;
   pageCount: number;
+  queryParams?: Record<string, string | undefined>;
 };
 
 function getVisiblePages(currentPage: number, pageCount: number) {
@@ -27,9 +29,11 @@ function getVisiblePages(currentPage: number, pageCount: number) {
 }
 
 export function ArticlePagination({
+  anchor = "articles",
   basePath,
   currentPage,
   pageCount,
+  queryParams = {},
 }: ArticlePaginationProps) {
   if (pageCount <= 1) {
     return null;
@@ -45,6 +49,19 @@ export function ArticlePagination({
       {pages.map((page, index) => {
         const previousPage = pages[index - 1];
         const hasGap = previousPage !== undefined && page - previousPage > 1;
+        const params = new URLSearchParams();
+
+        Object.entries(queryParams).forEach(([key, value]) => {
+          if (value) {
+            params.set(key, value);
+          }
+        });
+        if (page > 1) {
+          params.set("trang", String(page));
+        }
+
+        const query = params.toString();
+        const href = `${basePath}${query ? `?${query}` : ""}#${anchor}`;
 
         return (
           <span key={page} className="contents">
@@ -57,11 +74,7 @@ export function ArticlePagination({
               </span>
             ) : null}
             <Link
-              href={
-                page === 1
-                  ? `${basePath}#articles`
-                  : `${basePath}?trang=${page}#articles`
-              }
+              href={href}
               aria-current={page === currentPage ? "page" : undefined}
               className={`flex h-10 min-w-10 items-center justify-center border px-3 text-sm font-bold transition ${
                 page === currentPage

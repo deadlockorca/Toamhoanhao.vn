@@ -17,7 +17,10 @@ export const metadata: Metadata = {
 };
 
 type DesignSamplesPageProps = {
-  searchParams: Promise<{ "danh-muc"?: string | string[] }>;
+  searchParams: Promise<{
+    "danh-muc"?: string | string[];
+    trang?: string | string[];
+  }>;
 };
 
 export default async function DesignSamplesPage({
@@ -27,12 +30,26 @@ export default async function DesignSamplesPage({
   const categoryQuery = Array.isArray(query["danh-muc"])
     ? query["danh-muc"][0]
     : query["danh-muc"];
+  const pageQuery = Array.isArray(query.trang) ? query.trang[0] : query.trang;
   const activeCategory = getDesignCategoryFromQuery(categoryQuery);
   const designSamples = await getPublicDesignSamples();
   const filteredDesignSamples =
     activeCategory === "Tất cả"
       ? designSamples
       : designSamples.filter((sample) => sample.category === activeCategory);
+  const samplesPerPage = 9;
+  const pageCount = Math.max(
+    1,
+    Math.ceil(filteredDesignSamples.length / samplesPerPage),
+  );
+  const requestedPage = Number.parseInt(pageQuery ?? "1", 10);
+  const currentPage = Number.isFinite(requestedPage)
+    ? Math.min(Math.max(requestedPage, 1), pageCount)
+    : 1;
+  const visibleDesignSamples = filteredDesignSamples.slice(
+    (currentPage - 1) * samplesPerPage,
+    currentPage * samplesPerPage,
+  );
   const featuredSample =
     designSamples.find((sample) => sample.featured) ?? designSamples[0];
 
@@ -40,8 +57,14 @@ export default async function DesignSamplesPage({
     <main className="min-h-screen bg-[#f6f0e8] text-[#17140f]">
       <DesignSamplesHero />
       <DesignListingSection
-        designSamples={filteredDesignSamples}
+        designSamples={visibleDesignSamples}
+        totalCount={filteredDesignSamples.length}
         activeCategory={activeCategory}
+        categoryQuery={
+          activeCategory === "Tất cả" ? undefined : categoryQuery
+        }
+        currentPage={currentPage}
+        pageCount={pageCount}
       />
       <FeaturedDesignCollection sample={featuredSample} />
       <PopularDesignStyles />

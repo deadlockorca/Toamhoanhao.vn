@@ -1,6 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
+import { ArticlePagination } from "@/components/article-pagination";
 import { DesignSampleCard } from "@/components/design-samples/design-sample-card";
 import {
   designFilterCategories,
@@ -11,12 +12,20 @@ import {
 
 type DesignListingSectionProps = {
   designSamples: DesignSample[];
+  totalCount: number;
   activeCategory: DesignSampleCategory;
+  categoryQuery?: string;
+  currentPage: number;
+  pageCount: number;
 };
 
 export function DesignListingSection({
   designSamples,
+  totalCount,
   activeCategory,
+  categoryQuery,
+  currentPage,
+  pageCount,
 }: DesignListingSectionProps) {
   return (
     <section id="design-list" className="bg-[#f7f1e9] px-5 pb-12 sm:px-8">
@@ -25,7 +34,7 @@ export function DesignListingSection({
           <p className="text-sm text-[#62584b]">
             Tổng số{" "}
             <span className="font-semibold text-[#2d281f]">
-              {designSamples.length}
+              {totalCount}
             </span>{" "}
             mẫu thiết kế
           </p>
@@ -61,15 +70,13 @@ export function DesignListingSection({
           ))}
         </div>
 
-        <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            className="inline-flex h-11 items-center gap-3 bg-[#6f765b] px-7 text-sm font-semibold text-white transition hover:bg-[#5f654e]"
-          >
-            Xem thêm mẫu thiết kế
-            <span aria-hidden="true">↓</span>
-          </button>
-        </div>
+        <ArticlePagination
+          anchor="design-list"
+          basePath="/mau-thiet-ke"
+          currentPage={currentPage}
+          pageCount={pageCount}
+          queryParams={{ "danh-muc": categoryQuery }}
+        />
       </div>
     </section>
   );
