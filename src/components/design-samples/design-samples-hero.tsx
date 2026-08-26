@@ -7,10 +7,12 @@ import { SiteHeader } from "@/components/site-header";
 
 export function DesignSamplesHero() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f1e9]">
+    <section className="relative overflow-visible bg-[#f7f1e9] lg:overflow-hidden">
       <SiteHeader />
 
-      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[46%_54%] xl:pt-[120px]">
+      <div className="h-20 lg:hidden" aria-hidden="true" />
+
+      <div className="hidden min-h-[580px] pt-20 lg:grid lg:grid-cols-[46%_54%] xl:pt-[120px]">
         <div className="flex items-center px-6 py-16 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-14">
           <div className="max-w-[560px]">
             <div className="mb-10 flex items-center gap-3 text-xs text-[#7d715f]">

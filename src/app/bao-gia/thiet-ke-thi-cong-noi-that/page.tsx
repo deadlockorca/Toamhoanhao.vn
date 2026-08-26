@@ -184,7 +184,7 @@ export default function InteriorPricingPage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             {pricingArticles.map((item, index) => (
               <Link
                 key={item.slug}
@@ -196,18 +196,18 @@ export default function InteriorPricingPage() {
                     src={item.image}
                     alt=""
                     fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1024px) 33vw, 50vw"
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
-                  <span className="absolute left-4 top-4 bg-[#f9f4ed]/95 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.12em] text-[#805f32]">
+                  <span className="absolute left-2 top-2 bg-[#f9f4ed]/95 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.08em] text-[#805f32] sm:left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-[10px] sm:tracking-[0.12em]">
                     {item.label}
                   </span>
                 </div>
-                <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <div className="flex flex-1 flex-col p-3 sm:p-6">
                   <p className="text-xs font-bold text-[#a0783e]">
                     {String(index + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#332b21] sm:text-2xl">
+                  <h3 className="mt-3 font-serif text-base leading-snug text-[#332b21] sm:text-2xl">
                     {item.title}
                   </h3>
                   <span className="mt-auto inline-flex items-center gap-2 pt-6 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">

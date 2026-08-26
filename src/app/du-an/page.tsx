@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 
 import { ConsultationCta } from "@/components/home/consultation-cta";
-import { FeaturedProjectSection } from "@/components/projects/featured-project-section";
 import { ProjectsHero } from "@/components/projects/projects-hero";
 import { ProjectsListingSection } from "@/components/projects/projects-listing-section";
 import { SiteFooter } from "@/components/site-footer";
@@ -30,9 +29,6 @@ export default async function ProjectsPage({
     getPublicProjects(),
     getPublicDesignSamples(),
   ]);
-  const featuredProject =
-    projects.find((project) => project.featured) ?? projects[0];
-
   return (
     <main className="min-h-screen bg-[#f6f0e8] text-[#17140f]">
       <ProjectsHero />
@@ -42,7 +38,6 @@ export default async function ProjectsPage({
         designSamples={designSamples}
         initialCategory={initialCategory}
       />
-      {featuredProject ? <FeaturedProjectSection project={featuredProject} /> : null}
       <ConsultationCta />
       <SiteFooter />
     </main>

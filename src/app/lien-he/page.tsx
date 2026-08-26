@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeCheck,
-  Building2,
-  Check,
   ChevronDown,
   CircleHelp,
   Clock3,
@@ -15,7 +13,6 @@ import {
   MapPin,
   Phone,
   Quote,
-  Send,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
@@ -24,6 +21,7 @@ import { ContactForm } from "@/components/contact-form";
 import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { officeAddresses } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Liên hệ | Tổ Ấm Hoàn Hảo",
@@ -34,7 +32,7 @@ const contactCards = [
   { icon: Phone, label: "Hotline", value: "0903.897.555", href: "tel:0903897555" },
   { icon: Mail, label: "Email", value: "hotro.toamhoanhao@gmail.com", href: "mailto:hotro.toamhoanhao@gmail.com" },
   { icon: Globe2, label: "Website", value: "toamhoanhao.vn", href: "https://toamhoanhao.vn" },
-  { icon: MapPin, label: "Địa chỉ", value: "Tầng 6, 48 Tố Hữu, Nam Từ Liêm, Hà Nội" },
+  { icon: MapPin, label: "Địa chỉ", value: officeAddresses },
 ];
 
 const reasons = [
@@ -80,7 +78,7 @@ export default function ContactPage() {
 
       <div className="mx-auto max-w-[1320px] px-5 py-14 sm:px-8 lg:py-20">
         <section className="grid overflow-hidden border border-[#e0d5c6] bg-[#fdfaf6] sm:grid-cols-2 lg:grid-cols-4">
-          {contactCards.map((item) => { const Icon = item.icon; const content = <><Icon aria-hidden="true" className="h-9 w-9 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><span><span className="block text-xs font-bold uppercase tracking-[0.07em] text-[#5f5548]">{item.label}</span><span className="mt-2 block text-sm leading-6 text-[#6b5231]">{item.value}</span></span></>; return item.href ? <a key={item.label} href={item.href} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 transition hover:bg-[#f5ede2] sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0"><>{content}</></a> : <div key={item.label} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0">{content}</div>; })}
+          {contactCards.map((item) => { const Icon = item.icon; const content = <><Icon aria-hidden="true" className="h-9 w-9 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><span><span className="block text-xs font-bold uppercase tracking-[0.07em] text-[#5f5548]">{item.label}</span><span className="mt-2 block text-sm leading-6 text-[#6b5231]">{Array.isArray(item.value) ? item.value.map((address) => <span key={address} className="mb-2 block last:mb-0">{address}</span>) : item.value}</span></span></>; return item.href ? <a key={item.label} href={item.href} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 transition hover:bg-[#f5ede2] sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0"><>{content}</></a> : <div key={item.label} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0">{content}</div>; })}
         </section>
 
         <section id="tu-van" className="grid gap-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
@@ -88,8 +86,6 @@ export default function ContactPage() {
 
           <div className="space-y-6"><section className="border border-[#e0d5c6] bg-[#fdfaf6] p-6 sm:p-9"><h2 className="font-serif text-3xl leading-tight text-[#30291f]">Vì sao nên liên hệ <em className="text-[#74785f]">Tổ Ấm Hoàn Hảo?</em></h2><div className="mt-7 space-y-5">{reasons.map((reason) => { const Icon = reason.icon; return <div key={reason.title} className="flex gap-4"><Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><div><h3 className="text-sm font-bold text-[#3b3329]">{reason.title}</h3><p className="mt-1 text-xs leading-5 text-[#756b5e]">{reason.content}</p></div></div>; })}</div></section><section className="border border-[#e0d5c6] bg-[#f1e8db] p-6 sm:p-8"><div className="flex gap-4"><Clock3 aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><div><h2 className="font-serif text-2xl text-[#30291f]">Giờ làm việc</h2><div className="mt-5 space-y-2 text-sm text-[#62594d]"><p className="flex justify-between gap-4"><span>Thứ 2 - Thứ 7</span><strong>8:00 - 18:00</strong></p><p className="flex justify-between gap-4"><span>Chủ nhật</span><strong>Hỗ trợ theo lịch hẹn</strong></p></div></div></div></section></div>
         </section>
-
-        <section className="grid overflow-hidden border border-[#e0d5c6] bg-[#fdfaf6] lg:grid-cols-[1fr_0.9fr]"><div className="relative min-h-[330px] overflow-hidden bg-[#eee3d4] p-8"><div className="absolute inset-0 opacity-60 [background-image:linear-gradient(#fff8_1px,transparent_1px),linear-gradient(90deg,#fff8_1px,transparent_1px)] [background-size:36px_36px]" /><div className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d3c1a8]" /><div className="absolute left-1/2 top-1/2 z-10 w-[220px] -translate-x-1/2 -translate-y-1/2 border border-[#cdb48f] bg-[#fdfaf6] p-5 shadow-[0_12px_28px_rgba(74,57,39,0.12)]"><div className="flex gap-3"><MapPin aria-hidden="true" className="h-7 w-7 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><span className="text-sm leading-6 text-[#5d5346]"><strong className="block text-[#3e3529]">Tổ Ấm Hoàn Hảo</strong>Tầng 6, 48 Tố Hữu,<br />Nam Từ Liêm, Hà Nội</span></div></div></div><div className="p-7 sm:p-10"><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Văn phòng & khu vực hoạt động</p><h2 className="mt-4 font-serif text-3xl text-[#30291f]">Đồng hành cùng nhiều tổ ấm Việt</h2><p className="mt-4 text-sm leading-7 text-[#61584b]">Tổ Ấm Hoàn Hảo mang đến dịch vụ thiết kế, thi công và sản xuất nội thất chất lượng đến nhiều tỉnh thành.</p><div className="mt-6 grid gap-3 sm:grid-cols-2">{["Hà Nội", "TP. Hồ Chí Minh", "Ninh Bình", "Thanh Hóa", "Bình Dương"].map((area) => <span key={area} className="flex items-center gap-2 text-sm text-[#5d5346]"><Check aria-hidden="true" className="h-4 w-4 text-[#8b7048]" strokeWidth={2} />{area}</span>)}</div><div className="mt-8 flex gap-4 border border-[#e0d5c6] bg-[#f7f1e9] p-5"><Building2 aria-hidden="true" className="h-9 w-9 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><div><h3 className="text-sm font-bold text-[#3b3329]">Nhà xưởng sản xuất</h3><p className="mt-1 text-xs leading-5 text-[#756b5e]">Xưởng sản xuất nội thất hiện đại, chủ động tiêu chuẩn chất lượng cao.</p></div></div></div></section>
 
         <section className="grid gap-8 py-16 lg:grid-cols-[0.35fr_1.65fr] lg:py-20"><h2 className="font-serif text-3xl text-[#30291f]">Câu hỏi thường gặp</h2><div className="space-y-2">{faqs.map((question, index) => <details key={question} className="group border border-[#e0d5c6] bg-[#fdfaf6]"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-sm font-semibold text-[#4a4034]"><span>{question}</span><ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 text-[#9a733e] transition group-open:rotate-180" /></summary><p className="border-t border-[#eadfd1] px-5 py-4 text-sm leading-7 text-[#756b5e]">{index === 0 ? "Đội ngũ sẽ tiếp nhận thông tin, trao đổi nhu cầu và hẹn khảo sát hoặc tư vấn phù hợp." : index === 1 ? "Chi phí được tư vấn theo diện tích, hạng mục và mức độ chi tiết của công trình." : index === 2 ? "Có. Chúng tôi hỗ trợ thiết kế, sản xuất và thi công nội thất trọn gói." : "Có. Tùy khu vực và nhu cầu cụ thể, chúng tôi sẽ sắp xếp lịch khảo sát phù hợp."}</p></details>)}</div></section>
 

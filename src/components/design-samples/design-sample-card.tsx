@@ -17,15 +17,15 @@ export function DesignSampleCard({ sample, index }: DesignSampleCardProps) {
           src={sample.thumbnail}
           alt={sample.title}
           fill
-          sizes="(min-width: 1024px) 28vw, (min-width: 768px) 44vw, 100vw"
+          sizes="(min-width: 1280px) 28vw, 50vw"
           className="object-cover transition duration-500 group-hover:scale-[1.04]"
         />
       </div>
-      <div className="px-5 py-4">
-        <h2 className="text-lg font-semibold leading-7 text-[#2a251e]">
+      <div className="px-3 py-3 sm:px-5 sm:py-4">
+        <h2 className="text-sm font-semibold leading-5 text-[#2a251e] sm:text-lg sm:leading-7">
           {index + 1}. {sample.title}
         </h2>
-        <div className="mt-3 flex items-center justify-between gap-4">
+        <div className="mt-3 flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
           <p className="text-xs font-medium text-[#7d715f]">
             {sample.area ? `${sample.area} · ` : ""}
             {sample.style}

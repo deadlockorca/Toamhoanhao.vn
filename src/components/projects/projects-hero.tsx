@@ -4,10 +4,12 @@ import { SiteHeader } from "@/components/site-header";
 
 export function ProjectsHero() {
   return (
-    <section className="relative overflow-hidden bg-[#f7f1e9]">
+    <section className="relative overflow-visible bg-[#f7f1e9] lg:overflow-hidden">
       <SiteHeader />
 
-      <div className="grid min-h-[580px] pt-20 lg:grid-cols-[47%_53%] xl:pt-[120px]">
+      <div className="h-20 lg:hidden" aria-hidden="true" />
+
+      <div className="hidden min-h-[580px] pt-20 lg:grid lg:grid-cols-[47%_53%] xl:pt-[120px]">
         <div className="flex items-center px-6 py-16 sm:px-10 lg:px-0 lg:pl-[max(2rem,calc((100vw-1320px)/2))] lg:pr-16">
           <div className="max-w-[540px]">
             <h1 className="font-serif text-[62px] leading-[0.98] tracking-normal text-[#15120e] sm:text-[86px]">

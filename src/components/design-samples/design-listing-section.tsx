@@ -1,5 +1,8 @@
+"use client";
+
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { useSyncExternalStore } from "react";
 
 import { ArticlePagination } from "@/components/article-pagination";
 import { DesignSampleCard } from "@/components/design-samples/design-sample-card";
@@ -12,21 +15,47 @@ import {
 
 type DesignListingSectionProps = {
   designSamples: DesignSample[];
-  totalCount: number;
   activeCategory: DesignSampleCategory;
   categoryQuery?: string;
   currentPage: number;
-  pageCount: number;
 };
+
+const desktopMediaQuery = "(min-width: 1280px)";
+
+function subscribeToDesktopBreakpoint(onChange: () => void) {
+  const mediaQuery = window.matchMedia(desktopMediaQuery);
+  mediaQuery.addEventListener("change", onChange);
+  return () => mediaQuery.removeEventListener("change", onChange);
+}
+
+function getDesktopSnapshot() {
+  return window.matchMedia(desktopMediaQuery).matches;
+}
+
+function getDesktopServerSnapshot() {
+  return true;
+}
 
 export function DesignListingSection({
   designSamples,
-  totalCount,
   activeCategory,
   categoryQuery,
   currentPage,
-  pageCount,
 }: DesignListingSectionProps) {
+  const isDesktop = useSyncExternalStore(
+    subscribeToDesktopBreakpoint,
+    getDesktopSnapshot,
+    getDesktopServerSnapshot,
+  );
+  const samplesPerPage = isDesktop ? 9 : 8;
+  const pageCount = Math.max(1, Math.ceil(designSamples.length / samplesPerPage));
+  const safePage = Math.min(currentPage, pageCount);
+  const firstSampleIndex = (safePage - 1) * samplesPerPage;
+  const visibleDesignSamples = designSamples.slice(
+    firstSampleIndex,
+    firstSampleIndex + samplesPerPage,
+  );
+
   return (
     <section id="design-list" className="bg-[#f7f1e9] px-5 pb-12 sm:px-8">
       <div className="mx-auto max-w-[1320px]">
@@ -34,7 +63,7 @@ export function DesignListingSection({
           <p className="text-sm text-[#62584b]">
             Tổng số{" "}
             <span className="font-semibold text-[#2d281f]">
-              {totalCount}
+              {designSamples.length}
             </span>{" "}
             mẫu thiết kế
           </p>
@@ -64,16 +93,20 @@ export function DesignListingSection({
           </button>
         </div>
 
-        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {designSamples.map((sample, index) => (
-            <DesignSampleCard key={sample.slug} sample={sample} index={index} />
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
+          {visibleDesignSamples.map((sample, index) => (
+            <DesignSampleCard
+              key={sample.slug}
+              sample={sample}
+              index={firstSampleIndex + index}
+            />
           ))}
         </div>
 
         <ArticlePagination
           anchor="design-list"
           basePath="/mau-thiet-ke"
-          currentPage={currentPage}
+          currentPage={safePage}
           pageCount={pageCount}
           queryParams={{ "danh-muc": categoryQuery }}
         />

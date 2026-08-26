@@ -349,14 +349,19 @@ export type ContactInfo = {
   text: string;
 };
 
+export const officeAddresses = [
+  "Hà Nội: Tầng 5, Tòa nhà Zen Tower, Số 12 đường Khuất Duy Tiến, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam",
+  "TP. Hồ Chí Minh: Số 63 KDC Hiệp Thành 1, Phường Phú Lợi, Thành Phố Hồ Chí Minh, Việt Nam",
+];
+
 export const contactInfo: ContactInfo[] = [
   {
     icon: MapPin,
-    text: "Hà Nội: Tầng 5, Tòa nhà Zen Tower, Số 12 đường Khuất Duy Tiến, Phường Thanh Xuân Trung, Quận Thanh Xuân, Thành phố Hà Nội, Việt Nam",
+    text: officeAddresses[0],
   },
   {
     icon: MapPin,
-    text: "TP. Hồ Chí Minh: Số 63 KDC Hiệp Thành 1, Phường Phú Lợi, Thành Phố Hồ Chí Minh, Việt Nam",
+    text: officeAddresses[1],
   },
   {
     icon: Phone,

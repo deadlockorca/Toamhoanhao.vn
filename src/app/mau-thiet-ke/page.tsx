@@ -4,7 +4,6 @@ import { ConsultationCta } from "@/components/home/consultation-cta";
 import { DesignListingSection } from "@/components/design-samples/design-listing-section";
 import { DesignSamplesHero } from "@/components/design-samples/design-samples-hero";
 import { DesignStatsSection } from "@/components/design-samples/design-stats-section";
-import { FeaturedDesignCollection } from "@/components/design-samples/featured-design-collection";
 import { PopularDesignStyles } from "@/components/design-samples/popular-design-styles";
 import { SiteFooter } from "@/components/site-footer";
 import { getDesignCategoryFromQuery } from "@/data/design-samples";
@@ -37,36 +36,21 @@ export default async function DesignSamplesPage({
     activeCategory === "Tất cả"
       ? designSamples
       : designSamples.filter((sample) => sample.category === activeCategory);
-  const samplesPerPage = 9;
-  const pageCount = Math.max(
-    1,
-    Math.ceil(filteredDesignSamples.length / samplesPerPage),
-  );
   const requestedPage = Number.parseInt(pageQuery ?? "1", 10);
   const currentPage = Number.isFinite(requestedPage)
-    ? Math.min(Math.max(requestedPage, 1), pageCount)
+    ? Math.max(requestedPage, 1)
     : 1;
-  const visibleDesignSamples = filteredDesignSamples.slice(
-    (currentPage - 1) * samplesPerPage,
-    currentPage * samplesPerPage,
-  );
-  const featuredSample =
-    designSamples.find((sample) => sample.featured) ?? designSamples[0];
-
   return (
     <main className="min-h-screen bg-[#f6f0e8] text-[#17140f]">
       <DesignSamplesHero />
       <DesignListingSection
-        designSamples={visibleDesignSamples}
-        totalCount={filteredDesignSamples.length}
+        designSamples={filteredDesignSamples}
         activeCategory={activeCategory}
         categoryQuery={
           activeCategory === "Tất cả" ? undefined : categoryQuery
         }
         currentPage={currentPage}
-        pageCount={pageCount}
       />
-      <FeaturedDesignCollection sample={featuredSample} />
       <PopularDesignStyles />
       <DesignStatsSection />
       <ConsultationCta />

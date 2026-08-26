@@ -45,14 +45,6 @@ const pricingPrinciples = [
   },
 ];
 
-const process = [
-  ["Tiếp nhận nhu cầu", "Loại hình nhà, diện tích đất, công năng và ngân sách dự kiến."],
-  ["Khảo sát & đề xuất", "Đánh giá hiện trạng, pháp lý, điều kiện thi công và phương án phù hợp."],
-  ["Chốt hồ sơ", "Thống nhất phạm vi thiết kế, vật liệu và tiêu chuẩn hoàn thiện."],
-  ["Lập dự toán", "Bóc tách khối lượng, đơn vị tính và giá trị theo từng hạng mục."],
-  ["Ký kết triển khai", "Chốt tiến độ, điều khoản thanh toán, bảo hành và trách nhiệm hai bên."],
-];
-
 export default function ArchitectureConstructionPricingPage() {
   return (
     <main className="min-h-screen bg-[#f8f3ec] text-[#2d271f]">
@@ -124,35 +116,17 @@ export default function ArchitectureConstructionPricingPage() {
               lập lại theo hiện trạng và vật liệu ở thời điểm triển khai.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
             {constructionPricingArticles.map((article, index) => (
               <Link key={article.slug} href={`/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/${article.slug}`} className="group overflow-hidden border border-[#d7c9b6] bg-[#f9f4ed] transition hover:-translate-y-1">
-                <div className="relative aspect-[1.7] overflow-hidden"><Image src={article.image} alt="" fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" /></div>
-                <div className="p-5">
+                <div className="relative aspect-[1.7] overflow-hidden"><Image src={article.image} alt="" fill sizes="(min-width: 1024px) 30vw, 50vw" className="object-cover transition duration-500 group-hover:scale-105" /></div>
+                <div className="p-3 sm:p-5">
                 <span className="text-xs font-bold text-[#a0783e]">0{index + 1}</span>
-                <h3 className="mt-3 text-base font-bold leading-6 text-[#40362b]">{article.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-[#6f6558]">{article.excerpt}</p>
+                <h3 className="mt-3 text-sm font-bold leading-5 text-[#40362b] sm:text-base sm:leading-6">{article.title}</h3>
+                <p className="mt-3 text-xs leading-5 text-[#6f6558] sm:text-sm sm:leading-6">{article.excerpt}</p>
                 <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[.08em] text-[#70532b]">Xem chi tiết <ArrowRight className="h-4 w-4" /></span>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-5 py-16 sm:px-8 lg:py-24">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Quy trình lập báo giá</p>
-            <h2 className="mt-3 font-serif text-4xl text-[#30291f]">Rõ từng bước, đúng từng hạng mục</h2>
-          </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {process.map(([title, description], index) => (
-              <article key={title} className="border border-[#ded2c1] bg-[#fcf8f2] p-5">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#bfa681] text-sm font-serif text-[#855f2d]">{index + 1}</span>
-                <h3 className="mt-5 text-sm font-bold text-[#3e352a]">{title}</h3>
-                <p className="mt-3 text-xs leading-6 text-[#756b5e]">{description}</p>
-              </article>
             ))}
           </div>
         </div>

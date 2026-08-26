@@ -17,7 +17,13 @@ import {
   Store,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
 import { ContentLibraryCard } from "@/components/projects/content-library-card";
 import {
@@ -45,6 +51,21 @@ type AreaRange = {
 
 const allValue = "Tất cả";
 const allCategoriesValue = "Tất cả danh mục";
+const threeColumnMediaQuery = "(min-width: 1024px)";
+
+function subscribeToThreeColumnBreakpoint(onChange: () => void) {
+  const mediaQuery = window.matchMedia(threeColumnMediaQuery);
+  mediaQuery.addEventListener("change", onChange);
+  return () => mediaQuery.removeEventListener("change", onChange);
+}
+
+function getThreeColumnSnapshot() {
+  return window.matchMedia(threeColumnMediaQuery).matches;
+}
+
+function getThreeColumnServerSnapshot() {
+  return true;
+}
 
 const sortOptions = [
   { value: "newest", label: "Mới nhất" },
@@ -123,6 +144,11 @@ export function ProjectsListingSection({
   designSamples,
   initialCategory,
 }: ProjectsListingSectionProps) {
+  const hasThreeColumns = useSyncExternalStore(
+    subscribeToThreeColumnBreakpoint,
+    getThreeColumnSnapshot,
+    getThreeColumnServerSnapshot,
+  );
   const [contentType, setContentType] = useState<"all" | LibraryContentType>("all");
   const [category, setCategory] = useState<LibraryCategory | typeof allCategoriesValue>(
     initialCategory ?? allCategoriesValue,
@@ -133,7 +159,7 @@ export function ProjectsListingSection({
   const [sortBy, setSortBy] = useState("newest");
   const [sortOpen, setSortOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = hasThreeColumns ? 9 : 8;
   const sortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
