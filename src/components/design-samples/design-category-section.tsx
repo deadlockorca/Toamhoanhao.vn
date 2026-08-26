@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { designCategoryCards } from "@/data/design-samples";
 
 export function DesignCategorySection() {
@@ -13,7 +15,7 @@ export function DesignCategorySection() {
             const Icon = category.icon;
 
             return (
-              <a
+              <Link
                 key={category.title}
                 href={category.href}
                 className="group flex min-h-[150px] flex-col items-center justify-center border border-[#ded4c4] bg-[#fbf7f1]/72 px-5 py-6 text-center transition hover:border-[#b99c6c] hover:bg-[#fffaf4]"
@@ -29,7 +31,7 @@ export function DesignCategorySection() {
                 <span className="mt-4 text-xs font-medium text-[#7b6f60] transition group-hover:text-[#9a732f]">
                   Xem bộ sưu tập <span aria-hidden="true">→</span>
                 </span>
-              </a>
+              </Link>
             );
           })}
         </div>

@@ -109,13 +109,31 @@ export const navigation: NavigationItem[] = [
   {
     label: "Mẫu thiết kế",
     children: [
-      { label: "Tất cả mẫu thiết kế" },
-      { label: "Mẫu thiết kế nội thất chung cư" },
-      { label: "Mẫu thiết kế nhà phố" },
-      { label: "Mẫu thiết kế biệt thự" },
-      { label: "Mẫu phòng khách" },
-      { label: "Mẫu phòng ngủ" },
-      { label: "Mẫu phòng bếp" },
+      { label: "Tất cả mẫu thiết kế", href: "/mau-thiet-ke" },
+      {
+        label: "Mẫu thiết kế nội thất chung cư",
+        href: "/mau-thiet-ke?danh-muc=chung-cu#design-list",
+      },
+      {
+        label: "Mẫu thiết kế nhà phố",
+        href: "/mau-thiet-ke?danh-muc=nha-pho#design-list",
+      },
+      {
+        label: "Mẫu thiết kế biệt thự",
+        href: "/mau-thiet-ke?danh-muc=biet-thu#design-list",
+      },
+      {
+        label: "Mẫu phòng khách",
+        href: "/mau-thiet-ke?danh-muc=phong-khach#design-list",
+      },
+      {
+        label: "Mẫu phòng ngủ",
+        href: "/mau-thiet-ke?danh-muc=phong-ngu#design-list",
+      },
+      {
+        label: "Mẫu phòng bếp",
+        href: "/mau-thiet-ke?danh-muc=phong-bep#design-list",
+      },
     ],
   },
   {

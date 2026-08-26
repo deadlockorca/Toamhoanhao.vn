@@ -5,15 +5,11 @@ import {
   ArrowRight,
   Banknote,
   Building2,
-  Check,
   ClipboardCheck,
-  Factory,
   FileSearch,
-  Hammer,
   House,
   Layers3,
   MapPin,
-  PackageCheck,
   Phone,
   Ruler,
   ShieldCheck,
@@ -33,41 +29,6 @@ export const metadata: Metadata = {
   description:
     "Phạm vi báo giá thiết kế, thi công và sản xuất nội thất trọn gói theo diện tích, vật liệu và nhu cầu thực tế.",
 };
-
-const quoteScopes = [
-  {
-    icon: Ruler,
-    title: "Thiết kế nội thất",
-    description:
-      "Khảo sát hiện trạng, bố trí công năng, phối cảnh 3D và hồ sơ kỹ thuật thi công.",
-    basis: "Tính theo diện tích và phạm vi hồ sơ",
-    items: ["Mặt bằng công năng", "Phối cảnh 3D", "Hồ sơ kỹ thuật"],
-  },
-  {
-    icon: Hammer,
-    title: "Thi công hoàn thiện",
-    description:
-      "Triển khai trần, sàn, tường, điện nước và các hạng mục hoàn thiện theo bản vẽ.",
-    basis: "Tính theo khối lượng nghiệm thu",
-    items: ["Bóc tách khối lượng", "Vật tư hoàn thiện", "Nhân công lắp đặt"],
-  },
-  {
-    icon: Factory,
-    title: "Sản xuất đồ gỗ",
-    description:
-      "Sản xuất tủ bếp, tủ áo, giường, kệ và đồ nội thất đặt đóng tại xưởng.",
-    basis: "Tính theo vật liệu và kích thước",
-    items: ["Vật liệu cốt gỗ", "Bề mặt hoàn thiện", "Phụ kiện sử dụng"],
-  },
-  {
-    icon: PackageCheck,
-    title: "Nội thất trọn gói",
-    description:
-      "Một đầu mối từ thiết kế, sản xuất đến thi công, lắp đặt và bàn giao hoàn chỉnh.",
-    basis: "Lập dự toán tổng theo hồ sơ chốt",
-    items: ["Thiết kế đồng bộ", "Sản xuất tại xưởng", "Thi công & bảo hành"],
-  },
-];
 
 const pricingFactors = [
   {
@@ -204,67 +165,6 @@ export default function InteriorPricingPage() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="px-5 py-16 sm:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-          <div className="lg:sticky lg:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-              Cách chúng tôi báo giá
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f] sm:text-5xl">
-              Bóc tách rõ ràng,
-              <span className="block italic text-[#7f8169]">đúng phạm vi thực tế</span>
-            </h2>
-            <p className="mt-6 text-sm leading-7 text-[#62594d]">
-              Với hơn 12 năm hoạt động trong lĩnh vực kiến trúc, xây dựng và nội
-              thất, Tổ Ấm Hoàn Hảo tiếp nhận nhiều loại hình từ căn hộ, nhà phố,
-              biệt thự đến văn phòng và không gian kinh doanh.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-[#62594d]">
-              Mỗi báo giá được lập sau khi làm rõ hiện trạng và nhu cầu. Khối
-              lượng, vật liệu, đơn vị tính và phạm vi công việc được thể hiện
-              riêng để khách hàng dễ kiểm tra và điều chỉnh ngân sách.
-            </p>
-          </div>
-
-          <div className="divide-y divide-[#ded2c1] border-y border-[#ded2c1]">
-            {quoteScopes.map((scope, index) => {
-              const Icon = scope.icon;
-              return (
-                <article
-                  key={scope.title}
-                  className="grid gap-6 py-8 sm:grid-cols-[56px_minmax(0,1fr)] lg:grid-cols-[56px_minmax(0,1fr)_220px]"
-                >
-                  <span className="flex h-12 w-12 items-center justify-center border border-[#cdbb9f] text-[#9a733e]">
-                    <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.2} />
-                  </span>
-                  <div>
-                    <p className="text-xs font-bold text-[#a0783e]">0{index + 1}</p>
-                    <h3 className="mt-2 font-serif text-2xl text-[#342c22]">{scope.title}</h3>
-                    <p className="mt-3 max-w-[560px] text-sm leading-7 text-[#6b6154]">
-                      {scope.description}
-                    </p>
-                    <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-                      {scope.items.map((item) => (
-                        <span key={item} className="inline-flex items-center gap-2 text-xs text-[#756b5e]">
-                          <Check aria-hidden="true" className="h-3.5 w-3.5 text-[#8a7650]" strokeWidth={2.4} />
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="border-l border-[#ded2c1] pl-6 lg:self-center">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#9a733e]">
-                      Cơ sở lập giá
-                    </p>
-                    <p className="mt-2 text-sm font-semibold leading-6 text-[#4d4337]">{scope.basis}</p>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
         </div>
       </section>
 

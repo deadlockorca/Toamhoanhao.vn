@@ -412,29 +412,6 @@
       }
     ]
   },
-  "kts-le-thai-hoang": {
-    "slug": "kts-le-thai-hoang",
-    "title": "",
-    "excerpt": "là một trong những kiến trúc sư nổi tiếng với nhiều công trình mang tính chất nghệ thuật cao. Vơi vai trò đảm nhiệm là một trong những kiến trúc sư chủ chốt của Tổ Ấm Hoàn Hảo, ông là người trực tiếp lên phương án làm việc và kiểm duyệt toàn bộ các sản [&hellip;]",
-    "image": "/images/gioi-thieu/banner.png",
-    "date": "23/08/2023",
-    "legacyUrl": "https://toamhoanhao.vn/kts-le-thai-hoang/",
-    "sections": [
-      {
-        "title": "Tổng quan",
-        "blocks": [
-          {
-            "type": "paragraph",
-            "text": "là một trong những kiến trúc sư nổi tiếng với nhiều công trình mang tính chất nghệ thuật cao. Vơi vai trò đảm nhiệm là một trong những kiến trúc sư chủ chốt của Tổ Ấm Hoàn Hảo, ông là người trực tiếp lên phương án làm việc và kiểm duyệt toàn bộ các sản phẩm trước khi đi vào sản xuất và trước khi bàn giao cho gia chủ."
-          },
-          {
-            "type": "paragraph",
-            "text": "Ông theo đuổi phong cách thiết kế tinh tế và đầy yếu tố nghệ thuật với sự đam mê bất tận trong sự sáng tạo các dự án về khu phức hợp, nhà ở dân dụng và văn phòng, và các vật liệu có nguồn gốc từ thiên nhiên, các sản phẩm nội thất hoặc kiến trúc kết hợp với công nghệ."
-          }
-        ]
-      }
-    ]
-  },
   "tuyen-dung-thuc-tap-sinh-mkt": {
     "slug": "tuyen-dung-thuc-tap-sinh-mkt",
     "title": "I- Tổ Ấm Hoàn Hảo tuyển dụng thực tập sinh ngành Marketing",
@@ -1048,15 +1025,6 @@
         ]
       }
     ]
-  },
-  "dao-tao-ve-doc-ban-ve-xay-dung-kien-truc-noi-that": {
-    "slug": "dao-tao-ve-doc-ban-ve-xay-dung-kien-truc-noi-that",
-    "title": "Lớp đào tạo về đọc bản vẽ xây dựng, kiến trúc, nội thất.",
-    "excerpt": "",
-    "image": "/images/gioi-thieu/banner.png",
-    "date": "21/04/2024",
-    "legacyUrl": "https://toamhoanhao.vn/dao-tao-ve-doc-ban-ve-xay-dung-kien-truc-noi-that/",
-    "sections": []
   },
   "bo-suu-tap-tu-am-tuong-bang-go-hien-dai-2023": {
     "slug": "bo-suu-tap-tu-am-tuong-bang-go-hien-dai-2023",

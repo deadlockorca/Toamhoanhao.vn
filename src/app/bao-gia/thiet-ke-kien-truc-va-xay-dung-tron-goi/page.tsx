@@ -45,30 +45,6 @@ const pricingPrinciples = [
   },
 ];
 
-const projectTypes = [
-  {
-    number: "01",
-    title: "Nhà phố hiện đại",
-    description:
-      "Phương án theo mặt tiền, số tầng và nhu cầu sinh hoạt của từng gia đình.",
-    image: "/images/bao-gia/xay-dung/nha-pho.webp",
-  },
-  {
-    number: "02",
-    title: "Biệt thự gia đình",
-    description:
-      "Làm rõ quy hoạch không gian, kết cấu, sân vườn và mức độ hoàn thiện.",
-    image: "/images/bao-gia/xay-dung/kien-truc.webp",
-  },
-  {
-    number: "03",
-    title: "Cải tạo và hoàn thiện",
-    description:
-      "Khảo sát hiện trạng kỹ hơn để kiểm soát phương án, chi phí và tiến độ.",
-    image: "/images/bao-gia/xay-dung/thiet-ke-nha-pho.webp",
-  },
-];
-
 const process = [
   ["Tiếp nhận nhu cầu", "Loại hình nhà, diện tích đất, công năng và ngân sách dự kiến."],
   ["Khảo sát & đề xuất", "Đánh giá hiện trạng, pháp lý, điều kiện thi công và phương án phù hợp."],
@@ -132,40 +108,6 @@ export default function ArchitectureConstructionPricingPage() {
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="px-5 py-16 sm:px-8 lg:py-24">
-        <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[0.72fr_1.28fr]">
-          <div className="lg:sticky lg:top-8">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Từ bài viết gốc</p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f] sm:text-5xl">
-              Báo giá không chỉ là một con số,
-              <span className="block italic text-[#7f8169]">mà là phương án phù hợp.</span>
-            </h2>
-            <p className="mt-6 text-sm leading-7 text-[#62594d]">
-              Tổ Ấm Hoàn Hảo lập dự toán kỹ để công trình đảm bảo thẩm mỹ, kỹ thuật,
-              an toàn và phù hợp với bài toán tài chính của gia chủ.
-            </p>
-            <p className="mt-4 text-sm leading-7 text-[#62594d]">
-              Phạm vi tiếp nhận gồm nhà phố, biệt thự và các công trình cần thiết kế,
-              xây dựng hoặc hoàn thiện theo yêu cầu.
-            </p>
-          </div>
-          <div className="grid gap-5 sm:grid-cols-3">
-            {projectTypes.map((item) => (
-              <article key={item.title} className="overflow-hidden border border-[#ded2c1] bg-[#fcf8f2]">
-                <div className="relative aspect-[1.18]">
-                  <Image src={item.image} alt="" fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
-                </div>
-                <div className="p-5">
-                  <p className="text-xs font-bold text-[#a0783e]">{item.number}</p>
-                  <h3 className="mt-3 font-serif text-2xl text-[#342c22]">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#6b6154]">{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 

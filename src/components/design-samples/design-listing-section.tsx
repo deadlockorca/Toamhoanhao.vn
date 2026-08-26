@@ -1,17 +1,22 @@
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 
 import { DesignSampleCard } from "@/components/design-samples/design-sample-card";
 import {
   designFilterCategories,
+  getDesignCategoryHref,
   type DesignSample,
+  type DesignSampleCategory,
 } from "@/data/design-samples";
 
 type DesignListingSectionProps = {
   designSamples: DesignSample[];
+  activeCategory: DesignSampleCategory;
 };
 
 export function DesignListingSection({
   designSamples,
+  activeCategory,
 }: DesignListingSectionProps) {
   return (
     <section id="design-list" className="bg-[#f7f1e9] px-5 pb-12 sm:px-8">
@@ -26,18 +31,18 @@ export function DesignListingSection({
           </p>
 
           <div className="flex flex-wrap gap-2">
-            {designFilterCategories.map((category, index) => (
-              <a
+            {designFilterCategories.map((category) => (
+              <Link
                 key={category}
-                href="#"
+                href={getDesignCategoryHref(category)}
                 className={`inline-flex h-9 items-center rounded-full border px-5 text-xs font-medium transition ${
-                  index === 0
+                  category === activeCategory
                     ? "border-[#6f765b] bg-[#6f765b] text-white"
                     : "border-[#d7cbb9] bg-[#fbf7f1] text-[#62584b] hover:border-[#a47b45] hover:text-[#8a6536]"
                 }`}
               >
                 {category}
-              </a>
+              </Link>
             ))}
           </div>
 

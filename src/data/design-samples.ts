@@ -99,12 +99,36 @@ export type DesignCategoryCard = {
 };
 
 export const designCategoryCards: DesignCategoryCard[] = [
-  { title: "Mẫu thiết kế nội thất chung cư", href: "#", icon: Building2 },
-  { title: "Mẫu thiết kế nhà phố", href: "#", icon: Home },
-  { title: "Mẫu thiết kế biệt thự", href: "#", icon: House },
-  { title: "Mẫu phòng khách", href: "#", icon: Sofa },
-  { title: "Mẫu phòng ngủ", href: "#", icon: BedDouble },
-  { title: "Mẫu phòng bếp", href: "#", icon: Utensils },
+  {
+    title: "Mẫu thiết kế nội thất chung cư",
+    href: "/mau-thiet-ke?danh-muc=chung-cu#design-list",
+    icon: Building2,
+  },
+  {
+    title: "Mẫu thiết kế nhà phố",
+    href: "/mau-thiet-ke?danh-muc=nha-pho#design-list",
+    icon: Home,
+  },
+  {
+    title: "Mẫu thiết kế biệt thự",
+    href: "/mau-thiet-ke?danh-muc=biet-thu#design-list",
+    icon: House,
+  },
+  {
+    title: "Mẫu phòng khách",
+    href: "/mau-thiet-ke?danh-muc=phong-khach#design-list",
+    icon: Sofa,
+  },
+  {
+    title: "Mẫu phòng ngủ",
+    href: "/mau-thiet-ke?danh-muc=phong-ngu#design-list",
+    icon: BedDouble,
+  },
+  {
+    title: "Mẫu phòng bếp",
+    href: "/mau-thiet-ke?danh-muc=phong-bep#design-list",
+    icon: Utensils,
+  },
 ];
 
 export const designFilterCategories: DesignSampleCategory[] = [
@@ -116,6 +140,35 @@ export const designFilterCategories: DesignSampleCategory[] = [
   "Phòng ngủ",
   "Phòng bếp",
 ];
+
+const designCategorySlugs: Record<DesignSampleCategory, string | null> = {
+  "Tất cả": null,
+  "Chung cư": "chung-cu",
+  "Nhà phố": "nha-pho",
+  "Biệt thự": "biet-thu",
+  "Phòng khách": "phong-khach",
+  "Phòng ngủ": "phong-ngu",
+  "Phòng bếp": "phong-bep",
+  "Tủ bếp": "tu-bep",
+  "Phòng trẻ em": "phong-tre-em",
+};
+
+export function getDesignCategoryHref(category: DesignSampleCategory) {
+  const slug = designCategorySlugs[category];
+  return slug
+    ? `/mau-thiet-ke?danh-muc=${slug}#design-list`
+    : "/mau-thiet-ke#design-list";
+}
+
+export function getDesignCategoryFromQuery(
+  query?: string,
+): DesignSampleCategory {
+  const category = Object.entries(designCategorySlugs).find(
+    ([, slug]) => slug === query,
+  )?.[0];
+
+  return (category as DesignSampleCategory | undefined) ?? "Tất cả";
+}
 
 export const designSamples: DesignSample[] = [
   {

@@ -1,19 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  BookOpenCheck,
-  Check,
-  Compass,
-  FileText,
-  HardHat,
-  House,
-  Ruler,
-  Sun,
-  WalletCards,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
+import { ArticlePagination } from "@/components/article-pagination";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -91,24 +81,22 @@ const readingTopics = [
   },
 ];
 
-const focusItems = [
-  "Phù hợp với diện tích đất và nếp sinh hoạt của gia đình.",
-  "Đạt cân bằng giữa thẩm mỹ, kỹ thuật thi công và không gian xanh.",
-  "Bám sát ngân sách, công năng sử dụng và phong cách sống của gia chủ.",
-];
-
-function ArticleHeading({ number, children }: { number: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <p className="text-xs font-bold tracking-[0.12em] text-[#a0783e]">{number}</p>
-      <h2 className="mt-3 font-serif text-3xl leading-tight text-[#30291f] sm:text-4xl">
-        {children}
-      </h2>
-    </div>
+export default async function BuildingExperiencePage({
+  searchParams,
+}: PageProps<"/kien-thuc/kinh-nghiem-xay-nha">) {
+  const { trang } = await searchParams;
+  const trangValue = Array.isArray(trang) ? trang[0] : trang;
+  const articlesPerPage = 6;
+  const pageCount = Math.max(1, Math.ceil(readingTopics.length / articlesPerPage));
+  const requestedPage = Number.parseInt(trangValue ?? "1", 10);
+  const currentPage = Number.isFinite(requestedPage)
+    ? Math.min(Math.max(requestedPage, 1), pageCount)
+    : 1;
+  const visibleTopics = readingTopics.slice(
+    (currentPage - 1) * articlesPerPage,
+    currentPage * articlesPerPage,
   );
-}
 
-export default function BuildingExperiencePage() {
   return (
     <main className="min-h-screen bg-[#f8f3ec] text-[#2d271f]">
       <section className="relative overflow-hidden border-b border-[#e1d6c7]">
@@ -155,188 +143,7 @@ export default function BuildingExperiencePage() {
         </div>
       </section>
 
-      <section className="border-b border-[#e1d6c7] bg-[#fdfaf6]">
-        <div className="mx-auto grid max-w-[1320px] sm:grid-cols-3">
-          <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <House aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
-            <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
-              Chủ đề
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
-              Thiết kế và xây dựng nhà ở
-            </p>
-          </article>
-          <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <Ruler aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
-            <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
-              Trọng tâm
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
-              Công năng, kỹ thuật và bài toán chi phí
-            </p>
-          </article>
-          <article className="px-6 py-7 lg:px-8">
-            <BookOpenCheck aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
-            <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
-              Nội dung
-            </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
-              9 chủ đề kinh nghiệm triển khai thực tế
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1fr)_330px] lg:py-24">
-        <article className="min-w-0">
-          <section className="border-b border-[#ded2c1] pb-12">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-              Nội dung chính
-            </p>
-            <h2 className="mt-4 font-serif text-4xl leading-tight text-[#30291f] sm:text-5xl">
-              Bắt đầu từ một phương án phù hợp với gia đình
-            </h2>
-            <div className="mt-8 space-y-5 text-base leading-8 text-[#62594d]">
-              <p>
-                Mẫu nhà phố đẹp phù hợp với diện tích đất, đáp ứng nhu cầu sinh hoạt
-                của gia đình với chi phí hợp lý là những tiêu chuẩn quan trọng khi gia
-                chủ bắt đầu trao đổi cùng Tổ Ấm Hoàn Hảo.
-              </p>
-              <p>
-                Vì vậy, mỗi phương án thiết kế cần được đầu tư kỹ để tạo nên sản phẩm
-                đạt chuẩn thẩm mỹ, bảo đảm kỹ thuật thi công an toàn và mang lại không
-                gian sống xanh. Quan trọng hơn cả là sự phù hợp với bài toán tài chính
-                và phong cách sống riêng của gia chủ.
-              </p>
-              <p>
-                Những nội dung dưới đây tổng hợp các chủ đề từ bộ sưu tập kinh nghiệm
-                xây nhà của Tổ Ấm Hoàn Hảo, từ định hướng thiết kế đến tổ chức thi công
-                và lựa chọn vật liệu.
-              </p>
-            </div>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {focusItems.map((item) => (
-                <p
-                  key={item}
-                  className="flex gap-3 border border-[#ded2c1] bg-[#fdfaf6] p-4 text-sm leading-6 text-[#62594d]"
-                >
-                  <Check
-                    aria-hidden="true"
-                    className="mt-0.5 h-4 w-4 shrink-0 text-[#8a7650]"
-                    strokeWidth={2.4}
-                  />
-                  {item}
-                </p>
-              ))}
-            </div>
-          </section>
-
-          <div className="divide-y divide-[#ded2c1]">
-            <section className="py-12">
-              <ArticleHeading number="01">Định hướng trước khi xây nhà</ArticleHeading>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <p className="text-base leading-8 text-[#62594d]">
-                  Trước khi triển khai, gia chủ nên xác định rõ diện tích đất, số lượng
-                  thành viên, nếp sinh hoạt, phong cách mong muốn và những không gian
-                  ưu tiên. Đây là cơ sở để mặt bằng và ngân sách được tính đúng ngay từ
-                  đầu.
-                </p>
-                <div className="border border-[#ded2c1] bg-[#fdfaf6] p-6">
-                  <Compass aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-                  <p className="mt-5 font-serif text-2xl leading-tight text-[#3b3024]">
-                    Đúng nhu cầu trước, rồi mới đến hình thức.
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[#74695c]">
-                    Một phương án tốt cần giải quyết đồng thời công năng, chi phí và
-                    cảm xúc sống lâu dài của gia đình.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section className="py-12">
-              <ArticleHeading number="02">Thiết kế và thi công cần đi cùng nhau</ArticleHeading>
-              <div className="mt-7 grid gap-4 sm:grid-cols-2">
-                <div className="border border-[#ded2c1] bg-[#fdfaf6] p-6">
-                  <HardHat aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-                  <h3 className="mt-5 font-serif text-2xl text-[#3b3024]">Kỹ thuật thi công</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#74695c]">
-                    Hồ sơ rõ ràng, vật liệu phù hợp và giám sát theo từng công đoạn là
-                    nền tảng để công trình an toàn, bền vững và đúng tiến độ.
-                  </p>
-                </div>
-                <div className="border border-[#ded2c1] bg-[#fdfaf6] p-6">
-                  <WalletCards aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-                  <h3 className="mt-5 font-serif text-2xl text-[#3b3024]">Kiểm soát ngân sách</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#74695c]">
-                    Mỗi lựa chọn về quy mô, vật liệu và mức độ hoàn thiện cần được cân
-                    đối từ sớm để hạn chế phát sinh ngoài kế hoạch.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            <section className="py-12">
-              <ArticleHeading number="03">Không gian sống có ánh sáng và chiều sâu</ArticleHeading>
-              <div className="mt-7 overflow-hidden border border-[#ded2c1] bg-[#fdfaf6] sm:grid sm:grid-cols-[1.1fr_0.9fr]">
-                <div className="relative aspect-[1.25] sm:aspect-auto">
-                  <Image
-                    src="/images/kien-thuc/kinh-nghiem-xay-nha/anh-sang.webp"
-                    alt="Không gian nhà ở tận dụng ánh sáng tự nhiên"
-                    fill
-                    sizes="(min-width: 1024px) 42vw, 100vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex flex-col justify-center p-7">
-                  <Sun aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-                  <p className="mt-5 font-serif text-2xl leading-tight text-[#3b3024]">
-                    Ưu tiên ánh sáng tự nhiên và sự thông thoáng.
-                  </p>
-                  <p className="mt-4 text-sm leading-7 text-[#74695c]">
-                    Cách bố trí cửa, khoảng mở và các không gian đệm giúp ngôi nhà sử
-                    dụng năng lượng hiệu quả hơn, đồng thời tạo cảm giác dễ chịu mỗi
-                    ngày.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </div>
-        </article>
-
-        <aside className="h-fit space-y-5 lg:sticky lg:top-8">
-          <section className="border border-[#ded2c1] bg-[#fdfaf6] p-6 lg:p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">Mục lục</p>
-            <ol className="mt-5 space-y-3 text-sm leading-6 text-[#6b6154]">
-              {[
-                "Bắt đầu từ một phương án phù hợp",
-                "Định hướng trước khi xây nhà",
-                "Thiết kế và thi công cần đi cùng nhau",
-                "Không gian sống có ánh sáng và chiều sâu",
-                "Các chủ đề kinh nghiệm xây nhà",
-              ].map((item, index) => (
-                <li key={item} className="flex gap-3">
-                  <span className="font-bold text-[#a0783e]">{String(index + 1).padStart(2, "0")}</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section className="border border-[#ded2c1] bg-[#f3eade] p-6 lg:p-7">
-            <FileText aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-            <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">Ghi chú</p>
-            <h2 className="mt-3 font-serif text-3xl leading-tight text-[#3b3024]">Kiến thức để chuẩn bị kỹ hơn</h2>
-            <p className="mt-4 text-sm leading-7 text-[#74695c]">
-              Các nội dung là tài liệu tham khảo để gia chủ hình dung quy trình. Phương
-              án thực tế cần được điều chỉnh theo hiện trạng khu đất và nhu cầu sử dụng.
-            </p>
-          </section>
-        </aside>
-      </div>
-
-      <section className="border-y border-[#e1d6c7] bg-[#eee5d8] px-5 py-16 sm:px-8 lg:py-20">
+      <section id="articles" className="border-y border-[#e1d6c7] bg-[#eee5d8] px-5 py-16 sm:px-8 lg:py-20">
         <div className="mx-auto max-w-[1320px]">
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Đọc thêm</p>
@@ -347,8 +154,8 @@ export default function BuildingExperiencePage() {
             </p>
           </div>
 
-          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {readingTopics.map((topic, index) => (
+          <div className="mt-9 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
+            {visibleTopics.map((topic, index) => (
               <Link
                 key={topic.slug}
                 href={`/kien-thuc/kinh-nghiem-xay-nha/${topic.slug}`}
@@ -377,6 +184,11 @@ export default function BuildingExperiencePage() {
               </Link>
             ))}
           </div>
+          <ArticlePagination
+            basePath="/kien-thuc/kinh-nghiem-xay-nha"
+            currentPage={currentPage}
+            pageCount={pageCount}
+          />
         </div>
       </section>
 
