@@ -58,6 +58,7 @@ type DbDesignSample = {
   area: string | null;
   thumbnail: string;
   summary: string;
+  publishedAt?: Date | string | null;
   featured: boolean;
   status: string;
   detail: DbDesignSampleDetail | null;
@@ -183,6 +184,10 @@ export function mapDbDesignSampleToDesignSample(
     area: sample.area ?? undefined,
     thumbnail: sample.thumbnail,
     summary: sample.summary,
+    publishedAt:
+      sample.publishedAt instanceof Date
+        ? sample.publishedAt.toISOString()
+        : (sample.publishedAt ?? new Date().toISOString()),
     featured: sample.featured,
     status: sample.status === "published" ? "published" : "draft",
     detail: sample.detail

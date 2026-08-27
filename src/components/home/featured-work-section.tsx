@@ -134,37 +134,18 @@ export function FeaturedWorkSection({
   return (
     <section className="bg-[#f7f1e9] px-5 pb-16 pt-16 sm:px-8 lg:pb-20 lg:pt-20">
       <div className="mx-auto max-w-[1320px]">
-        <div className="mb-8 flex flex-wrap items-end justify-between gap-5">
-          <div>
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a77b3b]">
-              Không gian đã hoàn thiện
-            </p>
-            <h2 className="font-serif text-3xl leading-tight text-[#29221a] sm:text-4xl">
-              Dự án và mẫu thiết kế nổi bật
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-5 sm:gap-7">
-            <Link
-              href="/du-an"
-              className="inline-flex items-center gap-2 border-b border-[#b7a98f] pb-2 text-xs font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#7c5f2c] hover:text-[#7c5f2c]"
-            >
-              Tất cả dự án
-              <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
-            </Link>
-            <Link
-              href="/mau-thiet-ke"
-              className="inline-flex items-center gap-2 border-b border-[#b7a98f] pb-2 text-xs font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#7c5f2c] hover:text-[#7c5f2c]"
-            >
-              Tất cả mẫu
-              <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
-            </Link>
-          </div>
+        <div className="mb-8 text-center">
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#a77b3b]">
+            Không gian đã hoàn thiện
+          </p>
+          <h2 className="font-serif text-3xl leading-tight text-[#29221a] sm:text-4xl">
+            Dự án và mẫu thiết kế nổi bật
+          </h2>
         </div>
 
         <div className="overflow-hidden">
           <div
-            className="flex overflow-x-auto border-b border-[#d8ccbb] pr-1"
+            className="flex justify-start gap-1 overflow-x-auto pb-2 lg:justify-center"
             role="tablist"
             aria-label="Danh mục dự án và mẫu thiết kế nổi bật"
           >
@@ -180,10 +161,10 @@ export function FeaturedWorkSection({
                   onClick={() => {
                     setActiveCategory(category.label);
                   }}
-                  className={`relative shrink-0 border-x border-t px-5 py-4 text-sm font-bold transition sm:px-7 sm:text-base ${
+                  className={`shrink-0 px-5 py-3 text-xs font-bold transition sm:px-7 sm:text-sm ${
                     isActive
-                      ? "-mb-px border-[#d8ccbb] bg-[#fcf9f4] text-[#746536]"
-                      : "border-transparent text-[#8d8172] hover:bg-[#f2eadf] hover:text-[#6a5533]"
+                      ? "bg-[#dfc9a8] text-[#5f4a2d]"
+                      : "text-[#776b5c] hover:bg-[#eee4d6] hover:text-[#6a5533]"
                   }`}
                 >
                   {category.label}
@@ -192,7 +173,7 @@ export function FeaturedWorkSection({
             })}
           </div>
 
-          <div className="border border-t-0 border-[#d8ccbb] bg-[#fcf9f4] p-4 sm:p-6">
+          <div className="mt-2 bg-[#fcf9f4] p-3 sm:p-5">
             <div className="grid grid-cols-2 gap-3 sm:gap-5 xl:grid-cols-3">
               {visibleItems.map((item) => (
                 <article
@@ -248,6 +229,23 @@ export function FeaturedWorkSection({
               </div>
             ) : null}
           </div>
+        </div>
+
+        <div className="mt-8 flex items-center justify-center gap-5 sm:gap-7">
+          <Link
+            href="/du-an"
+            className="inline-flex items-center gap-2 border-b border-[#b7a98f] pb-2 text-xs font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#7c5f2c] hover:text-[#7c5f2c]"
+          >
+            Tất cả dự án
+            <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
+          </Link>
+          <Link
+            href="/mau-thiet-ke"
+            className="inline-flex items-center gap-2 border-b border-[#b7a98f] pb-2 text-xs font-bold uppercase tracking-[0.06em] text-[#6a5533] transition hover:border-[#7c5f2c] hover:text-[#7c5f2c]"
+          >
+            Tất cả mẫu
+            <ArrowRight aria-hidden="true" size={16} strokeWidth={1.8} />
+          </Link>
         </div>
       </div>
     </section>

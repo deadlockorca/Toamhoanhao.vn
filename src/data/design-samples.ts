@@ -32,6 +32,7 @@ export type DesignSample = {
   area?: string;
   thumbnail: string;
   summary: string;
+  publishedAt: string;
   detail?: DesignSampleDetail;
   featured?: boolean;
   status: "published" | "draft";
@@ -325,6 +326,7 @@ export const designSamples: DesignSample[] = [
     },
     featured: true,
     status: "published",
+    publishedAt: "2026-08-27T00:00:00.000Z",
   },
   {
     title: "Mẫu Modern Minimal 3PN",
@@ -337,6 +339,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=900&q=85",
     summary: "Căn hộ hiện đại với bố cục gọn, ánh sáng mềm và tông trung tính.",
     status: "published",
+    publishedAt: "2026-08-25T00:00:00.000Z",
   },
   {
     title: "Mẫu Biệt thự Riverside",
@@ -348,6 +351,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=900&q=85",
     summary: "Không gian biệt thự mở, sang trọng và kết nối với sân vườn.",
     status: "published",
+    publishedAt: "2026-08-23T00:00:00.000Z",
   },
   {
     title: "Mẫu Scandinavian 1PN",
@@ -360,6 +364,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=900&q=85",
     summary: "Mẫu căn hộ nhỏ nhẹ nhàng, sáng và tối ưu công năng lưu trữ.",
     status: "published",
+    publishedAt: "2026-08-21T00:00:00.000Z",
   },
   {
     title: "Mẫu Nhà phố Urban Calm",
@@ -372,6 +377,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85",
     summary: "Không gian nhà phố thanh lịch với phòng khách liền bếp thoáng đãng.",
     status: "published",
+    publishedAt: "2026-08-19T00:00:00.000Z",
   },
   {
     title: "Mẫu Phòng khách Cozy Living",
@@ -384,6 +390,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85",
     summary: "Phòng khách tone be gỗ ấm, phù hợp căn hộ và nhà phố hiện đại.",
     status: "published",
+    publishedAt: "2026-08-17T00:00:00.000Z",
   },
   {
     title: "Mẫu Phòng ngủ Warm Nest",
@@ -396,6 +403,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
     summary: "Phòng ngủ thư giãn với ánh sáng dịu, chất liệu mềm và tủ âm tường.",
     status: "published",
+    publishedAt: "2026-08-15T00:00:00.000Z",
   },
   {
     title: "Mẫu Bếp Elegant Kitchen",
@@ -408,6 +416,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85",
     summary: "Bếp mở tinh gọn, kết hợp đảo bếp và khu bàn ăn gia đình.",
     status: "published",
+    publishedAt: "2026-08-13T00:00:00.000Z",
   },
   {
     title: "Mẫu Tủ bếp Minimal Oak",
@@ -420,6 +429,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85",
     summary: "Tủ bếp gỗ sáng tối giản, nhiều khoang lưu trữ và thiết bị âm tủ.",
     status: "published",
+    publishedAt: "2026-08-11T00:00:00.000Z",
   },
   {
     title: "Mẫu Phòng trẻ em Walnut Line",
@@ -431,6 +441,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85",
     summary: "Không gian phòng trẻ em ấm áp, nhiều lưu trữ và an toàn khi sử dụng.",
     status: "published",
+    publishedAt: "2026-08-09T00:00:00.000Z",
   },
   {
     title: "Mẫu Căn hộ Lumière",
@@ -443,6 +454,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85",
     summary: "Mẫu căn hộ sáng, mềm và phù hợp gia đình trẻ yêu phong cách hiện đại.",
     status: "published",
+    publishedAt: "2026-08-07T00:00:00.000Z",
   },
   {
     title: "Mẫu Biệt thự Green Villa",
@@ -454,6 +466,7 @@ export const designSamples: DesignSample[] = [
       "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=85",
     summary: "Biệt thự nghỉ dưỡng với mảng xanh, hiên rộng và chất liệu tự nhiên.",
     status: "published",
+    publishedAt: "2026-08-05T00:00:00.000Z",
   },
 ];
 

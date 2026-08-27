@@ -36,6 +36,7 @@ const emptySample: DesignSample = {
   area: "",
   thumbnail: "",
   summary: "",
+  publishedAt: new Date().toISOString(),
   featured: false,
   status: "draft",
 };

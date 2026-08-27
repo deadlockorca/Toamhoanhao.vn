@@ -30,8 +30,30 @@ const dossierSteps = [
 export function ConstructionRecordsSection({
   projects,
 }: ConstructionRecordsSectionProps) {
-  const records = projects.filter((project) => project.featured).slice(0, 3);
-  const displayedRecords = records.length > 0 ? records : projects.slice(0, 3);
+  const replacementProject = projects.find(
+    (project) =>
+      project.slug === "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04",
+  );
+  const featuredProjects = projects
+    .filter((project) => project.featured)
+    .slice(0, 3);
+  const penthouseIndex = featuredProjects.findIndex(
+    (project) => project.slug === "penthouse-west-lake",
+  );
+  const primaryProjects = replacementProject
+    ? penthouseIndex >= 0
+      ? featuredProjects.map((project, index) =>
+          index === penthouseIndex ? replacementProject : project,
+        )
+      : [replacementProject, ...featuredProjects]
+    : featuredProjects;
+  const displayedRecords = [...primaryProjects, ...projects]
+    .filter((project) => project.slug !== "penthouse-west-lake")
+    .filter(
+      (project, index, records) =>
+        records.findIndex((item) => item.slug === project.slug) === index,
+    )
+    .slice(0, 3);
 
   return (
     <section className="bg-[#fcf9f4] px-5 py-16 sm:px-8 lg:py-20">

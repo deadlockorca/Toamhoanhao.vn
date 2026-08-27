@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { formatRelativeTime } from "@/lib/relative-time";
 import type { DesignSample } from "@/data/design-samples";
 
 type DesignSampleCardProps = {
@@ -29,6 +30,8 @@ export function DesignSampleCard({ sample, index }: DesignSampleCardProps) {
           <p className="text-xs font-medium text-[#7d715f]">
             {sample.area ? `${sample.area} · ` : ""}
             {sample.style}
+            <span className="mx-2">·</span>
+            {formatRelativeTime(sample.publishedAt)}
           </p>
           <Link
             href={`/mau-thiet-ke/${sample.slug}`}
