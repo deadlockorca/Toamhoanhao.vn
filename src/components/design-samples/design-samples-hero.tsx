@@ -28,7 +28,7 @@ export function DesignSamplesHero() {
             </p>
             <h1 className="mt-5 font-sans text-[56px] leading-[0.98] text-[#15120e] sm:text-[76px]">
               Mẫu thiết kế
-              <span className="block italic text-[#7e8268]">
+              <span className="block not-italic">
                 cho mọi không gian
               </span>
             </h1>

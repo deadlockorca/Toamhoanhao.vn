@@ -51,7 +51,7 @@ export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
             >
               {detail?.displayTitle ?? sample.title}
               {detail ? (
-                <span className="block italic text-[#7e8268]">
+                <span className="block not-italic">
                   {detail.italicTitle}
                 </span>
               ) : null}

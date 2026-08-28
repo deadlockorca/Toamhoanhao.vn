@@ -111,7 +111,7 @@ export default function InteriorPricingPage() {
               </p>
               <h1 className="mt-4 font-sans text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
                 Thiết kế & thi công
-                <span className="block italic text-[#7f8169]">nội thất trọn gói</span>
+                <span className="block not-italic">nội thất trọn gói</span>
               </h1>
               <p className="mt-6 max-w-[510px] text-base leading-8 text-[#584f43]">
                 Báo giá được lập theo đúng diện tích, vật liệu và nhu cầu thực tế,

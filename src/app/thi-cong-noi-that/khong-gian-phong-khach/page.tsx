@@ -40,7 +40,7 @@ export default function LivingRoomSpacePage() {
 
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Thi công nội thất</p>
               <h1 className="mt-4 font-sans text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
-                Không gian <span className="block italic text-[#7f8169]">phòng khách</span>
+                Không gian <span className="block not-italic">phòng khách</span>
               </h1>
               <p className="mt-6 max-w-[510px] text-base leading-8 text-[#584f43]">
                 Tổng hợp các bài viết, mẫu thiết kế và công trình thi công phòng khách tiêu biểu, giúp

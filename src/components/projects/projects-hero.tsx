@@ -14,7 +14,7 @@ export function ProjectsHero() {
           <div className="max-w-[540px]">
             <h1 className="font-sans text-[62px] leading-[0.98] tracking-normal text-[#15120e] sm:text-[86px]">
               Dự án
-              <span className="mt-3 block italic text-[#7e8268]">
+              <span className="mt-3 block not-italic">
                 của chúng tôi
               </span>
             </h1>
