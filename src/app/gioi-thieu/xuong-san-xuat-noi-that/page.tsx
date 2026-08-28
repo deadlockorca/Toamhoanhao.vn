@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 type IconCard = { icon: LucideIcon; title: string; content: string };
 
 const metrics: IconCard[] = [
-  { icon: Building2, title: "500m²+", content: "Diện tích xưởng" },
+  { icon: Building2, title: "5000m²+", content: "Diện tích xưởng" },
   { icon: UsersRound, title: "50+", content: "Nhân sự lành nghề" },
   { icon: Box, title: "1000+", content: "Sản phẩm hoàn thiện" },
   { icon: MapPinned, title: "Nhiều", content: "Tỉnh thành hoạt động" },
