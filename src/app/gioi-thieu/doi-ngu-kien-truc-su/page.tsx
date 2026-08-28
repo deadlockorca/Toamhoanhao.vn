@@ -131,8 +131,8 @@ export default function ArchitectureTeamPage() {
                 <span>Đội ngũ kiến trúc sư</span>
               </nav>
               <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Giới thiệu</p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
-                Đội ngũ <em className="text-[#74785f]">kiến trúc sư</em>
+              <h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
+                Đội ngũ <em className="not-italic">kiến trúc sư</em>
               </h1>
               <p className="mt-7 max-w-[470px] text-base leading-8 text-[#584f43]">
                 Những kiến trúc sư và kỹ sư giàu kinh nghiệm, đồng hành cùng bạn từ ý tưởng đến khi tổ ấm hoàn thiện.

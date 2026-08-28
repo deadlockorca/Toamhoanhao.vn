@@ -101,7 +101,7 @@ export default async function AboutPage() {
             <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
               Về chúng tôi
             </p>
-            <h1 className="mt-4 font-serif text-5xl leading-[1.04] text-[#1d1913] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-4 font-sans text-5xl leading-[1.04] text-[#1d1913] sm:text-6xl lg:text-7xl">
               Về Tổ Ấm Hoàn Hảo
             </h1>
             <p className="mt-7 max-w-[470px] text-base leading-8 text-[#524a3e]">

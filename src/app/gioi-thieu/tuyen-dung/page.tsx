@@ -176,8 +176,8 @@ export default function RecruitmentPage() {
                 <span>Tuyển dụng</span>
               </nav>
               <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Giới thiệu</p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
-                Tuyển <em className="text-[#74785f]">dụng</em>
+              <h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
+                Tuyển <em className="not-italic">dụng</em>
               </h1>
               <p className="mt-7 max-w-[470px] text-base leading-8 text-[#584f43]">
                 Cùng chung tay kiến tạo những không gian sống lý tưởng. Tổ Ấm Hoàn Hảo luôn chào đón những

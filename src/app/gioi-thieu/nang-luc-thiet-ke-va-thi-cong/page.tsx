@@ -153,8 +153,8 @@ export default function CapabilityPage() {
               <span>Năng lực thiết kế & thi công</span>
             </nav>
             <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Giới thiệu</p>
-            <h1 className="mt-4 font-serif text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
-              Năng lực <em className="text-[#74785f]">thiết kế & thi công</em>
+            <h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">
+              Năng lực <em className="not-italic">thiết kế & thi công</em>
             </h1>
             <p className="mt-7 max-w-[470px] text-base leading-8 text-[#584f43]">
               Từ tư vấn, thiết kế đến thi công và sản xuất nội thất, mọi hạng mục được kết nối trong một quy trình thống nhất để đáp ứng đúng nhu cầu của từng khách hàng.

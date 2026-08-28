@@ -67,7 +67,7 @@ export default function ContactPage() {
             <div className="max-w-[535px]">
               <nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]"><Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link><span className="mx-3">/</span><span>Liên hệ</span></nav>
               <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Liên hệ</p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">Liên hệ với <em className="text-[#74785f]">chúng tôi</em></h1>
+              <h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">Liên hệ với <em className="not-italic">chúng tôi</em></h1>
               <p className="mt-7 max-w-[460px] text-base leading-8 text-[#584f43]">Hãy để lại thông tin, đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ và tư vấn giải pháp thiết kế, thi công, sản xuất nội thất phù hợp nhất cho bạn.</p>
               <div className="mt-9 flex flex-wrap gap-3"><ConsultationButton className="inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Đặt lịch tư vấn</ConsultationButton><a href="tel:0903897555" className="inline-flex h-11 items-center gap-2 border border-[#cdbda8] px-5 text-xs font-bold uppercase tracking-[0.06em] text-[#6b5231] transition hover:border-[#9a733e] hover:text-[#8a6536]"><Phone aria-hidden="true" className="h-4 w-4" />Gọi ngay</a></div>
             </div>

@@ -70,7 +70,7 @@ export default async function BedroomSpaceArticlePage({
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 {article.label}
               </p>
-              <h1 className="mt-4 font-serif text-4xl leading-[1.08] text-[#1f1a13] sm:text-5xl lg:text-[3.5rem]">
+              <h1 className="mt-4 font-sans text-4xl leading-[1.08] text-[#1f1a13] sm:text-5xl lg:text-[3.5rem]">
                 {article.title}
               </h1>
               <p className="mt-6 max-w-[550px] text-base leading-8 text-[#584f43]">

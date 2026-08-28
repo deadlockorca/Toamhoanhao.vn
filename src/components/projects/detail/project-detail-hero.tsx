@@ -36,7 +36,7 @@ export function ProjectDetailHero({ project }: ProjectDetailHeroProps) {
               {detail?.eyebrow ?? project.category}
             </p>
 
-            <h1 className="mt-5 font-serif text-[48px] leading-[1.02] text-[#15120e] sm:text-[66px]">
+            <h1 className="mt-5 font-sans text-[48px] leading-[1.02] text-[#15120e] sm:text-[66px]">
               {detail?.displayTitle ?? project.title}
               {detail ? (
                 <span className="block italic text-[#7e8268]">

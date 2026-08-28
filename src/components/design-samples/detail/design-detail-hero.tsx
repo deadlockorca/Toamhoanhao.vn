@@ -47,7 +47,7 @@ export function DesignDetailHero({ sample }: DesignDetailHeroProps) {
             </p>
 
             <h1
-              className={`mt-5 max-w-full break-words font-serif leading-[1.02] text-[#15120e] ${titleSize}`}
+              className={`mt-5 max-w-full break-words font-sans leading-[1.02] text-[#15120e] ${titleSize}`}
             >
               {detail?.displayTitle ?? sample.title}
               {detail ? (

@@ -109,7 +109,7 @@ export default function InteriorPricingPage() {
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 Báo giá nội thất
               </p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
+              <h1 className="mt-4 font-sans text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
                 Thiết kế & thi công
                 <span className="block italic text-[#7f8169]">nội thất trọn gói</span>
               </h1>

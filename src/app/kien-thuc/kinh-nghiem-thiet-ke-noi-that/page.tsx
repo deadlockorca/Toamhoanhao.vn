@@ -55,8 +55,8 @@ export default async function InteriorDesignExperiencePage({
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 Kiến thức
               </p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">
-                Kinh nghiệm thiết kế <em className="text-[#74785f]">nội thất</em>
+              <h1 className="mt-4 font-sans text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">
+                Kinh nghiệm thiết kế <em className="not-italic">nội thất</em>
               </h1>
               <p className="mt-6 max-w-[455px] text-base leading-8 text-[#584f43]">
                 Cẩm nang thiết kế nội thất thực tế, giúp bạn kiến tạo không gian

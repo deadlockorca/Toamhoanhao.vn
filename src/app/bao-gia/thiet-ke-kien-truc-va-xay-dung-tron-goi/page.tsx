@@ -61,7 +61,7 @@ export default function ArchitectureConstructionPricingPage() {
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 Báo giá xây dựng
               </p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
+              <h1 className="mt-4 font-sans text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
                 Thiết kế kiến trúc
                 <span className="block italic text-[#7f8169]">& xây dựng trọn gói</span>
               </h1>

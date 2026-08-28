@@ -55,8 +55,8 @@ export default async function BuildingLegalPage({
               <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 Kiến thức
               </p>
-              <h1 className="mt-4 font-serif text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">
-                Pháp lý <em className="text-[#74785f]">xây dựng</em>
+              <h1 className="mt-4 font-sans text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">
+                Pháp lý <em className="not-italic">xây dựng</em>
               </h1>
               <p className="mt-6 max-w-[455px] text-base leading-8 text-[#584f43]">
                 Cẩm nang tổng hợp các đầu việc pháp lý thường gặp trước, trong và

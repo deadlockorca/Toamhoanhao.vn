@@ -26,7 +26,7 @@ export function DesignSamplesHero() {
             <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#a47b45]">
               Bộ sưu tập mẫu thiết kế
             </p>
-            <h1 className="mt-5 font-serif text-[56px] leading-[0.98] text-[#15120e] sm:text-[76px]">
+            <h1 className="mt-5 font-sans text-[56px] leading-[0.98] text-[#15120e] sm:text-[76px]">
               Mẫu thiết kế
               <span className="block italic text-[#7e8268]">
                 cho mọi không gian
