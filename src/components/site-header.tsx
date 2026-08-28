@@ -32,7 +32,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <div className="ml-12 hidden min-w-0 border-l border-[#d8cbb9] pl-12 xl:block">
+          <div className="ml-12 hidden min-w-0 border-l border-[#d8cbb9] pl-12 [@media(min-width:1280px)]:block">
             <p className="whitespace-nowrap text-[23px] font-bold leading-tight text-[#3d3933]">
               Tổ Ấm Hoàn Hảo - Thi công xây dựng, nội thất tận tâm
             </p>

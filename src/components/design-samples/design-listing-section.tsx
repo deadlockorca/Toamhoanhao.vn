@@ -20,7 +20,7 @@ type DesignListingSectionProps = {
   currentPage: number;
 };
 
-const desktopMediaQuery = "(min-width: 1280px)";
+const desktopMediaQuery = "(min-width: 1024px)";
 
 const sortOptions = [
   { value: "newest", label: "Mới nhất" },
