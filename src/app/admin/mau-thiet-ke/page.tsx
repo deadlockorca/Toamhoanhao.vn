@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { AdminDesignSampleTable } from "@/components/admin/admin-design-sample-table";
 import { designSamples as mockDesignSamples } from "@/data/design-samples";
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminDesignSamplesPage() {
+  await connection();
   const dbDesignSamples = await prisma.designSample.findMany({
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
     include: {

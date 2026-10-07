@@ -2,6 +2,7 @@ import {
   mapDbDesignSampleToDesignSample,
   mapDbProjectToProject,
 } from "@/lib/admin-data-mappers";
+import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 const projectInclude = {
@@ -35,6 +36,7 @@ const designSampleInclude = {
 } as const;
 
 export async function getPublicProjects() {
+  await connection();
   const dbProjects = await prisma.project.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
@@ -45,6 +47,7 @@ export async function getPublicProjects() {
 }
 
 export async function getPublicProjectBySlug(slug: string) {
+  await connection();
   const dbProject = await prisma.project.findUnique({
     where: { slug },
     include: projectInclude,
@@ -60,6 +63,7 @@ export async function getPublicProjectBySlug(slug: string) {
 }
 
 export async function getPublicDesignSamples() {
+  await connection();
   const dbSamples = await prisma.designSample.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
@@ -70,6 +74,7 @@ export async function getPublicDesignSamples() {
 }
 
 export async function getPublicDesignSampleBySlug(slug: string) {
+  await connection();
   const dbSample = await prisma.designSample.findUnique({
     where: { slug },
     include: designSampleInclude,

@@ -1,23 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 
 import { DesignSampleFormMock } from "@/components/admin/design-sample-form-mock";
 import {
-  designSamples,
   getDesignSampleBySlug,
 } from "@/data/design-samples";
 import { mapDbDesignSampleToDesignSample } from "@/lib/admin-data-mappers";
 import { prisma } from "@/lib/prisma";
 
-export function generateStaticParams() {
-  return designSamples.map((sample) => ({
-    slug: sample.slug,
-  }));
-}
-
 export async function generateMetadata({
   params,
 }: PageProps<"/admin/mau-thiet-ke/[slug]">): Promise<Metadata> {
+  await connection();
   const { slug } = await params;
   const dbSample = await prisma.designSample.findUnique({
     where: { slug },
@@ -34,6 +29,7 @@ export async function generateMetadata({
 export default async function EditDesignSamplePage({
   params,
 }: PageProps<"/admin/mau-thiet-ke/[slug]">) {
+  await connection();
   const { slug } = await params;
   const dbSample = await prisma.designSample.findUnique({
     where: { slug },

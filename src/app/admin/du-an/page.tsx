@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 
 import { AdminProjectTable } from "@/components/admin/admin-project-table";
 import { projects as mockProjects } from "@/data/projects";
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminProjectsPage() {
+  await connection();
   const dbProjects = await prisma.project.findMany({
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
     include: {

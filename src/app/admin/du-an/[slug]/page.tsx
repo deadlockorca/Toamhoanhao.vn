@@ -1,20 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { connection } from "next/server";
 
 import { ProjectFormMock } from "@/components/admin/project-form-mock";
-import { getProjectBySlug, projects } from "@/data/projects";
+import { getProjectBySlug } from "@/data/projects";
 import { mapDbProjectToProject } from "@/lib/admin-data-mappers";
 import { prisma } from "@/lib/prisma";
-
-export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
-}
 
 export async function generateMetadata({
   params,
 }: PageProps<"/admin/du-an/[slug]">): Promise<Metadata> {
+  await connection();
   const { slug } = await params;
   const dbProject = await prisma.project.findUnique({
     where: { slug },
@@ -29,6 +25,7 @@ export async function generateMetadata({
 export default async function EditProjectPage({
   params,
 }: PageProps<"/admin/du-an/[slug]">) {
+  await connection();
   const { slug } = await params;
   const dbProject = await prisma.project.findUnique({
     where: { slug },
