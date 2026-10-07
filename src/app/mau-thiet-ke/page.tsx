@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
-import { DesignListingSection } from "@/components/design-samples/design-listing-section";
-import { DesignSamplesHero } from "@/components/design-samples/design-samples-hero";
-import { DesignStatsSection } from "@/components/design-samples/design-stats-section";
-import { PopularDesignStyles } from "@/components/design-samples/popular-design-styles";
+import { PortfolioOverview } from "@/components/portfolio/portfolio-overview";
 import { SiteFooter } from "@/components/site-footer";
 import { getDesignCategoryFromQuery } from "@/data/design-samples";
+import { createContentLibrary, type LibraryCategory } from "@/lib/content-library";
 import { getPublicDesignSamples } from "@/lib/public-content";
 
 export const metadata: Metadata = {
@@ -32,29 +29,15 @@ export default async function DesignSamplesPage({
   const pageQuery = Array.isArray(query.trang) ? query.trang[0] : query.trang;
   const activeCategory = getDesignCategoryFromQuery(categoryQuery);
   const designSamples = await getPublicDesignSamples();
-  const filteredDesignSamples =
-    activeCategory === "Tất cả"
-      ? designSamples
-      : designSamples.filter((sample) => sample.category === activeCategory);
   const requestedPage = Number.parseInt(pageQuery ?? "1", 10);
   const currentPage = Number.isFinite(requestedPage)
     ? Math.max(requestedPage, 1)
     : 1;
-  return (
-    <main className="min-h-screen bg-[#f6f0e8] text-[#17140f]">
-      <DesignSamplesHero />
-      <DesignListingSection
-        designSamples={filteredDesignSamples}
-        activeCategory={activeCategory}
-        categoryQuery={
-          activeCategory === "Tất cả" ? undefined : categoryQuery
-        }
-        currentPage={currentPage}
-      />
-      <PopularDesignStyles />
-      <DesignStatsSection />
-      <ConsultationCta />
-      <SiteFooter />
-    </main>
-  );
+  const initialCategory = activeCategory === "Tất cả"
+    ? undefined
+    : (activeCategory === "Chung cư" ? "Căn hộ" : activeCategory) as LibraryCategory;
+  return <>
+    <PortfolioOverview mode="designs" items={createContentLibrary([], designSamples)} initialCategory={initialCategory} initialPage={currentPage} />
+    <SiteFooter />
+  </>;
 }

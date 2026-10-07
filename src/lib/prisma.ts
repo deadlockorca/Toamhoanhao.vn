@@ -18,6 +18,9 @@ const adapter = new PrismaMariaDb({
   user: decodeURIComponent(databaseUrl.username),
   password: decodeURIComponent(databaseUrl.password),
   database: databaseUrl.pathname.slice(1),
+  allowPublicKeyRetrieval: ["127.0.0.1", "localhost", "::1"].includes(
+    databaseUrl.hostname,
+  ),
   prepareCacheLength: 1,
   minimumIdle: 1,
   initializationTimeout: 10_000,

@@ -1,0 +1,68 @@
+.page{background:#faf8f5;color:#2d261f;font-family:var(--font-be-vietnam-pro),sans-serif}
+.page h1,.page h2,.page p{margin-top:0}
+.container{width:min(100% - 48px,1200px);margin-inline:auto}
+.headerSpacer{height:80px}
+.eyebrow{display:flex;align-items:center;gap:11px;margin:0 0 15px;color:#b66d3c;font-size:11px;font-weight:700;letter-spacing:.15em}
+.eyebrow:before{width:24px;height:1px;background:currentColor;content:""}
+.hero{background:#f0e8de;padding:58px 0 62px}
+.heroGrid{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:82px}
+.heroCopy{min-width:0}
+.breadcrumb{display:flex;align-items:center;gap:12px;margin-bottom:35px;color:#8e857b;font-size:12px}
+.breadcrumb a:hover{color:#a7653a}
+.heroCopy h1{max-width:510px;margin:0;color:#302720;font-size:clamp(45px,4.9vw,68px);font-weight:600;line-height:1.09;letter-spacing:-.05em}
+.heroDescription{max-width:500px;margin:20px 0 25px;color:#796f65;font-size:16px;line-height:1.65}
+.heroActions{display:flex;flex-wrap:wrap;gap:11px}
+.primaryButton,.outlineButton{display:inline-flex;min-height:44px;align-items:center;justify-content:center;gap:10px;padding:0 22px;border:1px solid #ae6d42;border-radius:5px;font:700 12px var(--font-be-vietnam-pro),sans-serif;cursor:pointer;transition:background .2s,color .2s}
+.primaryButton{background:#aa663b;color:#fff}.primaryButton:hover{background:#8c4e2d}
+.outlineButton{background:transparent;color:#aa663b}.outlineButton:hover{background:#aa663b;color:#fff}
+.heroVisual{position:relative;height:365px;overflow:hidden;border-radius:14px;background:#e8dccb;box-shadow:0 14px 28px #4b362015}
+.heroVisual img{object-fit:cover;object-position:right center}
+.storySection{padding:72px 0 83px;background:#fbf9f6}
+.leadershipCard{display:flex;align-items:flex-start;gap:28px;padding:36px 43px;border:1px solid #e6dfd7;border-radius:14px;background:#fff;box-shadow:0 4px 18px #42301c08}
+.quoteIcon{display:grid;width:62px;height:62px;flex:none;place-items:center;border-radius:50%;background:#f2e9de;color:#b76e3c;font-size:51px;font-weight:700;line-height:1;padding-top:13px}
+.leadershipCard h2{margin:3px 0 11px;font-size:27px;font-weight:600;line-height:1.25;letter-spacing:-.03em}
+.leadershipCard p{max-width:850px;margin:0;color:#766b60;font-size:14px;line-height:1.7}
+.storyGrid{display:grid;grid-template-columns:1fr 1.02fr;align-items:center;gap:83px;margin-top:79px}
+.storyCopy h2{max-width:550px;margin:0 0 18px;font-size:clamp(31px,3.1vw,45px);font-weight:600;line-height:1.15;letter-spacing:-.045em}
+.storyCopy>p:not(.eyebrow){margin:0 0 13px;color:#776e64;font-size:14px;line-height:1.72}
+.storyCopy strong{color:#342921;font-weight:700}
+.storyVisual{position:relative;height:405px;overflow:visible}
+.storyVisual img{object-fit:cover;object-position:center 51%;border-radius:12px;box-shadow:0 17px 31px #261d171f}
+.experienceBadge{position:absolute;top:15px;left:15px;z-index:1;display:flex;flex-direction:column;min-width:95px;padding:13px 16px;border-radius:5px;background:#ad693c;color:#fff;box-shadow:0 8px 18px #43260d2b}
+.experienceBadge strong{font-size:29px;line-height:1;font-weight:700}.experienceBadge small{margin-top:5px;font-size:10px}
+.valuesSection{padding:74px 0 76px;background:#f0e8de}
+.valuesGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px}
+.valueCard{padding-top:26px;border-top:1px solid #d8c9b9}
+.valueCard svg{color:#b66d3c}
+.valueCard h2{margin:25px 0 10px;font-size:26px;font-weight:600;letter-spacing:-.03em}
+.valueCard p{max-width:335px;margin:0;color:#7a6e63;font-size:13px;line-height:1.65}
+.videoSection{padding:76px 0;background:#fbf9f6}
+.videoGrid{display:grid;grid-template-columns:.72fr 1.28fr;align-items:center;gap:93px}
+.factoryIcon{display:grid;width:46px;height:46px;place-items:center;border-radius:7px;background:#f2e9de;color:#b66d3c}
+.videoCopy h2{margin:24px 0 13px;font-size:clamp(29px,2.8vw,39px);font-weight:600;line-height:1.2;letter-spacing:-.04em}
+.videoCopy p{max-width:420px;margin:0;color:#786e64;font-size:14px;line-height:1.7}
+.videoFrame{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:12px;background:#25201c;box-shadow:0 18px 35px #261d172e}
+.videoFrame iframe{display:block;width:100%;height:100%;border:0}
+.videoPoster{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:#25201c;color:#fff;cursor:pointer;text-align:left}
+.videoPoster img{object-fit:cover;transition:transform .5s}.videoPoster:hover img{transform:scale(1.035)}
+.videoShade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 52%,#120e0bb8 100%)}
+.videoPlay{position:absolute;top:50%;left:50%;display:grid;width:74px;height:74px;place-items:center;border-radius:50%;background:#ae6b3e;color:#fff;box-shadow:0 7px 22px #1c100946;transform:translate(-50%,-50%);transition:transform .2s,background .2s}
+.videoPoster:hover .videoPlay{background:#94552f;transform:translate(-50%,-50%) scale(1.1)}
+.videoCaption{position:absolute;right:25px;bottom:22px;left:25px;display:flex;flex-direction:column;gap:3px}.videoCaption strong{font-size:17px;font-weight:600}.videoCaption small{font-size:12px;color:#e8e1da}
+.videoTag{position:absolute;right:24px;bottom:26px;padding:4px 7px;border:1px solid #ffffff75;border-radius:4px;background:#17120f75;font-size:10px}
+.capabilitySection{padding:76px 0;background:#f0e8de}
+.capabilityGrid{display:grid;grid-template-columns:1fr .88fr;align-items:center;gap:82px}
+.capabilityVisual{position:relative;height:420px;overflow:hidden;border-radius:12px;box-shadow:0 16px 28px #281e1528}.capabilityVisual img{object-fit:cover}
+.capabilityCopy h2{max-width:510px;margin:0 0 19px;font-size:clamp(31px,3vw,42px);font-weight:600;line-height:1.2;letter-spacing:-.04em}
+.capabilityCopy>p:not(.eyebrow){max-width:500px;margin:0;color:#776d62;font-size:14px;line-height:1.7}
+.metricsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px 35px;margin-top:31px}
+.metricsGrid div{display:flex;flex-direction:column;gap:5px}.metricsGrid strong{color:#ac673b;font-size:31px;line-height:1;font-weight:700}.metricsGrid span{color:#84786d;font-size:12px}
+.closingSection{padding:76px 0 80px;background:#fbf9f6}
+.closingGrid{display:grid;grid-template-columns:1.05fr .95fr;min-height:320px;overflow:hidden;border-radius:12px}
+.closingQuote{display:flex;flex-direction:column;justify-content:center;padding:45px 53px;background:#29231f;color:#fff}
+.closingQuote>span{height:41px;color:#d5a171;font-size:60px;font-weight:700;line-height:1}
+.closingQuote p{max-width:520px;margin:19px 0 0;font-size:clamp(23px,2.4vw,34px);font-weight:500;line-height:1.38;letter-spacing:-.03em}
+.closingVisual{position:relative;min-height:320px;background:#e9ded0}.closingVisual img{object-fit:cover;object-position:right center}
+@media(max-width:900px){.heroGrid{gap:35px}.storyGrid{gap:35px}.videoGrid{gap:35px}.capabilityGrid{gap:35px}}
+@media(max-width:700px){.container{width:min(100% - 32px,1200px)}.headerSpacer{height:66px}.hero{padding:36px 0 44px}.heroGrid,.storyGrid,.videoGrid,.capabilityGrid,.closingGrid{grid-template-columns:1fr}.heroGrid{gap:32px}.breadcrumb{margin-bottom:24px}.heroCopy h1{font-size:43px}.heroDescription{font-size:14px}.heroVisual{height:300px}.storySection{padding:44px 0 56px}.leadershipCard{gap:15px;padding:22px}.quoteIcon{width:44px;height:44px;font-size:38px;padding-top:10px}.leadershipCard h2{font-size:22px}.leadershipCard p{font-size:13px}.storyGrid{margin-top:55px;gap:26px}.storyCopy h2{font-size:34px}.storyCopy>p:not(.eyebrow){font-size:13px}.storyVisual{height:320px}.valuesSection,.videoSection,.capabilitySection,.closingSection{padding:54px 0}.valuesGrid{grid-template-columns:1fr;gap:28px}.valueCard h2{margin-top:14px}.videoGrid,.capabilityGrid{gap:30px}.videoCopy h2,.capabilityCopy h2{font-size:32px}.capabilityVisual{height:320px}.closingQuote{padding:34px}.closingQuote p{font-size:25px}.closingVisual{min-height:250px}}
+@media(max-width:420px){.heroCopy h1{font-size:39px}.heroActions{align-items:stretch}.primaryButton,.outlineButton{padding:0 14px;font-size:11px}.heroVisual{height:250px}.videoPlay{width:62px;height:62px}.videoCaption strong{font-size:13px}.videoCaption small,.videoTag{display:none}}

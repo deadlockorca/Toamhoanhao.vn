@@ -1,56 +1,134 @@
+"use client";
+
+import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
-import { DesktopNavigation } from "@/components/desktop-navigation";
-import { MobileNavigation } from "@/components/mobile-navigation";
-import { navigation } from "@/data/site";
+import { ConsultationButton } from "@/components/consultation-popup";
+import { navigation, type NavigationItem } from "@/data/site";
+import styles from "./site-header.module.css";
+
+function MenuChildren({
+  items,
+  onNavigate,
+}: {
+  items: NonNullable<NavigationItem["children"]>;
+  onNavigate: () => void;
+}) {
+  return (
+    <div className={styles.menuChildren}>
+      {items.map((item) => (
+        <div key={item.label} className={styles.menuChild}>
+          {item.href ? (
+            <Link href={item.href} onClick={onNavigate}>{item.label}</Link>
+          ) : (
+            <span>{item.label}</span>
+          )}
+          {item.children && (
+            <div className={styles.menuGrandchildren}>
+              {item.children.map((child) => child.href ? (
+                <Link key={child.label} href={child.href} onClick={onNavigate}>{child.label}</Link>
+              ) : (
+                <span key={child.label}>{child.label}</span>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function SiteHeader() {
+  const [openDesktop, setOpenDesktop] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpenDesktop(null);
+        setMobileOpen(false);
+      }
+    }
+    function closeOnOutside(event: PointerEvent) {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setOpenDesktop(null);
+        setMobileOpen(false);
+      }
+    }
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOnOutside);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOnOutside);
+    };
+  }, []);
+
   return (
-    <header className="absolute inset-x-0 top-0 z-20 border-b border-[#cfc2b0]/55 bg-[#fbf7f1]/92 backdrop-blur-sm">
-      <div className="mx-auto max-w-[1320px] px-5 sm:px-8">
-        <div className="flex h-20 items-center xl:h-[76px]">
-          <Link
-            href="/"
-            className="group flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-[#b98938]"
-          >
-            <Image
-              src="/logo-to-am-hoan-hao-old.png"
-              alt="Logo Tổ Ấm Hoàn Hảo"
-              width={54}
-              height={54}
-              priority
-              className="h-[46px] w-[46px] shrink-0 object-contain xl:h-11 xl:w-11"
-            />
-            <span className="leading-tight">
-              <span className="block whitespace-nowrap text-[13px] font-bold uppercase tracking-[0.1em] text-[#28231c]">
-                Tổ Ấm Hoàn Hảo
-              </span>
-              <span className="mt-1 block whitespace-nowrap text-[10px] text-[#8b7e69]">
-                Thiết kế - Thi công - Sản xuất nội thất
-              </span>
-            </span>
-          </Link>
+    <header ref={headerRef} className={styles.header}>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.brand} aria-label="Tổ Ấm Hoàn Hảo - Trang chủ">
+          <Image src="/logo-to-am-hoan-hao-old.png" alt="" width={64} height={64} priority />
+          <span><strong>TỔ ẤM HOÀN HẢO</strong><small>KIẾN TẠO KHÔNG GIAN SỐNG HẠNH PHÚC</small></span>
+        </Link>
 
-          <div className="ml-12 hidden min-w-0 border-l border-[#d8cbb9] pl-12 [@media(min-width:1280px)]:block">
-            <p className="whitespace-nowrap text-[23px] font-bold leading-tight text-[#3d3933]">
-              Tổ Ấm Hoàn Hảo - Thi công xây dựng, nội thất tận tâm
-            </p>
-            <p className="mt-1.5 flex items-center gap-2 whitespace-nowrap text-[14px] italic leading-tight text-[#6f675d]">
-              <span
-                aria-hidden="true"
-                className="h-1.5 w-1.5 shrink-0 bg-[#b98938]"
-              />
-              Cam kết chuẩn thiết kế, chuẩn thi công, chuẩn tiến độ. Tư vấn
-              thiết kế hợp kinh phí, báo giá tốt nhất vào việc luôn!
-            </p>
-          </div>
+        <nav className={styles.desktopNav} aria-label="Menu chính">
+          {navigation.map((item) => item.children ? (
+            <div
+              key={item.label}
+              className={`${styles.navItem} ${openDesktop === item.label ? styles.navOpen : ""}`}
+              onMouseEnter={() => setOpenDesktop(item.label)}
+              onMouseLeave={() => setOpenDesktop(null)}
+            >
+              <button
+                type="button"
+                aria-expanded={openDesktop === item.label}
+                onClick={() => setOpenDesktop(openDesktop === item.label ? null : item.label)}
+              >
+                {item.label}<ChevronDown size={14} aria-hidden="true" />
+              </button>
+              <div className={styles.dropdown}>
+                <MenuChildren items={item.children} onNavigate={() => setOpenDesktop(null)} />
+              </div>
+            </div>
+          ) : item.href ? (
+            <Link key={item.label} href={item.href}>{item.label}</Link>
+          ) : (
+            <span key={item.label}>{item.label}</span>
+          ))}
+        </nav>
 
-          <MobileNavigation items={navigation} />
-        </div>
-
-        <DesktopNavigation items={navigation} />
+        <ConsultationButton className={styles.consultation}>Nhận tư vấn <ArrowRight size={18} aria-hidden="true" /></ConsultationButton>
+        <button
+          className={styles.mobileToggle}
+          type="button"
+          aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="site-mobile-menu"
+          onClick={() => setMobileOpen((open) => !open)}
+        >
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
+
+      {mobileOpen && (
+        <nav id="site-mobile-menu" className={styles.mobileNav} aria-label="Menu mobile">
+          <div className={styles.mobileInner}>
+            {navigation.map((item) => item.children ? (
+              <details key={item.label}>
+                <summary>{item.label}<ChevronDown size={17} aria-hidden="true" /></summary>
+                <MenuChildren items={item.children} onNavigate={() => setMobileOpen(false)} />
+              </details>
+            ) : item.href ? (
+              <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)}>{item.label}</Link>
+            ) : (
+              <span key={item.label}>{item.label}</span>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

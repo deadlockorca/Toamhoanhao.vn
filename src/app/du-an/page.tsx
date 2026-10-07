@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
-import { ProjectsHero } from "@/components/projects/projects-hero";
-import { ProjectsListingSection } from "@/components/projects/projects-listing-section";
+import { PortfolioOverview } from "@/components/portfolio/portfolio-overview";
 import { SiteFooter } from "@/components/site-footer";
-import { getProjectCategoryFromQuery } from "@/lib/content-library";
+import { createContentLibrary, getProjectCategoryFromQuery } from "@/lib/content-library";
 import { getPublicDesignSamples, getPublicProjects } from "@/lib/public-content";
 
 export const metadata: Metadata = {
@@ -29,17 +27,8 @@ export default async function ProjectsPage({
     getPublicProjects(),
     getPublicDesignSamples(),
   ]);
-  return (
-    <main className="min-h-screen bg-[#f6f0e8] text-[#17140f]">
-      <ProjectsHero />
-      <ProjectsListingSection
-        key={initialCategory ?? "all-projects"}
-        projects={projects}
-        designSamples={designSamples}
-        initialCategory={initialCategory}
-      />
-      <ConsultationCta />
-      <SiteFooter />
-    </main>
-  );
+  return <>
+    <PortfolioOverview mode="projects" items={createContentLibrary(projects, designSamples)} initialCategory={initialCategory} />
+    <SiteFooter />
+  </>;
 }
