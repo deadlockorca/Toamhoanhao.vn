@@ -1,64 +1,34 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Armchair,
-  BadgeCheck,
-  BedDouble,
-  BookOpen,
-  Check,
-  ChefHat,
-  Crown,
-  Gem,
-  Palette,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react";
+import { Armchair, BadgeCheck, BedDouble, BookOpen, ChefHat, Crown, Gem, Palette } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
+import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ConsultationButton } from "@/components/consultation-popup";
+import styles from "../thiet-ke-khach-san/hotel.module.css";
+import local from "./neoclassical.module.css";
 
 export const metadata: Metadata = {
   title: "Thiết kế nội thất tân cổ điển | Tổ Ấm Hoàn Hảo",
-  description:
-    "Thiết kế nội thất tân cổ điển cao cấp: sự kết hợp hài hòa giữa cổ điển và hiện đại, sang trọng và đầy tinh tế, thể hiện đẳng cấp và gu thẩm mỹ của gia chủ.",
+  description: "Thiết kế nội thất tân cổ điển cao cấp: sự kết hợp hài hòa giữa cổ điển và hiện đại, sang trọng và đầy tinh tế, thể hiện đẳng cấp và gu thẩm mỹ của gia chủ.",
 };
 
 type Feature = { icon: LucideIcon; title: string; content: string };
-type RoomFeature = Feature & { image: string };
+type Room = Feature & { image: string; id: string };
 
-const rooms: RoomFeature[] = [
-  {
-    icon: Armchair,
-    title: "Phòng khách",
-    content:
-      "Những chi tiết trang trí tỉ mỉ, cầu kỳ làm thủ công, lấy cảm hứng từ hình kỷ hà, cỏ hoa tự nhiên mang tính nghệ thuật cao và đồng bộ về phong cách.",
-    image: "/images/thiet-ke-noi-that/tan-co-dien/phong-khach.webp",
-  },
-  {
-    icon: BedDouble,
-    title: "Phòng ngủ",
-    content:
-      "Kế thừa vẻ đẹp cổ điển nhưng đã lược bỏ những chi tiết quá cầu kỳ, phòng ngủ tân cổ điển gợi không gian sang trọng, tráng lệ nhưng vẫn vô cùng tinh tế.",
-    image: "/images/thiet-ke-noi-that/tan-co-dien/phong-ngu.webp",
-  },
-  {
-    icon: BookOpen,
-    title: "Phòng sách",
-    content:
-      "Ghế sofa kết hợp hài hòa kệ sách hoàn toàn biến căn phòng đọc sách thành nơi thư giãn tuyệt vời.",
-    image: "/images/thiet-ke-noi-that/tan-co-dien/phong-sach.webp",
-  },
-  {
-    icon: ChefHat,
-    title: "Phòng ăn",
-    content:
-      "Chỉ cần thêm đèn chùm trang trí với thảm trải sàn, phòng ăn được khoác lên một ngoại hình mới mà vẫn giữ phong cách cổ điển.",
-    image: "/images/thiet-ke-noi-that/tan-co-dien/phong-an.webp",
-  },
+const qualities: Feature[] = [
+  { icon: Crown, title: "Vương giả", content: "Thể hiện đẳng cấp và sự quý phái trong từng không gian." },
+  { icon: Gem, title: "Tinh tế", content: "Kế thừa vẻ đẹp cổ điển, lược bỏ chi tiết quá cầu kỳ." },
+  { icon: Palette, title: "Nghệ thuật", content: "Chi tiết trang trí làm thủ công, mang giá trị nghệ thuật cao." },
+];
+
+const rooms: Room[] = [
+  { id: "phong-khach", icon: Armchair, title: "Phòng khách", content: "Những chi tiết trang trí tỉ mỉ, cầu kỳ làm thủ công, lấy cảm hứng từ hình kỷ hà, cỏ hoa tự nhiên mang tính nghệ thuật cao và đồng bộ về phong cách.", image: "/images/thiet-ke-noi-that/tan-co-dien/phong-khach.webp" },
+  { id: "phong-ngu", icon: BedDouble, title: "Phòng ngủ", content: "Kế thừa vẻ đẹp cổ điển nhưng đã lược bỏ những chi tiết quá cầu kỳ, phòng ngủ tân cổ điển gợi không gian sang trọng, tráng lệ nhưng vẫn vô cùng tinh tế.", image: "/images/thiet-ke-noi-that/tan-co-dien/phong-ngu.webp" },
+  { id: "phong-sach", icon: BookOpen, title: "Phòng sách", content: "Ghế sofa kết hợp hài hòa kệ sách hoàn toàn biến căn phòng đọc sách thành nơi thư giãn tuyệt vời.", image: "/images/thiet-ke-noi-that/tan-co-dien/phong-sach.webp" },
+  { id: "phong-an", icon: ChefHat, title: "Phòng ăn", content: "Chỉ cần thêm đèn chùm trang trí với thảm trải sàn, phòng ăn được khoác lên một ngoại hình mới mà vẫn giữ phong cách cổ điển.", image: "/images/thiet-ke-noi-that/tan-co-dien/phong-an.webp" },
 ];
 
 const benefits = [
@@ -78,20 +48,35 @@ const commitments = [
 
 export default function NeoclassicalInteriorDesignPage() {
   return (
-    <main className="min-h-screen bg-[#f8f3ec] text-[#28221a]">
-      <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]"><SiteHeader /><div className="mx-auto grid min-h-[610px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]"><div className="flex items-end px-6 pb-16 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0"><div className="max-w-[540px]"><nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]"><Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link><span className="mx-3">/</span><Link href="/thiet-ke-noi-that" className="transition hover:text-[#9a733e]">Thiết kế nội thất</Link><span className="mx-3">/</span><span>Thiết kế nội thất tân cổ điển</span></nav><p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Thiết kế nội thất</p><h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">Tân cổ <em className="not-italic">điển</em></h1><p className="mt-7 max-w-[470px] text-base leading-8 text-[#584f43]">Kiến trúc tân cổ điển là sự kết hợp hài hòa giữa phong cách cổ điển và phong cách hiện đại, tạo nên nét kiến trúc sang trọng và đầy tinh tế, thể hiện đẳng cấp và con mắt thẩm mỹ của gia chủ.</p><div className="mt-9 flex flex-wrap gap-3"><a href="#khong-gian" className="inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Khám phá thiết kế</a><ConsultationButton className="inline-flex h-11 items-center border border-[#cdbda8] px-5 text-xs font-bold uppercase tracking-[0.06em] text-[#6b5231] transition hover:border-[#9a733e] hover:text-[#8a6536]">Nhận tư vấn</ConsultationButton></div></div></div><div className="relative min-h-[380px] lg:min-h-full"><Image src="/images/thiet-ke-noi-that/tan-co-dien/hero.webp" alt="Thiết kế nội thất tân cổ điển cao cấp" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover" /></div></div></section>
+    <main className={styles.page}>
+      <SiteHeader />
+      <section className={styles.hero}><div className={`${styles.container} ${styles.heroGrid}`}>
+        <div className={styles.heroCopy}>
+          <nav aria-label="Điều hướng trang" className={styles.breadcrumb}><Link href="/">Trang chủ</Link><span>/</span><Link href="/thiet-ke-noi-that">Thiết kế nội thất</Link><span>/</span><span>Thiết kế nội thất tân cổ điển</span></nav>
+          <p className={styles.eyebrow}>Thiết kế nội thất</p><h1>Tân cổ <span>điển</span></h1>
+          <p className={styles.heroDescription}>Kiến trúc tân cổ điển là sự kết hợp hài hòa giữa phong cách cổ điển và phong cách hiện đại, tạo nên nét kiến trúc sang trọng và đầy tinh tế, thể hiện đẳng cấp và con mắt thẩm mỹ của gia chủ.</p>
+          <div className={styles.heroActions}><a className={styles.primaryButton} href="#khong-gian">Khám phá thiết kế</a><ConsultationButton className={styles.outlineButton}>Nhận tư vấn</ConsultationButton></div>
+          <div className={styles.heroTags} aria-label="Không gian tân cổ điển"><a href="#phong-khach">Phòng khách</a><a href="#phong-ngu">Phòng ngủ</a><a href="#phong-sach">Phòng sách</a><a href="#phong-an">Phòng ăn</a></div>
+        </div>
+        <div className={styles.heroVisual}><div className={styles.heroImage}><Image src="/images/thiet-ke-noi-that/tan-co-dien/hero.webp" alt="Thiết kế nội thất tân cổ điển cao cấp" fill priority sizes="(min-width: 900px) 42vw, 90vw" className={styles.coverImage} /></div><div className={styles.heroBadge}><span className={styles.badgeIcon}>✦</span><span><small>Phong cách tân cổ điển</small><strong>Sang trọng và đầy tinh tế</strong></span></div></div>
+      </div></section>
 
-      <div className="mx-auto max-w-[1320px] px-5 py-14 sm:px-8 lg:py-20">
-        <section className="grid gap-8 border border-[#e0d5c6] bg-[#fdfaf6] p-7 sm:p-10 lg:grid-cols-[0.55fr_1.45fr] lg:items-center"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Phong cách</p><h2 className="mt-4 font-serif text-3xl leading-tight text-[#30291f]">Sang trọng, tinh tế và vương giả</h2><p className="mt-4 text-sm leading-7 text-[#61584b]">Không gian tân cổ điển làm nổi bật sự vương giả, thể hiện đẳng cấp và con mắt thẩm mỹ của gia chủ, với những chi tiết trang trí tỉ mỉ và đồng bộ về phong cách.</p></div><div className="grid gap-3 sm:grid-cols-3">{[{ icon: Crown, title: "Vương giả", content: "Thể hiện đẳng cấp và sự quý phái trong từng không gian." }, { icon: Gem, title: "Tinh tế", content: "Kế thừa vẻ đẹp cổ điển, lược bỏ chi tiết quá cầu kỳ." }, { icon: Palette, title: "Nghệ thuật", content: "Chi tiết trang trí làm thủ công, mang giá trị nghệ thuật cao." }].map((item) => { const Icon = item.icon; return <article key={item.title} className="min-h-[180px] border border-[#e0d5c6] p-6"><Icon aria-hidden="true" className="h-8 w-8 text-[#a0783e]" strokeWidth={1.25} /><p className="mt-6 text-sm font-bold uppercase tracking-[0.05em] text-[#3d352b]">{item.title}</p><p className="mt-3 text-xs leading-6 text-[#756b5e]">{item.content}</p></article>; })}</div></section>
+      <section className={styles.overview}><div className={`${styles.container} ${styles.overviewGrid}`}>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>Phong cách</p><h2>Sang trọng, tinh tế và vương giả</h2><p>Không gian tân cổ điển làm nổi bật sự vương giả, thể hiện đẳng cấp và con mắt thẩm mỹ của gia chủ, với những chi tiết trang trí tỉ mỉ và đồng bộ về phong cách.</p></div>
+        <div className={styles.typeGrid}>{qualities.map((item)=>{const Icon=item.icon;return <article className={styles.typeCard} key={item.title}><span className={styles.smallIcon}><Icon size={22} strokeWidth={1.5} aria-hidden="true" /></span><h3>{item.title}</h3><p>{item.content}</p></article>})}</div>
+      </div></section>
 
-        <section id="khong-gian" className="py-16 lg:py-20"><p className="text-center text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Không gian tiêu biểu</p><h2 className="mx-auto mt-4 max-w-[680px] text-center font-serif text-3xl leading-tight text-[#30291f]">Những thiết kế tân cổ điển đẹp hút hồn</h2><div className="mt-10 space-y-12">{rooms.map((item) => { const Icon = item.icon; return <article key={item.title} className="grid items-center gap-8 lg:grid-cols-2"><Image src={item.image} alt={item.title} width={750} height={400} sizes="(min-width: 1024px) 46vw, 100vw" className="h-auto w-full object-cover" /><div><div className="flex items-center gap-3"><Icon aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.25} /><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Không gian</p></div><h2 className="mt-4 font-serif text-3xl leading-tight text-[#30291f]">{item.title}</h2><p className="mt-4 text-sm leading-7 text-[#61584b]">{item.content}</p></div></article>; })}</div></section>
+      <section id="khong-gian" className={styles.stylesSection}><div className={styles.container}>
+        <div className={styles.centerHeading}><p className={styles.eyebrow}>Không gian tiêu biểu</p><h2>Những thiết kế tân cổ điển đẹp hút hồn</h2></div>
+        <div className={styles.showcaseList}>{rooms.map((room,index)=>{const Icon=room.icon;return <article id={room.id} className={`${styles.showcase} ${index%2?styles.showcaseReverse:""}`} key={room.id}><div className={styles.showcaseImage}><Image src={room.image} alt={room.title} fill sizes="(min-width: 900px) 52vw, 100vw" className={styles.coverImage} /></div><div className={styles.showcaseCard}><span className={styles.showcaseNumber}>{String(index+1).padStart(2,"0")}</span><p className={styles.eyebrow}><Icon size={16} strokeWidth={1.5} aria-hidden="true" /> Không gian</p><h3>{room.title}</h3><p className={styles.showcaseDescription}>{room.content}</p></div></article>})}</div>
+      </div></section>
 
-        <section className="border-y border-[#dfd3c3] py-16 lg:py-20"><div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]"><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Lợi ích</p><h2 className="mt-4 font-serif text-3xl leading-tight text-[#30291f]">Lợi ích khi lựa chọn thiết kế nội thất tân cổ điển</h2><p className="mt-4 text-sm leading-7 text-[#61584b]">Đội ngũ kiến trúc sư và chuyên gia của Tổ Ấm Hoàn Hảo với kinh nghiệm dày dặn, chuyên môn vững vàng sẽ giúp quý khách có được một không gian hoàn mỹ nhất.</p></div><div className="grid gap-x-8 gap-y-4 sm:grid-cols-2">{benefits.map((item) => <div key={item} className="flex gap-3 text-sm leading-6 text-[#61584b]"><Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#74785f]" strokeWidth={2} />{item}</div>)}</div></div></section>
+      <section className={local.benefitsSection}><div className={styles.container}>
+        <div className={local.benefitsGrid}><div className={styles.sectionIntro}><p className={styles.eyebrow}>Lợi ích</p><h2>Lợi ích khi lựa chọn thiết kế nội thất tân cổ điển</h2><p>Đội ngũ kiến trúc sư và chuyên gia của Tổ Ấm Hoàn Hảo với kinh nghiệm dày dặn, chuyên môn vững vàng sẽ giúp quý khách có được một không gian hoàn mỹ nhất.</p></div><ul>{benefits.map((item)=><li key={item}><BadgeCheck size={18} strokeWidth={1.7} aria-hidden="true" />{item}</li>)}</ul></div>
+        <div className={`${styles.commitmentBox} ${local.commitmentBox}`}><div><p className={styles.eyebrow}>Cam kết của chúng tôi</p><h2>Hãy để chúng tôi thực hiện ước mơ giúp bạn</h2><p>Với phương châm hoạt động luôn đặt uy tín và lợi ích khách hàng lên hàng đầu, chúng tôi cam kết mang đến chất lượng tuyệt vời nhất.</p></div><ul>{commitments.map((item)=><li key={item}><BadgeCheck size={17} strokeWidth={1.7} aria-hidden="true" />{item}</li>)}</ul></div>
+      </div></section>
 
-        <section className="border border-[#e0d5c6] bg-[#fdfaf6] p-7 sm:p-10"><div className="flex flex-col gap-7 lg:flex-row lg:items-center"><ShieldCheck aria-hidden="true" className="h-12 w-12 shrink-0 text-[#a0783e]" strokeWidth={1.2} /><div><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Cam kết của chúng tôi</p><h2 className="mt-3 font-serif text-3xl text-[#30291f]">Hãy để chúng tôi thực hiện ước mơ giúp bạn</h2><p className="mt-3 max-w-[800px] text-sm leading-7 text-[#61584b]">Với phương châm hoạt động luôn đặt uy tín và lợi ích khách hàng lên hàng đầu, chúng tôi cam kết mang đến chất lượng tuyệt vời nhất.</p><div className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">{commitments.map((item) => <div key={item} className="flex gap-3 text-sm leading-6 text-[#61584b]"><BadgeCheck aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#74785f]" strokeWidth={2} />{item}</div>)}</div></div></div></section>
-      </div>
-
-      <section className="bg-[#6f745e] px-5 py-16 text-white sm:px-8"><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Crown aria-hidden="true" className="h-9 w-9 text-white/80" strokeWidth={1.25} /><h2 className="mt-5 max-w-[680px] font-serif text-4xl leading-tight sm:text-5xl">Sẵn sàng sở hữu không gian tân cổ điển đầy mê mẩn?</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Tư vấn miễn phí mọi vấn đề về thiết kế – thi công nội thất tân cổ điển, đúng tiến độ và chi phí hợp lý.</p><div className="mt-8 flex flex-wrap items-center justify-center gap-4"><ConsultationButton className="inline-flex h-11 items-center bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]">Đặt lịch tư vấn ngay</ConsultationButton><span className="text-sm font-semibold text-white/90">Hotline: 0903.897.555</span></div></div></section>
+      <section className={styles.finalCta}><Image src="/images/thiet-ke-noi-that/tan-co-dien/hero.webp" alt="Không gian tân cổ điển" fill sizes="100vw" className={styles.coverImage} /><div className={styles.finalOverlay} /><div className={styles.finalContent}><h2>Sẵn sàng sở hữu không gian tân cổ điển đầy mê mẩn?</h2><p>Tư vấn miễn phí mọi vấn đề về thiết kế – thi công nội thất tân cổ điển, đúng tiến độ và chi phí hợp lý.</p><div><ConsultationButton className={styles.lightButton}>Đặt lịch tư vấn ngay</ConsultationButton><a className={styles.phoneButton} href="tel:0903897555">Hotline: 0903.897.555</a></div></div></section>
       <SiteFooter />
     </main>
   );

@@ -1,137 +1,134 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { ArticlePagination } from "@/components/article-pagination";
+import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import {
   getInteriorDesignExperienceArticleHref,
   interiorDesignExperienceArticles,
+  interiorDesignExperienceListingHref,
+  type InteriorDesignExperienceArticle,
 } from "@/data/interior-design-experience-articles";
+import styles from "../experience-listing.module.css";
 
 export const metadata: Metadata = {
   title: "Kinh nghiệm thiết kế nội thất | Tổ Ấm Hoàn Hảo",
-  description:
-    "Cẩm nang thiết kế nội thất thực tế: quy trình, chi phí, lưu ý và kinh nghiệm tạo không gian sống phù hợp.",
+  description: "Cẩm nang thiết kế nội thất thực tế: quy trình, chi phí, lưu ý và kinh nghiệm tạo không gian sống phù hợp.",
 };
 
-export default async function InteriorDesignExperiencePage({
-  searchParams,
-}: PageProps<"/kien-thuc/kinh-nghiem-thiet-ke-noi-that">) {
-  const { trang } = await searchParams;
+type Category = "khong-gian" | "ky-thuat" | "phong-thuy" | "khac";
+const categories: { value: Category; label: string }[] = [
+  { value: "khong-gian", label: "Không gian sống" },
+  { value: "ky-thuat", label: "Kỹ thuật & vật liệu" },
+  { value: "phong-thuy", label: "Phong thủy" },
+  { value: "khac", label: "Về Tổ Ấm" },
+];
+const technicalSlugs = new Set([
+  "thang-may-gia-dinh-voi-cong-nghe-chan-khong-2023",
+  "bao-tri-thang-may-gia-dinh-dieu-ma-ban-can-luu-y",
+  "thi-cong-xay-dung-nha-tron-goi-mien-phi-thiet-ke",
+  "kinh-nghiem-thi-cong-cua-go-tu-nhien-noi-that-20",
+  "6-loai-vat-lieu-go-cong-nghiep-pho-bien-nhat",
+  "5-luu-y-trong-sua-chua-va-cai-tao-can-ho-chung-cu",
+  "kinh-nghiem-thi-cong-noi-that-tron-goi-nam-2022",
+  "kinh-nghiem-thi-cong-noi-that-tron-goi-biet-thu-22",
+  "quy-trinh-lam-noi-that",
+]);
+const fengShuiSlugs = new Set([
+  "20-mau-thiet-ke-phong-tho-chuan-phong-thuy-2023",
+  "kinh-nghiem-ve-phong-thuy-khi-treo-guong-toilet-14",
+  "kinh-nghiem-thiet-ke-phong-bep-hop-phong-thuy-12",
+]);
+const companySlugs = new Set([
+  "to-am-hoan-hao-duoc-tin-cay",
+  "to-am-hoan-hao-xay-dung-va-lam-noi-that-tron-goi",
+]);
+function getCategory(article: InteriorDesignExperienceArticle): Category {
+  if (companySlugs.has(article.slug)) return "khac";
+  if (fengShuiSlugs.has(article.slug)) return "phong-thuy";
+  if (technicalSlugs.has(article.slug)) return "ky-thuat";
+  return "khong-gian";
+}
+function getCategoryLabel(article: InteriorDesignExperienceArticle) {
+  return categories.find((category) => category.value === getCategory(article))?.label;
+}
+
+export default async function InteriorDesignExperiencePage({ searchParams }: PageProps<"/kien-thuc/kinh-nghiem-thiet-ke-noi-that">) {
+  const { trang, "chu-de": topic } = await searchParams;
+  const topicValue = Array.isArray(topic) ? topic[0] : topic;
+  const selectedCategory = categories.find((category) => category.value === topicValue)?.value;
+  const filteredArticles = selectedCategory
+    ? interiorDesignExperienceArticles.filter((article) => getCategory(article) === selectedCategory)
+    : interiorDesignExperienceArticles;
+  const pageCount = Math.max(1, Math.ceil(filteredArticles.length / 6));
   const trangValue = Array.isArray(trang) ? trang[0] : trang;
-  const articlesPerPage = 6;
-  const pageCount = Math.max(
-    1,
-    Math.ceil(interiorDesignExperienceArticles.length / articlesPerPage),
-  );
   const requestedPage = Number.parseInt(trangValue ?? "1", 10);
-  const currentPage = Number.isFinite(requestedPage)
-    ? Math.min(Math.max(requestedPage, 1), pageCount)
-    : 1;
-  const visibleArticles = interiorDesignExperienceArticles.slice(
-    (currentPage - 1) * articlesPerPage,
-    currentPage * articlesPerPage,
-  );
+  const currentPage = Number.isFinite(requestedPage) ? Math.min(Math.max(requestedPage, 1), pageCount) : 1;
+  const visibleArticles = filteredArticles.slice((currentPage - 1) * 6, currentPage * 6);
+  const featured = currentPage === 1 ? visibleArticles[0] : undefined;
+  const cardArticles = featured ? visibleArticles.slice(1) : visibleArticles;
+  const pageHref = (page: number) => {
+    const params = new URLSearchParams();
+    if (selectedCategory) params.set("chu-de", selectedCategory);
+    if (page > 1) params.set("trang", String(page));
+    const query = params.toString();
+    return `${interiorDesignExperienceListingHref}${query ? `?${query}` : ""}#articles`;
+  };
+  const articleNumber = (article: InteriorDesignExperienceArticle) => String(interiorDesignExperienceArticles.indexOf(article) + 1).padStart(2, "0");
 
   return (
-    <main className="min-h-screen bg-[#f8f3ec] text-[#2c261e]">
-      <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]">
-        <SiteHeader />
-        <div className="mx-auto grid min-h-[520px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]">
-          <div className="relative z-10 flex items-end bg-[#f8f3ec]/90 px-6 pb-14 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0">
-            <div className="max-w-[525px]">
-              <nav
-                aria-label="Điều hướng trang"
-                className="text-xs text-[#766d60]"
-              >
-                <Link href="/" className="transition hover:text-[#9a733e]">
-                  Trang chủ
-                </Link>
-                <span className="mx-3">/</span>
-                <span>Kinh nghiệm thiết kế nội thất</span>
-              </nav>
-              <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-                Kiến thức
-              </p>
-              <h1 className="mt-4 font-sans text-5xl leading-[1.04] text-[#1f1a13] sm:text-6xl">
-                Kinh nghiệm thiết kế <em className="not-italic">nội thất</em>
-              </h1>
-              <p className="mt-6 max-w-[455px] text-base leading-8 text-[#584f43]">
-                Cẩm nang thiết kế nội thất thực tế, giúp bạn kiến tạo không gian
-                đẹp, tiện nghi và phù hợp với lối sống, ngân sách của gia đình.
-              </p>
-            </div>
+    <main className={styles.page}>
+      <SiteHeader />
+      <div className={styles.headerSpacer} />
+      <section className={styles.hero}>
+        <div className={`${styles.container} ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <nav className={styles.breadcrumb} aria-label="Điều hướng trang"><Link href="/">Trang chủ</Link><span>/</span><span>Kinh nghiệm thiết kế nội thất</span></nav>
+            <p className={styles.eyebrow}>Kiến thức nội thất</p>
+            <h1>Kinh nghiệm thiết kế <span>nội thất</span></h1>
+            <p className={styles.heroDescription}>Cẩm nang thiết kế nội thất thực tế, giúp bạn kiến tạo không gian đẹp, tiện nghi và phù hợp với lối sống, ngân sách của gia đình.</p>
+            <div className={styles.heroActions}><Link className={styles.primaryButton} href="#articles">Đọc bài viết</Link><ConsultationButton className={styles.outlineButton}>Nhận tư vấn</ConsultationButton></div>
+            <div className={styles.heroStats}><div><strong>{interiorDesignExperienceArticles.length}</strong><small>Bài viết</small></div><div><strong>{categories.length}</strong><small>Chủ đề để khám phá</small></div></div>
           </div>
-          <div className="relative min-h-[320px] lg:min-h-full">
-            <Image
-              src="/images/gioi-thieu/banner.png"
-              alt="Không gian nội thất hiện đại"
-              fill
-              priority
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover object-right"
-            />
+          <div className={styles.heroVisual}>
+            <Image src="/images/gioi-thieu/banner.png" alt="Không gian phòng khách sáng và ấm áp" fill priority sizes="(max-width: 700px) 100vw, 530px" style={{ objectPosition: "right center" }} />
+            <div className={styles.heroNote}><span aria-hidden="true">✓</span><div><strong>Kinh nghiệm thực tế</strong><small>Khám phá các bài viết nội thất</small></div></div>
           </div>
         </div>
       </section>
-
-      <section id="articles" className="border-y border-[#e1d6c7] bg-[#eee5d8] px-5 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-                Đọc thêm
-              </p>
-              <h2 className="mt-3 font-serif text-4xl text-[#30291f]">
-                Bài viết về thiết kế nội thất
-              </h2>
-            </div>
-            <span className="text-xs font-bold uppercase tracking-[0.05em] text-[#7b623d]">
-              {interiorDesignExperienceArticles.length} bài viết
-            </span>
+      <section id="articles" className={styles.articlesSection}>
+        <div className={styles.container}>
+          <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>Đọc thêm</p><h2>Bài viết về thiết kế nội thất</h2></div><p>{interiorDesignExperienceArticles.length} bài viết trong chuyên mục kinh nghiệm thiết kế nội thất của Tổ Ấm Hoàn Hảo.</p></div>
+          <nav className={styles.filters} aria-label="Lọc bài viết theo chủ đề">
+            <Link href={`${interiorDesignExperienceListingHref}#articles`} aria-current={!selectedCategory ? "page" : undefined} className={!selectedCategory ? styles.activeFilter : ""}>Tất cả</Link>
+            {categories.map((category) => <Link key={category.value} href={`${interiorDesignExperienceListingHref}?chu-de=${category.value}#articles`} aria-current={selectedCategory === category.value ? "page" : undefined} className={selectedCategory === category.value ? styles.activeFilter : ""}>{category.label}</Link>)}
+          </nav>
+          {featured && <article className={styles.featuredCard}>
+            <Link href={getInteriorDesignExperienceArticleHref(featured.slug)} className={styles.featuredImage} aria-label={featured.title}><Image src={featured.image} alt={featured.title} fill sizes="(max-width: 700px) 100vw, 630px" /></Link>
+            <div className={styles.featuredCopy}><div className={styles.cardMeta}><span>Bài viết {articleNumber(featured)}</span><span>{getCategoryLabel(featured)}</span></div><h3><Link href={getInteriorDesignExperienceArticleHref(featured.slug)}>{featured.title}</Link></h3><p>{featured.excerpt}</p><Link className={styles.readMore} href={getInteriorDesignExperienceArticleHref(featured.slug)}>Xem bài viết <ArrowRight size={15} aria-hidden="true" /></Link></div>
+          </article>}
+          <div className={styles.cardsGrid}>
+            {cardArticles.map((article) => <article key={article.slug} className={styles.articleCard}>
+              <Link href={getInteriorDesignExperienceArticleHref(article.slug)} className={styles.cardImage} aria-label={article.title}><Image src={article.image} alt={article.title} fill sizes="(max-width: 700px) 100vw, 370px" /></Link>
+              <div className={styles.cardCopy}><div className={styles.cardMeta}><span>Bài viết {articleNumber(article)}</span><span>{getCategoryLabel(article)}</span></div><h3><Link href={getInteriorDesignExperienceArticleHref(article.slug)}>{article.title}</Link></h3><p>{article.excerpt}</p><Link className={styles.readMore} href={getInteriorDesignExperienceArticleHref(article.slug)}>Xem bài viết <ArrowRight size={15} aria-hidden="true" /></Link></div>
+            </article>)}
+            {currentPage === 1 && <aside className={styles.inlineCta}><h3>Bạn đang lên ý tưởng cho không gian sống?</h3><p>Chia sẻ nhu cầu của bạn, đội ngũ Tổ Ấm Hoàn Hảo sẽ tư vấn phương án phù hợp.</p><ConsultationButton>Nhận tư vấn</ConsultationButton></aside>}
           </div>
-
-          <div className="mt-9 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
-            {visibleArticles.map((article) => (
-              <Link
-                key={article.slug}
-                href={getInteriorDesignExperienceArticleHref(article.slug)}
-                className="group overflow-hidden border border-[#d7c9b6] bg-[#f9f4ed] transition hover:-translate-y-1"
-              >
-                <div className="relative aspect-[1.55] overflow-hidden">
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <p className="text-xs text-[#8d7c66]">{article.date}</p>
-                  <h3 className="mt-2 font-serif text-xl leading-tight text-[#332b21]">
-                    {article.title}
-                  </h3>
-                  <p className="mt-3 text-xs leading-5 text-[#756b5e]">
-                    {article.excerpt}
-                  </p>
-                  <span className="mt-4 inline-block text-xs font-bold uppercase tracking-[0.08em] text-[#8a6330]">
-                    Đọc bài viết
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <ArticlePagination
-            basePath="/kien-thuc/kinh-nghiem-thiet-ke-noi-that"
-            currentPage={currentPage}
-            pageCount={pageCount}
-          />
+          {pageCount > 1 && <nav className={styles.pagination} aria-label="Phân trang bài viết">
+            {currentPage > 1 ? <Link href={pageHref(currentPage - 1)} aria-label="Trang trước"><ArrowLeft size={16} /></Link> : <span aria-hidden="true"><ArrowLeft size={16} /></span>}
+            {Array.from({ length: pageCount }, (_, index) => index + 1).map((page) => <Link key={page} href={pageHref(page)} aria-current={page === currentPage ? "page" : undefined} className={page === currentPage ? styles.currentPage : ""}>{page}</Link>)}
+            {currentPage < pageCount ? <Link href={pageHref(currentPage + 1)} aria-label="Trang sau"><ArrowRight size={16} /></Link> : <span aria-hidden="true"><ArrowRight size={16} /></span>}
+          </nav>}
         </div>
       </section>
-
+      <section className={styles.bottomCta}>
+        <Image src="/images/gioi-thieu/banner.png" alt="" fill sizes="100vw" />
+        <div className={styles.bottomShade} />
+        <div className={styles.bottomContent}><h2>Bạn đang lên ý tưởng thiết kế nội thất?</h2><p>Nhận tư vấn về không gian, công năng và chi phí từ đội ngũ Tổ Ấm Hoàn Hảo.</p><div><ConsultationButton>Đặt lịch tư vấn ngay</ConsultationButton><a href="tel:0903387555">Hotline: 0903.897.555</a></div></div>
+      </section>
       <SiteFooter />
     </main>
   );

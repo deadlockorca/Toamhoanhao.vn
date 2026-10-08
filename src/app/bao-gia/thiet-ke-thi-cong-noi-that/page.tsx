@@ -8,6 +8,7 @@ import {
   ClipboardCheck,
   FileSearch,
   House,
+  Info,
   Layers3,
   MapPin,
   Phone,
@@ -16,298 +17,105 @@ import {
   Sparkles,
 } from "lucide-react";
 
+import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { ConsultationButton } from "@/components/consultation-popup";
-import {
-  getPricingArticleHref,
-  pricingArticles,
-} from "@/data/pricing-articles";
+import { getPricingArticleHref, pricingArticles } from "@/data/pricing-articles";
+import styles from "../pricing-overview.module.css";
 
 export const metadata: Metadata = {
   title: "Báo giá thiết kế thi công nội thất | Tổ Ấm Hoàn Hảo",
-  description:
-    "Phạm vi báo giá thiết kế, thi công và sản xuất nội thất trọn gói theo diện tích, vật liệu và nhu cầu thực tế.",
+  description: "Phạm vi báo giá thiết kế, thi công và sản xuất nội thất trọn gói theo diện tích, vật liệu và nhu cầu thực tế.",
 };
 
 const pricingFactors = [
-  {
-    icon: Building2,
-    title: "Quy mô công trình",
-    content: "Diện tích, loại hình và số lượng không gian cần triển khai.",
-  },
-  {
-    icon: Layers3,
-    title: "Cấp độ vật liệu",
-    content: "Cốt gỗ, bề mặt, đá, kim loại, vải và hệ phụ kiện lựa chọn.",
-  },
-  {
-    icon: Sparkles,
-    title: "Mức độ hoàn thiện",
-    content: "Độ phức tạp của thiết kế, chi tiết gia công và yêu cầu thẩm mỹ.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Điều kiện triển khai",
-    content: "Hiện trạng, tiến độ, vận chuyển và điều kiện thi công thực tế.",
-  },
+  { icon: Building2, title: "Quy mô công trình", content: "Diện tích, loại hình và số lượng không gian cần triển khai." },
+  { icon: Layers3, title: "Cấp độ vật liệu", content: "Cốt gỗ, bề mặt, đá, kim loại, vải và hệ phụ kiện lựa chọn." },
+  { icon: Sparkles, title: "Mức độ hoàn thiện", content: "Độ phức tạp của thiết kế, chi tiết gia công và yêu cầu thẩm mỹ." },
+  { icon: ClipboardCheck, title: "Điều kiện triển khai", content: "Hiện trạng, tiến độ, vận chuyển và điều kiện thi công thực tế." },
 ];
-
 const process = [
-  {
-    icon: FileSearch,
-    title: "Tiếp nhận nhu cầu",
-    content: "Ghi nhận loại hình, diện tích, phong cách và ngân sách dự kiến.",
-  },
-  {
-    icon: House,
-    title: "Khảo sát hiện trạng",
-    content: "Đo đạc, kiểm tra kỹ thuật và điều kiện thi công thực tế.",
-  },
-  {
-    icon: Ruler,
-    title: "Chốt phương án",
-    content: "Thống nhất công năng, vật liệu, khối lượng và tiêu chuẩn bàn giao.",
-  },
-  {
-    icon: Banknote,
-    title: "Lập báo giá",
-    content: "Bóc tách từng hạng mục, đơn vị tính và giá trị dự toán rõ ràng.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Ký kết triển khai",
-    content: "Chốt tiến độ, thanh toán, bảo hành và trách nhiệm hai bên.",
-  },
+  { icon: FileSearch, title: "Tiếp nhận nhu cầu", content: "Ghi nhận loại hình, diện tích, phong cách và ngân sách dự kiến." },
+  { icon: House, title: "Khảo sát hiện trạng", content: "Đo đạc, kiểm tra kỹ thuật và điều kiện thi công thực tế." },
+  { icon: Ruler, title: "Chốt phương án", content: "Thống nhất công năng, vật liệu, khối lượng và tiêu chuẩn bàn giao." },
+  { icon: Banknote, title: "Lập báo giá", content: "Bóc tách từng hạng mục, đơn vị tính và giá trị dự toán rõ ràng." },
+  { icon: ShieldCheck, title: "Ký kết triển khai", content: "Chốt tiến độ, thanh toán, bảo hành và trách nhiệm hai bên." },
 ];
-
-const locations = [
-  "Hà Nội",
-  "TP. Hồ Chí Minh",
-  "TP. Thủ Đức",
-  "Bình Dương",
-  "Thanh Hóa",
-  "Các tỉnh lân cận",
+const locations = ["Hà Nội", "TP. Hồ Chí Minh", "TP. Thủ Đức", "Bình Dương", "Thanh Hóa", "Các tỉnh lân cận"];
+const filters = [
+  { value: "tong-hop", label: "Tổng hợp", matches: ["Báo giá tổng hợp"] },
+  { value: "vat-lieu", label: "Vật liệu", matches: ["Vật liệu"] },
+  { value: "tu-bep", label: "Tủ bếp", matches: ["Tủ bếp"] },
+  { value: "van-phong", label: "Văn phòng", matches: ["Văn phòng"] },
+  { value: "goi-ngan-sach", label: "Gói ngân sách", matches: ["Gói ngân sách cũ"] },
+  { value: "kinh-nghiem", label: "Kinh nghiệm", matches: ["Kinh nghiệm báo giá"] },
 ];
+const packageCards = [169, 250, 300, 400].map((amount) => ({
+  amount,
+  article: pricingArticles.find((article) => article.slug === `goi-noi-that-hoan-thien-${amount}-trieu`),
+}));
+const basePath = "/bao-gia/thiet-ke-thi-cong-noi-that";
 
-export default function InteriorPricingPage() {
+export default async function InteriorPricingPage({ searchParams }: PageProps<"/bao-gia/thiet-ke-thi-cong-noi-that">) {
+  const { loai } = await searchParams;
+  const filterValue = Array.isArray(loai) ? loai[0] : loai;
+  const selectedFilter = filters.find((filter) => filter.value === filterValue);
+  const visibleArticles = selectedFilter
+    ? pricingArticles.filter((article) => selectedFilter.matches.includes(article.label))
+    : pricingArticles;
+
   return (
-    <main className="min-h-screen bg-[#f8f3ec] text-[#2d271f]">
-      <section className="relative overflow-hidden border-b border-[#e1d6c7]">
-        <SiteHeader />
-        <div className="mx-auto grid min-h-[560px] max-w-[1320px] pt-20 lg:grid-cols-[0.88fr_1.12fr] xl:pt-[120px]">
-          <div className="relative z-10 flex items-center px-6 py-16 sm:px-10 lg:px-8 lg:py-12">
-            <div className="max-w-[560px]">
-              <nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]">
-                <Link href="/" className="transition hover:text-[#9a733e]">
-                  Trang chủ
-                </Link>
-                <span className="mx-3">/</span>
-                <span>Báo giá thiết kế thi công nội thất</span>
-              </nav>
-
-              <p className="mt-10 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-                Báo giá nội thất
-              </p>
-              <h1 className="mt-4 font-sans text-5xl leading-[1.03] text-[#1f1a13] sm:text-6xl">
-                Thiết kế & thi công
-                <span className="block not-italic">nội thất trọn gói</span>
-              </h1>
-              <p className="mt-6 max-w-[510px] text-base leading-8 text-[#584f43]">
-                Báo giá được lập theo đúng diện tích, vật liệu và nhu cầu thực tế,
-                giúp bạn nhìn rõ từng hạng mục trước khi triển khai.
-              </p>
-
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ConsultationButton
-                  className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
-                >
-                  Nhận báo giá
-                  <ArrowRight aria-hidden="true" className="h-4 w-4" />
-                </ConsultationButton>
-                <a
-                  href="tel:0903897555"
-                  className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]"
-                >
-                  <Phone aria-hidden="true" className="h-4 w-4" />
-                  0903.897.555
-                </a>
-              </div>
-            </div>
+    <main className={styles.page}>
+      <SiteHeader />
+      <div className={styles.headerSpacer} />
+      <section className={styles.hero}>
+        <div className={`${styles.container} ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <nav className={styles.breadcrumb} aria-label="Điều hướng trang"><Link href="/">Trang chủ</Link><span>/</span><span>Báo giá thiết kế thi công nội thất</span></nav>
+            <p className={styles.eyebrow}>Báo giá nội thất</p>
+            <h1>Thiết kế & thi công nội thất <span>trọn gói</span></h1>
+            <p className={styles.heroDescription}>Báo giá được lập theo đúng diện tích, vật liệu và nhu cầu thực tế, giúp bạn nhìn rõ từng hạng mục trước khi triển khai.</p>
+            <div className={styles.heroActions}><ConsultationButton className={styles.primaryButton}>Nhận báo giá <ArrowRight size={15} aria-hidden="true" /></ConsultationButton><a href="tel:0903897555" className={styles.outlineButton}><Phone size={15} aria-hidden="true" />0903.897.555</a></div>
           </div>
-
-          <div className="relative min-h-[340px] lg:min-h-full">
-            <Image
-              src="/images/bao-gia/hero.webp"
-              alt="Không gian nội thất hoàn thiện"
-              fill
-              priority
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-y-0 left-0 hidden w-28 bg-gradient-to-r from-[#f8f3ec] to-transparent lg:block" />
+          <div className={styles.heroVisual}>
+            <Image src="/images/bao-gia/hero.webp" alt="Không gian nội thất hoàn thiện" fill priority sizes="(max-width: 700px) 100vw, 530px" />
+            <div className={styles.heroNote}><span className={styles.heroNoteIcon}><Ruler size={17} aria-hidden="true" /></span><span><small>Báo giá bóc tách</small><strong>Rõ từng hạng mục</strong></span></div>
           </div>
         </div>
       </section>
+      <div className={`${styles.container} ${styles.factorWrap}`}><section className={styles.factors} aria-label="Các yếu tố quyết định báo giá">
+        {pricingFactors.map((factor) => { const Icon = factor.icon; return <article key={factor.title} className={styles.factor}><span className={styles.factorIcon}><Icon size={17} aria-hidden="true" /></span><h2>{factor.title}</h2><p>{factor.content}</p></article>; })}
+      </section></div>
 
-      <section className="border-b border-[#e1d6c7] bg-[#fdfaf6]">
-        <div className="mx-auto grid max-w-[1320px] grid-cols-2 px-5 sm:px-8 lg:grid-cols-4">
-          {pricingFactors.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article
-                key={item.title}
-                className="border-[#e1d6c7] px-4 py-7 even:border-l lg:border-l lg:first:border-l-0 lg:px-7"
-              >
-                <Icon aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
-                <h2 className="mt-4 text-sm font-bold text-[#3e352a]">{item.title}</h2>
-                <p className="mt-2 text-xs leading-5 text-[#756b5e]">{item.content}</p>
-              </article>
-            );
-          })}
+      <section id="bao-gia" className={styles.library}>
+        <div className={styles.container}>
+          <div className={styles.libraryHeading}><div><p className={styles.eyebrow}>Thư viện báo giá</p><h2>Bảng báo giá thiết kế và thi công trọn gói nội thất của Tổ Ấm Hoàn Hảo</h2></div><p>Tổng hợp {pricingArticles.length} bài viết báo giá và gói hoàn thiện từ website cũ, giúp bạn tham khảo cách phân chia hạng mục, vật liệu và mức đầu tư trước khi nhận dự toán theo công trình thực tế.</p></div>
+          <div className={styles.packages} aria-label="Gói nội thất tham khảo từ website cũ">
+            {packageCards.map(({ amount, article }) => article && <Link key={amount} href={getPricingArticleHref(article.slug)} className={`${styles.package} ${amount === 300 ? styles.packageFeatured : ""}`}><small>Gói tham khảo</small><strong>{amount}<span> triệu</span></strong><p>{article.excerpt}</p></Link>)}
+          </div>
+          <nav className={styles.filters} aria-label="Lọc bài viết báo giá">
+            <Link href={`${basePath}#bao-gia`} aria-current={!selectedFilter ? "page" : undefined} className={!selectedFilter ? styles.activeFilter : ""}>Tất cả</Link>
+            {filters.map((filter) => <Link key={filter.value} href={`${basePath}?loai=${filter.value}#bao-gia`} aria-current={selectedFilter?.value === filter.value ? "page" : undefined} className={selectedFilter?.value === filter.value ? styles.activeFilter : ""}>{filter.label}</Link>)}
+          </nav>
+          <div className={styles.articleGrid}>{visibleArticles.map((article) => <article key={article.slug} className={styles.articleCard}>
+            <Link href={getPricingArticleHref(article.slug)} className={styles.cardImage} aria-label={article.title}><Image src={article.image} alt={article.title} fill sizes="(max-width: 700px) 100vw, 370px" /></Link>
+            <div className={styles.cardCopy}><div className={styles.cardMeta}><span>{String(pricingArticles.indexOf(article) + 1).padStart(2, "0")}</span><span>{article.label}</span></div><h3><Link href={getPricingArticleHref(article.slug)}>{article.title}</Link></h3><Link className={styles.readMore} href={getPricingArticleHref(article.slug)}>Xem bài viết <ArrowRight size={15} aria-hidden="true" /></Link></div>
+          </article>)}</div>
+          <p className={styles.archiveNote}><Info size={17} aria-hidden="true" />Các gói 169, 250, 300 và 400 triệu là hồ sơ tham khảo từ website cũ, không phải báo giá hiện hành. Báo giá mới được bóc tách theo diện tích, vật liệu và thời điểm triển khai thực tế.</p>
         </div>
       </section>
 
-      <section className="border-y border-[#e1d6c7] bg-[#eee5d8] px-5 py-16 sm:px-8 lg:py-24">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="max-w-[930px]">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-              Thư viện báo giá
-            </p>
-            <h2 className="mt-3 font-serif text-4xl leading-tight text-[#30291f] sm:text-5xl">
-              Bảng báo giá thiết kế và thi công trọn gói nội thất của Tổ Ấm Hoàn Hảo
-            </h2>
-            <p className="mt-5 max-w-[760px] text-sm leading-7 text-[#6f6558]">
-              Tổng hợp 9 bài viết báo giá và gói hoàn thiện từ website cũ, giúp bạn
-              tham khảo cách phân chia hạng mục, vật liệu và mức đầu tư trước khi
-              nhận dự toán theo công trình thực tế.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
-            {pricingArticles.map((item, index) => (
-              <Link
-                key={item.slug}
-                href={getPricingArticleHref(item.slug)}
-                className="group flex min-h-full flex-col overflow-hidden border border-[#d7c9b6] bg-[#f9f4ed] transition hover:-translate-y-1 hover:border-[#b89a70] hover:shadow-[0_18px_45px_rgba(77,61,39,0.09)]"
-              >
-                <div className="relative aspect-[1.6] overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 50vw"
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute left-2 top-2 bg-[#f9f4ed]/95 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.08em] text-[#805f32] sm:left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-[10px] sm:tracking-[0.12em]">
-                    {item.label}
-                  </span>
-                </div>
-                <div className="flex flex-1 flex-col p-3 sm:p-6">
-                  <p className="text-xs font-bold text-[#a0783e]">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="mt-3 font-serif text-base leading-snug text-[#332b21] sm:text-2xl">
-                    {item.title}
-                  </h3>
-                  <span className="mt-auto inline-flex items-center gap-2 pt-6 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">
-                    Xem bài viết
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="h-4 w-4 transition group-hover:translate-x-1"
-                    />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-8 border-l-2 border-[#a0783e] bg-[#f8f1e7] px-5 py-4 text-xs leading-6 text-[#6f6558]">
-            Các gói 169, 250, 300 và 400 triệu là hồ sơ tham khảo từ website cũ,
-            không phải báo giá hiện hành. Báo giá mới được bóc tách theo diện tích,
-            vật liệu và thời điểm triển khai thực tế.
-          </div>
-        </div>
+      <section className={styles.processSection}>
+        <div className={styles.container}><div className={styles.centerHeading}><p className={styles.eyebrow}>Quy trình làm việc</p><h2>Từ nhu cầu đến báo giá chính thức</h2></div><div className={styles.processGrid}>{process.map((step, index) => <article key={step.title} className={styles.processCard}><span className={styles.processNumber}>0{index + 1}</span><h3>{step.title}</h3><p>{step.content}</p></article>)}</div></div>
       </section>
-
-      <section className="border-y border-[#e1d6c7] bg-[#fdfaf6] px-5 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto max-w-[1320px]">
-          <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
-              Quy trình làm việc
-            </p>
-            <h2 className="mt-3 font-serif text-4xl text-[#30291f]">Từ nhu cầu đến báo giá chính thức</h2>
-          </div>
-
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {process.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <article key={item.title} className="relative border border-[#ded2c1] p-5">
-                  <span className="text-xs font-bold text-[#a0783e]">0{index + 1}</span>
-                  <Icon aria-hidden="true" className="mt-5 h-8 w-8 text-[#9a733e]" strokeWidth={1.2} />
-                  <h3 className="mt-5 text-sm font-bold text-[#3e352a]">{item.title}</h3>
-                  <p className="mt-3 text-xs leading-6 text-[#756b5e]">{item.content}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
+      <section className={styles.locationsSection}>
+        <div className={`${styles.container} ${styles.locationsBox}`}><div className={styles.locationsIntro}><p className={styles.eyebrow}>Khu vực tiếp nhận</p><h2>Khu vực tiếp nhận công trình</h2><p>Nội dung website cũ ghi nhận hệ thống văn phòng và xưởng tại nhiều khu vực. Phạm vi triển khai cụ thể sẽ được xác nhận theo địa điểm và quy mô công trình.</p></div><div className={styles.locationGrid}>{locations.map((location) => <span key={location}><MapPin size={14} aria-hidden="true" />{location}</span>)}</div></div>
       </section>
-
-      <section className="px-5 py-16 sm:px-8 lg:py-20">
-        <div className="mx-auto grid max-w-[1320px] gap-8 border border-[#ded2c1] bg-[#f3eade] p-7 lg:grid-cols-[1fr_1.25fr] lg:p-10">
-          <div>
-            <MapPin aria-hidden="true" className="h-9 w-9 text-[#9a733e]" strokeWidth={1.2} />
-            <h2 className="mt-5 font-serif text-3xl text-[#30291f]">Khu vực tiếp nhận công trình</h2>
-            <p className="mt-4 max-w-[500px] text-sm leading-7 text-[#695f52]">
-              Nội dung website cũ ghi nhận hệ thống văn phòng và xưởng tại nhiều khu vực.
-              Phạm vi triển khai cụ thể sẽ được xác nhận theo địa điểm và quy mô công trình.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-px border border-[#d7c9b6] bg-[#d7c9b6] sm:grid-cols-3">
-            {locations.map((location) => (
-              <div key={location} className="flex min-h-20 items-center gap-3 bg-[#fbf7f1] px-4 py-3">
-                <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-[#9a733e]" strokeWidth={1.5} />
-                <span className="text-sm font-semibold text-[#574b3d]">{location}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className={styles.bottomCta}>
+        <Image src="/images/bao-gia/hero.webp" alt="" fill sizes="100vw" />
+        <div className={styles.bottomShade} />
+        <div className={styles.bottomContent}><p className={styles.eyebrow}>Nhận dự toán theo nhu cầu</p><h2>Gửi mặt bằng để nhận phạm vi báo giá phù hợp</h2><p>Đội ngũ sẽ trao đổi nhu cầu, vật liệu và tiến độ dự kiến trước khi lập bảng khối lượng chi tiết cho công trình của bạn.</p><div className={styles.bottomActions}><ConsultationButton>Yêu cầu báo giá</ConsultationButton><a href="tel:0903897555">Gọi 0903.897.555</a></div></div>
       </section>
-
-      <section className="relative overflow-hidden bg-[#3d382d] px-5 py-16 text-white sm:px-8 lg:py-20">
-        <div className="absolute inset-0 opacity-25">
-          <Image src="/images/bao-gia/tu-bep.webp" alt="" fill sizes="100vw" className="object-cover" />
-        </div>
-        <div className="absolute inset-0 bg-[#302b22]/75" />
-        <div className="relative mx-auto flex max-w-[1120px] flex-col items-center text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#e6c897]">Nhận dự toán theo nhu cầu</p>
-          <h2 className="mt-4 max-w-[760px] font-serif text-4xl leading-tight sm:text-5xl">
-            Gửi mặt bằng để nhận phạm vi báo giá phù hợp
-          </h2>
-          <p className="mt-5 max-w-[680px] text-sm leading-7 text-[#e8e0d5]">
-            Đội ngũ sẽ trao đổi nhu cầu, vật liệu và tiến độ dự kiến trước khi lập
-            bảng khối lượng chi tiết cho công trình của bạn.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <ConsultationButton
-              className="inline-flex min-h-12 items-center gap-2 bg-[#858a6c] px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#969c78]"
-            >
-              Yêu cầu báo giá
-              <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </ConsultationButton>
-            <a
-              href="tel:0903897555"
-              className="inline-flex min-h-12 items-center gap-2 border border-white/50 px-7 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-white/10"
-            >
-              <Phone aria-hidden="true" className="h-4 w-4" />
-              Gọi 0903.897.555
-            </a>
-          </div>
-        </div>
-      </section>
-
       <SiteFooter />
     </main>
   );

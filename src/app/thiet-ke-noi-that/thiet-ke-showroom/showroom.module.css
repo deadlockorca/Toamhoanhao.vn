@@ -1,0 +1,13 @@
+.factorGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.featureShowcase{margin-top:48px}
+.reasonsSection{padding:100px 0;background:#fcfaf8}
+.reasonGrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;margin-top:40px}
+.reasonGrid article{min-height:220px}
+.benefitSection{padding:20px 0 100px;background:#fcfaf8}
+.commitmentCard{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:center;margin-top:70px;padding:38px 45px;background:#f1e9df;border-radius:16px}
+.commitmentCard h2{font-size:clamp(25px,2.7vw,36px);line-height:1.25;margin:13px 0 0;letter-spacing:-.03em}
+.commitmentCard ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.commitmentCard li{display:flex;gap:10px;font-size:13px;line-height:1.6;color:#655a50}
+.commitmentCard li svg{color:#b46e39;flex:none;margin-top:2px}
+@media(max-width:1000px){.reasonGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.commitmentCard{grid-template-columns:1fr;gap:28px}}
+@media(max-width:700px){.factorGrid{grid-template-columns:1fr}.featureShowcase{margin-top:32px}.reasonsSection{padding:72px 0}.reasonGrid{grid-template-columns:1fr;margin-top:28px}.reasonGrid article{min-height:0}.benefitSection{padding:0 0 75px}.commitmentCard{padding:27px 22px;margin-top:45px}.commitmentCard ul{grid-template-columns:1fr;gap:14px}}

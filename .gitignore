@@ -39,6 +39,7 @@ yarn-error.log*
 .mysql-run/
 content-import/
 /public/uploads/
+/exports/*.sql
 .mysql-data.failed-*/
 .mysql-run.failed-*/
 

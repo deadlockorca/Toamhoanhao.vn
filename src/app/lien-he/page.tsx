@@ -2,26 +2,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  ArrowRight,
   BadgeCheck,
-  ChevronDown,
   CircleHelp,
-  Clock3,
   Factory,
   Globe2,
   Headphones,
   Mail,
-  MapPin,
   Phone,
-  Quote,
+  Plus,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 import { ContactForm } from "@/components/contact-form";
-import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { officeAddresses } from "@/data/site";
+import styles from "./contact.module.css";
 
 export const metadata: Metadata = {
   title: "Liên hệ | Tổ Ấm Hoàn Hảo",
@@ -32,9 +29,7 @@ const contactCards = [
   { icon: Phone, label: "Hotline", value: "0903.897.555", href: "tel:0903897555" },
   { icon: Mail, label: "Email", value: "hotro.toamhoanhao@gmail.com", href: "mailto:hotro.toamhoanhao@gmail.com" },
   { icon: Globe2, label: "Website", value: "toamhoanhao.vn", href: "https://toamhoanhao.vn" },
-  { icon: MapPin, label: "Địa chỉ", value: officeAddresses },
 ];
-
 const reasons = [
   { icon: Headphones, title: "Phản hồi nhanh", content: "Tiếp nhận và phản hồi trong vòng 2 giờ làm việc." },
   { icon: CircleHelp, title: "Tư vấn đúng nhu cầu", content: "Đề xuất giải pháp cân bằng giữa công năng và ngân sách." },
@@ -42,14 +37,12 @@ const reasons = [
   { icon: ShieldCheck, title: "Đồng hành trọn quy trình", content: "Từ tư vấn, thiết kế, thi công đến bảo hành." },
   { icon: Factory, title: "Hỗ trợ hậu mãi", content: "Bảo hành chu đáo, hỗ trợ nhanh chóng khi cần." },
 ];
-
 const faqs = [
-  "Quy trình tư vấn như thế nào?",
-  "Chi phí thiết kế tính ra sao?",
-  "Có nhận thi công trọn gói không?",
-  "Có hỗ trợ khảo sát tận nơi không?",
+  { question: "Quy trình tư vấn như thế nào?", answer: "Đội ngũ sẽ tiếp nhận thông tin, trao đổi nhu cầu và hẹn khảo sát hoặc tư vấn phù hợp." },
+  { question: "Chi phí thiết kế tính ra sao?", answer: "Chi phí được tư vấn theo diện tích, hạng mục và mức độ chi tiết của công trình." },
+  { question: "Có nhận thi công trọn gói không?", answer: "Có. Chúng tôi hỗ trợ thiết kế, sản xuất và thi công nội thất trọn gói." },
+  { question: "Có hỗ trợ khảo sát tận nơi không?", answer: "Có. Tùy khu vực và nhu cầu cụ thể, chúng tôi sẽ sắp xếp lịch khảo sát phù hợp." },
 ];
-
 const stats = [
   ["15+", "Năm kinh nghiệm", "Trong lĩnh vực thiết kế và thi công nội thất"],
   ["500+", "Công trình hoàn thiện", "Triển khai tại Hà Nội và các tỉnh thành"],
@@ -59,40 +52,74 @@ const stats = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#f8f3ec] text-[#2b251d]">
-      <section className="relative overflow-hidden border-b border-[#e1d6c7] bg-[#f8f3ec]">
-        <SiteHeader />
-        <div className="mx-auto grid min-h-[610px] max-w-[1320px] pt-20 lg:grid-cols-[0.9fr_1.1fr] xl:pt-[120px]">
-          <div className="relative z-10 flex items-end bg-[#f8f3ec]/88 px-6 pb-16 pt-24 sm:px-10 lg:items-center lg:px-8 lg:pb-0">
-            <div className="max-w-[535px]">
-              <nav aria-label="Điều hướng trang" className="text-xs text-[#766d60]"><Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link><span className="mx-3">/</span><span>Liên hệ</span></nav>
-              <p className="mt-12 text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Liên hệ</p>
-              <h1 className="mt-4 font-sans text-5xl leading-[1.02] text-[#1f1a13] sm:text-6xl lg:text-7xl">Liên hệ với <em className="not-italic">chúng tôi</em></h1>
-              <p className="mt-7 max-w-[460px] text-base leading-8 text-[#584f43]">Hãy để lại thông tin, đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ và tư vấn giải pháp thiết kế, thi công, sản xuất nội thất phù hợp nhất cho bạn.</p>
-              <div className="mt-9 flex flex-wrap gap-3"><ConsultationButton className="inline-flex h-11 items-center bg-[#70745d] px-5 text-xs font-bold uppercase tracking-[0.06em] text-white transition hover:bg-[#5d614d]">Đặt lịch tư vấn</ConsultationButton><a href="tel:0903897555" className="inline-flex h-11 items-center gap-2 border border-[#cdbda8] px-5 text-xs font-bold uppercase tracking-[0.06em] text-[#6b5231] transition hover:border-[#9a733e] hover:text-[#8a6536]"><Phone aria-hidden="true" className="h-4 w-4" />Gọi ngay</a></div>
-            </div>
+    <main className={styles.page}>
+      <SiteHeader />
+      <div className={styles.headerSpacer} />
+      <section className={styles.hero}>
+        <div className={`${styles.container} ${styles.heroGrid}`}>
+          <div className={styles.heroCopy}>
+            <nav className={styles.breadcrumb} aria-label="Điều hướng trang"><Link href="/">Trang chủ</Link><span>/</span><span>Liên hệ</span></nav>
+            <p className={styles.eyebrow}>Liên hệ</p>
+            <h1>Liên hệ với <span>chúng tôi</span></h1>
+            <p className={styles.heroDescription}>Hãy để lại thông tin, đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ và tư vấn giải pháp thiết kế, thi công, sản xuất nội thất phù hợp nhất cho bạn.</p>
+            <div className={styles.heroActions}><a className={styles.primaryButton} href="#tu-van">Đặt lịch tư vấn</a><a className={styles.outlineButton} href="tel:0903897555">Gọi ngay</a></div>
           </div>
-          <div className="relative min-h-[380px] lg:min-h-full"><Image src="/images/gioi-thieu/banner.png" alt="Không gian nội thất Tổ Ấm Hoàn Hảo" fill priority sizes="(min-width: 1024px) 55vw, 100vw" className="object-cover object-right" /></div>
+          <div className={styles.heroVisual}>
+            <Image src="/images/gioi-thieu/banner.png" alt="Không gian nội thất Tổ Ấm Hoàn Hảo" fill priority sizes="(max-width: 700px) 100vw, 530px" />
+            <a href="tel:0903897555" className={styles.heroPhone}><span className={styles.heroPhoneIcon}><Phone size={17} aria-hidden="true" /></span><span><small>Hotline</small><strong>0903.897.555</strong></span></a>
+          </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-[1320px] px-5 py-14 sm:px-8 lg:py-20">
-        <section className="grid overflow-hidden border border-[#e0d5c6] bg-[#fdfaf6] sm:grid-cols-2 lg:grid-cols-4">
-          {contactCards.map((item) => { const Icon = item.icon; const content = <><Icon aria-hidden="true" className="h-9 w-9 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><span><span className="block text-xs font-bold uppercase tracking-[0.07em] text-[#5f5548]">{item.label}</span><span className="mt-2 block text-sm leading-6 text-[#6b5231]">{Array.isArray(item.value) ? item.value.map((address) => <span key={address} className="mb-2 block last:mb-0">{address}</span>) : item.value}</span></span></>; return item.href ? <a key={item.label} href={item.href} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 transition hover:bg-[#f5ede2] sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0"><>{content}</></a> : <div key={item.label} className="flex min-h-[118px] items-center gap-4 border-b border-[#e0d5c6] p-6 sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0">{content}</div>; })}
+      <div className={`${styles.container} ${styles.contactMain}`}>
+        <section className={styles.contactCards} aria-label="Thông tin liên hệ">
+          {contactCards.map((item) => { const Icon = item.icon; return <a key={item.label} href={item.href} className={styles.contactCard}><span className={styles.contactCardIcon}><Icon size={20} aria-hidden="true" /></span><span><small>{item.label}</small><strong>{item.value}</strong></span></a>; })}
         </section>
-
-        <section id="tu-van" className="grid gap-6 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:py-20">
+        <section id="tu-van" className={styles.formSection}>
           <ContactForm />
-
-          <div className="space-y-6"><section className="border border-[#e0d5c6] bg-[#fdfaf6] p-6 sm:p-9"><h2 className="font-serif text-3xl leading-tight text-[#30291f]">Vì sao nên liên hệ <em className="text-[#74785f]">Tổ Ấm Hoàn Hảo?</em></h2><div className="mt-7 space-y-5">{reasons.map((reason) => { const Icon = reason.icon; return <div key={reason.title} className="flex gap-4"><Icon aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><div><h3 className="text-sm font-bold text-[#3b3329]">{reason.title}</h3><p className="mt-1 text-xs leading-5 text-[#756b5e]">{reason.content}</p></div></div>; })}</div></section><section className="border border-[#e0d5c6] bg-[#f1e8db] p-6 sm:p-8"><div className="flex gap-4"><Clock3 aria-hidden="true" className="h-8 w-8 shrink-0 text-[#a0783e]" strokeWidth={1.25} /><div><h2 className="font-serif text-2xl text-[#30291f]">Giờ làm việc</h2><div className="mt-5 space-y-2 text-sm text-[#62594d]"><p className="flex justify-between gap-4"><span>Thứ 2 - Thứ 7</span><strong>8:00 - 18:00</strong></p><p className="flex justify-between gap-4"><span>Chủ nhật</span><strong>Hỗ trợ theo lịch hẹn</strong></p></div></div></div></section></div>
+          <div className={styles.sidebar}>
+            <section className={styles.reasonsCard}>
+              <h2>Vì sao nên liên hệ <span>Tổ Ấm Hoàn Hảo?</span></h2>
+              <div className={styles.reasonsList}>{reasons.map((reason) => { const Icon = reason.icon; return <div key={reason.title} className={styles.reason}><span className={styles.reasonIcon}><Icon size={16} aria-hidden="true" /></span><div><h3>{reason.title}</h3><p>{reason.content}</p></div></div>; })}</div>
+            </section>
+            <section className={styles.hoursCard}>
+              <h2>Giờ làm việc</h2>
+              <p className={styles.hoursRow}><span>Thứ 2 – Thứ 7</span><strong>8:00 – 18:00</strong></p>
+              <p className={styles.hoursRow}><span>Chủ nhật</span><strong>Hỗ trợ theo lịch hẹn</strong></p>
+            </section>
+          </div>
         </section>
-
-        <section className="grid gap-8 py-16 lg:grid-cols-[0.35fr_1.65fr] lg:py-20"><h2 className="font-serif text-3xl text-[#30291f]">Câu hỏi thường gặp</h2><div className="space-y-2">{faqs.map((question, index) => <details key={question} className="group border border-[#e0d5c6] bg-[#fdfaf6]"><summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-5 py-4 text-sm font-semibold text-[#4a4034]"><span>{question}</span><ChevronDown aria-hidden="true" className="h-4 w-4 shrink-0 text-[#9a733e] transition group-open:rotate-180" /></summary><p className="border-t border-[#eadfd1] px-5 py-4 text-sm leading-7 text-[#756b5e]">{index === 0 ? "Đội ngũ sẽ tiếp nhận thông tin, trao đổi nhu cầu và hẹn khảo sát hoặc tư vấn phù hợp." : index === 1 ? "Chi phí được tư vấn theo diện tích, hạng mục và mức độ chi tiết của công trình." : index === 2 ? "Có. Chúng tôi hỗ trợ thiết kế, sản xuất và thi công nội thất trọn gói." : "Có. Tùy khu vực và nhu cầu cụ thể, chúng tôi sẽ sắp xếp lịch khảo sát phù hợp."}</p></details>)}</div></section>
-
-        <section className="grid overflow-hidden border border-[#e0d5c6] bg-[#fdfaf6] sm:grid-cols-2 lg:grid-cols-4">{stats.map(([value, title, content]) => <article key={title} className="border-b border-[#e0d5c6] p-6 last:border-b-0 sm:nth-[2n]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0"><p className="font-serif text-4xl text-[#3a3024]">{value}</p><h2 className="mt-2 text-sm font-bold text-[#3e3529]">{title}</h2><p className="mt-2 text-xs leading-5 text-[#756b5e]">{content}</p></article>)}</section>
       </div>
 
-      <section className="relative isolate overflow-hidden px-5 py-16 text-white sm:px-8"><Image src="/images/gioi-thieu/banner.png" alt="" fill sizes="100vw" className="-z-20 object-cover object-center" /><div className="absolute inset-0 -z-10 bg-[#393a2d]/75" /><div className="mx-auto flex max-w-[1320px] flex-col items-center text-center"><Quote aria-hidden="true" className="h-8 w-8 text-white/70" strokeWidth={1.25} /><h2 className="mt-5 max-w-[700px] font-serif text-4xl leading-tight sm:text-5xl">Sẵn sàng bắt đầu hành trình kiến tạo tổ ấm của bạn?</h2><p className="mt-4 max-w-[570px] text-sm leading-7 text-white/80">Hãy để Tổ Ấm Hoàn Hảo lắng nghe và cùng bạn tìm ra giải pháp phù hợp nhất.</p><ConsultationButton className="mt-8 inline-flex h-11 items-center gap-2 bg-white px-6 text-xs font-bold uppercase tracking-[0.06em] text-[#657052] transition hover:bg-[#f0e9df]"><Sparkles aria-hidden="true" className="h-4 w-4" />Đặt lịch tư vấn ngay</ConsultationButton></div></section>
+      <section className={styles.officesSection}>
+        <div className={styles.container}>
+          <div className={styles.centerHeading}><p className={styles.eyebrow}>Văn phòng</p><h2>Ghé thăm chúng tôi</h2></div>
+          <div className={styles.officeGrid}>{officeAddresses.map((address) => {
+            const divider = address.indexOf(": ");
+            const city = address.slice(0, divider);
+            const location = address.slice(divider + 2);
+            const parts = location.split(", ");
+            const leadCount = city === "Hà Nội" ? 3 : 1;
+            return <article key={address} className={styles.officeCard}><span className={styles.cityBadge}>{city}</span><h3>{parts.slice(0, leadCount).join(", ")}</h3><p>{parts.slice(leadCount).join(", ")}</p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`} target="_blank" rel="noreferrer">Chỉ đường <ArrowRight size={14} aria-hidden="true" /></a></article>;
+          })}</div>
+        </div>
+      </section>
+
+      <section className={styles.faqSection}>
+        <div className={styles.container}>
+          <div className={styles.faqGrid}>
+            <div><p className={styles.eyebrow}>Giải đáp</p><h2>Câu hỏi thường gặp</h2></div>
+            <div className={styles.faqList}>{faqs.map((faq) => <details key={faq.question} className={styles.faqItem}><summary>{faq.question}<Plus size={17} aria-hidden="true" /></summary><p>{faq.answer}</p></details>)}</div>
+          </div>
+          <div className={styles.stats}>{stats.map(([value, title, content]) => <article key={title} className={styles.stat}><strong>{value}</strong><h3>{title}</h3><p>{content}</p></article>)}</div>
+        </div>
+      </section>
+
+      <section className={styles.bottomCta}>
+        <Image src="/images/gioi-thieu/banner.png" alt="" fill sizes="100vw" />
+        <div className={styles.bottomShade} />
+        <div className={styles.bottomContent}><h2>Sẵn sàng bắt đầu hành trình kiến tạo tổ ấm của bạn?</h2><p>Hãy để Tổ Ấm Hoàn Hảo lắng nghe và cùng bạn tìm ra giải pháp phù hợp nhất.</p><a href="#tu-van">Đặt lịch tư vấn ngay</a></div>
+      </section>
       <SiteFooter />
     </main>
   );

@@ -1,0 +1,8 @@
+.benefitsSection{background:#fcfaf8;padding:95px 0}
+.benefitsGrid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center;margin-bottom:80px}
+.benefitsGrid ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0}
+.benefitsGrid li{display:flex;gap:12px;background:#fff;border:1px solid #efe7df;border-radius:12px;padding:21px;color:#665b51;font-size:13px;line-height:1.6}
+.benefitsGrid li svg{flex:none;color:#b36d39}
+.commitmentBox{margin-top:0}
+@media(max-width:900px){.benefitsGrid{grid-template-columns:1fr;gap:30px}}
+@media(max-width:700px){.benefitsSection{padding:70px 0}.benefitsGrid{margin-bottom:50px}.benefitsGrid ul{grid-template-columns:1fr}.benefitsGrid li{padding:16px}}
