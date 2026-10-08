@@ -12,12 +12,14 @@ import styles from "./site-header.module.css";
 function MenuChildren({
   items,
   onNavigate,
+  uppercase = false,
 }: {
   items: NonNullable<NavigationItem["children"]>;
   onNavigate: () => void;
+  uppercase?: boolean;
 }) {
   return (
-    <div className={styles.menuChildren}>
+    <div className={`${styles.menuChildren} ${uppercase ? styles.menuChildrenUppercase : ""}`}>
       {items.map((item) => (
         <div key={item.label} className={styles.menuChild}>
           {item.href ? (
@@ -90,7 +92,7 @@ export function SiteHeader() {
                 {item.label}<ChevronDown size={14} aria-hidden="true" />
               </button>
               <div className={styles.dropdown}>
-                <MenuChildren items={item.children} onNavigate={() => setOpenDesktop(null)} />
+                <MenuChildren items={item.children} onNavigate={() => setOpenDesktop(null)} uppercase={item.uppercaseChildren} />
               </div>
             </div>
           ) : item.href ? (
@@ -119,7 +121,7 @@ export function SiteHeader() {
             {navigation.map((item) => item.children ? (
               <details key={item.label}>
                 <summary>{item.label}<ChevronDown size={17} aria-hidden="true" /></summary>
-                <MenuChildren items={item.children} onNavigate={() => setMobileOpen(false)} />
+                <MenuChildren items={item.children} onNavigate={() => setMobileOpen(false)} uppercase={item.uppercaseChildren} />
               </details>
             ) : item.href ? (
               <Link key={item.label} href={item.href} onClick={() => setMobileOpen(false)}>{item.label}</Link>

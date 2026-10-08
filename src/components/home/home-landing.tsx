@@ -32,6 +32,11 @@ const customerFeedbackImages = [
   "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_zalo_1.jpg",
   "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_zalo_2.jpg",
 ];
+const heroImages = [
+  { src: "/images/trang-chu/nha-pho-dep-1.jpg", label: "Thiết kế nhà phố" },
+  { src: "/images/trang-chu/thiet-ke-noi-that-go-oc-cho.jpg", label: "Nội thất gỗ óc chó" },
+  { src: "/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg", label: "Thiết kế thi công nhà phố" },
+];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className={styles.eyebrow}><span aria-hidden="true">▶</span>{children}</p>;
@@ -49,24 +54,13 @@ export function HomeLanding({ projects }: { projects: Project[] }) {
   const [feedbackClosing, setFeedbackClosing] = useState(false);
   const feedbackDialogRef = useRef<HTMLDialogElement>(null);
   const [formState, setFormState] = useState<"idle" | "sending" | "done" | "error">("idle");
-  const activeHero = projects.find((project) => project.slug === "thiet-ke-noi-that-chung-cu-5") || projects[0];
-  const spaces = activeHero?.detail?.spaces ?? [];
-  const stories = activeHero?.detail?.storyBlocks ?? [];
-  const heroImages = activeHero ? [
-    { src: imageFor(activeHero), label: "Phòng khách" },
-    ...stories.filter((story) => /bếp/i.test(story.title)).slice(0, 1).map((story) => ({ src: story.image, label: story.title })),
-    ...stories.filter((story) => /phòng ngủ/i.test(story.title)).slice(0, 1).map((story) => ({ src: story.image, label: story.title })),
-    ...spaces.filter((space) => /bếp/i.test(space.title)).slice(0, 1).map((space) => ({ src: space.image, label: space.title })),
-    ...spaces.filter((space) => /phòng ngủ/i.test(space.title)).slice(0, 1).map((space) => ({ src: space.image, label: space.title })),
-    ...spaces.map((space) => ({ src: space.image, label: space.title })),
-  ].filter((image, index, images) => image.src && images.findIndex((item) => item.src === image.src) === index).slice(0, 3) : [];
   const caseProject = projects.find((project) => project.featured) || projects[0];
 
   useEffect(() => {
     if (heroImages.length < 2) return;
     const timer = window.setInterval(() => setSlide((current) => (current + 1) % heroImages.length), 6000);
     return () => window.clearInterval(timer);
-  }, [heroImages.length]);
+  }, []);
 
   useEffect(() => {
     if (selectedFeedback) feedbackDialogRef.current?.showModal();
@@ -119,23 +113,22 @@ export function HomeLanding({ projects }: { projects: Project[] }) {
     <main className={styles.page}>
       <div className={styles.headerSpacer}><SiteHeader /></div>
 
-      {activeHero && <section className={styles.hero} aria-label="Dự án nổi bật">
-        {heroImages.map((image, index) => <Image key={image.src} src={image.src} alt={index === slide ? `${image.label} – ${activeHero.title}` : ""} fill priority={index === 0} sizes="100vw" className={`${styles.heroImage} ${index === slide ? styles.heroImageActive : ""}`} />)}
+      <section className={styles.hero} aria-label="Banner trang chủ">
+        {heroImages.map((image, index) => <Image key={image.src} src={image.src} alt={index === slide ? image.label : ""} fill priority={index === 0} sizes="100vw" className={`${styles.heroImage} ${index === slide ? styles.heroImageActive : ""}`} />)}
         <div className={styles.heroShade} />
         <div className={`${styles.container} ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
             <Eyebrow>PORTFOLIO NỘI THẤT</Eyebrow>
             <h1>Những công trình<br />kể câu chuyện sống</h1>
             <p>Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.</p>
-            <div className={styles.heroActions}><Link className={styles.buttonPrimary} href={`/du-an/${activeHero.slug}`}>Xem dự án này <ArrowRight size={16} /></Link><ConsultationButton className={styles.buttonOutline}>Nhận báo giá</ConsultationButton></div>
+            <div className={styles.heroActions}><Link className={styles.buttonPrimary} href="/du-an">Xem dự án <ArrowRight size={16} /></Link><ConsultationButton className={styles.buttonOutline}>Nhận báo giá</ConsultationButton></div>
           </div>
           {heroImages.length > 1 && <div className={styles.heroAside}>
-            <div className={styles.heroThumbs}>{heroImages.map((image, index) => <button type="button" key={image.src} onClick={() => setSlide(index)} className={index === slide ? styles.thumbActive : ""} aria-label={`Xem ảnh ${image.label} của ${activeHero.title}`} aria-pressed={index === slide}><Image src={image.src} alt="" fill sizes="120px" /></button>)}</div>
+            <div className={styles.heroThumbs}>{heroImages.map((image, index) => <button type="button" key={image.src} onClick={() => setSlide(index)} className={index === slide ? styles.thumbActive : ""} aria-label={`Xem banner ${image.label}`} aria-pressed={index === slide}><Image src={image.src} alt="" fill sizes="120px" /></button>)}</div>
             <div className={styles.heroControls}><button type="button" onClick={() => moveSlide(-1)} aria-label="Ảnh trước"><ArrowLeft size={15} /></button><button type="button" onClick={() => moveSlide(1)} aria-label="Ảnh tiếp theo"><ArrowRight size={15} /></button><span>{String(slide + 1).padStart(2, "0")} / {String(heroImages.length).padStart(2, "0")}</span></div>
           </div>}
-          <div className={styles.heroProject}><strong>{activeHero.title}</strong><dl><div><dt>Diện tích</dt><dd>{activeHero.area}</dd></div><div><dt>Phong cách</dt><dd>{activeHero.style}</dd></div><div><dt>Năm hoàn thiện</dt><dd>{activeHero.year}</dd></div></dl></div>
         </div>
-      </section>}
+      </section>
 
       <section className={styles.projectsSection} id="du-an">
         <div className={styles.container}>
@@ -194,7 +187,7 @@ export function HomeLanding({ projects }: { projects: Project[] }) {
         <Image src={selectedFeedback.src} alt={`Ảnh phản hồi khách hàng ${selectedFeedback.number} ở kích thước lớn`} width={720} height={1280} unoptimized className={styles.feedbackDialogImage} />
       </dialog>}
 
-      <section className={styles.leadSection} id="tu-van"><Image src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg" alt="" fill sizes="100vw" /><div className={`${styles.container} ${styles.leadGrid}`}><div><Eyebrow>TƯ VẤN DỰ ÁN</Eyebrow><h2>Bạn đang có dự án cần triển khai?</h2><p>Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.</p></div>{formState === "done" ? <p className={styles.formSuccess}>Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.</p> : <form onSubmit={submitLead} className={styles.leadForm}><input name="name" required placeholder="Họ và tên *" aria-label="Họ và tên" /><input name="phone" required type="tel" placeholder="Số điện thoại *" aria-label="Số điện thoại" /><input name="email" required type="email" placeholder="Email *" aria-label="Email" /><label><select name="service" defaultValue="" required aria-label="Nhu cầu của bạn"><option value="" disabled>Nhu cầu của bạn</option><option>Thiết kế nội thất</option><option>Thi công nội thất</option><option>Xây dựng trọn gói</option><option>Sản xuất nội thất</option></select><ChevronDown size={15} /></label><button type="submit" disabled={formState === "sending"}>{formState === "sending" ? "Đang gửi..." : "Nhận tư vấn miễn phí"} <ArrowRight size={16} /></button>{formState === "error" && <p role="alert">Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.</p>}</form>}</div></section>
+      <section className={styles.leadSection} id="tu-van"><Image src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg" alt="" fill sizes="100vw" /><div className={`${styles.container} ${styles.leadGrid}`}><div><Eyebrow>TƯ VẤN DỰ ÁN</Eyebrow><h2>Bạn đang có dự án cần triển khai?</h2><p>Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.</p></div>{formState === "done" ? <p className={styles.formSuccess}>Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.</p> : <form onSubmit={submitLead} className={styles.leadForm}><input name="name" required placeholder="Họ và tên *" aria-label="Họ và tên" /><input name="phone" required type="tel" placeholder="Số điện thoại *" aria-label="Số điện thoại" /><input name="email" required type="email" placeholder="Email *" aria-label="Email" /><label><select name="service" defaultValue="" required aria-label="Nhu cầu của bạn"><option value="" disabled>Nhu cầu của bạn</option><option>Thiết kế nội thất</option><option>Thi công nội thất</option><option>Xây dựng trọn gói</option><option>Sản xuất nội thất</option></select><ChevronDown size={15} /></label><button type="submit" disabled={formState === "sending"}>{formState === "sending" ? "Đang gửi..." : "Tiếp nhận dự án"} <ArrowRight size={16} /></button>{formState === "error" && <p role="alert">Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.</p>}</form>}</div></section>
 
       <SiteFooter />
     </main>

@@ -18,6 +18,7 @@ type PortfolioOverviewProps = {
   items: LibraryItem[];
   initialCategory?: LibraryCategory;
   initialPage?: number;
+  initialTopicLabel?: string;
 };
 
 const pageSize = 9;
@@ -58,7 +59,7 @@ function matchesArea(area: string | undefined, range: string) {
   }
 }
 
-export function PortfolioOverview({ mode, items, initialCategory, initialPage = 1 }: PortfolioOverviewProps) {
+export function PortfolioOverview({ mode, items, initialCategory, initialPage = 1, initialTopicLabel }: PortfolioOverviewProps) {
   const isDesigns = mode === "designs";
   const heroItems = (isDesigns
     ? [
@@ -139,7 +140,7 @@ export function PortfolioOverview({ mode, items, initialCategory, initialPage = 
 
       <section id="portfolio-list" className={styles.listSection}>
         <div className={styles.container}>
-          <div className={styles.listHeader}><div><p className={styles.eyebrow}>{isDesigns ? "DANH SÁCH MẪU THIẾT KẾ" : "DANH SÁCH DỰ ÁN"}</p><h2>Khám phá các<br />{isDesigns ? "mẫu thiết kế tiêu biểu" : "công trình tiêu biểu"}</h2></div><label className={styles.sortControl}>Sắp xếp: <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sắp xếp"><option value="newest">Mới nhất</option><option value="name">Tên A-Z</option><option value="area-desc">Diện tích lớn nhất</option><option value="area-asc">Diện tích nhỏ nhất</option></select><ChevronDown size={15} /></label></div>
+          <div className={styles.listHeader}><div><p className={styles.eyebrow}>{isDesigns ? "DANH SÁCH MẪU THIẾT KẾ" : "DANH SÁCH DỰ ÁN"}</p><h2>{initialTopicLabel ?? <>Khám phá các<br />{isDesigns ? "mẫu thiết kế tiêu biểu" : "công trình tiêu biểu"}</>}</h2>{initialTopicLabel && <Link className={styles.clearTopic} href={isDesigns ? "/mau-thiet-ke#portfolio-list" : "/du-an?danh-muc=can-ho#portfolio-list"}>Xem tất cả {isDesigns ? "mẫu thiết kế" : "dự án căn hộ"} <ArrowRight size={14} /></Link>}</div><label className={styles.sortControl}>Sắp xếp: <select value={sort} onChange={(event) => setSort(event.target.value)} aria-label="Sắp xếp"><option value="newest">Mới nhất</option><option value="name">Tên A-Z</option><option value="area-desc">Diện tích lớn nhất</option><option value="area-asc">Diện tích nhỏ nhất</option></select><ChevronDown size={15} /></label></div>
 
           <div className={styles.listGrid}>
             <aside className={styles.sidebar}>

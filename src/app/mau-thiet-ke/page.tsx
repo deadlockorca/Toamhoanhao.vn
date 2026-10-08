@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PortfolioOverview } from "@/components/portfolio/portfolio-overview";
 import { SiteFooter } from "@/components/site-footer";
 import { getDesignCategoryFromQuery } from "@/data/design-samples";
+import { getVillaMenuTopic, matchesVillaMenuTopic } from "@/data/villa-menu";
 import { createContentLibrary, type LibraryCategory } from "@/lib/content-library";
 import { getPublicDesignSamples } from "@/lib/public-content";
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 type DesignSamplesPageProps = {
   searchParams: Promise<{
     "danh-muc"?: string | string[];
+    "chu-de"?: string | string[];
     trang?: string | string[];
   }>;
 };
@@ -27,8 +29,20 @@ export default async function DesignSamplesPage({
     ? query["danh-muc"][0]
     : query["danh-muc"];
   const pageQuery = Array.isArray(query.trang) ? query.trang[0] : query.trang;
-  const activeCategory = getDesignCategoryFromQuery(categoryQuery);
+  const topicQuery = Array.isArray(query["chu-de"]) ? query["chu-de"][0] : query["chu-de"];
+  const activeTopic = getVillaMenuTopic(topicQuery);
+  const isPenthouseTopic = topicQuery === "penthouse-duplex";
+  const activeCategory = isPenthouseTopic
+    ? "Chung cư"
+    : activeTopic && activeTopic.slug !== "resort-khach-san-nha-hang"
+    ? "Biệt thự"
+    : getDesignCategoryFromQuery(categoryQuery);
   const designSamples = await getPublicDesignSamples();
+  const visibleSamples = isPenthouseTopic
+    ? designSamples.filter((sample) => sample.category === "Chung cư" && /penthouse|duplex/i.test(sample.title))
+    : activeTopic
+    ? designSamples.filter((sample) => matchesVillaMenuTopic(sample, activeTopic))
+    : designSamples;
   const requestedPage = Number.parseInt(pageQuery ?? "1", 10);
   const currentPage = Number.isFinite(requestedPage)
     ? Math.max(requestedPage, 1)
@@ -37,7 +51,7 @@ export default async function DesignSamplesPage({
     ? undefined
     : (activeCategory === "Chung cư" ? "Căn hộ" : activeCategory) as LibraryCategory;
   return <>
-    <PortfolioOverview mode="designs" items={createContentLibrary([], designSamples)} initialCategory={initialCategory} initialPage={currentPage} />
+    <PortfolioOverview mode="designs" items={createContentLibrary([], visibleSamples)} initialCategory={initialCategory} initialPage={currentPage} initialTopicLabel={isPenthouseTopic ? "Penthouse, Duplex" : activeTopic?.label} />
     <SiteFooter />
   </>;
 }

@@ -16,10 +16,13 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { villaMenuItems } from "@/data/villa-menu";
+import { apartmentMenuItems } from "@/data/apartment-menu";
 
 export type NavigationItem = {
   label: string;
   href?: string;
+  uppercaseChildren?: boolean;
   children?: Array<{
     label: string;
     href?: string;
@@ -31,10 +34,6 @@ export type NavigationItem = {
 };
 
 export const navigation: NavigationItem[] = [
-  {
-    label: "Trang chủ",
-    href: "/",
-  },
   {
     label: "Giới thiệu",
     href: "/gioi-thieu",
@@ -53,7 +52,47 @@ export const navigation: NavigationItem[] = [
         href: "/gioi-thieu/xuong-san-xuat-noi-that",
       },
       { label: "Tuyển dụng", href: "/gioi-thieu/tuyen-dung" },
+      { label: "Liên hệ", href: "/lien-he" },
     ],
+  },
+  {
+    label: "Báo giá",
+    children: [
+      {
+        label: "Báo giá thiết kế thi công nội thất",
+        href: "/bao-gia/thiet-ke-thi-cong-noi-that",
+      },
+      {
+        label: "Báo giá thiết kế kiến trúc và xây dựng trọn gói",
+        href: "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+      },
+    ],
+  },
+  {
+    label: "Biệt thự",
+    uppercaseChildren: true,
+    children: villaMenuItems.map(({ label, slug }) => ({
+      label,
+      href: `/mau-thiet-ke?chu-de=${slug}#portfolio-list`,
+    })),
+  },
+  {
+    label: "Nhà phố",
+    children: [
+      { label: "Dự án nhà phố", href: "/du-an?danh-muc=nha-pho" },
+      { label: "Mẫu thiết kế nhà phố", href: "/mau-thiet-ke?danh-muc=nha-pho#design-list" },
+      { label: "Thiết kế nội thất nhà phố", href: "/thiet-ke-noi-that/thiet-ke-nha-pho" },
+      { label: "Thi công nhà phố", href: "/thi-cong-noi-that/thi-cong-nha-pho" },
+    ],
+  },
+  {
+    label: "Nội thất chung cư",
+    children: apartmentMenuItems.map(({ label, slug }) => ({
+      label,
+      href: slug === "penthouse-duplex"
+        ? "/mau-thiet-ke?chu-de=penthouse-duplex#portfolio-list"
+        : `/du-an?danh-muc=can-ho&dien-tich=${slug}#portfolio-list`,
+    })),
   },
   {
     label: "Thiết kế nội thất",
@@ -88,69 +127,7 @@ export const navigation: NavigationItem[] = [
     ],
   },
   {
-    label: "Dự án",
-    href: "/du-an",
-    children: [
-      { label: "Tất cả dự án", href: "/du-an" },
-      { label: "Căn hộ", href: "/du-an?danh-muc=can-ho" },
-      { label: "Biệt thự", href: "/du-an?danh-muc=biet-thu" },
-      { label: "Nhà phố", href: "/du-an?danh-muc=nha-pho" },
-      { label: "Văn phòng", href: "/du-an?danh-muc=van-phong" },
-      {
-        label: "Không gian kinh doanh",
-        href: "/du-an?danh-muc=khong-gian-kinh-doanh",
-      },
-      {
-        label: "Nội thất trọn gói",
-        href: "/du-an?danh-muc=noi-that-tron-goi",
-      },
-    ],
-  },
-  {
-    label: "Mẫu thiết kế",
-    children: [
-      { label: "Tất cả mẫu thiết kế", href: "/mau-thiet-ke" },
-      {
-        label: "Mẫu thiết kế nội thất chung cư",
-        href: "/mau-thiet-ke?danh-muc=chung-cu#design-list",
-      },
-      {
-        label: "Mẫu thiết kế nhà phố",
-        href: "/mau-thiet-ke?danh-muc=nha-pho#design-list",
-      },
-      {
-        label: "Mẫu thiết kế biệt thự",
-        href: "/mau-thiet-ke?danh-muc=biet-thu#design-list",
-      },
-      {
-        label: "Mẫu phòng khách",
-        href: "/mau-thiet-ke?danh-muc=phong-khach#design-list",
-      },
-      {
-        label: "Mẫu phòng ngủ",
-        href: "/mau-thiet-ke?danh-muc=phong-ngu#design-list",
-      },
-      {
-        label: "Mẫu phòng bếp",
-        href: "/mau-thiet-ke?danh-muc=phong-bep#design-list",
-      },
-    ],
-  },
-  {
-    label: "Báo giá",
-    children: [
-      {
-        label: "Báo giá thiết kế thi công nội thất",
-        href: "/bao-gia/thiet-ke-thi-cong-noi-that",
-      },
-      {
-        label: "Báo giá thiết kế kiến trúc và xây dựng trọn gói",
-        href: "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
-      },
-    ],
-  },
-  {
-    label: "Kiến thức",
+    label: "Kinh nghiệm làm nhà, nội thất",
     children: [
       { label: "Kinh nghiệm xây nhà", href: "/kien-thuc/kinh-nghiem-xay-nha" },
       {
@@ -160,10 +137,6 @@ export const navigation: NavigationItem[] = [
       { label: "Pháp lý xây dựng", href: "/kien-thuc/phap-ly-xay-dung" },
       { label: "Kiến thức nhà đẹp", href: "/kien-thuc/kien-thuc-nha-dep" },
     ],
-  },
-  {
-    label: "Liên hệ",
-    href: "/lien-he",
   },
 ];
 
