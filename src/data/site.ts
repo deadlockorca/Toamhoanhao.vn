@@ -52,7 +52,6 @@ export const navigation: NavigationItem[] = [
         href: "/gioi-thieu/xuong-san-xuat-noi-that",
       },
       { label: "Tuyển dụng", href: "/gioi-thieu/tuyen-dung" },
-      { label: "Liên hệ", href: "/lien-he" },
     ],
   },
   {
@@ -138,6 +137,7 @@ export const navigation: NavigationItem[] = [
       { label: "Kiến thức nhà đẹp", href: "/kien-thuc/kien-thuc-nha-dep" },
     ],
   },
+  { label: "Liên hệ", href: "/lien-he" },
 ];
 
 export const projectCategories = [

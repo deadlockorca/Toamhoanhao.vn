@@ -171,14 +171,14 @@
 
 @media (max-width: 1600px) {
   .inner { gap: 16px; }
-  .desktopNav { gap: 10px; }
+  .desktopNav { gap: 8px; }
   .desktopNav > a,
   .desktopNav > span,
-  .navItem > button { font-size: 11px; }
+  .navItem > button { font-size: 10.5px; }
   .brand img { width: 54px; height: 54px; }
   .brand strong { font-size: 14px; }
   .brand small { font-size: 6px; }
-  .consultation { min-width: 140px; padding-inline: 12px; }
+  .consultation { min-width: 130px; padding-inline: 10px; }
 }
 
 @media (max-width: 1360px) {
