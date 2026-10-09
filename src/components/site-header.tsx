@@ -6,7 +6,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { ConsultationButton } from "@/components/consultation-popup";
-import { navigation, type NavigationItem } from "@/data/site";
+import { getNavigation } from "@/data/navigation-english";
+import type { NavigationItem } from "@/data/site";
+import type { SiteLocale } from "@/lib/locale";
 import styles from "./site-header.module.css";
 
 function MenuChildren({
@@ -42,7 +44,8 @@ function MenuChildren({
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
+  const navigation = getNavigation(locale);
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -71,12 +74,12 @@ export function SiteHeader() {
   return (
     <header ref={headerRef} className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.brand} aria-label="Tổ Ấm Hoàn Hảo - Trang chủ">
+        <Link href={locale === "en" ? "/en" : "/"} className={styles.brand} aria-label={locale === "en" ? "To Am Hoan Hao - Home" : "Tổ Ấm Hoàn Hảo - Trang chủ"}>
           <Image src="/logo-to-am-hoan-hao-old.png" alt="" width={64} height={64} priority />
-          <span><strong>TỔ ẤM HOÀN HẢO</strong><small>KIẾN TẠO KHÔNG GIAN SỐNG HẠNH PHÚC</small></span>
+          <span><strong>TỔ ẤM HOÀN HẢO</strong><small>{locale === "en" ? "CREATING HAPPY LIVING SPACES" : "KIẾN TẠO KHÔNG GIAN SỐNG HẠNH PHÚC"}</small></span>
         </Link>
 
-        <nav className={styles.desktopNav} aria-label="Menu chính">
+        <nav className={styles.desktopNav} aria-label={locale === "en" ? "Main navigation" : "Menu chính"}>
           {navigation.map((item) => item.children ? (
             <div
               key={item.label}
@@ -102,11 +105,18 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <ConsultationButton className={styles.consultation}>Nhận tư vấn <ArrowRight size={18} aria-hidden="true" /></ConsultationButton>
+        <div className={styles.headerActions}>
+          <nav className={styles.languageSwitch} aria-label={locale === "en" ? "Language" : "Ngôn ngữ"}>
+            <Link href="/" hrefLang="vi" aria-current={locale === "vi" ? "page" : undefined}>VI</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</Link>
+          </nav>
+          <ConsultationButton className={styles.consultation}>{locale === "en" ? "Get advice" : "Nhận tư vấn"} <ArrowRight size={18} aria-hidden="true" /></ConsultationButton>
+        </div>
         <button
           className={styles.mobileToggle}
           type="button"
-          aria-label={mobileOpen ? "Đóng menu" : "Mở menu"}
+          aria-label={mobileOpen ? (locale === "en" ? "Close menu" : "Đóng menu") : (locale === "en" ? "Open menu" : "Mở menu")}
           aria-expanded={mobileOpen}
           aria-controls="site-mobile-menu"
           onClick={() => setMobileOpen((open) => !open)}
@@ -116,7 +126,7 @@ export function SiteHeader() {
       </div>
 
       {mobileOpen && (
-        <nav id="site-mobile-menu" className={styles.mobileNav} aria-label="Menu mobile">
+        <nav id="site-mobile-menu" className={styles.mobileNav} aria-label={locale === "en" ? "Mobile navigation" : "Menu mobile"}>
           <div className={styles.mobileInner}>
             {navigation.map((item) => item.children ? (
               <details key={item.label}>

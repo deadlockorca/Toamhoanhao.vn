@@ -166,6 +166,11 @@
   transition: background .2s;
 }
 .consultation:hover { background: #844c2b; }
+.headerActions { display: flex; flex: none; align-items: center; gap: 12px; }
+.languageSwitch { display: flex; align-items: center; gap: 4px; color: #a78b76; font-size: 11px; font-weight: 700; }
+.languageSwitch a { padding: 6px 2px; color: #7b7068; }
+.languageSwitch a[aria-current="page"] { color: #a3673d; }
+.languageSwitch a:hover { color: #a3673d; }
 .mobileToggle { display: none; border: 0; background: none; color: #a3673d; cursor: pointer; }
 .mobileNav { display: none; }
 
@@ -183,7 +188,7 @@
 
 @media (max-width: 1360px) {
   .desktopNav { display: none; }
-  .consultation { margin-left: auto; }
+  .headerActions { margin-left: auto; }
   .mobileToggle { display: grid; place-items: center; flex: none; width: 44px; height: 44px; }
   .mobileNav {
     position: absolute;
@@ -226,6 +231,6 @@
   .brand strong { font-size: 12px; letter-spacing: .06em; }
   .brand small { font-size: 5px; }
   .consultation { display: none; }
-  .mobileToggle { margin-left: auto; }
+  .mobileToggle { margin-left: 0; }
   .mobileNav { max-height: calc(100dvh - 66px); }
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
+import { headers } from "next/headers";
 import { ConsultationProvider } from "@/components/consultation-popup";
 import "./globals.css";
 
@@ -31,14 +32,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({ children }: LayoutProps<"/">) {
+  const locale = (await headers()).get("x-site-locale") === "en" ? "en" : "vi";
   return (
     <html
-      lang="vi"
+      lang={locale}
       className={`${beVietnamPro.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ConsultationProvider>{children}</ConsultationProvider>
+        <ConsultationProvider locale={locale}>{children}</ConsultationProvider>
       </body>
     </html>
   );
