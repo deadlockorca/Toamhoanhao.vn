@@ -7,6 +7,8 @@ const translations: Record<string, string> = {
   "Kinh doanh": "Commercial",
   "Không gian kinh doanh": "Commercial spaces",
   "Nội thất trọn gói": "Turnkey interiors",
+  "Đang cập nhật": "Details coming soon",
+  "INDUSTRIAL HIỆN ĐẠI XU HƯỚNG 2023": "Modern industrial",
   "Tư vấn": "Consultation",
   "Tiếp nhận nhu cầu & định hướng phong cách": "Discuss your needs and preferred style",
   "Khảo sát": "Site survey",
@@ -99,4 +101,26 @@ const translations: Record<string, string> = {
 
 export function homeText(locale: "vi" | "en", source: string) {
   return locale === "en" ? translations[source] ?? source : source;
+}
+
+const englishProjectTitles: Record<string, string> = {
+  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17": "Vinhomes Grand Park 82 m² Apartment",
+  "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01": "Blue and White 30 m² Studio Apartment",
+  "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18": "72 m² Apartment with a Bold Black Palette",
+  "thiet-ke-noi-that-chung-cu-5": "Modern Two-Bedroom 78 m² Apartment",
+  "thiet-ke-thi-cong-noi-that-chung-cu-85-m2": "85 m² Japandi-Style Apartment",
+  "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04": "KABA COFFEE: 260 m² Modern Industrial Café",
+};
+
+export function homeProjectTitle(locale: "vi" | "en", slug: string, original: string) {
+  return locale === "en" ? englishProjectTitles[slug] ?? original : original;
+}
+
+const englishProjectSummaries: Record<string, string> = {
+  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17":
+    "After many conversations, our team works to understand the client’s wishes and shape the design and construction around them, aiming for a finished space that meets their expectations...",
+};
+
+export function homeProjectSummary(locale: "vi" | "en", slug: string, original: string) {
+  return locale === "en" ? englishProjectSummaries[slug] ?? original : original;
 }

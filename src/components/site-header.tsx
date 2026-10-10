@@ -3,6 +3,7 @@
 import { ArrowRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 import { ConsultationButton } from "@/components/consultation-popup";
@@ -46,6 +47,7 @@ function MenuChildren({
 
 export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
   const navigation = getNavigation(locale);
+  const pathname = usePathname();
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
@@ -107,7 +109,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
 
         <div className={styles.headerActions}>
           <nav className={styles.languageSwitch} aria-label={locale === "en" ? "Language" : "Ngôn ngữ"}>
-            <Link href="/" hrefLang="vi" aria-current={locale === "vi" ? "page" : undefined}>VI</Link>
+            <Link href={locale === "vi" ? pathname : "/"} hrefLang="vi" aria-current={locale === "vi" ? "page" : undefined}>VI</Link>
             <span aria-hidden="true">/</span>
             <Link href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</Link>
           </nav>

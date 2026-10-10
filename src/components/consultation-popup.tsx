@@ -92,7 +92,7 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
       });
       if (!response.ok) {
         const data = await response.json().catch(() => null);
-        throw new Error(data?.error ?? "Gửi thất bại");
+        throw new Error(en ? "Unable to send your request. Please try again later." : data?.error ?? "Gửi thất bại");
       }
       setIsSubmitted(true);
     } catch (error) {
