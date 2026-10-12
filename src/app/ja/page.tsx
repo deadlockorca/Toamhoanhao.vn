@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { HomeLanding } from "@/components/home/home-landing";
 import { projects as sampleProjects } from "@/data/projects";
-import { siteBaseUrl } from "@/lib/locale";
+import { homeAlternates, siteBaseUrl } from "@/lib/locale";
 import { getPublicProjects } from "@/lib/public-content";
 
 export const metadata: Metadata = {
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Tổ Ấm Hoàn Hảoのインテリアデザイン・施工事例をご紹介します。構想から完成まで、心地よい住まいをつくります。",
   alternates: {
     canonical: `${siteBaseUrl}/ja`,
-    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en`, ja: `${siteBaseUrl}/ja` },
+    languages: homeAlternates,
   },
 };
 

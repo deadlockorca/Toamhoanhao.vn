@@ -1,13 +1,13 @@
 import { HomeLanding } from "@/components/home/home-landing";
 import { projects as sampleProjects } from "@/data/projects";
 import { getPublicProjects } from "@/lib/public-content";
-import { siteBaseUrl } from "@/lib/locale";
+import { homeAlternates, siteBaseUrl } from "@/lib/locale";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: `${siteBaseUrl}/`,
-    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en`, ja: `${siteBaseUrl}/ja` },
+    languages: homeAlternates,
   },
 };
 

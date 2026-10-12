@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import { headers } from "next/headers";
 import { ConsultationProvider } from "@/components/consultation-popup";
+import { isSiteLocale } from "@/lib/locale";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const requestedLocale = (await headers()).get("x-site-locale");
-  const locale = requestedLocale === "en" || requestedLocale === "ja" ? requestedLocale : "vi";
+  const locale = requestedLocale && isSiteLocale(requestedLocale) ? requestedLocale : "vi";
   return (
     <html
       lang={locale}

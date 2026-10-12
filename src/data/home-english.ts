@@ -1,5 +1,6 @@
 import { japaneseHomeText, japaneseProjectSummary, japaneseProjectTitle } from "@/data/home-japanese";
-import type { SiteLocale } from "@/lib/locale";
+import { additionalHomeText, additionalProjectSummary, additionalProjectTitle } from "@/data/home-additional";
+import { isAdditionalLocale, type SiteLocale } from "@/lib/locale";
 
 const translations: Record<string, string> = {
   "Tất cả": "All",
@@ -33,6 +34,11 @@ const translations: Record<string, string> = {
   "Nhận báo giá": "Request a quote",
   "Ảnh trước": "Previous image",
   "Ảnh tiếp theo": "Next image",
+  "Banner trang chủ": "Homepage banner",
+  "Xem banner": "View banner",
+  "Ảnh phản hồi khách hàng": "Client feedback photo",
+  "Xem lớn ảnh phản hồi khách hàng": "Enlarge client feedback photo",
+  "ở kích thước lớn": "enlarged",
   "DỰ ÁN TIÊU BIỂU": "FEATURED PROJECTS",
   "Khám phá theo loại công trình": "Explore by project type",
   "Lọc dự án": "Filter projects",
@@ -104,6 +110,7 @@ const translations: Record<string, string> = {
 
 export function homeText(locale: SiteLocale, source: string) {
   if (locale === "ja") return japaneseHomeText(source);
+  if (isAdditionalLocale(locale)) return additionalHomeText(locale, source);
   return locale === "en" ? translations[source] ?? source : source;
 }
 
@@ -118,6 +125,7 @@ const englishProjectTitles: Record<string, string> = {
 
 export function homeProjectTitle(locale: SiteLocale, slug: string, original: string) {
   if (locale === "ja") return japaneseProjectTitle(slug, original);
+  if (isAdditionalLocale(locale)) return additionalProjectTitle(locale, slug, original);
   return locale === "en" ? englishProjectTitles[slug] ?? original : original;
 }
 
@@ -128,5 +136,6 @@ const englishProjectSummaries: Record<string, string> = {
 
 export function homeProjectSummary(locale: SiteLocale, slug: string, original: string) {
   if (locale === "ja") return japaneseProjectSummary(slug, original);
+  if (isAdditionalLocale(locale)) return additionalProjectSummary(locale, slug, original);
   return locale === "en" ? englishProjectSummaries[slug] ?? original : original;
 }

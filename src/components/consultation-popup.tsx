@@ -6,7 +6,8 @@ import {
   createContext, useCallback, useContext, useEffect, useRef, useState,
   type ChangeEvent, type FormEvent, type ReactNode,
 } from "react";
-import type { SiteLocale } from "@/lib/locale";
+import { additionalPopupCopy, additionalServiceLabels } from "@/data/consultation-additional";
+import { isAdditionalLocale, isSiteLocale, type SiteLocale } from "@/lib/locale";
 import styles from "./consultation-popup.module.css";
 
 const ConsultationContext = createContext<{ openConsultation: () => void }>({ openConsultation: () => {} });
@@ -135,6 +136,7 @@ const copyByLocale = {
       area: "地域を選択してください。",
     },
   },
+  ...additionalPopupCopy,
 } as const;
 
 const serviceOptions = [
@@ -159,8 +161,12 @@ export function ConsultationButton({ children, className }: { children: ReactNod
 
 export function ConsultationProvider({ children, locale = "vi" }: { children: ReactNode; locale?: SiteLocale }) {
   const pathname = usePathname();
-  const currentLocale: SiteLocale = pathname === "/ja" ? "ja" : pathname === "/en" ? "en" : pathname ? "vi" : locale;
+  const pathLocale = pathname?.slice(1) ?? "";
+  const currentLocale: SiteLocale = isSiteLocale(pathLocale) ? pathLocale : pathname ? "vi" : locale;
   const copy = copyByLocale[currentLocale];
+  const serviceLabel = (index: number) => isAdditionalLocale(currentLocale)
+    ? additionalServiceLabels[currentLocale][index]
+    : serviceOptions[index][currentLocale];
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -329,7 +335,7 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
                       <span className={styles.selectWrap}>
                         <select id="consult-service" name="service" defaultValue="" aria-invalid={Boolean(errors.service)} aria-describedby={errors.service ? "consult-service-error" : undefined} className={fieldClass("service")} onChange={clearFieldError}>
                           <option value="" disabled>{copy.selectService}</option>
-                          {serviceOptions.map((option) => <option key={option.value} value={option.value}>{option[currentLocale]}</option>)}
+                          {serviceOptions.map((option, index) => <option key={option.value} value={option.value}>{serviceLabel(index)}</option>)}
                         </select>
                       </span>
                       {errors.service && <small id="consult-service-error" className={styles.errorMessage}>{errors.service}</small>}

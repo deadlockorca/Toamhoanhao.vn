@@ -8,8 +8,9 @@ import { useEffect, useRef, useState } from "react";
 
 import { ConsultationButton } from "@/components/consultation-popup";
 import { getNavigation } from "@/data/navigation-english";
+import { headerCopy as additionalHeaderCopy } from "@/data/site-chrome-additional";
 import type { NavigationItem } from "@/data/site";
-import type { SiteLocale } from "@/lib/locale";
+import { homePath, isAdditionalLocale, localeOptions, type SiteLocale } from "@/lib/locale";
 import styles from "./site-header.module.css";
 
 function MenuChildren({
@@ -47,11 +48,13 @@ function MenuChildren({
 
 export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
   const navigation = getNavigation(locale);
-  const homeHref = locale === "ja" ? "/ja" : locale === "en" ? "/en" : "/";
-  const brandLabel = locale === "ja" ? "Tổ Ấm Hoàn Hảo - ホーム" : locale === "en" ? "To Am Hoan Hao - Home" : "Tổ Ấm Hoàn Hảo - Trang chủ";
-  const navLabel = locale === "ja" ? "メインメニュー" : locale === "en" ? "Main navigation" : "Menu chính";
-  const languageLabel = locale === "ja" ? "言語" : locale === "en" ? "Language" : "Ngôn ngữ";
-  const consultationLabel = locale === "ja" ? "無料相談" : locale === "en" ? "Get advice" : "Nhận tư vấn";
+  const extra = isAdditionalLocale(locale) ? additionalHeaderCopy[locale] : null;
+  const homeHref = homePath(locale);
+  const brandLabel = `Tổ Ấm Hoàn Hảo - ${extra?.home ?? (locale === "ja" ? "ホーム" : locale === "en" ? "Home" : "Trang chủ")}`;
+  const navLabel = extra?.navigation ?? (locale === "ja" ? "メインメニュー" : locale === "en" ? "Main navigation" : "Menu chính");
+  const languageLabel = extra?.language ?? (locale === "ja" ? "言語" : locale === "en" ? "Language" : "Ngôn ngữ");
+  const consultationLabel = extra?.consultation ?? (locale === "ja" ? "無料相談" : locale === "en" ? "Get advice" : "Nhận tư vấn");
+  const selectedLanguage = localeOptions.find((option) => option.code === locale)!;
   const pathname = usePathname();
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -87,7 +90,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
       <div className={styles.inner}>
         <Link href={homeHref} className={styles.brand} aria-label={brandLabel}>
           <Image src="/logo-to-am-hoan-hao-old.png" alt="" width={64} height={64} priority />
-          <span><strong>TỔ ẤM HOÀN HẢO</strong><small>{locale === "ja" ? "幸せな暮らしの空間づくり" : locale === "en" ? "CREATING HAPPY LIVING SPACES" : "KIẾN TẠO KHÔNG GIAN SỐNG HẠNH PHÚC"}</small></span>
+          <span><strong>TỔ ẤM HOÀN HẢO</strong><small>{extra?.tagline ?? (locale === "ja" ? "幸せな暮らしの空間づくり" : locale === "en" ? "CREATING HAPPY LIVING SPACES" : "KIẾN TẠO KHÔNG GIAN SỐNG HẠNH PHÚC")}</small></span>
         </Link>
 
         <nav className={styles.desktopNav} aria-label={navLabel}>
@@ -95,7 +98,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
             <div
               key={item.label}
               className={`${styles.navItem} ${openDesktop === item.label ? styles.navOpen : ""}`}
-              onMouseEnter={() => setOpenDesktop(item.label)}
+              onMouseEnter={() => { setOpenDesktop(item.label); setLanguageOpen(false); }}
               onMouseLeave={() => setOpenDesktop(null)}
             >
               <button
@@ -121,19 +124,17 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
             <button
               type="button"
               className={styles.languageTrigger}
-              aria-label={`${languageLabel}: ${locale === "ja" ? "日本語" : locale === "en" ? "English" : "Tiếng Việt"}`}
+              aria-label={`${languageLabel}: ${selectedLanguage.label}`}
               aria-expanded={languageOpen}
               aria-controls="site-language-options"
               onClick={() => { setOpenDesktop(null); setLanguageOpen((open) => !open); }}
             >
               <Globe2 size={17} aria-hidden="true" />
-              <span>{locale === "ja" ? "JP" : locale === "en" ? "EN" : "VI"}</span>
+              <span>{selectedLanguage.short}</span>
               <ChevronDown size={14} aria-hidden="true" />
             </button>
             {languageOpen && <div id="site-language-options" className={styles.languageDropdown}>
-              <Link href={locale === "vi" ? pathname : "/"} hrefLang="vi" aria-current={locale === "vi" ? "page" : undefined} onClick={() => setLanguageOpen(false)}><span>VI</span> Tiếng Việt</Link>
-              <Link href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined} onClick={() => setLanguageOpen(false)}><span>EN</span> English</Link>
-              <Link href="/ja" hrefLang="ja" aria-current={locale === "ja" ? "page" : undefined} onClick={() => setLanguageOpen(false)}><span>JP</span> 日本語</Link>
+              {localeOptions.map((option) => <Link key={option.code} href={option.code === "vi" && locale === "vi" ? pathname : homePath(option.code)} hrefLang={option.code} aria-current={locale === option.code ? "page" : undefined} onClick={() => setLanguageOpen(false)}><span>{option.short}</span> {option.label}</Link>)}
             </div>}
           </nav>
           <ConsultationButton className={styles.consultation}>{consultationLabel} <ArrowRight size={18} aria-hidden="true" /></ConsultationButton>
@@ -141,7 +142,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
         <button
           className={styles.mobileToggle}
           type="button"
-          aria-label={mobileOpen ? (locale === "ja" ? "メニューを閉じる" : locale === "en" ? "Close menu" : "Đóng menu") : (locale === "ja" ? "メニューを開く" : locale === "en" ? "Open menu" : "Mở menu")}
+          aria-label={mobileOpen ? (extra?.closeMenu ?? (locale === "ja" ? "メニューを閉じる" : locale === "en" ? "Close menu" : "Đóng menu")) : (extra?.openMenu ?? (locale === "ja" ? "メニューを開く" : locale === "en" ? "Open menu" : "Mở menu"))}
           aria-expanded={mobileOpen}
           aria-controls="site-mobile-menu"
           onClick={() => setMobileOpen((open) => !open)}
@@ -151,7 +152,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
       </div>
 
       {mobileOpen && (
-        <nav id="site-mobile-menu" className={styles.mobileNav} aria-label={locale === "ja" ? "モバイルメニュー" : locale === "en" ? "Mobile navigation" : "Menu mobile"}>
+        <nav id="site-mobile-menu" className={styles.mobileNav} aria-label={extra?.mobileNavigation ?? (locale === "ja" ? "モバイルメニュー" : locale === "en" ? "Mobile navigation" : "Menu mobile")}>
           <div className={styles.mobileInner}>
             {navigation.map((item) => item.children ? (
               <details key={item.label}>
