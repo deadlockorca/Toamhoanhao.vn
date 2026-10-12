@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Explore interior design and construction projects by To Am Hoan Hao, from the first idea to the finished living space.",
   alternates: {
     canonical: `${siteBaseUrl}/en`,
-    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en` },
+    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en`, ja: `${siteBaseUrl}/ja` },
   },
 };
 

@@ -1,4 +1,6 @@
 import { navigation, type NavigationItem } from "@/data/site";
+import { translateJapaneseNavigation } from "@/data/navigation-japanese";
+import type { SiteLocale } from "@/lib/locale";
 
 const labels: Record<string, string> = {
   "Giới thiệu": "About us",
@@ -64,6 +66,7 @@ function translateItem(item: NavigationItem): NavigationItem {
   };
 }
 
-export function getNavigation(locale: "vi" | "en") {
+export function getNavigation(locale: SiteLocale) {
+  if (locale === "ja") return navigation.map(translateJapaneseNavigation);
   return locale === "en" ? navigation.map(translateItem) : navigation;
 }

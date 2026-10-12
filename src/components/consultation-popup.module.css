@@ -1,0 +1,387 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgb(44 37 32 / 72%);
+}
+
+.dialog {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38% 62%;
+  width: min(1050px, 100%);
+  height: min(710px, calc(100dvh - 36px));
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 32px 90px rgb(20 16 13 / 38%);
+  color: #312a25;
+  font-family: var(--font-be-vietnam-pro), sans-serif;
+}
+
+.visualPanel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 0;
+  padding: 39px 35px 34px;
+  overflow: hidden;
+  color: #fff;
+  background: #413023;
+}
+
+.visualPanel::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(90deg, rgb(48 30 18 / 82%), rgb(49 33 22 / 69%)),
+    url("/images/gioi-thieu/banner.png") 72% center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.visualContent,
+.hotline { position: relative; z-index: 1; }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin: 0;
+  color: #e1ba96;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.eyebrow::before {
+  display: block;
+  width: 27px;
+  height: 2px;
+  content: "";
+  background: #e1ba96;
+}
+
+.visualHeading {
+  max-width: 390px;
+  margin: 23px 0 13px;
+  font-size: clamp(28px, 2.35vw, 35px);
+  font-weight: 700;
+  line-height: 1.27;
+  letter-spacing: -.035em;
+}
+
+.visualIntroduction {
+  max-width: 395px;
+  margin: 0;
+  color: #f2e9e1;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.benefits {
+  display: grid;
+  gap: 16px;
+  margin: 29px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefits li {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  max-width: 410px;
+  color: #f8eee6;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.benefitIcon {
+  display: grid;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 20%);
+}
+
+.hotline {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 24px;
+  padding-top: 22px;
+  border-top: 1px solid rgb(255 255 255 / 30%);
+  color: #fff;
+}
+
+.hotline:hover { color: #fff; }
+
+.hotlineIcon {
+  display: grid;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  background: #b86d32;
+}
+
+.hotline small,
+.hotline strong { display: block; }
+.hotline small { color: #e6d4c8; font-size: 12px; }
+.hotline strong { margin-top: 2px; font-size: 18px; line-height: 1.2; }
+
+.formPanel {
+  position: relative;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 38px 40px 29px;
+  background: #fff;
+}
+
+.closeButton {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid #e6dacb;
+  border-radius: 50%;
+  background: #fff;
+  color: #342d27;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .2s;
+}
+
+.closeButton:hover { background: #f8f3ee; border-color: #bc7a4c; transform: rotate(90deg); }
+.closeButton:focus-visible,
+.submitButton:focus-visible,
+.areaOption:focus-within { outline: 2px solid #aa6637; outline-offset: 3px; }
+
+.formHeading h2 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: -.035em;
+}
+
+.formHeading p {
+  margin: 5px 0 0;
+  color: #8d8178;
+  font-size: 13px;
+}
+.formHeading p b { color: #b66a36; }
+
+.fieldsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 17px;
+  margin-top: 26px;
+}
+
+.field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.field > span:first-child,
+.areaField legend {
+  color: #342d28;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.field b,
+.areaField b { color: #b66a36; }
+
+.fieldControl {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 49px;
+  padding: 0 14px;
+  border: 1px solid #e4d8cc;
+  border-radius: 10px;
+  background: #fbf8f5;
+  color: #342d28;
+  font: 500 13px var(--font-be-vietnam-pro), sans-serif;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+}
+
+.fieldControl::placeholder { color: #ad9d91; opacity: 1; }
+.fieldControl:focus { border-color: #ac693d; box-shadow: 0 0 0 4px rgb(172 105 61 / 12%); }
+.fieldControl.fieldError { border-color: #e24d42; background: #fff5f3; }
+.fieldControl.fieldError:focus { box-shadow: 0 0 0 4px rgb(226 77 66 / 12%); }
+
+.selectWrap { position: relative; display: block; }
+.selectWrap::after {
+  position: absolute;
+  top: 18px;
+  right: 17px;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid #9a6b4a;
+  border-bottom: 2px solid #9a6b4a;
+  content: "";
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+.selectWrap select { appearance: none; padding-right: 48px; cursor: pointer; }
+
+.errorMessage {
+  margin-top: -2px;
+  color: #d4483f;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.areaField {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.areaField legend { margin-bottom: 7px; padding: 0; }
+.areaOptions { display: flex; flex-wrap: wrap; gap: 8px; }
+.areaOption {
+  display: inline-flex;
+  min-height: 49px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 11px;
+  border: 1px solid #dfd3c7;
+  border-radius: 10px;
+  background: #fbf8f5;
+  color: #42372f;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color .18s, background .18s;
+}
+.areaOption:hover { border-color: #ae744c; }
+.areaOption input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.areaOption.areaSelected { border-color: #a9693c; background: #f4e9df; }
+.areaOption.areaError { border-color: #e24d42; }
+.areaField .errorMessage { display: block; margin-top: 9px; }
+
+.messageField { grid-column: 1 / -1; }
+.messageField textarea {
+  min-height: 90px;
+  padding-top: 12px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.submitButton {
+  display: flex;
+  width: 100%;
+  min-height: 53px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 25px;
+  padding: 10px 20px;
+  border: 0;
+  border-radius: 12px;
+  background: #ad6530;
+  color: #fff;
+  font: 750 15px var(--font-be-vietnam-pro), sans-serif;
+  cursor: pointer;
+  transition: background .2s;
+}
+.submitButton:hover { background: #925127; }
+.submitButton:disabled { cursor: wait; opacity: .7; }
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.submitError { margin: 16px 0 0; color: #c33d35; font-size: 14px; }
+.privacy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  color: #8f847b;
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
+}
+.privacy svg { flex: none; }
+
+.success {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 45px 0;
+  text-align: center;
+}
+.success > svg { color: #aa6736; }
+.success h2 { margin: 25px 0 0; font-size: 30px; line-height: 1.35; }
+.success p { max-width: 440px; margin: 14px 0 0; color: #766b62; line-height: 1.7; }
+.success .submitButton { max-width: 230px; margin-top: 30px; }
+
+@media (max-width: 1100px) {
+  .dialog { grid-template-columns: 36% 64%; }
+  .visualPanel { padding: 36px 28px 30px; }
+  .visualHeading { font-size: 29px; }
+  .formPanel { padding: 36px 32px 28px; }
+  .fieldsGrid { column-gap: 13px; }
+  .areaOption { padding-inline: 9px; }
+}
+
+@media (max-width: 800px) {
+  .backdrop { padding: 14px; }
+  .dialog {
+    display: block;
+    width: min(620px, 100%);
+    height: auto;
+    max-height: calc(100dvh - 28px);
+    overflow-y: auto;
+    border-radius: 24px;
+  }
+  .visualPanel { min-height: 170px; padding: 25px 30px 23px; }
+  .visualHeading { max-width: 420px; margin: 14px 0 8px; font-size: 27px; }
+  .visualIntroduction { max-width: 500px; font-size: 13px; line-height: 1.5; }
+  .benefits, .hotline { display: none; }
+  .formPanel { overflow: visible; padding: 25px 30px 29px; }
+  .closeButton { top: 12px; right: 12px; width: 42px; height: 42px; }
+  .fieldsGrid { margin-top: 21px; }
+}
+
+@media (max-width: 520px) {
+  .dialog { border-radius: 19px; }
+  .visualPanel { min-height: 155px; padding: 23px 22px 20px; }
+  .eyebrow { font-size: 11px; }
+  .eyebrow::before { width: 22px; }
+  .visualHeading { max-width: 280px; font-size: 24px; }
+  .visualIntroduction { max-width: 310px; font-size: 12px; }
+  .formPanel { padding: 24px 22px 27px; }
+  .formHeading h2 { font-size: 22px; }
+  .formHeading p { font-size: 13px; }
+  .fieldsGrid { grid-template-columns: 1fr; gap: 14px; }
+  .field, .areaField { gap: 7px; }
+  .field > span:first-child, .areaField legend { font-size: 14px; }
+  .fieldControl { height: 47px; padding-inline: 13px; font-size: 14px; }
+  .selectWrap::after { top: 17px; right: 17px; }
+  .areaOption { min-height: 43px; }
+  .messageField textarea { min-height: 82px; }
+  .submitButton { min-height: 50px; margin-top: 21px; font-size: 15px; }
+  .privacy { font-size: 11px; }
+}

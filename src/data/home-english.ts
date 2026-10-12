@@ -1,3 +1,6 @@
+import { japaneseHomeText, japaneseProjectSummary, japaneseProjectTitle } from "@/data/home-japanese";
+import type { SiteLocale } from "@/lib/locale";
+
 const translations: Record<string, string> = {
   "Tất cả": "All",
   "Căn hộ": "Apartments",
@@ -99,7 +102,8 @@ const translations: Record<string, string> = {
   "Yêu cầu tư vấn từ trang chủ": "Consultation request from the homepage",
 };
 
-export function homeText(locale: "vi" | "en", source: string) {
+export function homeText(locale: SiteLocale, source: string) {
+  if (locale === "ja") return japaneseHomeText(source);
   return locale === "en" ? translations[source] ?? source : source;
 }
 
@@ -112,7 +116,8 @@ const englishProjectTitles: Record<string, string> = {
   "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04": "KABA COFFEE: 260 m² Modern Industrial Café",
 };
 
-export function homeProjectTitle(locale: "vi" | "en", slug: string, original: string) {
+export function homeProjectTitle(locale: SiteLocale, slug: string, original: string) {
+  if (locale === "ja") return japaneseProjectTitle(slug, original);
   return locale === "en" ? englishProjectTitles[slug] ?? original : original;
 }
 
@@ -121,6 +126,7 @@ const englishProjectSummaries: Record<string, string> = {
     "After many conversations, our team works to understand the client’s wishes and shape the design and construction around them, aiming for a finished space that meets their expectations...",
 };
 
-export function homeProjectSummary(locale: "vi" | "en", slug: string, original: string) {
+export function homeProjectSummary(locale: SiteLocale, slug: string, original: string) {
+  if (locale === "ja") return japaneseProjectSummary(slug, original);
   return locale === "en" ? englishProjectSummaries[slug] ?? original : original;
 }

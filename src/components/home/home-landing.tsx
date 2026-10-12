@@ -50,6 +50,7 @@ function imageFor(project: Project) {
 
 export function HomeLanding({ projects, locale = "vi" }: { projects: Project[]; locale?: SiteLocale }) {
   const t = (source: string) => homeText(locale, source);
+  const feedbackImageLabel = (number: number) => locale === "ja" ? `お客様の写真 ${number}` : locale === "en" ? `Client feedback photo ${number}` : `Ảnh phản hồi khách hàng ${number}`;
   const [slide, setSlide] = useState(0);
   const [category, setCategory] = useState("Tất cả");
   const [feedbackIndex, setFeedbackIndex] = useState(0);
@@ -116,7 +117,7 @@ export function HomeLanding({ projects, locale = "vi" }: { projects: Project[]; 
     <main className={styles.page}>
       <div className={styles.headerSpacer}><SiteHeader locale={locale} /></div>
 
-      <section className={styles.hero} aria-label={locale === "en" ? "Homepage banner" : "Banner trang chủ"}>
+      <section className={styles.hero} aria-label={locale === "ja" ? "ホームページのバナー" : locale === "en" ? "Homepage banner" : "Banner trang chủ"}>
         {heroImages.map((image, index) => <Image key={image.src} src={image.src} alt={index === slide ? t(image.label) : ""} fill priority={index === 0} sizes="100vw" className={`${styles.heroImage} ${index === slide ? styles.heroImageActive : ""}`} />)}
         <div className={styles.heroShade} />
         <div className={`${styles.container} ${styles.heroInner}`}>
@@ -127,7 +128,7 @@ export function HomeLanding({ projects, locale = "vi" }: { projects: Project[]; 
             <div className={styles.heroActions}><Link className={styles.buttonPrimary} href="/du-an">{t("Xem dự án")} <ArrowRight size={16} /></Link><ConsultationButton className={styles.buttonOutline}>{t("Nhận báo giá")}</ConsultationButton></div>
           </div>
           {heroImages.length > 1 && <div className={styles.heroAside}>
-            <div className={styles.heroThumbs}>{heroImages.map((image, index) => <button type="button" key={image.src} onClick={() => setSlide(index)} className={index === slide ? styles.thumbActive : ""} aria-label={`${locale === "en" ? "View banner" : "Xem banner"} ${t(image.label)}`} aria-pressed={index === slide}><Image src={image.src} alt="" fill sizes="120px" /></button>)}</div>
+            <div className={styles.heroThumbs}>{heroImages.map((image, index) => <button type="button" key={image.src} onClick={() => setSlide(index)} className={index === slide ? styles.thumbActive : ""} aria-label={`${locale === "ja" ? "バナーを見る" : locale === "en" ? "View banner" : "Xem banner"} ${t(image.label)}`} aria-pressed={index === slide}><Image src={image.src} alt="" fill sizes="120px" /></button>)}</div>
             <div className={styles.heroControls}><button type="button" onClick={() => moveSlide(-1)} aria-label={t("Ảnh trước")}><ArrowLeft size={15} /></button><button type="button" onClick={() => moveSlide(1)} aria-label={t("Ảnh tiếp theo")}><ArrowRight size={15} /></button><span>{String(slide + 1).padStart(2, "0")} / {String(heroImages.length).padStart(2, "0")}</span></div>
           </div>}
         </div>
@@ -169,10 +170,10 @@ export function HomeLanding({ projects, locale = "vi" }: { projects: Project[]; 
           </div>
           <div className={styles.testimonialGrid}>
             {visibleFeedback.map(({ src, number }, index) => (
-              <button type="button" className={`${styles.feedbackCard} ${index > 0 ? styles.feedbackCardExtra : ""}`} onClick={() => setSelectedFeedback({ src, number })} key={src} aria-label={locale === "en" ? `Enlarge client feedback photo ${number}` : `Xem lớn ảnh phản hồi khách hàng ${number}`} aria-haspopup="dialog">
+              <button type="button" className={`${styles.feedbackCard} ${index > 0 ? styles.feedbackCardExtra : ""}`} onClick={() => setSelectedFeedback({ src, number })} key={src} aria-label={locale === "ja" ? `${feedbackImageLabel(number)}を拡大` : locale === "en" ? `Enlarge client feedback photo ${number}` : `Xem lớn ảnh phản hồi khách hàng ${number}`} aria-haspopup="dialog">
                 <div className={styles.feedbackPhoto}>
                   <span className={styles.feedbackNumber}>{String(number).padStart(2, "0")}</span>
-                  <div className={styles.feedbackImage}><Image src={src} alt={locale === "en" ? `Client feedback photo ${number}` : `Ảnh phản hồi khách hàng ${number}`} fill sizes="(max-width: 620px) 70vw, (max-width: 850px) 34vw, 230px" /></div>
+                  <div className={styles.feedbackImage}><Image src={src} alt={feedbackImageLabel(number)} fill sizes="(max-width: 620px) 70vw, (max-width: 850px) 34vw, 230px" /></div>
                 </div>
                 <div className={styles.feedbackCaption}><div><span>{t("PHẢN HỒI THỰC TẾ")}</span><strong>{t("Chia sẻ từ khách hàng")}</strong></div><ArrowRight size={18} aria-hidden="true" /></div>
               </button>
@@ -182,12 +183,12 @@ export function HomeLanding({ projects, locale = "vi" }: { projects: Project[]; 
         </div>
       </section>
 
-      {selectedFeedback && <dialog ref={feedbackDialogRef} className={`${styles.feedbackDialog} ${feedbackClosing ? styles.feedbackDialogClosing : ""}`} aria-label={locale === "en" ? `Client feedback photo ${selectedFeedback.number}` : `Ảnh phản hồi khách hàng ${selectedFeedback.number}`} onClose={() => { setSelectedFeedback(null); setFeedbackClosing(false); }} onCancel={(event) => { event.preventDefault(); closeFeedbackDialog(); }} onKeyDown={(event) => { if (event.key === "Escape") { event.preventDefault(); closeFeedbackDialog(); } }} onClick={(event) => { if (event.target === event.currentTarget) closeFeedbackDialog(); }}>
+      {selectedFeedback && <dialog ref={feedbackDialogRef} className={`${styles.feedbackDialog} ${feedbackClosing ? styles.feedbackDialogClosing : ""}`} aria-label={feedbackImageLabel(selectedFeedback.number)} onClose={() => { setSelectedFeedback(null); setFeedbackClosing(false); }} onCancel={(event) => { event.preventDefault(); closeFeedbackDialog(); }} onKeyDown={(event) => { if (event.key === "Escape") { event.preventDefault(); closeFeedbackDialog(); } }} onClick={(event) => { if (event.target === event.currentTarget) closeFeedbackDialog(); }}>
         <div className={styles.feedbackDialogHeader}>
           <span>{t("PHẢN HỒI KHÁCH HÀNG")} &nbsp; {String(selectedFeedback.number).padStart(2, "0")}</span>
           <button type="button" onClick={closeFeedbackDialog} aria-label={t("Đóng ảnh phản hồi")}><X size={20} /></button>
         </div>
-        <Image src={selectedFeedback.src} alt={locale === "en" ? `Enlarged client feedback photo ${selectedFeedback.number}` : `Ảnh phản hồi khách hàng ${selectedFeedback.number} ở kích thước lớn`} width={720} height={1280} unoptimized className={styles.feedbackDialogImage} />
+        <Image src={selectedFeedback.src} alt={locale === "ja" ? `${feedbackImageLabel(selectedFeedback.number)}の拡大表示` : locale === "en" ? `Enlarged client feedback photo ${selectedFeedback.number}` : `Ảnh phản hồi khách hàng ${selectedFeedback.number} ở kích thước lớn`} width={720} height={1280} unoptimized className={styles.feedbackDialogImage} />
       </dialog>}
 
       <section className={styles.leadSection} id="tu-van"><Image src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg" alt="" fill sizes="100vw" /><div className={`${styles.container} ${styles.leadGrid}`}><div><Eyebrow>{t("TƯ VẤN DỰ ÁN")}</Eyebrow><h2>{t("Bạn đang có dự án cần triển khai?")}</h2><p>{t("Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.")}</p></div>{formState === "done" ? <p className={styles.formSuccess}>{t("Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.")}</p> : <form onSubmit={submitLead} className={styles.leadForm}><input name="name" required placeholder={t("Họ và tên *")} aria-label={t("Họ và tên")} /><input name="phone" required type="tel" placeholder={t("Số điện thoại *")} aria-label={t("Số điện thoại")} /><input name="email" required type="email" placeholder={t("Email *")} aria-label="Email" /><label><select name="service" defaultValue="" required aria-label={t("Nhu cầu của bạn")}><option value="" disabled>{t("Nhu cầu của bạn")}</option><option value="Thiết kế nội thất">{t("Thiết kế nội thất")}</option><option value="Thi công nội thất">{t("Thi công nội thất")}</option><option value="Xây dựng trọn gói">{t("Xây dựng trọn gói")}</option><option value="Sản xuất nội thất">{t("Sản xuất nội thất")}</option></select><ChevronDown size={15} /></label><button type="submit" disabled={formState === "sending"}>{formState === "sending" ? t("Đang gửi...") : t("Tiếp nhận dự án")} <ArrowRight size={16} /></button>{formState === "error" && <p role="alert">{t("Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.")}</p>}</form>}</div></section>

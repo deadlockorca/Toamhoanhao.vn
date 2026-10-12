@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   alternates: {
     canonical: `${siteBaseUrl}/`,
-    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en` },
+    languages: { vi: `${siteBaseUrl}/`, en: `${siteBaseUrl}/en`, ja: `${siteBaseUrl}/ja` },
   },
 };
 

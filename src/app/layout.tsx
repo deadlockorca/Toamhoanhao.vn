@@ -33,7 +33,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const locale = (await headers()).get("x-site-locale") === "en" ? "en" : "vi";
+  const requestedLocale = (await headers()).get("x-site-locale");
+  const locale = requestedLocale === "en" || requestedLocale === "ja" ? requestedLocale : "vi";
   return (
     <html
       lang={locale}
