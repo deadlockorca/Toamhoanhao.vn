@@ -63,7 +63,7 @@
   align-content: center;
   justify-content: center;
   gap: clamp(10px, 1.45vw, 27px);
-  row-gap: 8px;
+  row-gap: 4px;
   height: 100%;
   min-width: 0;
   flex: 1;
@@ -226,10 +226,10 @@
 
 @media (max-width: 1600px) {
   .inner { gap: 16px; }
-  .desktopNav { column-gap: 8px; row-gap: 7px; }
+  .desktopNav { column-gap: 12px; row-gap: 4px; }
   .desktopNav > a,
   .desktopNav > span,
-  .navItem > button { font-size: 10.5px; }
+  .navItem > button { font-size: 11.5px; }
   .brand img { width: 54px; height: 54px; }
   .brand strong { font-size: 14px; }
   .brand small { font-size: 6px; }
