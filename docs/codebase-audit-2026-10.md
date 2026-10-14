@@ -81,9 +81,15 @@ regression          30/30 trang render giống hệt baseline (so sánh text)
    `useEffect` — chạy **sau** hydration nên không gây mismatch.
    Crawler không chạy JS sẽ thấy `lang="vi"` trên 8 trang đó. Muốn triệt để cần
    tách route group với root layout riêng cho từng ngôn ngữ.
-3. **`notFound()` trên route có `[slug]` trả soft-404 (status 200)** kèm
-   `noindex`. Đây là hành vi được Next.js tài liệu hoá khi response đã bắt đầu
-   stream, không phải lỗi — Next chặn index bằng thẻ `noindex`.
+3. **KHÔNG thêm `loading.tsx` ở root layout.** Đã thử và phải bỏ, vì nó gây hai
+   tác hại:
+   - **Bọc toàn bộ nội dung vào `<div hidden>`**, chỉ đưa ra bằng script JS. Tắt
+     JS là người dùng chỉ thấy chữ "Đang tải nội dung…"; crawler không chạy JS
+     cũng vậy. Bỏ `loading.tsx` thì nội dung nằm thẳng trong HTML.
+   - **Gây soft-404**: mọi URL không tồn tại trên route `[slug]` trả status 200
+     thay vì 404 (response đã bắt đầu stream nên không đổi được status). Bỏ
+     `loading.tsx` là tất cả trả 404 đúng.
+   `error.tsx`, `global-error.tsx`, `not-found.tsx` không gây tác hại này.
 4. **`sitemap.xml` render theo yêu cầu** (đọc DB) — đúng thiết kế, để phản ánh
    dự án vừa publish.
 5. **Rate limit hiện là in-memory**, chỉ hiệu lực trong một instance. Trên
