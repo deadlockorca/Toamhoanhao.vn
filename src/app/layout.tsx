@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import Script from "next/script";
 import { ConsultationProvider } from "@/components/consultation-popup";
-import { siteBaseUrl, siteLocales } from "@/lib/locale";
+import { siteBaseUrl } from "@/lib/locale";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -20,20 +19,21 @@ const beVietnamPro = Be_Vietnam_Pro({
  * render theo yêu cầu: 60/60 route dynamic, 0 trang được prerender — kể cả
  * ~460 trang bài viết/dự án vốn là nội dung tĩnh.
  *
- * Nay `lang` được đặt đúng ngay trước lần vẽ đầu tiên bằng script đồng bộ.
- * Danh sách locale lấy trực tiếp từ `siteLocales` nên không lệch khi thêm
- * ngôn ngữ mới. `ConsultationProvider` cũng đã tự suy locale từ `usePathname()`.
+ * ⚠️ KHÔNG đặt `lang` động ở đây. Đã thử một lần bằng script
+ * `beforeInteractive` sửa `document.documentElement.lang` trước khi hydrate,
+ * nhưng cách đó gây lỗi hydration: script chạy trước React nên lúc hydrate DOM
+ * đã là `lang="ja"` trong khi React render `lang="vi"` → mismatch, và React
+ * KHÔNG tự vá lại thuộc tính đó.
  *
- * Giới hạn còn lại: HTML tĩnh ban đầu luôn có `lang="vi"`. Với 8 trang chủ
- * ngôn ngữ khác, `lang` đúng ngay khi script chạy (trước khi vẽ). Crawler không
- * thực thi JavaScript sẽ thấy `lang="vi"`; muốn khắc phục triệt để cần tách
- * route group với root layout riêng cho từng ngôn ngữ.
+ * Cách đang dùng: `lang="vi"` cố định (đúng cho ~492/500 trang là tiếng Việt).
+ * Với 8 trang chủ ngôn ngữ khác, `ConsultationProvider` tự suy locale từ
+ * `usePathname()` và đồng bộ `document.documentElement.lang` trong `useEffect`
+ * — chạy SAU hydration nên không gây mismatch.
+ *
+ * Giới hạn còn lại: HTML tĩnh ban đầu của 8 trang đó có `lang="vi"`. Crawler
+ * không thực thi JavaScript sẽ thấy `lang="vi"`; muốn khắc phục triệt để cần
+ * tách route group với root layout riêng cho từng ngôn ngữ.
  */
-const localeAlternation = siteLocales
-  .filter((locale) => locale !== "vi")
-  .join("|");
-
-const localeSyncScript = `(function(){try{var s=location.pathname.split("/")[1]||"";if(/${localeAlternation}/.test(s)){document.documentElement.lang=s}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   /**
@@ -94,9 +94,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={`${beVietnamPro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <Script id="locale-lang-sync" strategy="beforeInteractive">
-          {localeSyncScript}
-        </Script>
         <ConsultationProvider>{children}</ConsultationProvider>
       </body>
     </html>

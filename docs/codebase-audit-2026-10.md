@@ -71,9 +71,16 @@ regression          30/30 trang render giống hệt baseline (so sánh text)
 
 1. **Root layout phải giữ tĩnh.** Không dùng `headers()`, `cookies()` hay dynamic
    API nào trong `src/app/layout.tsx` — chúng sẽ kéo toàn bộ site về SSR.
-2. **`lang` của 8 trang chủ ngôn ngữ khác**: HTML tĩnh ban đầu là `lang="vi"`,
-   được script `beforeInteractive` sửa trước khi vẽ. Crawler **không** chạy JS sẽ
-   thấy `lang="vi"`. Muốn triệt để cần tách route group với root layout riêng.
+2. **Không đặt `lang` động ở root layout.** Đã thử một lần bằng script
+   `beforeInteractive` sửa `document.documentElement.lang` trước khi hydrate →
+   gây lỗi hydration (`Server: lang="ja"` vs `Client: lang="vi"`), vì script
+   chạy trước React nên lúc hydrate DOM đã khác HTML server render, và React
+   **không** tự vá lại thuộc tính đó.
+   Cách đang dùng: `lang="vi"` cố định (đúng cho ~492/500 trang là tiếng Việt);
+   8 trang chủ ngôn ngữ khác được `ConsultationProvider` đồng bộ trong
+   `useEffect` — chạy **sau** hydration nên không gây mismatch.
+   Crawler không chạy JS sẽ thấy `lang="vi"` trên 8 trang đó. Muốn triệt để cần
+   tách route group với root layout riêng cho từng ngôn ngữ.
 3. **`notFound()` trên route có `[slug]` trả soft-404 (status 200)** kèm
    `noindex`. Đây là hành vi được Next.js tài liệu hoá khi response đã bắt đầu
    stream, không phải lỗi — Next chặn index bằng thẻ `noindex`.

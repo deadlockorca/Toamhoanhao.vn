@@ -119,9 +119,14 @@ dynamic API nào. Những API này khiến Next.js chuyển toàn bộ cây rout
 độ render theo yêu cầu — đã từng khiến cả 60 route thành dynamic và không trang
 nào được prerender, kể cả hàng trăm trang bài viết tĩnh.
 
-`lang` cho các ngôn ngữ khác được đặt bằng script `beforeInteractive` trong
-layout. Nếu cần thêm hành vi phụ thuộc request, hãy đặt nó trong `proxy.ts`
-riêng thay vì root layout.
+`lang` là `"vi"` cố định — đúng cho gần như toàn bộ site. **Không** đặt `lang`
+động ở đây: script `beforeInteractive` sửa `document.documentElement.lang` trước
+khi hydrate sẽ gây lỗi hydration vì React thấy DOM khác HTML server render và
+không tự vá lại. Với 8 trang chủ ngôn ngữ khác, `ConsultationProvider` đồng bộ
+`lang` trong `useEffect` (chạy sau hydration) nên không gây mismatch.
+
+Nếu cần hành vi phụ thuộc request, hãy đặt nó trong `proxy.ts` riêng thay vì
+root layout.
 
 ### Bảo mật
 
