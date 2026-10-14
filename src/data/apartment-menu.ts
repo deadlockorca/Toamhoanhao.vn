@@ -16,13 +16,21 @@ export const apartmentMenuItems = [
   { label: "Chung cư 40m2-45m2", slug: "40-45", min: 40, max: 45 },
 ] as const;
 
-type ApartmentAreaTopic = Extract<(typeof apartmentMenuItems)[number], { readonly min: number }>;
+type ApartmentAreaTopic = Extract<
+  (typeof apartmentMenuItems)[number],
+  { readonly min: number }
+>;
 
 export function getApartmentAreaTopic(slug?: string) {
-  return apartmentMenuItems.find((item): item is ApartmentAreaTopic => item.slug === slug && "min" in item);
+  return apartmentMenuItems.find(
+    (item): item is ApartmentAreaTopic => item.slug === slug && "min" in item,
+  );
 }
 
-export function matchesApartmentArea(area: string | undefined, topic: ApartmentAreaTopic) {
+export function matchesApartmentArea(
+  area: string | undefined,
+  topic: ApartmentAreaTopic,
+) {
   const match = area?.match(/\d+(?:[.,]\d+)?/);
   if (!match) return false;
   const value = Number(match[0].replace(",", "."));

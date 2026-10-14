@@ -103,7 +103,8 @@ const pricingArticleSummaries: PricingArticle[] = [
       "goi-noi-that-hoan-thien-400-trieu",
       "bao-gia-thiet-ke-noi-that-chi-phi-hop-ly",
     ],
-    legacyUrl: "https://toamhoanhao.vn/bao-gia-noi-that-go-oc-cho-moi-nhat-2023/",
+    legacyUrl:
+      "https://toamhoanhao.vn/bao-gia-noi-that-go-oc-cho-moi-nhat-2023/",
   },
   {
     slug: "bao-gia-thiet-ke-thi-cong-tu-bep",
@@ -178,12 +179,14 @@ const pricingArticleSummaries: PricingArticle[] = [
       "goi-noi-that-hoan-thien-300-trieu",
       "bao-gia-thiet-ke-noi-that-chi-phi-hop-ly",
     ],
-    legacyUrl: "https://toamhoanhao.vn/thiet-ke-noi-that-van-phong-tien-nghi-3/",
+    legacyUrl:
+      "https://toamhoanhao.vn/thiet-ke-noi-that-van-phong-tien-nghi-3/",
   },
   {
     slug: "goi-noi-that-hoan-thien-400-trieu",
     label: "Gói ngân sách cũ",
-    title: "Gói nội thất hoàn thiện 400 triệu đồng - Không gian đẳng cấp, giá cả phải chăng",
+    title:
+      "Gói nội thất hoàn thiện 400 triệu đồng - Không gian đẳng cấp, giá cả phải chăng",
     excerpt:
       "Hồ sơ tham khảo cũ về cách phân bổ một gói hoàn thiện nội thất ở mức đầu tư 400 triệu đồng.",
     image: "/images/bao-gia/goi-400.webp",
@@ -222,7 +225,8 @@ const pricingArticleSummaries: PricingArticle[] = [
   {
     slug: "goi-noi-that-hoan-thien-300-trieu",
     label: "Gói ngân sách cũ",
-    title: "Gói nội thất hoàn thiện 300 triệu đồng - Đẹp từng chi tiết, giá hợp lý",
+    title:
+      "Gói nội thất hoàn thiện 300 triệu đồng - Đẹp từng chi tiết, giá hợp lý",
     excerpt:
       "Hồ sơ tham khảo cũ về giải pháp cân đối công năng, vật liệu và thẩm mỹ trong ngân sách 300 triệu đồng.",
     image: "/images/bao-gia/goi-300.webp",
@@ -261,7 +265,8 @@ const pricingArticleSummaries: PricingArticle[] = [
   {
     slug: "goi-noi-that-hoan-thien-250-trieu",
     label: "Gói ngân sách cũ",
-    title: "Gói nội thất hoàn thiện 250 triệu đồng - Giải pháp cho không gian chất lượng",
+    title:
+      "Gói nội thất hoàn thiện 250 triệu đồng - Giải pháp cho không gian chất lượng",
     excerpt:
       "Hồ sơ tham khảo cũ về cách lựa chọn hạng mục thiết yếu cho một gói nội thất mức đầu tư 250 triệu đồng.",
     image: "/images/bao-gia/goi-250.webp",
@@ -300,7 +305,8 @@ const pricingArticleSummaries: PricingArticle[] = [
   {
     slug: "goi-noi-that-hoan-thien-169-trieu",
     label: "Gói ngân sách cũ",
-    title: "Gói nội thất hoàn thiện 169 triệu đồng - Giá tốt, chất lượng không giảm",
+    title:
+      "Gói nội thất hoàn thiện 169 triệu đồng - Giá tốt, chất lượng không giảm",
     excerpt:
       "Hồ sơ tham khảo cũ về phương án hoàn thiện những hạng mục cơ bản trong ngân sách 169 triệu đồng.",
     image: "/images/bao-gia/goi-169.webp",

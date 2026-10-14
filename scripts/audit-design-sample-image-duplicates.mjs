@@ -10,7 +10,10 @@ const rootDir = path.resolve(
 );
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryDir = path.join(importRoot, "inventory");
-const inventoryPath = path.join(inventoryDir, "old-site-content-inventory.json");
+const inventoryPath = path.join(
+  inventoryDir,
+  "old-site-content-inventory.json",
+);
 const jsonReportPath = path.join(
   inventoryDir,
   "design-sample-image-duplicate-report.json",
@@ -43,7 +46,12 @@ for (const sample of samples) {
     (sample.webp?.readyImages ?? []).map(async (relativePath) => {
       const filename = path.basename(relativePath, path.extname(relativePath));
       const sourceUrl = sourceUrlByFilename.get(filename);
-      const fullPath = path.join(importRoot, sample.folder, sample.slug, relativePath);
+      const fullPath = path.join(
+        importRoot,
+        sample.folder,
+        sample.slug,
+        relativePath,
+      );
 
       return {
         slug: sample.slug,
@@ -51,7 +59,9 @@ for (const sample of samples) {
         group: sample.folder.split("/")[1] ?? "khac",
         relativePath,
         sourceUrl,
-        sourceKey: sourceUrl ? sourceImageKey(sourceUrl) : filename.toLowerCase(),
+        sourceKey: sourceUrl
+          ? sourceImageKey(sourceUrl)
+          : filename.toLowerCase(),
         hash: await fileHash(fullPath),
         ...(await visualSignature(fullPath)),
       };
@@ -80,8 +90,10 @@ for (const sample of samples) {
   allFiles.push(...files);
 }
 
-const crossSampleExactGroups = duplicateGroups(allFiles, (file) => file.hash)
-  .filter((group) => new Set(group.files.map((file) => file.slug)).size > 1);
+const crossSampleExactGroups = duplicateGroups(
+  allFiles,
+  (file) => file.hash,
+).filter((group) => new Set(group.files.map((file) => file.slug)).size > 1);
 const report = {
   generatedAt: new Date().toISOString(),
   summary: {
@@ -90,7 +102,8 @@ const report = {
     samplesWithDuplicates: samplesWithDuplicates.length,
     resizeOrSourceDuplicateCandidates: samplesWithDuplicates.reduce(
       (total, sample) =>
-        total + sample.sourceDuplicateGroups.reduce(
+        total +
+        sample.sourceDuplicateGroups.reduce(
           (sum, group) => sum + group.files.length - 1,
           0,
         ),
@@ -98,7 +111,8 @@ const report = {
     ),
     exactDuplicateCandidates: samplesWithDuplicates.reduce(
       (total, sample) =>
-        total + sample.exactDuplicateGroups.reduce(
+        total +
+        sample.exactDuplicateGroups.reduce(
           (sum, group) => sum + group.files.length - 1,
           0,
         ),
@@ -106,7 +120,8 @@ const report = {
     ),
     visualDuplicateCandidates: samplesWithDuplicates.reduce(
       (total, sample) =>
-        total + sample.visualDuplicateGroups.reduce(
+        total +
+        sample.visualDuplicateGroups.reduce(
           (sum, group) => sum + group.files.length - 1,
           0,
         ),
@@ -127,7 +142,9 @@ console.log(JSON.stringify(report.summary, null, 2));
 console.log(`Report: ${markdownReportPath}`);
 
 async function fileHash(filePath) {
-  return createHash("sha256").update(await readFile(filePath)).digest("hex");
+  return createHash("sha256")
+    .update(await readFile(filePath))
+    .digest("hex");
 }
 
 async function visualSignature(filePath) {
@@ -187,8 +204,10 @@ function visualDuplicateGroups(files) {
   for (let left = 0; left < candidates.length; left += 1) {
     for (let right = left + 1; right < candidates.length; right += 1) {
       if (
-        hammingDistance(candidates[left].visualHash, candidates[right].visualHash) <=
-        visualSimilarityThreshold
+        hammingDistance(
+          candidates[left].visualHash,
+          candidates[right].visualHash,
+        ) <= visualSimilarityThreshold
       ) {
         union(parents, left, right);
       }

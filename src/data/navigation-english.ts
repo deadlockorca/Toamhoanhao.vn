@@ -11,8 +11,10 @@ const labels: Record<string, string> = {
   "Xưởng sản xuất nội thất": "Furniture workshop",
   "Tuyển dụng": "Careers",
   "Báo giá": "Pricing",
-  "Báo giá thiết kế thi công nội thất": "Interior design and construction pricing",
-  "Báo giá thiết kế kiến trúc và xây dựng trọn gói": "Architecture and turnkey construction pricing",
+  "Báo giá thiết kế thi công nội thất":
+    "Interior design and construction pricing",
+  "Báo giá thiết kế kiến trúc và xây dựng trọn gói":
+    "Architecture and turnkey construction pricing",
   "Biệt thự": "Villas",
   "Nhà phố": "Townhouses",
   "Dự án nhà phố": "Townhouse projects",
@@ -45,7 +47,8 @@ const labels: Record<string, string> = {
   "Nhật kí thi công": "Construction journal",
   "Kinh nghiệm làm nhà, nội thất": "Home and interior guides",
   "Kinh nghiệm xây nhà": "Home building guides",
-  "Kinh nghiệm thi công, thiết kế nội thất": "Interior design and construction guides",
+  "Kinh nghiệm thi công, thiết kế nội thất":
+    "Interior design and construction guides",
   "Pháp lý xây dựng": "Construction regulations",
   "Kiến thức nhà đẹp": "Home design ideas",
   "Liên hệ": "Contact",
@@ -62,13 +65,20 @@ const labels: Record<string, string> = {
 function translateItem(item: NavigationItem): NavigationItem {
   return {
     ...item,
-    label: labels[item.label] ?? item.label.replace("Chung cư", "Apartment").replace("chung cư", "apartment"),
+    label:
+      labels[item.label] ??
+      item.label
+        .replace("Chung cư", "Apartment")
+        .replace("chung cư", "apartment"),
     children: item.children?.map(translateItem),
   };
 }
 
 export function getNavigation(locale: SiteLocale) {
   if (locale === "ja") return navigation.map(translateJapaneseNavigation);
-  if (isAdditionalLocale(locale)) return navigation.map(translateItem).map((item) => translateAdditionalNavigation(locale, item));
+  if (isAdditionalLocale(locale))
+    return navigation
+      .map(translateItem)
+      .map((item) => translateAdditionalNavigation(locale, item));
   return locale === "en" ? navigation.map(translateItem) : navigation;
 }

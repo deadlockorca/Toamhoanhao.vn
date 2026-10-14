@@ -7,7 +7,12 @@ const rootDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   "..",
 );
-const inventoryDir = path.join(rootDir, "content-import", "to-am-hoan-hao", "inventory");
+const inventoryDir = path.join(
+  rootDir,
+  "content-import",
+  "to-am-hoan-hao",
+  "inventory",
+);
 const manifestPath = path.join(inventoryDir, "project-r2-import-manifest.json");
 const reportPath = path.join(inventoryDir, "project-r2-pipeline-report.json");
 const argumentsByName = new Map(
@@ -17,15 +22,18 @@ const argumentsByName = new Map(
   }),
 );
 const selectedSlugs = (
-  argumentsByName.get("--slugs") ?? argumentsByName.get("--slug") ?? ""
+  argumentsByName.get("--slugs") ??
+  argumentsByName.get("--slug") ??
+  ""
 )
   .split(",")
   .map((slug) => slug.trim())
   .filter(Boolean);
 const requestedBatchSize = Number(argumentsByName.get("--batch") ?? 10);
-const batchSize = Number.isInteger(requestedBatchSize) && requestedBatchSize > 0
-  ? requestedBatchSize
-  : 10;
+const batchSize =
+  Number.isInteger(requestedBatchSize) && requestedBatchSize > 0
+    ? requestedBatchSize
+    : 10;
 const execute = process.argv.includes("--execute");
 const includeReview = process.argv.includes("--include-review");
 const publish = process.argv.includes("--publish");

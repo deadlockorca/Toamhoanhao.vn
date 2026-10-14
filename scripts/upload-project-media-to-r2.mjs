@@ -205,10 +205,12 @@ function toPublicUrl(key) {
 }
 
 function contentType(extension) {
-  return {
-    ".jpg": "image/jpeg",
-    ".jpeg": "image/jpeg",
-    ".png": "image/png",
-    ".webp": "image/webp",
-  }[extension] || "application/octet-stream";
+  return (
+    {
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg",
+      ".png": "image/png",
+      ".webp": "image/webp",
+    }[extension] || "application/octet-stream"
+  );
 }

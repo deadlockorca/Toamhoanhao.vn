@@ -179,7 +179,9 @@ function getObjectKey(url: string, config: R2Config) {
     const key = decodeURIComponent(imageUrl.pathname.replace(/^\/+/, ""));
     const requiredPrefix = config.keyPrefix ? `${config.keyPrefix}/` : "";
 
-    return key && (!requiredPrefix || key.startsWith(requiredPrefix)) ? key : null;
+    return key && (!requiredPrefix || key.startsWith(requiredPrefix))
+      ? key
+      : null;
   } catch {
     return null;
   }

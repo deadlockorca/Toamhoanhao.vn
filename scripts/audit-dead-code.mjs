@@ -57,7 +57,8 @@ function createResolver(allFiles) {
   return (fromFile, specifier) => {
     let base;
     if (specifier.startsWith("@/")) base = join(srcDir, specifier.slice(2));
-    else if (specifier.startsWith(".")) base = resolve(dirname(fromFile), specifier);
+    else if (specifier.startsWith("."))
+      base = resolve(dirname(fromFile), specifier);
     else return null;
 
     for (const suffix of RESOLVE_SUFFIXES) {

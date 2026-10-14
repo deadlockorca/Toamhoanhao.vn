@@ -66,7 +66,9 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
             <ArrowLeft aria-hidden="true" className="h-4 w-4" />
             Quay lại danh sách
           </Link>
-          <h2 className="mt-4 text-2xl font-semibold text-[#211d17]">{title}</h2>
+          <h2 className="mt-4 text-2xl font-semibold text-[#211d17]">
+            {title}
+          </h2>
           <p className="mt-2 text-sm text-[#756b5d]">
             Lưu nội dung vào database local, ảnh tải lên vào R2.
           </p>
@@ -101,7 +103,12 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
         <div className="space-y-6">
           <Panel title="Thông tin chung">
             <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Tên dự án" name="title" defaultValue={value.title} required />
+              <Field
+                label="Tên dự án"
+                name="title"
+                defaultValue={value.title}
+                required
+              />
               <Field label="Slug" name="slug" defaultValue={value.slug} />
               <SelectField
                 label="Danh mục"
@@ -109,10 +116,18 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
                 defaultValue={value.category}
                 options={categories}
               />
-              <Field label="Vị trí" name="location" defaultValue={value.location} />
+              <Field
+                label="Vị trí"
+                name="location"
+                defaultValue={value.location}
+              />
               <Field label="Diện tích" name="area" defaultValue={value.area} />
               <Field label="Năm" name="year" defaultValue={value.year} />
-              <Field label="Phong cách" name="style" defaultValue={value.style} />
+              <Field
+                label="Phong cách"
+                name="style"
+                defaultValue={value.style}
+              />
             </div>
 
             <TextArea
@@ -125,10 +140,26 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
 
           <Panel title="Hero & SEO">
             <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Eyebrow" name="eyebrow" defaultValue={detail?.eyebrow} />
-              <Field label="Tiêu đề dòng 1" name="displayTitle" defaultValue={detail?.displayTitle} />
-              <Field label="Tiêu đề dòng 2" name="italicTitle" defaultValue={detail?.italicTitle} />
-              <Field label="Ảnh banner" name="heroImage" defaultValue={detail?.heroImage} />
+              <Field
+                label="Eyebrow"
+                name="eyebrow"
+                defaultValue={detail?.eyebrow}
+              />
+              <Field
+                label="Tiêu đề dòng 1"
+                name="displayTitle"
+                defaultValue={detail?.displayTitle}
+              />
+              <Field
+                label="Tiêu đề dòng 2"
+                name="italicTitle"
+                defaultValue={detail?.italicTitle}
+              />
+              <Field
+                label="Ảnh banner"
+                name="heroImage"
+                defaultValue={detail?.heroImage}
+              />
             </div>
             <TextArea
               label="Mô tả hero"
@@ -137,17 +168,41 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
               className="mt-5"
             />
             <div className="mt-5 grid gap-5 md:grid-cols-2">
-              <Field label="SEO title" name="seoTitle" defaultValue={detail?.seoTitle} />
-              <Field label="SEO description" name="seoDescription" defaultValue={detail?.seoDescription} />
+              <Field
+                label="SEO title"
+                name="seoTitle"
+                defaultValue={detail?.seoTitle}
+              />
+              <Field
+                label="SEO description"
+                name="seoDescription"
+                defaultValue={detail?.seoDescription}
+              />
             </div>
           </Panel>
 
           <Panel title="Thông số & tổng quan">
             <div className="grid gap-5 md:grid-cols-2">
-              <Field label="Số phòng ngủ" name="bedrooms" defaultValue={detail?.bedrooms} />
-              <Field label="Số phòng tắm" name="bathrooms" defaultValue={detail?.bathrooms} />
-              <Field label="Thời gian thi công" name="duration" defaultValue={detail?.duration} />
-              <Field label="Hạng mục" name="scope" defaultValue={detail?.scope} />
+              <Field
+                label="Số phòng ngủ"
+                name="bedrooms"
+                defaultValue={detail?.bedrooms}
+              />
+              <Field
+                label="Số phòng tắm"
+                name="bathrooms"
+                defaultValue={detail?.bathrooms}
+              />
+              <Field
+                label="Thời gian thi công"
+                name="duration"
+                defaultValue={detail?.duration}
+              />
+              <Field
+                label="Hạng mục"
+                name="scope"
+                defaultValue={detail?.scope}
+              />
             </div>
             <Field
               label="Tiêu đề tổng quan"
@@ -263,7 +318,10 @@ export function ProjectFormMock({ mode, project }: ProjectFormMockProps) {
 
                 return (
                   <p key={item.text} className="flex items-center gap-3">
-                    <Icon aria-hidden="true" className="h-4 w-4 text-[#a47b45]" />
+                    <Icon
+                      aria-hidden="true"
+                      className="h-4 w-4 text-[#a47b45]"
+                    />
                     {item.text}
                   </p>
                 );

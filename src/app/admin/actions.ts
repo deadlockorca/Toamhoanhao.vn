@@ -105,7 +105,10 @@ export async function createProjectDraft(formData: FormData) {
   redirect(`/admin/du-an/${project.slug}`);
 }
 
-export async function saveProjectDraft(currentSlug: string, formData: FormData) {
+export async function saveProjectDraft(
+  currentSlug: string,
+  formData: FormData,
+) {
   const title = readString(formData, "title") || "Dự án chưa đặt tên";
   const currentProject = await prisma.project.findUnique({
     where: { slug: currentSlug },
@@ -160,10 +163,7 @@ export async function saveProjectDraft(currentSlug: string, formData: FormData) 
   redirect(`/admin/du-an/${project.slug}`);
 }
 
-export async function updateProjectStatus(
-  slug: string,
-  status: ContentStatus,
-) {
+export async function updateProjectStatus(slug: string, status: ContentStatus) {
   await prisma.project.update({
     where: { slug },
     data: {
@@ -219,7 +219,9 @@ export async function deleteProject(slug: string) {
 
 export async function createDesignSampleDraft(formData: FormData) {
   const title = readString(formData, "title") || "Mẫu thiết kế chưa đặt tên";
-  const slug = await uniqueDesignSampleSlug(readString(formData, "slug") || title);
+  const slug = await uniqueDesignSampleSlug(
+    readString(formData, "slug") || title,
+  );
   const status = readStatus(formData);
   const uploadedUrls = await appendUploadedDesignSampleImages(formData, slug);
   let sample: { slug: string };
@@ -262,7 +264,10 @@ export async function saveDesignSampleDraft(
     currentSample?.id,
   );
   const status = readStatus(formData);
-  const uploadedUrls = await appendUploadedDesignSampleImages(formData, nextSlug);
+  const uploadedUrls = await appendUploadedDesignSampleImages(
+    formData,
+    nextSlug,
+  );
   let sample: { slug: string };
 
   try {
@@ -380,8 +385,7 @@ export async function seedMockProjects() {
             project.status === "published"
               ? ContentStatus.published
               : ContentStatus.draft,
-          publishedAt:
-            project.status === "published" ? new Date() : null,
+          publishedAt: project.status === "published" ? new Date() : null,
           detail: {
             create: seedProjectDetail(project),
           },
@@ -401,8 +405,7 @@ export async function seedMockProjects() {
             project.status === "published"
               ? ContentStatus.published
               : ContentStatus.draft,
-          publishedAt:
-            project.status === "published" ? new Date() : null,
+          publishedAt: project.status === "published" ? new Date() : null,
           detail: {
             upsert: {
               create: seedProjectDetail(project),
@@ -452,8 +455,7 @@ export async function seedMockDesignSamples() {
             sample.status === "published"
               ? ContentStatus.published
               : ContentStatus.draft,
-          publishedAt:
-            sample.status === "published" ? new Date() : null,
+          publishedAt: sample.status === "published" ? new Date() : null,
           detail: {
             create: seedDesignDetail(sample),
           },
@@ -472,8 +474,7 @@ export async function seedMockDesignSamples() {
             sample.status === "published"
               ? ContentStatus.published
               : ContentStatus.draft,
-          publishedAt:
-            sample.status === "published" ? new Date() : null,
+          publishedAt: sample.status === "published" ? new Date() : null,
           detail: {
             upsert: {
               create: seedDesignDetail(sample),
@@ -536,14 +537,21 @@ function projectDetailData(formData: FormData, title: string) {
     eyebrow: readString(formData, "eyebrow") || "Dự án nội thất",
     displayTitle: readString(formData, "displayTitle") || title,
     italicTitle: readString(formData, "italicTitle") || "",
-    heroImage: readString(formData, "heroImage") || readString(formData, "thumbnail") || fallbackImage,
-    description: readString(formData, "description") || "Thông tin chi tiết đang được cập nhật.",
+    heroImage:
+      readString(formData, "heroImage") ||
+      readString(formData, "thumbnail") ||
+      fallbackImage,
+    description:
+      readString(formData, "description") ||
+      "Thông tin chi tiết đang được cập nhật.",
     bedrooms: readString(formData, "bedrooms") || null,
     bathrooms: readString(formData, "bathrooms") || null,
     duration: readString(formData, "duration") || null,
     scope: readString(formData, "scope") || "Thiết kế & thi công nội thất",
     overviewTitle: readString(formData, "overviewTitle") || title,
-    overviewParagraphs: splitParagraphs(readString(formData, "overviewParagraphs")),
+    overviewParagraphs: splitParagraphs(
+      readString(formData, "overviewParagraphs"),
+    ),
     floorPlanImage: readString(formData, "floorPlanImage") || null,
     seoTitle: readString(formData, "seoTitle") || null,
     seoDescription: readString(formData, "seoDescription") || null,
@@ -586,7 +594,9 @@ async function syncProjectCollections(
     await tx.projectFloorPlanNote.createMany({ data: floorPlanNotes });
   }
 
-  const relatedSlugs = uniqueValues(readAllStrings(formData, "relatedProjectSlug"));
+  const relatedSlugs = uniqueValues(
+    readAllStrings(formData, "relatedProjectSlug"),
+  );
   if (relatedSlugs.length === 0) {
     return;
   }
@@ -660,13 +670,12 @@ async function replaceSeedProjectCollections(
     tx.projectMetric.deleteMany({ where: { projectId } }),
   ]);
 
-  const metrics =
-    detail?.metrics ?? [
-      { label: "Diện tích", value: project.area },
-      { label: "Hạng mục", value: project.category },
-      { label: "Thời gian", value: detail?.duration ?? "Đang cập nhật" },
-      { label: "Phong cách", value: project.style },
-    ];
+  const metrics = detail?.metrics ?? [
+    { label: "Diện tích", value: project.area },
+    { label: "Hạng mục", value: project.category },
+    { label: "Thời gian", value: detail?.duration ?? "Đang cập nhật" },
+    { label: "Phong cách", value: project.style },
+  ];
   await tx.projectMetric.createMany({
     data: metrics.map((metric, index) => ({
       projectId,
@@ -675,13 +684,12 @@ async function replaceSeedProjectCollections(
     })),
   });
 
-  const infoRows =
-    detail?.infoRows ?? [
-      { label: "Vị trí", value: project.location },
-      { label: "Diện tích", value: project.area },
-      { label: "Hạng mục", value: project.category },
-      { label: "Năm hoàn thiện", value: project.year },
-    ];
+  const infoRows = detail?.infoRows ?? [
+    { label: "Vị trí", value: project.location },
+    { label: "Diện tích", value: project.area },
+    { label: "Hạng mục", value: project.category },
+    { label: "Năm hoàn thiện", value: project.year },
+  ];
   await tx.projectInfoRow.createMany({
     data: infoRows.map((row, index) => ({
       projectId,
@@ -733,7 +741,9 @@ async function replaceSeedProjectRelations(tx: Prisma.TransactionClient) {
     },
     select: { id: true, slug: true },
   });
-  const idBySlug = new Map(projectsBySlug.map((project) => [project.slug, project.id]));
+  const idBySlug = new Map(
+    projectsBySlug.map((project) => [project.slug, project.id]),
+  );
   const relationRows = mockProjects.flatMap((project) => {
     const projectId = idBySlug.get(project.slug);
 
@@ -824,7 +834,10 @@ async function appendUploadedProjectImages(formData: FormData, slug: string) {
   return [...(coverImage ? [coverImage] : []), ...galleryImages];
 }
 
-async function appendUploadedDesignSampleImages(formData: FormData, slug: string) {
+async function appendUploadedDesignSampleImages(
+  formData: FormData,
+  slug: string,
+) {
   const coverFiles = readUploadedFiles(formData, "coverImageFile");
   const galleryFiles = readUploadedFiles(formData, "galleryImageFiles");
   let coverImage: string | undefined;
@@ -860,7 +873,10 @@ async function appendUploadedDesignSampleImages(formData: FormData, slug: string
 
   for (const [index, image] of galleryImages.entries()) {
     const order = existingGalleryCount + index + 1;
-    formData.append("galleryTitle", `Phối cảnh ${String(order).padStart(2, "0")}`);
+    formData.append(
+      "galleryTitle",
+      `Phối cảnh ${String(order).padStart(2, "0")}`,
+    );
     formData.append("galleryImage", image);
   }
 
@@ -937,7 +953,8 @@ function defaultProjectInfoRows(formData: FormData, projectId: string) {
     {
       projectId,
       label: "Năm hoàn thiện",
-      value: readString(formData, "year") || new Date().getFullYear().toString(),
+      value:
+        readString(formData, "year") || new Date().getFullYear().toString(),
       sortOrder: 5,
     },
   ];
@@ -975,7 +992,9 @@ function readProjectFloorPlanNotes(formData: FormData, projectId: string) {
       value: values[index] || "Thông tin đang được cập nhật.",
       sortOrder: index,
     }))
-    .filter((note) => note.label || note.value !== "Thông tin đang được cập nhật.");
+    .filter(
+      (note) => note.label || note.value !== "Thông tin đang được cập nhật.",
+    );
 }
 
 function designSampleBaseData(
@@ -1008,15 +1027,25 @@ function designDetailData(formData: FormData, title: string) {
     eyebrow: readString(formData, "eyebrow") || "Mẫu thiết kế nội thất",
     displayTitle: readString(formData, "displayTitle") || "Mẫu thiết kế",
     italicTitle: readString(formData, "italicTitle") || title,
-    heroImage: readString(formData, "heroImage") || readString(formData, "thumbnail") || fallbackImage,
-    description: readString(formData, "description") || "Thông tin chi tiết đang được cập nhật.",
-    propertyType: readString(formData, "propertyType") || readString(formData, "type") || "Đang cập nhật",
+    heroImage:
+      readString(formData, "heroImage") ||
+      readString(formData, "thumbnail") ||
+      fallbackImage,
+    description:
+      readString(formData, "description") ||
+      "Thông tin chi tiết đang được cập nhật.",
+    propertyType:
+      readString(formData, "propertyType") ||
+      readString(formData, "type") ||
+      "Đang cập nhật",
     bedrooms: readString(formData, "bedrooms") || null,
     bathrooms: readString(formData, "bathrooms") || null,
     budgetRange: readString(formData, "budgetRange") || null,
     suitableFor: readString(formData, "suitableFor") || null,
     overviewTitle: readString(formData, "overviewTitle") || title,
-    overviewParagraphs: splitParagraphs(readString(formData, "overviewParagraphs")),
+    overviewParagraphs: splitParagraphs(
+      readString(formData, "overviewParagraphs"),
+    ),
     floorPlanImage: readString(formData, "floorPlanImage") || null,
     seoTitle: readString(formData, "seoTitle") || null,
     seoDescription: readString(formData, "seoDescription") || null,
@@ -1093,7 +1122,9 @@ async function syncDesignSampleCollections(
     }
   }
 
-  const relatedSlugs = uniqueValues(readAllStrings(formData, "relatedSampleSlug"));
+  const relatedSlugs = uniqueValues(
+    readAllStrings(formData, "relatedSampleSlug"),
+  );
   if (relatedSlugs.length === 0) {
     return;
   }
@@ -1178,13 +1209,12 @@ async function replaceSeedDesignCollections(
   ]);
   await tx.suggestedPackage.deleteMany({ where: { sampleId } });
 
-  const metrics =
-    detail?.metrics ?? [
-      { label: "Diện tích", value: sample.area ?? "Theo hiện trạng" },
-      { label: "Phong cách", value: sample.style },
-      { label: "Phù hợp", value: sample.type },
-      { label: "Mức đầu tư", value: detail?.budgetRange ?? "Theo nhu cầu" },
-    ];
+  const metrics = detail?.metrics ?? [
+    { label: "Diện tích", value: sample.area ?? "Theo hiện trạng" },
+    { label: "Phong cách", value: sample.style },
+    { label: "Phù hợp", value: sample.type },
+    { label: "Mức đầu tư", value: detail?.budgetRange ?? "Theo nhu cầu" },
+  ];
   await tx.designSampleMetric.createMany({
     data: metrics.map((metric, index) => ({
       sampleId,
@@ -1193,12 +1223,11 @@ async function replaceSeedDesignCollections(
     })),
   });
 
-  const infoRows =
-    detail?.infoRows ?? [
-      { label: "Loại hình", value: sample.type },
-      { label: "Diện tích", value: sample.area ?? "Theo hiện trạng" },
-      { label: "Phong cách", value: sample.style },
-    ];
+  const infoRows = detail?.infoRows ?? [
+    { label: "Loại hình", value: sample.type },
+    { label: "Diện tích", value: sample.area ?? "Theo hiện trạng" },
+    { label: "Phong cách", value: sample.style },
+  ];
   await tx.designSampleInfoRow.createMany({
     data: infoRows.map((row, index) => ({
       sampleId,
@@ -1226,7 +1255,9 @@ async function replaceSeedDesignCollections(
         description: feature.description,
         image: feature.image,
         imageSide:
-          feature.imageSide === ImageSide.left ? ImageSide.left : ImageSide.right,
+          feature.imageSide === ImageSide.left
+            ? ImageSide.left
+            : ImageSide.right,
         sortOrder: index,
       })),
     });
@@ -1274,7 +1305,9 @@ async function replaceSeedDesignRelations(tx: Prisma.TransactionClient) {
     },
     select: { id: true, slug: true },
   });
-  const idBySlug = new Map(samplesBySlug.map((sample) => [sample.slug, sample.id]));
+  const idBySlug = new Map(
+    samplesBySlug.map((sample) => [sample.slug, sample.id]),
+  );
   const relationRows = mockDesignSamples.flatMap((sample) => {
     const sampleId = idBySlug.get(sample.slug);
 
@@ -1336,7 +1369,8 @@ function defaultDesignMetrics(formData: FormData, sampleId: string) {
     {
       sampleId,
       label: "Phù hợp",
-      value: readString(formData, "suitableFor") || readString(formData, "type"),
+      value:
+        readString(formData, "suitableFor") || readString(formData, "type"),
       sortOrder: 2,
     },
     {
@@ -1353,7 +1387,8 @@ function defaultDesignInfoRows(formData: FormData, sampleId: string) {
     {
       sampleId,
       label: "Loại hình",
-      value: readString(formData, "propertyType") || readString(formData, "type"),
+      value:
+        readString(formData, "propertyType") || readString(formData, "type"),
       sortOrder: 0,
     },
     {
@@ -1427,7 +1462,9 @@ function readDesignFloorPlanNotes(formData: FormData, sampleId: string) {
       value: values[index] || "Thông tin đang được cập nhật.",
       sortOrder: index,
     }))
-    .filter((note) => note.label || note.value !== "Thông tin đang được cập nhật.");
+    .filter(
+      (note) => note.label || note.value !== "Thông tin đang được cập nhật.",
+    );
 }
 
 function readDesignPackages(formData: FormData, sampleId: string) {

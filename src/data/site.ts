@@ -79,50 +79,108 @@ export const navigation: NavigationItem[] = [
     label: "Nhà phố",
     children: [
       { label: "Dự án nhà phố", href: "/du-an?danh-muc=nha-pho" },
-      { label: "Mẫu thiết kế nhà phố", href: "/mau-thiet-ke?danh-muc=nha-pho#design-list" },
-      { label: "Thiết kế nội thất nhà phố", href: "/thiet-ke-noi-that/thiet-ke-nha-pho" },
-      { label: "Thi công nhà phố", href: "/thi-cong-noi-that/thi-cong-nha-pho" },
+      {
+        label: "Mẫu thiết kế nhà phố",
+        href: "/mau-thiet-ke?danh-muc=nha-pho#design-list",
+      },
+      {
+        label: "Thiết kế nội thất nhà phố",
+        href: "/thiet-ke-noi-that/thiet-ke-nha-pho",
+      },
+      {
+        label: "Thi công nhà phố",
+        href: "/thi-cong-noi-that/thi-cong-nha-pho",
+      },
     ],
   },
   {
     label: "Nội thất chung cư",
     children: apartmentMenuItems.map(({ label, slug }) => ({
       label,
-      href: slug === "penthouse-duplex"
-        ? "/mau-thiet-ke?chu-de=penthouse-duplex#portfolio-list"
-        : `/du-an?danh-muc=can-ho&dien-tich=${slug}#portfolio-list`,
+      href:
+        slug === "penthouse-duplex"
+          ? "/mau-thiet-ke?chu-de=penthouse-duplex#portfolio-list"
+          : `/du-an?danh-muc=can-ho&dien-tich=${slug}#portfolio-list`,
     })),
   },
   {
     label: "Thiết kế nội thất",
     children: [
-      { label: "Thiết kế khách sạn", href: "/thiet-ke-noi-that/thiet-ke-khach-san" },
-      { label: "Thiết kế nhà phố", href: "/thiet-ke-noi-that/thiet-ke-nha-pho" },
-      { label: "Thiết kế showroom", href: "/thiet-ke-noi-that/thiet-ke-showroom" },
-      { label: "Thiết kế chung cư", href: "/thiet-ke-noi-that/thiet-ke-chung-cu" },
-      { label: "Thiết kế nội thất tân cổ điển", href: "/thiet-ke-noi-that/tan-co-dien" },
-      { label: "Thiết kế nội thất biệt thự", href: "/thiet-ke-noi-that/biet-thu" },
+      {
+        label: "Thiết kế khách sạn",
+        href: "/thiet-ke-noi-that/thiet-ke-khach-san",
+      },
+      {
+        label: "Thiết kế nhà phố",
+        href: "/thiet-ke-noi-that/thiet-ke-nha-pho",
+      },
+      {
+        label: "Thiết kế showroom",
+        href: "/thiet-ke-noi-that/thiet-ke-showroom",
+      },
+      {
+        label: "Thiết kế chung cư",
+        href: "/thiet-ke-noi-that/thiet-ke-chung-cu",
+      },
+      {
+        label: "Thiết kế nội thất tân cổ điển",
+        href: "/thiet-ke-noi-that/tan-co-dien",
+      },
+      {
+        label: "Thiết kế nội thất biệt thự",
+        href: "/thiet-ke-noi-that/biet-thu",
+      },
       { label: "Nội thất phòng ngủ", href: "/thiet-ke-noi-that/phong-ngu" },
       { label: "Nội thất thông minh", href: "/thiet-ke-noi-that/thong-minh" },
       { label: "Nội thất phòng bếp", href: "/thiet-ke-noi-that/phong-bep" },
-      { label: "Nội thất phòng trẻ em", href: "/thiet-ke-noi-that/phong-tre-em" },
+      {
+        label: "Nội thất phòng trẻ em",
+        href: "/thiet-ke-noi-that/phong-tre-em",
+      },
     ],
   },
   {
     label: "Thi công nội thất",
     children: [
       { label: "Không gian bếp", href: "/thi-cong-noi-that/khong-gian-bep" },
-      { label: "Không gian phòng khách", href: "/thi-cong-noi-that/khong-gian-phong-khach" },
-      { label: "Không gian phòng ngủ", href: "/thi-cong-noi-that/khong-gian-phong-ngu" },
-      { label: "Thi công chung cư", href: "/thi-cong-noi-that/thi-cong-chung-cu" },
-      { label: "Thi công nhà phố", href: "/thi-cong-noi-that/thi-cong-nha-pho" },
-      { label: "Thi công phần thô", href: "/thi-cong-noi-that/thi-cong-phan-tho" },
-      { label: "Thi công cải tạo", href: "/thi-cong-noi-that/thi-cong-cai-tao" },
+      {
+        label: "Không gian phòng khách",
+        href: "/thi-cong-noi-that/khong-gian-phong-khach",
+      },
+      {
+        label: "Không gian phòng ngủ",
+        href: "/thi-cong-noi-that/khong-gian-phong-ngu",
+      },
+      {
+        label: "Thi công chung cư",
+        href: "/thi-cong-noi-that/thi-cong-chung-cu",
+      },
+      {
+        label: "Thi công nhà phố",
+        href: "/thi-cong-noi-that/thi-cong-nha-pho",
+      },
+      {
+        label: "Thi công phần thô",
+        href: "/thi-cong-noi-that/thi-cong-phan-tho",
+      },
+      {
+        label: "Thi công cải tạo",
+        href: "/thi-cong-noi-that/thi-cong-cai-tao",
+      },
       { label: "Thi công sơn bả", href: "/thi-cong-noi-that/thi-cong-son-ba" },
-      { label: "Thi công trần thạch cao", href: "/thi-cong-noi-that/thi-cong-tran-thach-cao" },
+      {
+        label: "Thi công trần thạch cao",
+        href: "/thi-cong-noi-that/thi-cong-tran-thach-cao",
+      },
       { label: "Thi công đồ gỗ", href: "/thi-cong-noi-that/thi-cong-do-go" },
-      { label: "Thi công điện nước", href: "/thi-cong-noi-that/thi-cong-dien-nuoc" },
-      { label: "Nhật kí thi công", href: "/thi-cong-noi-that/nhat-ki-thi-cong" },
+      {
+        label: "Thi công điện nước",
+        href: "/thi-cong-noi-that/thi-cong-dien-nuoc",
+      },
+      {
+        label: "Nhật kí thi công",
+        href: "/thi-cong-noi-that/nhat-ki-thi-cong",
+      },
     ],
   },
   {

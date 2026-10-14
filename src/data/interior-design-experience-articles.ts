@@ -19,9 +19,13 @@ export type InteriorDesignExperienceArticle = {
   sections: InteriorDesignExperienceSection[];
 };
 
-const articleBySlug = importedArticles as Record<string, InteriorDesignExperienceArticle>;
+const articleBySlug = importedArticles as Record<
+  string,
+  InteriorDesignExperienceArticle
+>;
 
-export const interiorDesignExperienceListingHref = "/kien-thuc/kinh-nghiem-thiet-ke-noi-that";
+export const interiorDesignExperienceListingHref =
+  "/kien-thuc/kinh-nghiem-thiet-ke-noi-that";
 
 export const interiorDesignExperienceArticles = Object.values(articleBySlug);
 

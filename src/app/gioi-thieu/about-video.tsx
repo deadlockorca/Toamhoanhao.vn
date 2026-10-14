@@ -33,8 +33,13 @@ export function AboutVideo() {
             sizes="(max-width: 800px) 100vw, 650px"
           />
           <span className={styles.videoShade} />
-          <span className={styles.videoPlay}><Play size={30} fill="currentColor" aria-hidden="true" /></span>
-          <span className={styles.videoCaption}><strong>Xem video giới thiệu</strong><small>Tổ Ấm Hoàn Hảo trong vài phút</small></span>
+          <span className={styles.videoPlay}>
+            <Play size={30} fill="currentColor" aria-hidden="true" />
+          </span>
+          <span className={styles.videoCaption}>
+            <strong>Xem video giới thiệu</strong>
+            <small>Tổ Ấm Hoàn Hảo trong vài phút</small>
+          </span>
           <span className={styles.videoTag}>▶ Video</span>
         </button>
       )}

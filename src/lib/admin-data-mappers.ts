@@ -164,7 +164,8 @@ export function mapDbProjectToProject(project: DbProject): Project {
           floorPlanImage: project.detail.floorPlanImage ?? "",
           floorPlanNotes: project.floorPlanNotes ?? [],
           relatedProjectSlugs:
-            project.relatedProjects?.map((item) => item.relatedProject.slug) ?? [],
+            project.relatedProjects?.map((item) => item.relatedProject.slug) ??
+            [],
           seoTitle: project.detail.seoTitle ?? "",
           seoDescription: project.detail.seoDescription ?? "",
         }

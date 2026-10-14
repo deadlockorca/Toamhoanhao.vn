@@ -386,7 +386,8 @@ export const projects: Project[] = [
 ];
 
 export const featuredProject =
-  projects.find((project) => project.slug === "penthouse-west-lake") ?? projects[0];
+  projects.find((project) => project.slug === "penthouse-west-lake") ??
+  projects[0];
 
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug);

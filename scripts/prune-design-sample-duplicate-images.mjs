@@ -4,7 +4,10 @@ import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
 const applyChanges = process.argv.includes("--apply");
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const rootDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryPath = path.join(
   importRoot,
@@ -29,7 +32,12 @@ const summary = {
 for (const sample of samples) {
   const files = await Promise.all(
     (sample.webp?.readyImages ?? []).map(async (relativePath) => {
-      const fullPath = path.join(importRoot, sample.folder, sample.slug, relativePath);
+      const fullPath = path.join(
+        importRoot,
+        sample.folder,
+        sample.slug,
+        relativePath,
+      );
       const metadata = await sharp(fullPath, { animated: false }).metadata();
       const filename = path.basename(relativePath, path.extname(relativePath));
       const sourceUrl = sourceUrlByFilename(sample).get(filename);
@@ -67,7 +75,9 @@ for (const sample of samples) {
   summary.imagesRemoved += removedPaths.size;
   summary.duplicateGroups += groups.length;
   summary.removedPaths.push(
-    ...[...removedPaths].map((relativePath) => `${sample.folder}/${sample.slug}/${relativePath}`),
+    ...[...removedPaths].map(
+      (relativePath) => `${sample.folder}/${sample.slug}/${relativePath}`,
+    ),
   );
 
   if (applyChanges && removedPaths.size > 0) {
@@ -94,7 +104,9 @@ console.log(
   JSON.stringify(
     {
       ...summary,
-      removedPaths: process.argv.includes("--verbose") ? summary.removedPaths : undefined,
+      removedPaths: process.argv.includes("--verbose")
+        ? summary.removedPaths
+        : undefined,
     },
     null,
     2,
@@ -148,8 +160,10 @@ function duplicateGroups(files) {
     for (let right = left + 1; right < files.length; right += 1) {
       if (
         hammingDistance(files[left].visualHash, files[right].visualHash) <= 4 &&
-        meanAbsoluteDifference(files[left].normalizedPixels, files[right].normalizedPixels) <=
-          6
+        meanAbsoluteDifference(
+          files[left].normalizedPixels,
+          files[right].normalizedPixels,
+        ) <= 6
       ) {
         union(parents, left, right);
       }
@@ -186,7 +200,10 @@ function sourceUrlByFilename(sample) {
 
 function sourceImageKey(value) {
   const filename = value.startsWith("http")
-    ? path.basename(new URL(value).pathname, path.extname(new URL(value).pathname))
+    ? path.basename(
+        new URL(value).pathname,
+        path.extname(new URL(value).pathname),
+      )
     : value;
 
   return filename

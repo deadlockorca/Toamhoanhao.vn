@@ -31,7 +31,9 @@ export function AdminSidebar() {
           <span className="block text-sm font-bold uppercase tracking-[0.08em]">
             Tổ Ấm Hoàn Hảo
           </span>
-          <span className="mt-1 block text-xs text-[#817363]">Quản trị nội dung</span>
+          <span className="mt-1 block text-xs text-[#817363]">
+            Quản trị nội dung
+          </span>
         </span>
       </Link>
 

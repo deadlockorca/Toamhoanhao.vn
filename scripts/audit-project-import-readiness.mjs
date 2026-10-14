@@ -8,7 +8,10 @@ const rootDir = path.resolve(
 );
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryDir = path.join(importRoot, "inventory");
-const inventoryPath = path.join(inventoryDir, "old-site-content-inventory.json");
+const inventoryPath = path.join(
+  inventoryDir,
+  "old-site-content-inventory.json",
+);
 const manifestPath = path.join(inventoryDir, "project-r2-import-manifest.json");
 const reportPath = path.join(inventoryDir, "project-r2-import-audit.md");
 
@@ -55,11 +58,15 @@ async function auditProject(item) {
   const missingImages = checkedImages
     .filter((image) => !image.exists)
     .map((image) => image.relativePath);
-  const totalBytes = checkedImages.reduce((total, image) => total + image.bytes, 0);
+  const totalBytes = checkedImages.reduce(
+    (total, image) => total + image.bytes,
+    0,
+  );
   const warnings = [];
 
   if (checkedImages.length === 0) warnings.push("Không có ảnh WebP sẵn sàng.");
-  if (missingImages.length > 0) warnings.push(`Thiếu ${missingImages.length} file ảnh.`);
+  if (missingImages.length > 0)
+    warnings.push(`Thiếu ${missingImages.length} file ảnh.`);
   if (checkedImages.length > 0 && checkedImages.length < 3) {
     warnings.push("Ít hơn 3 ảnh, cần rà lại trước khi xuất bản.");
   }

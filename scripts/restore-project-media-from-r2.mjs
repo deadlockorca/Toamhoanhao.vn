@@ -71,13 +71,15 @@ try {
     throw new Error(`Không tìm thấy dự án: ${slug}`);
   }
 
-  const r2Urls = unique([
-    project.thumbnail,
-    project.detail?.heroImage,
-    project.detail?.floorPlanImage,
-    ...project.spaces.map((space) => space.image),
-    ...project.storyBlocks.map((block) => block.image),
-  ].filter((url) => url?.startsWith(r2Prefix)));
+  const r2Urls = unique(
+    [
+      project.thumbnail,
+      project.detail?.heroImage,
+      project.detail?.floorPlanImage,
+      ...project.spaces.map((space) => space.image),
+      ...project.storyBlocks.map((block) => block.image),
+    ].filter((url) => url?.startsWith(r2Prefix)),
+  );
 
   if (r2Urls.length === 0) {
     throw new Error("Dự án này không có ảnh R2 thuộc đợt upload thử nghiệm.");
@@ -123,7 +125,9 @@ try {
     ]);
   });
 
-  const keys = r2Urls.map((url) => decodeURIComponent(new URL(url).pathname.slice(1)));
+  const keys = r2Urls.map((url) =>
+    decodeURIComponent(new URL(url).pathname.slice(1)),
+  );
   const deleted = await Promise.allSettled(
     keys.map((key) =>
       r2.send(
@@ -134,7 +138,9 @@ try {
       ),
     ),
   );
-  const failedDeletes = deleted.filter((result) => result.status === "rejected").length;
+  const failedDeletes = deleted.filter(
+    (result) => result.status === "rejected",
+  ).length;
 
   console.log(
     JSON.stringify({

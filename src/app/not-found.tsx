@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 const suggestions = [
   { href: "/du-an", label: "Dự án đã thực hiện" },
   { href: "/mau-thiet-ke", label: "Mẫu thiết kế" },
-  { href: "/bao-gia/thiet-ke-thi-cong-noi-that", label: "Báo giá thiết kế & thi công" },
+  {
+    href: "/bao-gia/thiet-ke-thi-cong-noi-that",
+    label: "Báo giá thiết kế & thi công",
+  },
   { href: "/lien-he", label: "Liên hệ tư vấn" },
 ];
 

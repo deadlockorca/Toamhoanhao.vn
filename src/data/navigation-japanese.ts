@@ -57,17 +57,27 @@ const labels: Record<string, string> = {
 };
 
 function translateLabel(label: string) {
-  return labels[label] ?? label.replace(/^Chung cư /, "マンション ").replace(/^chung cư /, "マンション ");
+  return (
+    labels[label] ??
+    label
+      .replace(/^Chung cư /, "マンション ")
+      .replace(/^chung cư /, "マンション ")
+  );
 }
 
-export function translateJapaneseNavigation(item: NavigationItem): NavigationItem {
+export function translateJapaneseNavigation(
+  item: NavigationItem,
+): NavigationItem {
   return {
     ...item,
     label: translateLabel(item.label),
     children: item.children?.map((child) => ({
       ...child,
       label: translateLabel(child.label),
-      children: child.children?.map((grandchild) => ({ ...grandchild, label: translateLabel(grandchild.label) })),
+      children: child.children?.map((grandchild) => ({
+        ...grandchild,
+        label: translateLabel(grandchild.label),
+      })),
     })),
   };
 }

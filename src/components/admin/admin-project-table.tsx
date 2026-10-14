@@ -13,10 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
-import {
-  deleteProject,
-  updateProjectStatus,
-} from "@/app/admin/actions";
+import { deleteProject, updateProjectStatus } from "@/app/admin/actions";
 import { ConfirmActionButton } from "@/components/admin/confirm-action-button";
 import type { Project } from "@/data/projects";
 import { ContentStatus } from "@/generated/prisma/client";
@@ -48,15 +45,23 @@ export function AdminProjectTable({
   const publishedProjects = projects.filter(
     (project) => project.status === "published",
   );
-  const draftProjects = projects.filter((project) => project.status === "draft");
+  const draftProjects = projects.filter(
+    (project) => project.status === "draft",
+  );
   const featuredProjects = projects.filter((project) => project.featured);
 
   return (
     <div className="space-y-6">
       <section className="grid gap-4 md:grid-cols-3">
         <MetricCard label="Tổng dự án" value={`${projects.length}`} />
-        <MetricCard label="Đang hiển thị" value={`${publishedProjects.length}`} />
-        <MetricCard label="Dự án nổi bật" value={`${featuredProjects.length}`} />
+        <MetricCard
+          label="Đang hiển thị"
+          value={`${publishedProjects.length}`}
+        />
+        <MetricCard
+          label="Dự án nổi bật"
+          value={`${featuredProjects.length}`}
+        />
       </section>
 
       <section className="border border-[#ded4c4] bg-[#fbf7f1]">
@@ -146,7 +151,10 @@ export function AdminProjectTable({
                         {project.area} · {project.style}
                       </p>
                       <p className="inline-flex items-center gap-1 text-xs">
-                        <CalendarDays aria-hidden="true" className="h-3.5 w-3.5" />
+                        <CalendarDays
+                          aria-hidden="true"
+                          className="h-3.5 w-3.5"
+                        />
                         {project.year}
                       </p>
                     </div>
@@ -159,7 +167,9 @@ export function AdminProjectTable({
                           : "bg-[#efe4d4] text-[#876239]"
                       }`}
                     >
-                      {project.status === "published" ? "Đang hiện" : "Bản nháp"}
+                      {project.status === "published"
+                        ? "Đang hiện"
+                        : "Bản nháp"}
                     </span>
                   </td>
                   <td className="px-5 py-4 text-sm text-[#62584b]">

@@ -65,7 +65,14 @@ const categoryHints = [
     newType: "project",
     newCategory: "Căn hộ",
     anyCategory: ["cong-trinh-da-lam"],
-    titleIncludes: ["chung cư", "căn hộ", "apartment", "penhouse", "penthouse", "duplex"],
+    titleIncludes: [
+      "chung cư",
+      "căn hộ",
+      "apartment",
+      "penhouse",
+      "penthouse",
+      "duplex",
+    ],
   },
   {
     folder: "du-an/biet-thu",
@@ -132,7 +139,10 @@ const categoryHints = [
     folder: "mau-thiet-ke/nha-pho",
     newType: "designSample",
     newCategory: "Nhà phố",
-    anyCategory: ["https-toamhoanhao-com-bo-suu-tap-nha-pho", "biet-thu-nha-pho"],
+    anyCategory: [
+      "https-toamhoanhao-com-bo-suu-tap-nha-pho",
+      "biet-thu-nha-pho",
+    ],
   },
   {
     folder: "khac-luu-tru",
@@ -147,9 +157,14 @@ async function main() {
   const categories = await fetchAllPages(
     `${apiOrigin}/categories?per_page=100&_fields=id,count,name,slug,parent,link`,
   );
-  const categoryById = new Map(categories.map((category) => [category.id, category]));
+  const categoryById = new Map(
+    categories.map((category) => [category.id, category]),
+  );
 
-  await writeJson(path.join(inventoryDir, "old-site-categories.json"), categories);
+  await writeJson(
+    path.join(inventoryDir, "old-site-categories.json"),
+    categories,
+  );
 
   const allPosts = await fetchAllPages(
     `${apiOrigin}/posts?per_page=100&_fields=id,date,modified,slug,link,title,excerpt,content,categories,featured_media`,
@@ -230,7 +245,10 @@ async function main() {
     await wait(crawlDelayMs);
   }
 
-  await writeJson(path.join(inventoryDir, "old-site-content-inventory.json"), inventory);
+  await writeJson(
+    path.join(inventoryDir, "old-site-content-inventory.json"),
+    inventory,
+  );
   await writeTree(path.join(inventoryDir, "folder-tree.txt"), inventory);
 
   console.log(`Done. Imported ${inventory.length} posts into ${importRoot}`);
@@ -269,9 +287,9 @@ async function readSitemapImages() {
         continue;
       }
 
-      const imageUrls = [...block.matchAll(/<image:loc>(.*?)<\/image:loc>/g)].map(
-        (match) => decodeXml(match[1]),
-      );
+      const imageUrls = [
+        ...block.matchAll(/<image:loc>(.*?)<\/image:loc>/g),
+      ].map((match) => decodeXml(match[1]));
 
       if (imageUrls.length > 0) {
         imagesByUrl.set(normalizeUrl(decodeXml(loc)), imageUrls);
@@ -287,7 +305,9 @@ async function readSitemapImages() {
 function classifyPost(post, categories) {
   const categorySlugs = new Set(categories.map((category) => category.slug));
   const title = decodeHtml(stripHtml(post.title?.rendered ?? "")).toLowerCase();
-  const isProject = [...categorySlugs].some((slug) => projectCategorySlugs.has(slug));
+  const isProject = [...categorySlugs].some((slug) =>
+    projectCategorySlugs.has(slug),
+  );
 
   for (const hint of categoryHints) {
     if (hint.newType === "project" && !isProject) {
@@ -395,8 +415,7 @@ async function fetchWithRetry(url, retries = 2) {
     try {
       const response = await fetch(url, {
         headers: {
-          "user-agent":
-            "ToAmHoanHaoImporter/1.0 (+https://toamhoanhao.vn)",
+          "user-agent": "ToAmHoanHaoImporter/1.0 (+https://toamhoanhao.vn)",
         },
       });
 
@@ -492,7 +511,9 @@ function normalizeImageUrl(url) {
 }
 
 function normalizeUrl(url) {
-  return decodeHtml(url).replace(/^http:/, "https:").replace(/\/$/, "");
+  return decodeHtml(url)
+    .replace(/^http:/, "https:")
+    .replace(/\/$/, "");
 }
 
 function uniqueUrls(urls) {
@@ -527,7 +548,10 @@ function slugify(value) {
 }
 
 function stripHtml(value) {
-  return value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return value
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function decodeHtml(value) {

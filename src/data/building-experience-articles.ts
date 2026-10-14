@@ -31,7 +31,10 @@ const articleOrder = [
   "kinh-nghiem-xay-nha-10",
 ] as const;
 
-const articleBySlug = importedArticles as Record<string, BuildingExperienceArticle>;
+const articleBySlug = importedArticles as Record<
+  string,
+  BuildingExperienceArticle
+>;
 
 export const buildingExperienceListingHref = "/kien-thuc/kinh-nghiem-xay-nha";
 

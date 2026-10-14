@@ -1,16 +1,42 @@
 "use client";
 
-import { ArrowLeftRight, ArrowRight, Check, CheckCircle2, Loader2, Phone, ShieldCheck, X, Zap } from "lucide-react";
+import {
+  ArrowLeftRight,
+  ArrowRight,
+  Check,
+  CheckCircle2,
+  Loader2,
+  Phone,
+  ShieldCheck,
+  X,
+  Zap,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import {
-  createContext, useCallback, useContext, useEffect, useRef, useState,
-  type ChangeEvent, type FormEvent, type ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  type ChangeEvent,
+  type FormEvent,
+  type ReactNode,
 } from "react";
-import { additionalPopupCopy, additionalServiceLabels } from "@/data/consultation-additional";
-import { isAdditionalLocale, isSiteLocale, type SiteLocale } from "@/lib/locale";
+import {
+  additionalPopupCopy,
+  additionalServiceLabels,
+} from "@/data/consultation-additional";
+import {
+  isAdditionalLocale,
+  isSiteLocale,
+  type SiteLocale,
+} from "@/lib/locale";
 import styles from "./consultation-popup.module.css";
 
-const ConsultationContext = createContext<{ openConsultation: () => void }>({ openConsultation: () => {} });
+const ConsultationContext = createContext<{ openConsultation: () => void }>({
+  openConsultation: () => {},
+});
 
 const copyByLocale = {
   vi: {
@@ -18,7 +44,8 @@ const copyByLocale = {
     close: "Đóng",
     eyebrow: "ĐẶT LỊCH TƯ VẤN",
     heading: "Tư vấn miễn phí cùng chuyên gia",
-    introduction: "Để lại thông tin, đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ tư vấn giải pháp phù hợp nhất cho bạn.",
+    introduction:
+      "Để lại thông tin, đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ tư vấn giải pháp phù hợp nhất cho bạn.",
     benefits: [
       "Phản hồi trong vòng 2 giờ làm việc",
       "Báo giá minh bạch, không phát sinh chi phí ẩn",
@@ -44,7 +71,8 @@ const copyByLocale = {
     sending: "Đang gửi...",
     privacy: "Thông tin của bạn được bảo mật và chỉ dùng để hỗ trợ tư vấn.",
     successHeading: "Đã gửi yêu cầu thành công!",
-    successMessage: "Cảm ơn bạn đã tin tưởng. Đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ với bạn trong thời gian sớm nhất.",
+    successMessage:
+      "Cảm ơn bạn đã tin tưởng. Đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ với bạn trong thời gian sớm nhất.",
     sendError: "Không thể gửi yêu cầu. Vui lòng thử lại hoặc gọi 0903 897 555.",
     errors: {
       name: "Vui lòng nhập họ và tên.",
@@ -59,7 +87,8 @@ const copyByLocale = {
     close: "Close",
     eyebrow: "BOOK A CONSULTATION",
     heading: "Free advice from our experts",
-    introduction: "Leave your details and the To Am Hoan Hao team will contact you to discuss a solution that fits your needs.",
+    introduction:
+      "Leave your details and the To Am Hoan Hao team will contact you to discuss a solution that fits your needs.",
     benefits: [
       "A reply within two business hours",
       "Clear quotes with no hidden costs",
@@ -83,10 +112,13 @@ const copyByLocale = {
     messagePlaceholder: "Tell us more about your project...",
     submit: "Send request",
     sending: "Sending...",
-    privacy: "Your information is kept private and used only to assist with your consultation.",
+    privacy:
+      "Your information is kept private and used only to assist with your consultation.",
     successHeading: "Your request has been sent!",
-    successMessage: "Thank you for contacting us. The To Am Hoan Hao team will be in touch soon.",
-    sendError: "Unable to send your request. Please try again or call 0903 897 555.",
+    successMessage:
+      "Thank you for contacting us. The To Am Hoan Hao team will be in touch soon.",
+    sendError:
+      "Unable to send your request. Please try again or call 0903 897 555.",
     errors: {
       name: "Please enter your full name.",
       phone: "Please enter a valid phone number.",
@@ -100,7 +132,8 @@ const copyByLocale = {
     close: "閉じる",
     eyebrow: "無料相談を予約",
     heading: "専門スタッフに無料で相談",
-    introduction: "ご連絡先をご入力ください。Tổ Ấm Hoàn Hảoのスタッフが、ご希望に合ったプランをご案内します。",
+    introduction:
+      "ご連絡先をご入力ください。Tổ Ấm Hoàn Hảoのスタッフが、ご希望に合ったプランをご案内します。",
     benefits: [
       "営業時間内に2時間を目安にご返信",
       "追加費用がわかる明確なお見積もり",
@@ -126,8 +159,10 @@ const copyByLocale = {
     sending: "送信中...",
     privacy: "お預かりした情報は、ご相談への対応にのみ使用します。",
     successHeading: "送信しました",
-    successMessage: "お問い合わせありがとうございます。担当者より近日中にご連絡します。",
-    sendError: "送信できませんでした。もう一度お試しいただくか、0903 897 555までお電話ください。",
+    successMessage:
+      "お問い合わせありがとうございます。担当者より近日中にご連絡します。",
+    sendError:
+      "送信できませんでした。もう一度お試しいただくか、0903 897 555までお電話ください。",
     errors: {
       name: "お名前を入力してください。",
       phone: "有効な電話番号を入力してください。",
@@ -140,11 +175,36 @@ const copyByLocale = {
 } as const;
 
 const serviceOptions = [
-  { value: "Thiết kế nội thất", vi: "Thiết kế nội thất", en: "Interior design", ja: "インテリアデザイン" },
-  { value: "Thi công nội thất", vi: "Thi công nội thất", en: "Interior construction", ja: "内装施工" },
-  { value: "Sản xuất nội thất", vi: "Sản xuất nội thất", en: "Furniture production", ja: "家具製作" },
-  { value: "Xây dựng trọn gói", vi: "Xây dựng trọn gói", en: "Turnkey construction", ja: "建築一式" },
-  { value: "Cải tạo / nâng cấp", vi: "Cải tạo / nâng cấp", en: "Renovation / upgrade", ja: "リノベーション" },
+  {
+    value: "Thiết kế nội thất",
+    vi: "Thiết kế nội thất",
+    en: "Interior design",
+    ja: "インテリアデザイン",
+  },
+  {
+    value: "Thi công nội thất",
+    vi: "Thi công nội thất",
+    en: "Interior construction",
+    ja: "内装施工",
+  },
+  {
+    value: "Sản xuất nội thất",
+    vi: "Sản xuất nội thất",
+    en: "Furniture production",
+    ja: "家具製作",
+  },
+  {
+    value: "Xây dựng trọn gói",
+    vi: "Xây dựng trọn gói",
+    en: "Turnkey construction",
+    ja: "建築一式",
+  },
+  {
+    value: "Cải tạo / nâng cấp",
+    vi: "Cải tạo / nâng cấp",
+    en: "Renovation / upgrade",
+    ja: "リノベーション",
+  },
 ] as const;
 const areaOptions = ["Hà Nội", "TP. Hồ Chí Minh", "Khu vực khác"] as const;
 type RequiredField = "name" | "phone" | "email" | "service" | "area";
@@ -154,19 +214,40 @@ export function useConsultation() {
   return useContext(ConsultationContext);
 }
 
-export function ConsultationButton({ children, className }: { children: ReactNode; className?: string }) {
+export function ConsultationButton({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const { openConsultation } = useConsultation();
-  return <button type="button" onClick={openConsultation} className={className}>{children}</button>;
+  return (
+    <button type="button" onClick={openConsultation} className={className}>
+      {children}
+    </button>
+  );
 }
 
-export function ConsultationProvider({ children, locale = "vi" }: { children: ReactNode; locale?: SiteLocale }) {
+export function ConsultationProvider({
+  children,
+  locale = "vi",
+}: {
+  children: ReactNode;
+  locale?: SiteLocale;
+}) {
   const pathname = usePathname();
   const pathLocale = pathname?.slice(1) ?? "";
-  const currentLocale: SiteLocale = isSiteLocale(pathLocale) ? pathLocale : pathname ? "vi" : locale;
+  const currentLocale: SiteLocale = isSiteLocale(pathLocale)
+    ? pathLocale
+    : pathname
+      ? "vi"
+      : locale;
   const copy = copyByLocale[currentLocale];
-  const serviceLabel = (index: number) => isAdditionalLocale(currentLocale)
-    ? additionalServiceLabels[currentLocale][index]
-    : serviceOptions[index][currentLocale];
+  const serviceLabel = (index: number) =>
+    isAdditionalLocale(currentLocale)
+      ? additionalServiceLabels[currentLocale][index]
+      : serviceOptions[index][currentLocale];
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -198,16 +279,24 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") { closeConsultation(); return; }
+      if (event.key === "Escape") {
+        closeConsultation();
+        return;
+      }
       if (event.key !== "Tab") return;
       const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])',
+        "button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled])",
       );
       if (!focusable?.length) return;
       const first = focusable[0];
       const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     }
     document.addEventListener("keydown", onKeyDown);
     return () => {
@@ -218,9 +307,12 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
     };
   }, [isOpen, closeConsultation]);
 
-  function clearFieldError(event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+  function clearFieldError(
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) {
     const field = event.currentTarget.name as RequiredField;
-    if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
+    if (errors[field])
+      setErrors((current) => ({ ...current, [field]: undefined }));
     if (submitError) setSubmitError(null);
   }
 
@@ -236,7 +328,8 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
     const nextErrors: FormErrors = {};
     if (!name) nextErrors.name = copy.errors.name;
     if (!/^\+?\d{8,15}$/.test(phone)) nextErrors.phone = copy.errors.phone;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) nextErrors.email = copy.errors.email;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      nextErrors.email = copy.errors.email;
     if (!service) nextErrors.service = copy.errors.service;
     if (!area) nextErrors.area = copy.errors.area;
     setErrors(nextErrors);
@@ -255,7 +348,10 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name, phone, email, service,
+          name,
+          phone,
+          email,
+          service,
           scale: String(formData.get("scale") ?? "").trim(),
           area,
           message: String(formData.get("message") ?? "").trim(),
@@ -271,17 +367,34 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
     }
   }
 
-  const fieldClass = (field: RequiredField) => `${styles.fieldControl} ${errors[field] ? styles.fieldError : ""}`;
+  const fieldClass = (field: RequiredField) =>
+    `${styles.fieldControl} ${errors[field] ? styles.fieldError : ""}`;
 
   return (
     <ConsultationContext.Provider value={{ openConsultation }}>
       {children}
       {isOpen && (
-        <div className={styles.backdrop} onMouseDown={(event) => {
-          if (event.target === event.currentTarget) closeConsultation();
-        }}>
-          <div ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-label={copy.dialog}>
-            <button type="button" onClick={closeConsultation} aria-label={copy.close} className={styles.closeButton}><X size={23} aria-hidden="true" /></button>
+        <div
+          className={styles.backdrop}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) closeConsultation();
+          }}
+        >
+          <div
+            ref={dialogRef}
+            className={styles.dialog}
+            role="dialog"
+            aria-modal="true"
+            aria-label={copy.dialog}
+          >
+            <button
+              type="button"
+              onClick={closeConsultation}
+              aria-label={copy.close}
+              className={styles.closeButton}
+            >
+              <X size={23} aria-hidden="true" />
+            </button>
             <aside className={styles.visualPanel}>
               <div className={styles.visualContent}>
                 <p className={styles.eyebrow}>{copy.eyebrow}</p>
@@ -290,85 +403,263 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
                 <ul className={styles.benefits}>
                   {copy.benefits.map((benefit, index) => {
                     const Icon = [Zap, Check, ArrowLeftRight][index];
-                    return <li key={benefit}><span className={styles.benefitIcon}><Icon size={19} aria-hidden="true" /></span>{benefit}</li>;
+                    return (
+                      <li key={benefit}>
+                        <span className={styles.benefitIcon}>
+                          <Icon size={19} aria-hidden="true" />
+                        </span>
+                        {benefit}
+                      </li>
+                    );
                   })}
                 </ul>
               </div>
               <a href="tel:0903897555" className={styles.hotline}>
-                <span className={styles.hotlineIcon}><Phone size={25} aria-hidden="true" /></span>
-                <span><small>{copy.urgent}</small><strong>0903.897.555</strong></span>
+                <span className={styles.hotlineIcon}>
+                  <Phone size={25} aria-hidden="true" />
+                </span>
+                <span>
+                  <small>{copy.urgent}</small>
+                  <strong>0903.897.555</strong>
+                </span>
               </a>
             </aside>
 
             <div ref={formPanelRef} className={styles.formPanel}>
               {isSubmitted ? (
                 <div className={styles.success}>
-                  <CheckCircle2 size={66} strokeWidth={1.5} aria-hidden="true" />
+                  <CheckCircle2
+                    size={66}
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
                   <h2>{copy.successHeading}</h2>
                   <p>{copy.successMessage}</p>
-                  <button type="button" onClick={closeConsultation} className={styles.submitButton}>{copy.close}</button>
+                  <button
+                    type="button"
+                    onClick={closeConsultation}
+                    className={styles.submitButton}
+                  >
+                    {copy.close}
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <div className={styles.formHeading}>
                     <h2>{copy.formHeading}</h2>
-                    <p>{copy.requiredNote.split("*")[0]}<b>*</b>{copy.requiredNote.split("*")[1]}</p>
+                    <p>
+                      {copy.requiredNote.split("*")[0]}
+                      <b>*</b>
+                      {copy.requiredNote.split("*")[1]}
+                    </p>
                   </div>
                   <div className={styles.fieldsGrid}>
                     <label className={styles.field} htmlFor="consult-name">
-                      <span>{copy.name} <b>*</b></span>
-                      <input ref={firstFieldRef} id="consult-name" name="name" type="text" autoComplete="name" placeholder={copy.namePlaceholder} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "consult-name-error" : undefined} className={fieldClass("name")} onChange={clearFieldError} />
-                      {errors.name && <small id="consult-name-error" className={styles.errorMessage}>{errors.name}</small>}
+                      <span>
+                        {copy.name} <b>*</b>
+                      </span>
+                      <input
+                        ref={firstFieldRef}
+                        id="consult-name"
+                        name="name"
+                        type="text"
+                        autoComplete="name"
+                        placeholder={copy.namePlaceholder}
+                        aria-invalid={Boolean(errors.name)}
+                        aria-describedby={
+                          errors.name ? "consult-name-error" : undefined
+                        }
+                        className={fieldClass("name")}
+                        onChange={clearFieldError}
+                      />
+                      {errors.name && (
+                        <small
+                          id="consult-name-error"
+                          className={styles.errorMessage}
+                        >
+                          {errors.name}
+                        </small>
+                      )}
                     </label>
                     <label className={styles.field} htmlFor="consult-phone">
-                      <span>{copy.phone} <b>*</b></span>
-                      <input id="consult-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder={copy.phonePlaceholder} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "consult-phone-error" : undefined} className={fieldClass("phone")} onChange={clearFieldError} />
-                      {errors.phone && <small id="consult-phone-error" className={styles.errorMessage}>{errors.phone}</small>}
+                      <span>
+                        {copy.phone} <b>*</b>
+                      </span>
+                      <input
+                        id="consult-phone"
+                        name="phone"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        placeholder={copy.phonePlaceholder}
+                        aria-invalid={Boolean(errors.phone)}
+                        aria-describedby={
+                          errors.phone ? "consult-phone-error" : undefined
+                        }
+                        className={fieldClass("phone")}
+                        onChange={clearFieldError}
+                      />
+                      {errors.phone && (
+                        <small
+                          id="consult-phone-error"
+                          className={styles.errorMessage}
+                        >
+                          {errors.phone}
+                        </small>
+                      )}
                     </label>
                     <label className={styles.field} htmlFor="consult-email">
-                      <span>Email <b>*</b></span>
-                      <input id="consult-email" name="email" type="email" autoComplete="email" placeholder={copy.emailPlaceholder} aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "consult-email-error" : undefined} className={fieldClass("email")} onChange={clearFieldError} />
-                      {errors.email && <small id="consult-email-error" className={styles.errorMessage}>{errors.email}</small>}
+                      <span>
+                        Email <b>*</b>
+                      </span>
+                      <input
+                        id="consult-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        placeholder={copy.emailPlaceholder}
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={
+                          errors.email ? "consult-email-error" : undefined
+                        }
+                        className={fieldClass("email")}
+                        onChange={clearFieldError}
+                      />
+                      {errors.email && (
+                        <small
+                          id="consult-email-error"
+                          className={styles.errorMessage}
+                        >
+                          {errors.email}
+                        </small>
+                      )}
                     </label>
                     <label className={styles.field} htmlFor="consult-service">
-                      <span>{copy.service} <b>*</b></span>
+                      <span>
+                        {copy.service} <b>*</b>
+                      </span>
                       <span className={styles.selectWrap}>
-                        <select id="consult-service" name="service" defaultValue="" aria-invalid={Boolean(errors.service)} aria-describedby={errors.service ? "consult-service-error" : undefined} className={fieldClass("service")} onChange={clearFieldError}>
-                          <option value="" disabled>{copy.selectService}</option>
-                          {serviceOptions.map((option, index) => <option key={option.value} value={option.value}>{serviceLabel(index)}</option>)}
+                        <select
+                          id="consult-service"
+                          name="service"
+                          defaultValue=""
+                          aria-invalid={Boolean(errors.service)}
+                          aria-describedby={
+                            errors.service ? "consult-service-error" : undefined
+                          }
+                          className={fieldClass("service")}
+                          onChange={clearFieldError}
+                        >
+                          <option value="" disabled>
+                            {copy.selectService}
+                          </option>
+                          {serviceOptions.map((option, index) => (
+                            <option key={option.value} value={option.value}>
+                              {serviceLabel(index)}
+                            </option>
+                          ))}
                         </select>
                       </span>
-                      {errors.service && <small id="consult-service-error" className={styles.errorMessage}>{errors.service}</small>}
+                      {errors.service && (
+                        <small
+                          id="consult-service-error"
+                          className={styles.errorMessage}
+                        >
+                          {errors.service}
+                        </small>
+                      )}
                     </label>
                     <label className={styles.field} htmlFor="consult-scale">
                       <span>{copy.scale}</span>
-                      <input id="consult-scale" name="scale" type="text" placeholder={copy.scalePlaceholder} className={styles.fieldControl} />
+                      <input
+                        id="consult-scale"
+                        name="scale"
+                        type="text"
+                        placeholder={copy.scalePlaceholder}
+                        className={styles.fieldControl}
+                      />
                     </label>
-                    <fieldset className={styles.areaField} aria-describedby={errors.area ? "consult-area-error" : undefined}>
-                      <legend>{copy.area} <b>*</b></legend>
+                    <fieldset
+                      className={styles.areaField}
+                      aria-describedby={
+                        errors.area ? "consult-area-error" : undefined
+                      }
+                    >
+                      <legend>
+                        {copy.area} <b>*</b>
+                      </legend>
                       <div className={styles.areaOptions}>
                         {areaOptions.map((value, index) => (
-                          <label key={value} className={`${styles.areaOption} ${selectedArea === value ? styles.areaSelected : ""} ${errors.area ? styles.areaError : ""}`}>
-                            <input type="radio" name="area" value={value} checked={selectedArea === value} onChange={(event) => {
-                              setSelectedArea(event.currentTarget.value);
-                              clearFieldError(event);
-                            }} />
+                          <label
+                            key={value}
+                            className={`${styles.areaOption} ${selectedArea === value ? styles.areaSelected : ""} ${errors.area ? styles.areaError : ""}`}
+                          >
+                            <input
+                              type="radio"
+                              name="area"
+                              value={value}
+                              checked={selectedArea === value}
+                              onChange={(event) => {
+                                setSelectedArea(event.currentTarget.value);
+                                clearFieldError(event);
+                              }}
+                            />
                             {copy.areaOptions[index]}
                           </label>
                         ))}
                       </div>
-                      {errors.area && <small id="consult-area-error" className={styles.errorMessage}>{errors.area}</small>}
+                      {errors.area && (
+                        <small
+                          id="consult-area-error"
+                          className={styles.errorMessage}
+                        >
+                          {errors.area}
+                        </small>
+                      )}
                     </fieldset>
-                    <label className={`${styles.field} ${styles.messageField}`} htmlFor="consult-message">
+                    <label
+                      className={`${styles.field} ${styles.messageField}`}
+                      htmlFor="consult-message"
+                    >
                       <span>{copy.message}</span>
-                      <textarea id="consult-message" name="message" rows={4} placeholder={copy.messagePlaceholder} className={styles.fieldControl} />
+                      <textarea
+                        id="consult-message"
+                        name="message"
+                        rows={4}
+                        placeholder={copy.messagePlaceholder}
+                        className={styles.fieldControl}
+                      />
                     </label>
                   </div>
-                  <button type="submit" disabled={isSubmitting} className={styles.submitButton}>
-                    {isSubmitting ? <><Loader2 size={20} className={styles.spinner} aria-hidden="true" />{copy.sending}</> : <>{copy.submit} <ArrowRight size={20} aria-hidden="true" /></>}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={styles.submitButton}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2
+                          size={20}
+                          className={styles.spinner}
+                          aria-hidden="true"
+                        />
+                        {copy.sending}
+                      </>
+                    ) : (
+                      <>
+                        {copy.submit}{" "}
+                        <ArrowRight size={20} aria-hidden="true" />
+                      </>
+                    )}
                   </button>
-                  {submitError && <p className={styles.submitError} role="alert">{submitError}</p>}
-                  <p className={styles.privacy}><ShieldCheck size={19} aria-hidden="true" /> {copy.privacy}</p>
+                  {submitError && (
+                    <p className={styles.submitError} role="alert">
+                      {submitError}
+                    </p>
+                  )}
+                  <p className={styles.privacy}>
+                    <ShieldCheck size={19} aria-hidden="true" /> {copy.privacy}
+                  </p>
                 </form>
               )}
             </div>
@@ -381,7 +672,10 @@ export function ConsultationProvider({ children, locale = "vi" }: { children: Re
 
 export function ConsultationHotline() {
   return (
-    <a href="tel:0903897555" className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]">
+    <a
+      href="tel:0903897555"
+      className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]"
+    >
       <Phone aria-hidden="true" className="h-4 w-4" />
       0903.897.555
     </a>

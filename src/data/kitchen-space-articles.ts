@@ -29,7 +29,8 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
   {
     slug: "3-bang-mau-kinh-op-bep",
     label: "Kính ốp bếp",
-    title: "3 bảng màu kính ốp bếp sang trọng – tạo sự hài hòa cho mọi thiết kế tủ bếp",
+    title:
+      "3 bảng màu kính ốp bếp sang trọng – tạo sự hài hòa cho mọi thiết kế tủ bếp",
     excerpt:
       "Tìm hiểu kính ốp bếp là gì, những đặc điểm vượt trội và 3 bảng màu đón đầu xu hướng giúp tăng điểm nhấn, sự sang trọng cho không gian bếp.",
     image: "/images/thi-cong-noi-that/khong-gian-bep/bai-1.webp",
@@ -43,12 +44,14 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "tong-hop-40-mau-tu-bep-tien-nghi",
       "top-15-mau-thiet-ke-bep-chung-cu",
     ],
-    legacyUrl: "https://toamhoanhao.vn/3-bang-mau-kinh-op-bep-cho-moi-thiet-ke-tu-bep/",
+    legacyUrl:
+      "https://toamhoanhao.vn/3-bang-mau-kinh-op-bep-cho-moi-thiet-ke-tu-bep/",
   },
   {
     slug: "tong-hop-40-mau-tu-bep-tien-nghi",
     label: "Tủ bếp",
-    title: "Tổng hợp 40+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
+    title:
+      "Tổng hợp 40+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
     excerpt:
       "Tuyển tập hơn 40 mẫu tủ bếp chữ I, chữ L, chữ U và bàn đảo hiện đại, sang trọng, phù hợp với mọi diện tích không gian bếp.",
     image: "/images/thi-cong-noi-that/khong-gian-bep/bai-2.webp",
@@ -81,7 +84,8 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "top-15-mau-thiet-ke-bep-chung-cu",
       "3-bang-mau-kinh-op-bep",
     ],
-    legacyUrl: "https://toamhoanhao.vn/cong-trinh-bep-tai-du-an-the-manor-cenltral-park-quan-binh-thanh/",
+    legacyUrl:
+      "https://toamhoanhao.vn/cong-trinh-bep-tai-du-an-the-manor-cenltral-park-quan-binh-thanh/",
   },
   {
     slug: "top-15-mau-thiet-ke-bep-chung-cu",
@@ -119,12 +123,14 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "tong-hop-40-mau-tu-bep-tien-nghi",
       "20-mau-tu-bep-tien-nghi-xu-huong",
     ],
-    legacyUrl: "https://toamhoanhao.vn/30-mau-bep-xinh-danh-cho-biet-thu-nha-pho-2/",
+    legacyUrl:
+      "https://toamhoanhao.vn/30-mau-bep-xinh-danh-cho-biet-thu-nha-pho-2/",
   },
   {
     slug: "20-mau-tu-bep-tien-nghi-xu-huong",
     label: "Tủ bếp",
-    title: "20+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
+    title:
+      "20+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
     excerpt:
       "Tuyển chọn hơn 20 mẫu tủ bếp chữ I, chữ L, chữ U tiện nghi và sang trọng theo xu hướng mới nhất, phù hợp mọi không gian.",
     image: "/images/thi-cong-noi-that/khong-gian-bep/bai-6.webp",
@@ -138,7 +144,8 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "tong-hop-40-mau-tu-bep-tien-nghi",
       "30-mau-bep-xinh-biet-thu-nha-pho",
     ],
-    legacyUrl: "https://toamhoanhao.vn/20-mau-tu-bep-tien-nghi-xu-huong-moi-nhat-2023/",
+    legacyUrl:
+      "https://toamhoanhao.vn/20-mau-tu-bep-tien-nghi-xu-huong-moi-nhat-2023/",
   },
   {
     slug: "bao-gia-thi-cong-noi-that-tron-goi",
@@ -157,7 +164,8 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "tong-hop-40-mau-tu-bep-tien-nghi",
       "30-mau-bep-xinh-biet-thu-nha-pho",
     ],
-    legacyUrl: "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
+    legacyUrl:
+      "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
   },
 ];
 
@@ -166,12 +174,11 @@ const contentSections = kitchenSpaceArticleContent as unknown as Record<
   KitchenSpaceArticleSection[]
 >;
 
-export const kitchenSpaceArticles: KitchenSpaceArticle[] = kitchenSpaceArticleSummaries.map(
-  (article) => ({
+export const kitchenSpaceArticles: KitchenSpaceArticle[] =
+  kitchenSpaceArticleSummaries.map((article) => ({
     ...article,
     sections: contentSections[article.slug] ?? article.sections,
-  }),
-);
+  }));
 
 export function getKitchenSpaceArticleBySlug(slug: string) {
   return kitchenSpaceArticles.find((article) => article.slug === slug);

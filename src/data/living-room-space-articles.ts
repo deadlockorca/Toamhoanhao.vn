@@ -30,7 +30,8 @@ const livingRoomSpaceArticleSummaries: LivingRoomSpaceArticle[] = [
   {
     slug: "30-mau-noi-that-phong-khach-biet-thu-nha-pho",
     label: "Phòng khách biệt thự, nhà phố",
-    title: "30+ mẫu thiết kế nội thất phòng khách biệt thự, nhà phố đẹp đến xiêu lòng",
+    title:
+      "30+ mẫu thiết kế nội thất phòng khách biệt thự, nhà phố đẹp đến xiêu lòng",
     excerpt:
       "Bộ sưu tập hơn 30 mẫu thiết kế nội thất phòng khách biệt thự, nhà phố từ hiện đại, đơn giản đến sang trọng với nhiều diện tích khác nhau.",
     image: "/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp",
@@ -41,7 +42,8 @@ const livingRoomSpaceArticleSummaries: LivingRoomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["bo-suu-tap-noi-that-phong-khach-chung-cu"],
-    legacyUrl: "https://toamhoanhao.vn/30-mau-noi-that-phong-khach-biet-thu-nha-pho-dep-2/",
+    legacyUrl:
+      "https://toamhoanhao.vn/30-mau-noi-that-phong-khach-biet-thu-nha-pho-dep-2/",
   },
   {
     slug: "bo-suu-tap-noi-that-phong-khach-chung-cu",
@@ -57,12 +59,14 @@ const livingRoomSpaceArticleSummaries: LivingRoomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["30-mau-noi-that-phong-khach-biet-thu-nha-pho"],
-    legacyUrl: "https://toamhoanhao.vn/bo-suu-tap-noi-that-phong-khach-chung-cu-2022/",
+    legacyUrl:
+      "https://toamhoanhao.vn/bo-suu-tap-noi-that-phong-khach-chung-cu-2022/",
   },
   {
     slug: "khac-phuc-han-che-phong-ngu-khong-cua-so",
     label: "Phòng ngủ không cửa sổ",
-    title: "Phòng ngủ không có cửa sổ – top cách khắc phục hạn chế của thiết kế hiệu quả nhất",
+    title:
+      "Phòng ngủ không có cửa sổ – top cách khắc phục hạn chế của thiết kế hiệu quả nhất",
     excerpt:
       "Phòng ngủ không có cửa sổ gây ngột ngạt, bí bách. Khám phá các cách khắc phục hiệu quả: phối màu đánh lừa thị giác, ánh sáng nhân tạo, không gian mở…",
     image: "/images/thi-cong-noi-that/khong-gian-phong-khach/bai-3-thumb.webp",
@@ -73,7 +77,8 @@ const livingRoomSpaceArticleSummaries: LivingRoomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["30-mau-noi-that-phong-khach-biet-thu-nha-pho"],
-    legacyUrl: "https://toamhoanhao.vn/khac-phuc-han-che-phong-ngu-khong-cua-so/",
+    legacyUrl:
+      "https://toamhoanhao.vn/khac-phuc-han-che-phong-ngu-khong-cua-so/",
   },
   {
     slug: "bao-gia-thi-cong-noi-that-tron-goi",
@@ -89,8 +94,10 @@ const livingRoomSpaceArticleSummaries: LivingRoomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["30-mau-noi-that-phong-khach-biet-thu-nha-pho"],
-    legacyUrl: "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
-    externalHref: "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
+    legacyUrl:
+      "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
+    externalHref:
+      "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
   },
 ];
 
@@ -99,12 +106,11 @@ const contentSections = livingRoomSpaceArticleContent as unknown as Record<
   LivingRoomSpaceArticleSection[]
 >;
 
-export const livingRoomSpaceArticles: LivingRoomSpaceArticle[] = livingRoomSpaceArticleSummaries.map(
-  (article) => ({
+export const livingRoomSpaceArticles: LivingRoomSpaceArticle[] =
+  livingRoomSpaceArticleSummaries.map((article) => ({
     ...article,
     sections: contentSections[article.slug] ?? article.sections,
-  }),
-);
+  }));
 
 export function getLivingRoomSpaceArticleBySlug(slug: string) {
   return livingRoomSpaceArticles.find((article) => article.slug === slug);

@@ -18,7 +18,9 @@ export async function generateMetadata({
   const project = dbProject ?? getProjectBySlug(slug);
 
   return {
-    title: project ? `Sửa ${project.title} | Admin` : "Dự án không tồn tại | Admin",
+    title: project
+      ? `Sửa ${project.title} | Admin`
+      : "Dự án không tồn tại | Admin",
   };
 }
 

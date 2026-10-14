@@ -119,7 +119,10 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Dữ liệu không hợp lệ" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Dữ liệu không hợp lệ" },
+      { status: 400 },
+    );
   }
 
   const name = readField(body, "name");

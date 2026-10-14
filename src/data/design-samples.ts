@@ -181,7 +181,8 @@ export const designSamples: DesignSample[] = [
     area: "95m²",
     thumbnail:
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",
-    summary: "Không gian căn hộ sáng, tối giản và ấm áp với chất liệu gỗ tự nhiên.",
+    summary:
+      "Không gian căn hộ sáng, tối giản và ấm áp với chất liệu gỗ tự nhiên.",
     detail: {
       eyebrow: "Mẫu thiết kế nội thất chung cư",
       displayTitle: "Mẫu thiết kế",
@@ -375,7 +376,8 @@ export const designSamples: DesignSample[] = [
     area: "110m²",
     thumbnail:
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=85",
-    summary: "Không gian nhà phố thanh lịch với phòng khách liền bếp thoáng đãng.",
+    summary:
+      "Không gian nhà phố thanh lịch với phòng khách liền bếp thoáng đãng.",
     status: "published",
     publishedAt: "2026-08-19T00:00:00.000Z",
   },
@@ -401,7 +403,8 @@ export const designSamples: DesignSample[] = [
     area: "20m²",
     thumbnail:
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
-    summary: "Phòng ngủ thư giãn với ánh sáng dịu, chất liệu mềm và tủ âm tường.",
+    summary:
+      "Phòng ngủ thư giãn với ánh sáng dịu, chất liệu mềm và tủ âm tường.",
     status: "published",
     publishedAt: "2026-08-15T00:00:00.000Z",
   },
@@ -439,7 +442,8 @@ export const designSamples: DesignSample[] = [
     style: "Warm Playful",
     thumbnail:
       "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85",
-    summary: "Không gian phòng trẻ em ấm áp, nhiều lưu trữ và an toàn khi sử dụng.",
+    summary:
+      "Không gian phòng trẻ em ấm áp, nhiều lưu trữ và an toàn khi sử dụng.",
     status: "published",
     publishedAt: "2026-08-09T00:00:00.000Z",
   },
@@ -452,7 +456,8 @@ export const designSamples: DesignSample[] = [
     area: "85m²",
     thumbnail:
       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85",
-    summary: "Mẫu căn hộ sáng, mềm và phù hợp gia đình trẻ yêu phong cách hiện đại.",
+    summary:
+      "Mẫu căn hộ sáng, mềm và phù hợp gia đình trẻ yêu phong cách hiện đại.",
     status: "published",
     publishedAt: "2026-08-07T00:00:00.000Z",
   },
@@ -464,7 +469,8 @@ export const designSamples: DesignSample[] = [
     style: "Tropical",
     thumbnail:
       "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=900&q=85",
-    summary: "Biệt thự nghỉ dưỡng với mảng xanh, hiên rộng và chất liệu tự nhiên.",
+    summary:
+      "Biệt thự nghỉ dưỡng với mảng xanh, hiên rộng và chất liệu tự nhiên.",
     status: "published",
     publishedAt: "2026-08-05T00:00:00.000Z",
   },

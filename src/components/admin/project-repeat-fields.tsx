@@ -36,7 +36,10 @@ type RelatedRow = {
 export function ProjectSpacesFields({ detail }: ProjectRepeatFieldsProps) {
   const [rows, setRows] = useState<SpaceRow[]>(
     detail?.spaces.length
-      ? detail.spaces.map((space, index) => ({ ...space, id: `space-${index}` }))
+      ? detail.spaces.map((space, index) => ({
+          ...space,
+          id: `space-${index}`,
+        }))
       : [{ id: "space-new", title: "", image: "" }],
   );
 
@@ -54,12 +57,18 @@ export function ProjectSpacesFields({ detail }: ProjectRepeatFieldsProps) {
         <RepeatCard
           key={row.id}
           index={index}
-          onMoveUp={() => setRows((current) => moveItem(current, index, index - 1))}
-          onMoveDown={() => setRows((current) => moveItem(current, index, index + 1))}
+          onMoveUp={() =>
+            setRows((current) => moveItem(current, index, index - 1))
+          }
+          onMoveDown={() =>
+            setRows((current) => moveItem(current, index, index + 1))
+          }
           canMoveUp={index > 0}
           canMoveDown={index < rows.length - 1}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <Field
@@ -118,16 +127,26 @@ export function ProjectStoryFields({ detail }: ProjectRepeatFieldsProps) {
         <RepeatCard
           key={row.id}
           index={index}
-          onMoveUp={() => setRows((current) => moveItem(current, index, index - 1))}
-          onMoveDown={() => setRows((current) => moveItem(current, index, index + 1))}
+          onMoveUp={() =>
+            setRows((current) => moveItem(current, index, index - 1))
+          }
+          onMoveDown={() =>
+            setRows((current) => moveItem(current, index, index + 1))
+          }
           canMoveUp={index > 0}
           canMoveDown={index < rows.length - 1}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <div className="grid gap-4 md:grid-cols-[96px_1fr_150px]">
-            <Field label="Số thứ tự" name="storyIndex" defaultValue={row.index} />
+            <Field
+              label="Số thứ tự"
+              name="storyIndex"
+              defaultValue={row.index}
+            />
             <Field label="Tiêu đề" name="storyTitle" defaultValue={row.title} />
             <SelectField
               label="Vị trí ảnh"
@@ -151,7 +170,9 @@ export function ProjectStoryFields({ detail }: ProjectRepeatFieldsProps) {
   );
 }
 
-export function ProjectFloorPlanNoteFields({ detail }: ProjectRepeatFieldsProps) {
+export function ProjectFloorPlanNoteFields({
+  detail,
+}: ProjectRepeatFieldsProps) {
   const [rows, setRows] = useState<NoteRow[]>(
     detail?.floorPlanNotes.length
       ? detail.floorPlanNotes
@@ -168,11 +189,21 @@ export function ProjectFloorPlanNoteFields({ detail }: ProjectRepeatFieldsProps)
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
-          <Field label="Tiêu đề ghi chú" name="floorNoteLabel" defaultValue={row.label} />
-          <TextArea label="Nội dung" name="floorNoteValue" defaultValue={row.value} />
+          <Field
+            label="Tiêu đề ghi chú"
+            name="floorNoteLabel"
+            defaultValue={row.label}
+          />
+          <TextArea
+            label="Nội dung"
+            name="floorNoteValue"
+            defaultValue={row.value}
+          />
         </RepeatCard>
       ))}
     </RepeatShell>
@@ -196,7 +227,9 @@ export function ProjectRelatedFields({ detail }: ProjectRepeatFieldsProps) {
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <Field

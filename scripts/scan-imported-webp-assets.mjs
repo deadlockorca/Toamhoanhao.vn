@@ -8,7 +8,10 @@ const rootDir = path.resolve(
 );
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryDir = path.join(importRoot, "inventory");
-const inventoryPath = path.join(inventoryDir, "old-site-content-inventory.json");
+const inventoryPath = path.join(
+  inventoryDir,
+  "old-site-content-inventory.json",
+);
 const reportPath = path.join(inventoryDir, "webp-ready-report.md");
 const summaryPath = path.join(inventoryDir, "webp-ready-summary.json");
 
@@ -79,7 +82,9 @@ async function findWebpImages(itemDir) {
 
   return files
     .filter((filePath) => /\.webp$/i.test(filePath))
-    .map((filePath) => path.relative(itemDir, filePath).split(path.sep).join("/"))
+    .map((filePath) =>
+      path.relative(itemDir, filePath).split(path.sep).join("/"),
+    )
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 }
 

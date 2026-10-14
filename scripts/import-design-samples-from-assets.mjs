@@ -8,7 +8,10 @@ import { PrismaMariaDb } from "@prisma/adapter-mariadb";
 
 import { PrismaClient } from "../src/generated/prisma/client.js";
 
-const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const rootDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryPath = path.join(
   importRoot,
@@ -20,7 +23,12 @@ const reportPath = path.join(
   "inventory",
   "design-sample-import-report.json",
 );
-const publicUploadRoot = path.join(rootDir, "public", "uploads", "mau-thiet-ke");
+const publicUploadRoot = path.join(
+  rootDir,
+  "public",
+  "uploads",
+  "mau-thiet-ke",
+);
 const requestedSlugs = process.argv
   .filter((argument) => argument.startsWith("--slug="))
   .map((argument) => argument.slice("--slug=".length))
@@ -98,10 +106,15 @@ try {
     }
 
     const title = normalizeTitle(item.title || item.slug);
-    const summary = normalizeText(item.excerpt) || `Bộ sưu tập ${title.toLocaleLowerCase("vi-VN")}.`;
+    const summary =
+      normalizeText(item.excerpt) ||
+      `Bộ sưu tập ${title.toLocaleLowerCase("vi-VN")}.`;
     const area = parseArea(`${title}\n${summary}`);
     const style = detectStyle(`${title}\n${summary}`);
-    const overview = [summary, "Hình ảnh được chọn lọc từ thư viện website cũ và sẽ tiếp tục được biên tập theo nhu cầu triển khai thực tế."];
+    const overview = [
+      summary,
+      "Hình ảnh được chọn lọc từ thư viện website cũ và sẽ tiếp tục được biên tập theo nhu cầu triển khai thực tế.",
+    ];
 
     await prisma.$transaction(async (tx) => {
       await tx.designSample.deleteMany({ where: { slug: item.slug } });
@@ -136,18 +149,34 @@ try {
           },
           metrics: {
             create: [
-              { label: "Diện tích", value: area ?? "Theo hiện trạng", sortOrder: 0 },
+              {
+                label: "Diện tích",
+                value: area ?? "Theo hiện trạng",
+                sortOrder: 0,
+              },
               { label: "Phong cách", value: style, sortOrder: 1 },
               { label: "Phù hợp", value: meta.type, sortOrder: 2 },
-              { label: "Hình ảnh", value: `${images.length} phối cảnh`, sortOrder: 3 },
+              {
+                label: "Hình ảnh",
+                value: `${images.length} phối cảnh`,
+                sortOrder: 3,
+              },
             ],
           },
           infoRows: {
             create: [
               { label: "Loại mẫu", value: meta.type, sortOrder: 0 },
-              { label: "Diện tích", value: area ?? "Theo hiện trạng", sortOrder: 1 },
+              {
+                label: "Diện tích",
+                value: area ?? "Theo hiện trạng",
+                sortOrder: 1,
+              },
               { label: "Phong cách", value: style, sortOrder: 2 },
-              { label: "Nguồn", value: "Thư viện Tổ Ấm Hoàn Hảo", sortOrder: 3 },
+              {
+                label: "Nguồn",
+                value: "Thư viện Tổ Ấm Hoàn Hảo",
+                sortOrder: 3,
+              },
             ],
           },
           gallery: {
@@ -159,10 +188,29 @@ try {
           },
           floorPlanNotes: {
             create: [
-              { label: "Tối ưu giao thông", value: "Bố trí lối di chuyển thông thoáng giữa các khu vực.", sortOrder: 0 },
-              { label: "Tăng sáng tự nhiên", value: "Ưu tiên mảng sáng và vật liệu giúp không gian rộng hơn.", sortOrder: 1 },
-              { label: "Lưu trữ hợp lý", value: "Tận dụng hệ tủ để không gian gọn gàng trong sử dụng hằng ngày.", sortOrder: 2 },
-              { label: "Đồng nhất vật liệu", value: "Giữ bảng màu và vật liệu xuyên suốt để tổng thể hài hòa.", sortOrder: 3 },
+              {
+                label: "Tối ưu giao thông",
+                value: "Bố trí lối di chuyển thông thoáng giữa các khu vực.",
+                sortOrder: 0,
+              },
+              {
+                label: "Tăng sáng tự nhiên",
+                value:
+                  "Ưu tiên mảng sáng và vật liệu giúp không gian rộng hơn.",
+                sortOrder: 1,
+              },
+              {
+                label: "Lưu trữ hợp lý",
+                value:
+                  "Tận dụng hệ tủ để không gian gọn gàng trong sử dụng hằng ngày.",
+                sortOrder: 2,
+              },
+              {
+                label: "Đồng nhất vật liệu",
+                value:
+                  "Giữ bảng màu và vật liệu xuyên suốt để tổng thể hài hòa.",
+                sortOrder: 3,
+              },
             ],
           },
         },
@@ -193,7 +241,17 @@ try {
       2,
     )}\n`,
   );
-  console.log(JSON.stringify({ imported: records.length, images: records.reduce((total, record) => total + record.images, 0), reportPath }, null, 2));
+  console.log(
+    JSON.stringify(
+      {
+        imported: records.length,
+        images: records.reduce((total, record) => total + record.images, 0),
+        reportPath,
+      },
+      null,
+      2,
+    ),
+  );
 } finally {
   await prisma.$disconnect();
 }
@@ -209,7 +267,10 @@ async function copyImagesToPublic(item) {
   const copied = [];
   for (const [index, relativePath] of selectedImages.entries()) {
     const targetName = `${String(index + 1).padStart(3, "0")}-${path.basename(relativePath)}`;
-    await copyFile(path.join(sourceDir, relativePath), path.join(targetDir, targetName));
+    await copyFile(
+      path.join(sourceDir, relativePath),
+      path.join(targetDir, targetName),
+    );
     copied.push(`/uploads/mau-thiet-ke/${item.slug}/${targetName}`);
   }
 
@@ -249,5 +310,7 @@ function detectStyle(value) {
     ["Hiện đại", /hiện đại|hien dai|modern/i],
   ];
 
-  return styles.find(([, pattern]) => pattern.test(value))?.[0] ?? "Đa phong cách";
+  return (
+    styles.find(([, pattern]) => pattern.test(value))?.[0] ?? "Đa phong cách"
+  );
 }

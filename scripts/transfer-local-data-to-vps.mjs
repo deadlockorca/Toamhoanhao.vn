@@ -7,7 +7,9 @@ const MIGRATION_TABLE = "_prisma_migrations";
 const BATCH_SIZE = 250;
 
 if (!process.argv.includes("--confirm")) {
-  throw new Error("Run again with --confirm after verifying the source and target databases.");
+  throw new Error(
+    "Run again with --confirm after verifying the source and target databases.",
+  );
 }
 
 if (!SOURCE_DATABASE_URL || !TARGET_DATABASE_URL) {
@@ -97,7 +99,9 @@ async function main() {
     const report = [];
 
     for (const table of sourceTables) {
-      const rows = await source.query(`SELECT * FROM ${quoteIdentifier(table)}`);
+      const rows = await source.query(
+        `SELECT * FROM ${quoteIdentifier(table)}`,
+      );
 
       if (rows.length === 0) {
         report.push({ table, count: 0 });
@@ -122,7 +126,9 @@ async function main() {
     await target.query("SET FOREIGN_KEY_CHECKS = 1");
 
     console.table(report.filter((entry) => entry.count > 0));
-    console.log(`Transferred ${totalRows} rows across ${sourceTables.length} tables.`);
+    console.log(
+      `Transferred ${totalRows} rows across ${sourceTables.length} tables.`,
+    );
   } catch (error) {
     await target.rollback().catch(() => undefined);
     await target.query("SET FOREIGN_KEY_CHECKS = 1").catch(() => undefined);

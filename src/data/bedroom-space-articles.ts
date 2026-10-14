@@ -30,7 +30,8 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
   {
     slug: "thiet-ke-noi-that-giuong-tang-cho-tre-em",
     label: "Giường tầng trẻ em",
-    title: "10+ mẫu thiết kế nội thất giường tầng dành cho phòng ngủ trẻ em đẹp",
+    title:
+      "10+ mẫu thiết kế nội thất giường tầng dành cho phòng ngủ trẻ em đẹp",
     excerpt:
       "Giường tầng là giải pháp tối ưu cho phòng ngủ trẻ em diện tích hạn chế, vừa sáng tạo vừa tiết kiệm không gian và đem lại sự bắt mắt cho căn phòng.",
     image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-1/1.webp",
@@ -41,12 +42,14 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["20-mau-thiet-ke-noi-that-phong-ngu-tre-em"],
-    legacyUrl: "https://toamhoanhao.vn/thiet-ke-noi-that-giuong-tang-cho-tre-em-8/",
+    legacyUrl:
+      "https://toamhoanhao.vn/thiet-ke-noi-that-giuong-tang-cho-tre-em-8/",
   },
   {
     slug: "10-mau-thiet-ke-noi-that-phong-ngu-luxury",
     label: "Phòng ngủ luxury",
-    title: "10+ mẫu thiết kế nội thất phòng ngủ luxury sang chảnh và thời thượng",
+    title:
+      "10+ mẫu thiết kế nội thất phòng ngủ luxury sang chảnh và thời thượng",
     excerpt:
       "Phong cách luxury với gỗ tự nhiên, đá cẩm thạch, pha lê và chi tiết mạ vàng sang trọng – bộ sưu tập phòng ngủ đẳng cấp khó rời mắt.",
     image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-3/1.webp",
@@ -57,12 +60,14 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["10-mau-thiet-ke-noi-that-phong-ngu-tan-co-dien"],
-    legacyUrl: "https://toamhoanhao.vn/10-mau-thiet-ke-noi-that-phong-ngu-luxury-6/",
+    legacyUrl:
+      "https://toamhoanhao.vn/10-mau-thiet-ke-noi-that-phong-ngu-luxury-6/",
   },
   {
     slug: "10-mau-thiet-ke-noi-that-phong-ngu-tan-co-dien",
     label: "Phòng ngủ tân cổ điển",
-    title: "20+ mẫu thiết kế nội thất phòng ngủ tân cổ điển sang trọng và đẳng cấp",
+    title:
+      "20+ mẫu thiết kế nội thất phòng ngủ tân cổ điển sang trọng và đẳng cấp",
     excerpt:
       "Phong cách tân cổ điển kết hợp cổ điển và hiện đại với hoa văn nhẹ nhàng, màu sắc Châu Âu kem, trắng, xám – sang trọng và đẳng cấp.",
     image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-4/1.webp",
@@ -73,7 +78,8 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["10-mau-thiet-ke-noi-that-phong-ngu-luxury"],
-    legacyUrl: "https://toamhoanhao.vn/10-mau-thiet-ke-noi-that-phong-ngu-tan-co-dien-5/",
+    legacyUrl:
+      "https://toamhoanhao.vn/10-mau-thiet-ke-noi-that-phong-ngu-tan-co-dien-5/",
   },
   {
     slug: "50-mau-thiet-ke-tu-quan-ao",
@@ -89,7 +95,8 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["kinh-nghiem-thiet-ke-noi-that-phong-ngu-master"],
-    legacyUrl: "https://toamhoanhao.vn/50-mau-thiet-ke-tu-quan-ao-ben-dep-sang-trong-4/",
+    legacyUrl:
+      "https://toamhoanhao.vn/50-mau-thiet-ke-tu-quan-ao-ben-dep-sang-trong-4/",
   },
   {
     slug: "20-mau-thiet-ke-noi-that-phong-ngu-tre-em",
@@ -105,12 +112,14 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["thiet-ke-noi-that-giuong-tang-cho-tre-em"],
-    legacyUrl: "https://toamhoanhao.vn/20-mau-thiet-ke-noi-that-phong-ngu-tre-em-3/",
+    legacyUrl:
+      "https://toamhoanhao.vn/20-mau-thiet-ke-noi-that-phong-ngu-tre-em-3/",
   },
   {
     slug: "top-30-mau-thiet-ke-noi-that-phong-ngu-hien-dai",
     label: "Phòng ngủ hiện đại",
-    title: "Top 60+ mẫu thiết kế nội thất phòng ngủ hiện đại hợp với mọi không gian",
+    title:
+      "Top 60+ mẫu thiết kế nội thất phòng ngủ hiện đại hợp với mọi không gian",
     excerpt:
       "Bộ sưu tập 60+ mẫu phòng ngủ hiện đại với nhiều diện tích và phong cách, giúp bạn dễ dàng lựa chọn không gian thư giãn lý tưởng.",
     image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/1.webp",
@@ -121,7 +130,8 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: [],
-    legacyUrl: "https://toamhoanhao.vn/top-30-mau-thiet-ke-noi-that-phong-ngu-hien-dai-2/",
+    legacyUrl:
+      "https://toamhoanhao.vn/top-30-mau-thiet-ke-noi-that-phong-ngu-hien-dai-2/",
   },
   {
     slug: "kinh-nghiem-thiet-ke-noi-that-phong-ngu-master",
@@ -137,7 +147,8 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["50-mau-thiet-ke-tu-quan-ao"],
-    legacyUrl: "https://toamhoanhao.vn/kinh-nghiem-thiet-ke-noi-that-phong-ngu-master-19/",
+    legacyUrl:
+      "https://toamhoanhao.vn/kinh-nghiem-thiet-ke-noi-that-phong-ngu-master-19/",
   },
   {
     slug: "bao-gia-thi-cong-noi-that-tron-goi",
@@ -153,8 +164,10 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     ],
     sections: [],
     relatedSlugs: ["top-30-mau-thiet-ke-noi-that-phong-ngu-hien-dai"],
-    legacyUrl: "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
-    externalHref: "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
+    legacyUrl:
+      "https://toamhoanhao.vn/bao-gia-thiet-ke-thi-cong-noi-that-tron-goi-moi-nhat-nam-2023/",
+    externalHref:
+      "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
   },
 ];
 
@@ -163,12 +176,11 @@ const contentSections = bedroomSpaceArticleContent as unknown as Record<
   BedroomSpaceArticleSection[]
 >;
 
-export const bedroomSpaceArticles: BedroomSpaceArticle[] = bedroomSpaceArticleSummaries.map(
-  (article) => ({
+export const bedroomSpaceArticles: BedroomSpaceArticle[] =
+  bedroomSpaceArticleSummaries.map((article) => ({
     ...article,
     sections: contentSections[article.slug] ?? article.sections,
-  }),
-);
+  }));
 
 export function getBedroomSpaceArticleBySlug(slug: string) {
   return bedroomSpaceArticles.find((article) => article.slug === slug);

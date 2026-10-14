@@ -23,14 +23,16 @@ const articleBySlug = importedArticles as Record<string, BeautifulHomeArticle>;
 
 export const beautifulHomeListingHref = "/kien-thuc/kien-thuc-nha-dep";
 
-export const beautifulHomeArticles = Object.values(articleBySlug).sort((left, right) => {
-  const toTime = (value: string) => {
-    const [day, month, year] = value.split("/").map(Number);
-    return new Date(year, month - 1, day).getTime();
-  };
+export const beautifulHomeArticles = Object.values(articleBySlug).sort(
+  (left, right) => {
+    const toTime = (value: string) => {
+      const [day, month, year] = value.split("/").map(Number);
+      return new Date(year, month - 1, day).getTime();
+    };
 
-  return toTime(right.date) - toTime(left.date);
-});
+    return toTime(right.date) - toTime(left.date);
+  },
+);
 
 export function getBeautifulHomeArticle(slug: string) {
   return articleBySlug[slug];

@@ -32,14 +32,19 @@ export function AdminDesignSampleTable({
   const publishedSamples = designSamples.filter(
     (sample) => sample.status === "published",
   );
-  const draftSamples = designSamples.filter((sample) => sample.status === "draft");
+  const draftSamples = designSamples.filter(
+    (sample) => sample.status === "draft",
+  );
   const featuredSamples = designSamples.filter((sample) => sample.featured);
 
   return (
     <div className="space-y-6">
       <section className="grid gap-4 md:grid-cols-3">
         <MetricCard label="Tổng mẫu" value={`${designSamples.length}`} />
-        <MetricCard label="Đang hiển thị" value={`${publishedSamples.length}`} />
+        <MetricCard
+          label="Đang hiển thị"
+          value={`${publishedSamples.length}`}
+        />
         <MetricCard label="Mẫu nổi bật" value={`${featuredSamples.length}`} />
       </section>
 
@@ -190,7 +195,9 @@ export function AdminDesignSampleTable({
                               {sample.status === "published" ? "Ẩn" : "Hiện"}
                             </button>
                           </form>
-                          <form action={deleteDesignSample.bind(null, sample.slug)}>
+                          <form
+                            action={deleteDesignSample.bind(null, sample.slug)}
+                          >
                             <ConfirmActionButton
                               type="submit"
                               confirmMessage={`Xoá mẫu thiết kế "${sample.title}"?`}

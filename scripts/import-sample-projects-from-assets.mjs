@@ -128,11 +128,7 @@ const projectOverrides = {
   },
 };
 
-const storyTitles = [
-  "Tối ưu công năng",
-  "Cân bằng ánh sáng",
-  "Vật liệu ấm áp",
-];
+const storyTitles = ["Tối ưu công năng", "Cân bằng ánh sáng", "Vật liệu ấm áp"];
 
 const customProjectStories = {
   "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17": [
@@ -260,7 +256,9 @@ async function main() {
   const inventory = JSON.parse(await readFile(inventoryPath, "utf8"));
 
   if (parseOnlySlug) {
-    const item = inventory.find((candidate) => candidate.slug === parseOnlySlug);
+    const item = inventory.find(
+      (candidate) => candidate.slug === parseOnlySlug,
+    );
 
     if (!item) {
       throw new Error(`Không tìm thấy asset để test parser: ${parseOnlySlug}`);
@@ -296,7 +294,8 @@ async function main() {
   const slugsToImport = importSlug ? [importSlug] : sampleSlugs;
   const items = slugsToImport.map((slug) => {
     const item = inventory.find(
-      (candidate) => candidate.slug === slug && candidate.folder.startsWith("du-an/"),
+      (candidate) =>
+        candidate.slug === slug && candidate.folder.startsWith("du-an/"),
     );
 
     if (!item) {
@@ -325,17 +324,23 @@ async function main() {
       const importImages = selectImagesForImport(item, oldPost);
       const images = await prepareImages(item, importImages);
       const storyBlocks = buildStoryBlocks(item.slug, images, sourceStories);
-      const floorPlanImage = getFloorPlanImage(item.slug, images, sourceStories);
-      const overviewParagraphs =
-        customProjectOverviewParagraphs[item.slug] ?? [
-          "Dữ liệu dự án được import từ website cũ để kiểm tra giao diện mới với ảnh thật và nội dung thật.",
-          "Các trường chi tiết như mô tả, mặt bằng, ngân sách và thông số kỹ thuật sẽ tiếp tục được biên tập trong admin trước khi xuất bản chính thức.",
-        ];
+      const floorPlanImage = getFloorPlanImage(
+        item.slug,
+        images,
+        sourceStories,
+      );
+      const overviewParagraphs = customProjectOverviewParagraphs[item.slug] ?? [
+        "Dữ liệu dự án được import từ website cũ để kiểm tra giao diện mới với ảnh thật và nội dung thật.",
+        "Các trường chi tiết như mô tả, mặt bằng, ngân sách và thông số kỹ thuật sẽ tiếp tục được biên tập trong admin trước khi xuất bản chính thức.",
+      ];
       const title = override.title ?? parsedFacts.title;
       const area = override.area ?? parsedFacts.area;
       const bedrooms = override.bedrooms ?? parsedFacts.bedrooms;
       const style = truncateText(override.style ?? parsedFacts.style, 191);
-      const location = truncateText(override.location ?? parsedFacts.location, 191);
+      const location = truncateText(
+        override.location ?? parsedFacts.location,
+        191,
+      );
       const summary = cleanImportedText(
         item.excerpt ||
           "Không gian căn hộ được thiết kế lại theo hướng ấm áp, tiện nghi và phù hợp thói quen sinh hoạt của gia đình.",
@@ -410,10 +415,26 @@ async function main() {
           },
           floorPlanNotes: {
             create: [
-              infoRow("Tối ưu giao thông", "Bố trí lối di chuyển thông thoáng giữa các khu vực.", 0),
-              infoRow("Tăng sáng tự nhiên", "Ưu tiên mảng sáng và vật liệu giúp không gian rộng hơn.", 1),
-              infoRow("Lưu trữ hợp lý", "Tận dụng hệ tủ để căn hộ gọn gàng trong sử dụng hằng ngày.", 2),
-              infoRow("Đồng nhất vật liệu", "Giữ bảng màu và vật liệu xuyên suốt để tổng thể hài hòa.", 3),
+              infoRow(
+                "Tối ưu giao thông",
+                "Bố trí lối di chuyển thông thoáng giữa các khu vực.",
+                0,
+              ),
+              infoRow(
+                "Tăng sáng tự nhiên",
+                "Ưu tiên mảng sáng và vật liệu giúp không gian rộng hơn.",
+                1,
+              ),
+              infoRow(
+                "Lưu trữ hợp lý",
+                "Tận dụng hệ tủ để căn hộ gọn gàng trong sử dụng hằng ngày.",
+                2,
+              ),
+              infoRow(
+                "Đồng nhất vật liệu",
+                "Giữ bảng màu và vật liệu xuyên suốt để tổng thể hài hòa.",
+                3,
+              ),
             ],
           },
         },
@@ -510,7 +531,9 @@ function parseStorySources(html) {
 
   for (const block of blocks) {
     if (/^<h[23]/i.test(block)) {
-      currentTitle = normalizeImportedTitle(cleanImportedText(stripHtml(block)));
+      currentTitle = normalizeImportedTitle(
+        cleanImportedText(stripHtml(block)),
+      );
       pendingParagraphs = [];
       continue;
     }
@@ -617,13 +640,13 @@ function getFloorPlanImage(slug, images, sourceStories) {
 
   const imageIndex = customProjectFloorPlanImageIndexes[slug];
 
-  return typeof imageIndex === "number" ? images[imageIndex] ?? null : null;
+  return typeof imageIndex === "number" ? (images[imageIndex] ?? null) : null;
 }
 
 function selectImagesForImport(item, oldPost) {
   const images = item.webp?.readyImages?.length
     ? item.webp.readyImages
-    : item.images?.map((image) => image.rawPath).filter(Boolean) ?? [];
+    : (item.images?.map((image) => image.rawPath).filter(Boolean) ?? []);
   const localImages = dedupeImagesByKey(images, item.images ?? []);
 
   const contentImageKeys = oldPost
@@ -651,7 +674,10 @@ function selectImagesForImport(item, oldPost) {
   // Some older posts expose only part of their gallery, or use filenames that
   // no longer match the local WebP files. Put matched images first, then keep
   // every remaining local image so bulk imports never discard a gallery.
-  return dedupeImagesByKey([...matchedImages, ...localImages], item.images ?? []);
+  return dedupeImagesByKey(
+    [...matchedImages, ...localImages],
+    item.images ?? [],
+  );
 }
 
 function uniqueImageKeysFromContent(html) {
@@ -704,8 +730,8 @@ function imageKeyFromSourceUrl(value) {
 
 function imageForStory(images, story) {
   if (story.imageKey) {
-    const image = images.find((candidate) =>
-      imageKeyFromPublicPath(candidate) === story.imageKey,
+    const image = images.find(
+      (candidate) => imageKeyFromPublicPath(candidate) === story.imageKey,
     );
 
     if (image) {
@@ -795,9 +821,15 @@ function parseProjectFacts(item, oldPost) {
   const oldTitle = cleanImportedText(
     stripHtml(oldPost?.title?.rendered ?? item.title ?? item.slug),
   );
-  const excerpt = cleanImportedText(stripHtml(oldPost?.excerpt?.rendered ?? item.excerpt));
-  const contentText = cleanImportedText(stripHtml(oldPost?.content?.rendered ?? ""));
-  const combinedText = [oldTitle, excerpt, contentText].filter(Boolean).join("\n");
+  const excerpt = cleanImportedText(
+    stripHtml(oldPost?.excerpt?.rendered ?? item.excerpt),
+  );
+  const contentText = cleanImportedText(
+    stripHtml(oldPost?.content?.rendered ?? ""),
+  );
+  const combinedText = [oldTitle, excerpt, contentText]
+    .filter(Boolean)
+    .join("\n");
   const areaResult = parseArea(oldTitle, combinedText);
 
   return {
@@ -970,7 +1002,10 @@ function capitalizeFirstLetter(value) {
 
 function italicTitleFromOldTitle(title) {
   const cleaned = titleFromOldTitle(title);
-  const afterDash = cleaned.split(/\s+[–-]\s+/).at(-1)?.trim();
+  const afterDash = cleaned
+    .split(/\s+[–-]\s+/)
+    .at(-1)
+    ?.trim();
 
   return afterDash && afterDash !== cleaned ? afterDash : cleaned;
 }

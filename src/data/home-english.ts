@@ -1,5 +1,13 @@
-import { japaneseHomeText, japaneseProjectSummary, japaneseProjectTitle } from "@/data/home-japanese";
-import { additionalHomeText, additionalProjectSummary, additionalProjectTitle } from "@/data/home-additional";
+import {
+  japaneseHomeText,
+  japaneseProjectSummary,
+  japaneseProjectTitle,
+} from "@/data/home-japanese";
+import {
+  additionalHomeText,
+  additionalProjectSummary,
+  additionalProjectTitle,
+} from "@/data/home-additional";
 import { isAdditionalLocale, type SiteLocale } from "@/lib/locale";
 
 const translations: Record<string, string> = {
@@ -14,22 +22,26 @@ const translations: Record<string, string> = {
   "Đang cập nhật": "Details coming soon",
   "INDUSTRIAL HIỆN ĐẠI XU HƯỚNG 2023": "Modern industrial",
   "Tư vấn": "Consultation",
-  "Tiếp nhận nhu cầu & định hướng phong cách": "Discuss your needs and preferred style",
+  "Tiếp nhận nhu cầu & định hướng phong cách":
+    "Discuss your needs and preferred style",
   "Khảo sát": "Site survey",
-  "Khảo sát hiện trạng & đo đạc chi tiết": "Survey the site and take measurements",
+  "Khảo sát hiện trạng & đo đạc chi tiết":
+    "Survey the site and take measurements",
   "Thiết kế": "Design",
   "Lên phương án 2D, 3D & dự toán": "Prepare 2D and 3D designs and estimates",
   "Thi công": "Construction",
   "Sản xuất & thi công tại công trình": "Produce and install on site",
   "Bàn giao": "Handover",
-  "Nghiệm thu & bàn giao đưa vào sử dụng": "Inspect and hand over the completed space",
+  "Nghiệm thu & bàn giao đưa vào sử dụng":
+    "Inspect and hand over the completed space",
   "Thiết kế nhà phố": "Townhouse design",
   "Nội thất gỗ óc chó": "Walnut wood interiors",
   "Thiết kế thi công nhà phố": "Townhouse design and construction",
   "PORTFOLIO NỘI THẤT": "INTERIOR PORTFOLIO",
   "Những công trình": "Spaces that tell",
   "kể câu chuyện sống": "a story of living",
-  "Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.": "Explore projects designed and built by To Am Hoan Hao, from the first idea to the finished living space.",
+  "Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.":
+    "Explore projects designed and built by To Am Hoan Hao, from the first idea to the finished living space.",
   "Xem dự án": "Explore projects",
   "Nhận báo giá": "Request a quote",
   "Ảnh trước": "Previous image",
@@ -58,40 +70,50 @@ const translations: Record<string, string> = {
   "TRƯỚC & SAU THI CÔNG": "BEFORE & AFTER",
   "Thay đổi có thể": "A transformation",
   "nhìn thấy": "you can see",
-  "Cùng xem sự thay đổi của không gian qua từng giai đoạn thiết kế và hoàn thiện.": "See how a space changes through design and completion.",
-  "Không gian trong giai đoạn thi công phần thô": "Space during the shell construction stage",
+  "Cùng xem sự thay đổi của không gian qua từng giai đoạn thiết kế và hoàn thiện.":
+    "See how a space changes through design and completion.",
+  "Không gian trong giai đoạn thi công phần thô":
+    "Space during the shell construction stage",
   "Trước thi công": "Before completion",
-  "Minh họa giai đoạn thi công phần thô": "Illustration of the shell construction stage",
+  "Minh họa giai đoạn thi công phần thô":
+    "Illustration of the shell construction stage",
   "Không gian nội thất sau khi hoàn thiện": "Completed interior space",
   "Sau thi công": "After completion",
   "Minh họa không gian hoàn thiện": "Illustration of a completed space",
   "VÌ SAO KHÁCH HÀNG CHỌN TỔ ẤM HOÀN HẢO": "WHY CLIENTS CHOOSE TO AM HOAN HAO",
   "10+ năm": "10+ years of",
   "kinh nghiệm": "experience",
-  "Kiến tạo hàng trăm không gian sống chất lượng": "Creating quality living spaces",
+  "Kiến tạo hàng trăm không gian sống chất lượng":
+    "Creating quality living spaces",
   "công trình": "projects",
-  "Được khách hàng tin tưởng trên toàn quốc": "Trusted by clients across Vietnam",
+  "Được khách hàng tin tưởng trên toàn quốc":
+    "Trusted by clients across Vietnam",
   "Xưởng sản xuất": "In-house",
   "trực tiếp": "workshop",
   "Chủ động chất lượng và tiến độ": "Control over quality and schedules",
   "Quy trình minh bạch": "Transparent process",
-  "Rõ ràng, chuyên nghiệp ở mọi giai đoạn": "Clear and professional at every stage",
+  "Rõ ràng, chuyên nghiệp ở mọi giai đoạn":
+    "Clear and professional at every stage",
   "QUY TRÌNH LÀM VIỆC": "OUR PROCESS",
   "5 bước kiến tạo tổ ấm": "Five steps to your new home",
   "KHÁCH HÀNG NÓI VỀ CHÚNG TÔI": "WHAT OUR CLIENTS SAY",
   "Những chia sẻ chân thực": "Real stories from our clients",
-  "Hình ảnh phản hồi từ khách hàng, lưu lại trong hành trình cùng Tổ Ấm Hoàn Hảo.": "Photos of client feedback from their journey with To Am Hoan Hao.",
+  "Hình ảnh phản hồi từ khách hàng, lưu lại trong hành trình cùng Tổ Ấm Hoàn Hảo.":
+    "Photos of client feedback from their journey with To Am Hoan Hao.",
   "Xem phản hồi trước": "Previous feedback",
   "Xem phản hồi tiếp theo": "Next feedback",
   "PHẢN HỒI THỰC TẾ": "REAL FEEDBACK",
   "Chia sẻ từ khách hàng": "Shared by our clients",
-  "Chọn một ảnh để xem lớn ngay trên trang.": "Select a photo to enlarge it here.",
+  "Chọn một ảnh để xem lớn ngay trên trang.":
+    "Select a photo to enlarge it here.",
   "PHẢN HỒI KHÁCH HÀNG": "CLIENT FEEDBACK",
   "Đóng ảnh phản hồi": "Close feedback photo",
   "TƯ VẤN DỰ ÁN": "PROJECT CONSULTATION",
   "Bạn đang có dự án cần triển khai?": "Ready to start a project?",
-  "Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.": "Let our team help you create the living space you envision. Share your project with To Am Hoan Hao for a free consultation.",
-  "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.": "Thank you! We will contact you soon.",
+  "Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.":
+    "Let our team help you create the living space you envision. Share your project with To Am Hoan Hao for a free consultation.",
+  "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.":
+    "Thank you! We will contact you soon.",
   "Họ và tên *": "Full name *",
   "Họ và tên": "Full name",
   "Số điện thoại *": "Phone number *",
@@ -104,29 +126,39 @@ const translations: Record<string, string> = {
   "Sản xuất nội thất": "Furniture production",
   "Đang gửi...": "Sending...",
   "Tiếp nhận dự án": "Submit your project",
-  "Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.": "Could not send your request. Please try again or call 0903 897 555.",
+  "Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.":
+    "Could not send your request. Please try again or call 0903 897 555.",
   "Yêu cầu tư vấn từ trang chủ": "Consultation request from the homepage",
 };
 
 export function homeText(locale: SiteLocale, source: string) {
   if (locale === "ja") return japaneseHomeText(source);
   if (isAdditionalLocale(locale)) return additionalHomeText(locale, source);
-  return locale === "en" ? translations[source] ?? source : source;
+  return locale === "en" ? (translations[source] ?? source) : source;
 }
 
 const englishProjectTitles: Record<string, string> = {
-  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17": "Vinhomes Grand Park 82 m² Apartment",
-  "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01": "Blue and White 30 m² Studio Apartment",
-  "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18": "72 m² Apartment with a Bold Black Palette",
+  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17":
+    "Vinhomes Grand Park 82 m² Apartment",
+  "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01":
+    "Blue and White 30 m² Studio Apartment",
+  "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18":
+    "72 m² Apartment with a Bold Black Palette",
   "thiet-ke-noi-that-chung-cu-5": "Modern Two-Bedroom 78 m² Apartment",
   "thiet-ke-thi-cong-noi-that-chung-cu-85-m2": "85 m² Japandi-Style Apartment",
-  "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04": "KABA COFFEE: 260 m² Modern Industrial Café",
+  "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04":
+    "KABA COFFEE: 260 m² Modern Industrial Café",
 };
 
-export function homeProjectTitle(locale: SiteLocale, slug: string, original: string) {
+export function homeProjectTitle(
+  locale: SiteLocale,
+  slug: string,
+  original: string,
+) {
   if (locale === "ja") return japaneseProjectTitle(slug, original);
-  if (isAdditionalLocale(locale)) return additionalProjectTitle(locale, slug, original);
-  return locale === "en" ? englishProjectTitles[slug] ?? original : original;
+  if (isAdditionalLocale(locale))
+    return additionalProjectTitle(locale, slug, original);
+  return locale === "en" ? (englishProjectTitles[slug] ?? original) : original;
 }
 
 const englishProjectSummaries: Record<string, string> = {
@@ -134,8 +166,15 @@ const englishProjectSummaries: Record<string, string> = {
     "After many conversations, our team works to understand the client’s wishes and shape the design and construction around them, aiming for a finished space that meets their expectations...",
 };
 
-export function homeProjectSummary(locale: SiteLocale, slug: string, original: string) {
+export function homeProjectSummary(
+  locale: SiteLocale,
+  slug: string,
+  original: string,
+) {
   if (locale === "ja") return japaneseProjectSummary(slug, original);
-  if (isAdditionalLocale(locale)) return additionalProjectSummary(locale, slug, original);
-  return locale === "en" ? englishProjectSummaries[slug] ?? original : original;
+  if (isAdditionalLocale(locale))
+    return additionalProjectSummary(locale, slug, original);
+  return locale === "en"
+    ? (englishProjectSummaries[slug] ?? original)
+    : original;
 }

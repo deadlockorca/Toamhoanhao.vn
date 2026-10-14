@@ -10,7 +10,8 @@ const translations: Record<string, string> = {
   "Đang cập nhật": "準備中",
   "INDUSTRIAL HIỆN ĐẠI XU HƯỚNG 2023": "モダンインダストリアル",
   "Tư vấn": "ご相談",
-  "Tiếp nhận nhu cầu & định hướng phong cách": "ご要望とお好みのスタイルを伺います",
+  "Tiếp nhận nhu cầu & định hướng phong cách":
+    "ご要望とお好みのスタイルを伺います",
   "Khảo sát": "現地調査",
   "Khảo sát hiện trạng & đo đạc chi tiết": "現地を確認し、寸法を測定します",
   "Thiết kế": "デザイン",
@@ -25,7 +26,8 @@ const translations: Record<string, string> = {
   "PORTFOLIO NỘI THẤT": "インテリア実績",
   "Những công trình": "暮らしの物語を紡ぐ",
   "kể câu chuyện sống": "住まいづくり",
-  "Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.": "Tổ Ấm Hoàn Hảoが手がけた設計・施工事例をご覧ください。構想から完成まで、一人ひとりに合った心地よい住空間をつくります。",
+  "Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.":
+    "Tổ Ấm Hoàn Hảoが手がけた設計・施工事例をご覧ください。構想から完成まで、一人ひとりに合った心地よい住空間をつくります。",
   "Xem dự án": "施工事例を見る",
   "Nhận báo giá": "見積もりを依頼",
   "Ảnh trước": "前の画像",
@@ -54,7 +56,8 @@ const translations: Record<string, string> = {
   "TRƯỚC & SAU THI CÔNG": "施工前・施工後",
   "Thay đổi có thể": "目に見える",
   "nhìn thấy": "空間の変化",
-  "Cùng xem sự thay đổi của không gian qua từng giai đoạn thiết kế và hoàn thiện.": "設計から完成まで、空間がどのように変わるかをご覧ください。",
+  "Cùng xem sự thay đổi của không gian qua từng giai đoạn thiết kế và hoàn thiện.":
+    "設計から完成まで、空間がどのように変わるかをご覧ください。",
   "Không gian trong giai đoạn thi công phần thô": "躯体工事中の空間",
   "Trước thi công": "施工前",
   "Minh họa giai đoạn thi công phần thô": "躯体工事段階のイメージ",
@@ -76,18 +79,22 @@ const translations: Record<string, string> = {
   "5 bước kiến tạo tổ ấm": "住まいづくりの5ステップ",
   "KHÁCH HÀNG NÓI VỀ CHÚNG TÔI": "お客様の声",
   "Những chia sẻ chân thực": "お客様から届いた声",
-  "Hình ảnh phản hồi từ khách hàng, lưu lại trong hành trình cùng Tổ Ấm Hoàn Hảo.": "お客様からいただいた写真やご感想をご紹介します。",
+  "Hình ảnh phản hồi từ khách hàng, lưu lại trong hành trình cùng Tổ Ấm Hoàn Hảo.":
+    "お客様からいただいた写真やご感想をご紹介します。",
   "Xem phản hồi trước": "前のご感想",
   "Xem phản hồi tiếp theo": "次のご感想",
   "PHẢN HỒI THỰC TẾ": "お客様のご感想",
   "Chia sẻ từ khách hàng": "お客様からのメッセージ",
-  "Chọn một ảnh để xem lớn ngay trên trang.": "写真を選ぶと、このページで拡大表示できます。",
+  "Chọn một ảnh để xem lớn ngay trên trang.":
+    "写真を選ぶと、このページで拡大表示できます。",
   "PHẢN HỒI KHÁCH HÀNG": "お客様の声",
   "Đóng ảnh phản hồi": "写真を閉じる",
   "TƯ VẤN DỰ ÁN": "プロジェクトのご相談",
   "Bạn đang có dự án cần triển khai?": "計画中のプロジェクトはありますか？",
-  "Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.": "理想の空間づくりを私たちがお手伝いします。まずはお気軽にご相談ください。",
-  "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.": "ありがとうございます。近日中にご連絡します。",
+  "Hãy để chúng tôi đồng hành cùng bạn kiến tạo không gian sống lý tưởng. Nhận tư vấn miễn phí từ đội ngũ chuyên gia của Tổ Ấm Hoàn Hảo.":
+    "理想の空間づくりを私たちがお手伝いします。まずはお気軽にご相談ください。",
+  "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm.":
+    "ありがとうございます。近日中にご連絡します。",
   "Họ và tên *": "お名前 *",
   "Họ và tên": "お名前",
   "Số điện thoại *": "電話番号 *",
@@ -100,17 +107,22 @@ const translations: Record<string, string> = {
   "Sản xuất nội thất": "家具製作",
   "Đang gửi...": "送信中...",
   "Tiếp nhận dự án": "相談を送信",
-  "Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.": "送信できませんでした。もう一度お試しいただくか、0903 897 555までお電話ください。",
+  "Gửi thất bại. Vui lòng thử lại hoặc gọi 0903 897 555.":
+    "送信できませんでした。もう一度お試しいただくか、0903 897 555までお電話ください。",
   "Yêu cầu tư vấn từ trang chủ": "ホームページからのお問い合わせ",
 };
 
 const projectTitles: Record<string, string> = {
-  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17": "Vinhomes Grand Park 82㎡マンション",
-  "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01": "青と白を基調とした30㎡ワンルーム",
-  "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18": "黒を基調とした72㎡マンション",
+  "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17":
+    "Vinhomes Grand Park 82㎡マンション",
+  "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01":
+    "青と白を基調とした30㎡ワンルーム",
+  "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18":
+    "黒を基調とした72㎡マンション",
   "thiet-ke-noi-that-chung-cu-5": "モダンな2ベッドルーム・78㎡マンション",
   "thiet-ke-thi-cong-noi-that-chung-cu-85-m2": "和モダンな85㎡マンション",
-  "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04": "KABA COFFEE：260㎡のモダンなカフェ",
+  "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04":
+    "KABA COFFEE：260㎡のモダンなカフェ",
 };
 
 const projectSummaries: Record<string, string> = {

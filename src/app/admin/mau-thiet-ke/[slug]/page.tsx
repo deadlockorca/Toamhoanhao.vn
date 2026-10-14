@@ -3,9 +3,7 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 
 import { DesignSampleFormMock } from "@/components/admin/design-sample-form-mock";
-import {
-  getDesignSampleBySlug,
-} from "@/data/design-samples";
+import { getDesignSampleBySlug } from "@/data/design-samples";
 import { mapDbDesignSampleToDesignSample } from "@/lib/admin-data-mappers";
 import { prisma } from "@/lib/prisma";
 

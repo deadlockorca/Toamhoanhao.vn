@@ -8,7 +8,10 @@ const rootDir = path.resolve(
 );
 const importRoot = path.join(rootDir, "content-import", "to-am-hoan-hao");
 const inventoryDir = path.join(importRoot, "inventory");
-const inventoryPath = path.join(inventoryDir, "old-site-content-inventory.json");
+const inventoryPath = path.join(
+  inventoryDir,
+  "old-site-content-inventory.json",
+);
 const reportPath = path.join(inventoryDir, "reclassified-assets-report.md");
 
 const sourceFolder = "khac-luu-tru";

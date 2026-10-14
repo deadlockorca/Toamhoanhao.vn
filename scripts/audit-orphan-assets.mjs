@@ -27,13 +27,22 @@ const assetRoot =
     ? resolve(repoRoot, process.argv[dirFlagIndex + 1])
     : join(repoRoot, "public");
 
-const SOURCE_EXTENSIONS = new Set([".ts", ".tsx", ".mts", ".js", ".mjs", ".json", ".css"]);
+const SOURCE_EXTENSIONS = new Set([
+  ".ts",
+  ".tsx",
+  ".mts",
+  ".js",
+  ".mjs",
+  ".json",
+  ".css",
+]);
 
 function walk(dir, filter) {
   const results = [];
   for (const entry of readdirSync(dir)) {
     const fullPath = join(dir, entry);
-    if (statSync(fullPath).isDirectory()) results.push(...walk(fullPath, filter));
+    if (statSync(fullPath).isDirectory())
+      results.push(...walk(fullPath, filter));
     else if (filter(fullPath)) results.push(fullPath);
   }
   return results;
@@ -77,7 +86,8 @@ for (const assetPath of assetFiles) {
 
 orphans.sort((a, b) => b.bytes - a.bytes);
 const totalBytes = orphans.reduce((sum, file) => sum + file.bytes, 0);
-const formatMb = (bytes) => `${Math.round((bytes / (1024 * 1024)) * 10) / 10} MB`;
+const formatMb = (bytes) =>
+  `${Math.round((bytes / (1024 * 1024)) * 10) / 10} MB`;
 
 if (process.argv.includes("--json")) {
   console.log(JSON.stringify({ orphans, uncertain, totalBytes }, null, 2));
@@ -92,7 +102,9 @@ if (process.argv.includes("--json")) {
     console.log("✅ Không phát hiện asset mồ côi.");
   } else {
     for (const file of orphans) {
-      console.log(`  ${String(Math.round(file.bytes / 1024)).padStart(6)} KB  ${file.path}`);
+      console.log(
+        `  ${String(Math.round(file.bytes / 1024)).padStart(6)} KB  ${file.path}`,
+      );
     }
   }
 

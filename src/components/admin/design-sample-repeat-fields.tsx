@@ -53,10 +53,16 @@ export function DesignGalleryFields({ detail }: DesignSampleRepeatFieldsProps) {
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
-          <Field label="Tên phối cảnh" name="galleryTitle" defaultValue={row.title} />
+          <Field
+            label="Tên phối cảnh"
+            name="galleryTitle"
+            defaultValue={row.title}
+          />
           <Field label="Ảnh" name="galleryImage" defaultValue={row.image} />
         </RepeatCard>
       ))}
@@ -100,12 +106,22 @@ export function DesignFeatureFields({ detail }: DesignSampleRepeatFieldsProps) {
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <div className="grid gap-4 md:grid-cols-[96px_1fr_150px]">
-            <Field label="Số thứ tự" name="featureIndex" defaultValue={row.index} />
-            <Field label="Tiêu đề" name="featureTitle" defaultValue={row.title} />
+            <Field
+              label="Số thứ tự"
+              name="featureIndex"
+              defaultValue={row.index}
+            />
+            <Field
+              label="Tiêu đề"
+              name="featureTitle"
+              defaultValue={row.title}
+            />
             <SelectField
               label="Vị trí ảnh"
               name="featureImageSide"
@@ -147,7 +163,9 @@ export function DesignFloorPlanNoteFields({
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <Field
@@ -193,12 +211,22 @@ export function DesignPackageFields({ detail }: DesignSampleRepeatFieldsProps) {
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <div className="grid gap-4 md:grid-cols-2">
-            <Field label="Tên gói" name="packageTitle" defaultValue={row.title} />
-            <Field label="Khoảng giá" name="packagePrice" defaultValue={row.price} />
+            <Field
+              label="Tên gói"
+              name="packageTitle"
+              defaultValue={row.title}
+            />
+            <Field
+              label="Khoảng giá"
+              name="packagePrice"
+              defaultValue={row.price}
+            />
           </div>
           <label className="flex items-center gap-3 text-sm font-medium text-[#62584b]">
             <input
@@ -238,7 +266,9 @@ export function DesignRelatedFields({ detail }: DesignSampleRepeatFieldsProps) {
           key={index}
           index={index}
           onRemove={() =>
-            setRows((current) => current.filter((_, itemIndex) => itemIndex !== index))
+            setRows((current) =>
+              current.filter((_, itemIndex) => itemIndex !== index),
+            )
           }
         >
           <Field
