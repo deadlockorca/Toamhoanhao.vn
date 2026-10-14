@@ -1,29 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Award,
-  BadgeCheck,
-  Check,
-  Clock,
-  DollarSign,
-  Gem,
-  Handshake,
-  KeyRound,
-  Layers,
-  Move,
-  PaintRoller,
-  Phone,
-  ShieldCheck,
-  Sparkles,
-  Sun,
-  Thermometer,
-  VolumeX,
-  WandSparkles,
-} from "lucide-react";
+import { Award, BadgeCheck, Layers, Move, PaintRoller, Sun, VolumeX } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

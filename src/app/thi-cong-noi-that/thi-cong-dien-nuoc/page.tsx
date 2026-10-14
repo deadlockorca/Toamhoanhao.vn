@@ -1,31 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AlertTriangle,
-  BadgeCheck,
-  Check,
-  CircuitBoard,
-  ClipboardCheck,
-  Droplets,
-  Factory,
-  Gem,
-  Handshake,
-  KeyRound,
-  Layers,
-  MapPin,
-  Phone,
-  Plug,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  Wallet,
-  Wrench,
-  Zap,
-} from "lucide-react";
+import { AlertTriangle, BadgeCheck, Check, ClipboardCheck, KeyRound, Layers, Ruler, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

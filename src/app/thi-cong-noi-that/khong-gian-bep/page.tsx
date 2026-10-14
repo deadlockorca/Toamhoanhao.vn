@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChefHat, Clock, Cpu, Factory, FileSearch, Hammer, House, Phone, Ruler, ShieldCheck, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, ChefHat, Cpu, Factory, Hammer, Phone, Wrench } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { kitchenSpaceArticles, getKitchenSpaceArticleHref } from "@/data/kitchen-space-articles";

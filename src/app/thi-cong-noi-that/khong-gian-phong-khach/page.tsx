@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Armchair, Cpu, Factory, Hammer, Phone, Sofa, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, Armchair, Factory, Phone, Sofa, Wrench } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getLivingRoomSpaceArticleHref, livingRoomSpaceArticles } from "@/data/living-room-space-articles";

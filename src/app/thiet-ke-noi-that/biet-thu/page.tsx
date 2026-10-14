@@ -1,26 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  Building2,
-  CalendarClock,
-  Check,
-  ClipboardCheck,
-  Handshake,
-  Heart,
-  Lightbulb,
-  PiggyBank,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  Wallet,
-  WandSparkles,
-  Wind,
-} from "lucide-react";
+import { BadgeCheck, Building2, Check, ClipboardCheck, Handshake, Lightbulb, ShieldCheck, Wallet } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

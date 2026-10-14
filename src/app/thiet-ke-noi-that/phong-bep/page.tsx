@@ -1,25 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  Check,
-  ChefHat,
-  ClipboardCheck,
-  Compass,
-  Factory,
-  Handshake,
-  Heart,
-  Palette,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  Wallet,
-  WandSparkles,
-} from "lucide-react";
+import { Check, ChefHat, Compass, Factory, Heart, Palette, Ruler, ShieldCheck, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

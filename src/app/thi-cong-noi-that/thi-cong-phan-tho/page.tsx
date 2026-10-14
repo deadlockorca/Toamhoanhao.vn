@@ -1,26 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  Check,
-  Droplets,
-  Gem,
-  Grid3x3,
-  Hammer,
-  KeyRound,
-  Layers,
-  Paintbrush,
-  Phone,
-  Plug,
-  ShieldCheck,
-  Sparkles,
-  Wrench,
-  Zap,
-} from "lucide-react";
+import { BadgeCheck, Check, Droplets, Grid3x3, Hammer, KeyRound, Layers, Paintbrush, Zap } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

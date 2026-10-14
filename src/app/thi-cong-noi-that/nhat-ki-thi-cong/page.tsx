@@ -1,32 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  Check,
-  ClipboardCheck,
-  Factory,
-  FileSignature,
-  Gem,
-  Handshake,
-  Hammer,
-  Headphones,
-  KeyRound,
-  Layers,
-  MapPin,
-  PaintRoller,
-  PenTool,
-  Phone,
-  Ruler,
-  Search,
-  ShieldCheck,
-  Sparkles,
-  Timer,
-  Wrench,
-} from "lucide-react";
+import { BadgeCheck, Check, ClipboardCheck, Factory, FileSignature, Hammer, Headphones, KeyRound, PenTool, Search, ShieldCheck, Timer } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

@@ -1,28 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  BadgeCheck,
-  BedDouble,
-  Building2,
-  Check,
-  ChefHat,
-  ClipboardCheck,
-  Cpu,
-  DoorOpen,
-  Factory,
-  Handshake,
-  Phone,
-  ShieldCheck,
-  Sofa,
-  Sparkles,
-  UsersRound,
-  WandSparkles,
-  Wrench,
-} from "lucide-react";
+import { BadgeCheck, BedDouble, Building2, Check, ChefHat, Sofa, WandSparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ConsultationButton } from "@/components/consultation-popup";

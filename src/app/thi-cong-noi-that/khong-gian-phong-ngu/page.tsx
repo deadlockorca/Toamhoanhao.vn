@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, BedDouble, BedSingle, Cpu, Factory, Hammer, Phone, Ruler, Sofa, Sparkles, Wrench } from "lucide-react";
+import { ArrowRight, BedDouble, BedSingle, Factory, Phone, Wrench } from "lucide-react";
 
-import { ConsultationCta } from "@/components/home/consultation-cta";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getBedroomSpaceArticleHref, bedroomSpaceArticles } from "@/data/bedroom-space-articles";
