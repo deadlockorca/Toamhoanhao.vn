@@ -95,20 +95,22 @@ export async function uploadR2Images({
   const safeSlug = normalizeKeyPart(slug) || "chua-dat-ten";
   const safeKind = normalizeKeyPart(kind) || "image";
 
-  return Promise.all(
+  // Kiểm tra toàn bộ file trước khi tải lên. Nếu vừa kiểm tra vừa tải thì một
+  // file sai định dạng nằm giữa danh sách vẫn để các file khác đã lên R2.
+  for (const file of files) {
+    if (!allowedImageTypes.has(file.type)) {
+      throw new Error("Chỉ hỗ trợ ảnh WebP, JPG hoặc PNG.");
+    }
+    if (file.size > config.maxFileSize) {
+      throw new Error(
+        `Mỗi ảnh tải lên không được vượt quá ${formatBytes(config.maxFileSize)}.`,
+      );
+    }
+  }
+
+  const results = await Promise.allSettled(
     files.map(async (file, index) => {
-      const extension = allowedImageTypes.get(file.type);
-
-      if (!extension) {
-        throw new Error("Chỉ hỗ trợ ảnh WebP, JPG hoặc PNG.");
-      }
-
-      if (file.size > config.maxFileSize) {
-        throw new Error(
-          `Mỗi ảnh tải lên không được vượt quá ${formatBytes(config.maxFileSize)}.`,
-        );
-      }
-
+      const extension = allowedImageTypes.get(file.type)!;
       const filename = `${safeKind}-${String(index + 1).padStart(2, "0")}-${randomUUID()}.${extension}`;
       const key = [config.keyPrefix, collection, safeSlug, filename]
         .filter(Boolean)
@@ -127,6 +129,23 @@ export async function uploadR2Images({
       return toPublicUrl(config, key);
     }),
   );
+
+  const uploadedUrls = results.flatMap((result) =>
+    result.status === "fulfilled" ? [result.value] : [],
+  );
+
+  const failure = results.find((result) => result.status === "rejected");
+
+  // `Promise.all` trước đây reject ngay khi một file lỗi, nhưng các upload còn
+  // lại vẫn chạy tiếp và có thể thành công — những object đó không bao giờ được
+  // trả về nên bị mồ côi vĩnh viễn trên R2. Dùng allSettled để thu hết kết quả
+  // rồi dọn sạch trước khi báo lỗi.
+  if (failure) {
+    await deleteR2PublicUrls(uploadedUrls);
+    throw failure.reason;
+  }
+
+  return uploadedUrls;
 }
 
 export async function deleteR2PublicUrls(urls: string[]) {

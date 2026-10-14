@@ -5,7 +5,10 @@ import {
 import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const projectInclude = {
+/**
+ * Include đầy đủ cho trang chi tiết (cần metrics, thư viện ảnh, story, mặt bằng…).
+ */
+const projectDetailInclude = {
   detail: true,
   metrics: { orderBy: { sortOrder: "asc" } },
   infoRows: { orderBy: { sortOrder: "asc" } },
@@ -18,7 +21,7 @@ const projectInclude = {
   },
 } as const;
 
-const designSampleInclude = {
+const designSampleDetailInclude = {
   detail: true,
   metrics: { orderBy: { sortOrder: "asc" } },
   infoRows: { orderBy: { sortOrder: "asc" } },
@@ -35,12 +38,25 @@ const designSampleInclude = {
   },
 } as const;
 
+/**
+ * Include rút gọn cho trang chủ và trang danh sách.
+ *
+ * Các trang này chỉ dùng thông tin thẻ (tiêu đề, slug, ảnh bìa, phong cách,
+ * diện tích, mô tả) cộng với `detail` cho ảnh hero và thời gian thi công. Nếu
+ * dùng include đầy đủ thì mỗi lần tải trang phải kéo thêm metrics, infoRows,
+ * spaces, storyBlocks, floorPlanNotes và relatedProjects cho toàn bộ dự án —
+ * với dữ liệu hiện tại là 296 dự án và hàng nghìn bản ghi con. Mapper đã xử lý
+ * các quan hệ vắng mặt bằng `?? []` nên không cần chúng ở đây.
+ */
+const projectListingInclude = { detail: true } as const;
+const designSampleListingInclude = { detail: true } as const;
+
 export async function getPublicProjects() {
   await connection();
   const dbProjects = await prisma.project.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
-    include: projectInclude,
+    include: projectListingInclude,
   });
 
   return dbProjects.map(mapDbProjectToProject);
@@ -48,18 +64,12 @@ export async function getPublicProjects() {
 
 export async function getPublicProjectBySlug(slug: string) {
   await connection();
-  const dbProject = await prisma.project.findUnique({
-    where: { slug },
-    include: projectInclude,
+  const dbProject = await prisma.project.findFirst({
+    where: { slug, status: "published" },
+    include: projectDetailInclude,
   });
 
-  if (dbProject) {
-    return dbProject.status === "published"
-      ? mapDbProjectToProject(dbProject)
-      : undefined;
-  }
-
-  return undefined;
+  return dbProject ? mapDbProjectToProject(dbProject) : undefined;
 }
 
 export async function getPublicDesignSamples() {
@@ -67,7 +77,7 @@ export async function getPublicDesignSamples() {
   const dbSamples = await prisma.designSample.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
-    include: designSampleInclude,
+    include: designSampleListingInclude,
   });
 
   return dbSamples.map(mapDbDesignSampleToDesignSample);
@@ -75,16 +85,10 @@ export async function getPublicDesignSamples() {
 
 export async function getPublicDesignSampleBySlug(slug: string) {
   await connection();
-  const dbSample = await prisma.designSample.findUnique({
-    where: { slug },
-    include: designSampleInclude,
+  const dbSample = await prisma.designSample.findFirst({
+    where: { slug, status: "published" },
+    include: designSampleDetailInclude,
   });
 
-  if (dbSample) {
-    return dbSample.status === "published"
-      ? mapDbDesignSampleToDesignSample(dbSample)
-      : undefined;
-  }
-
-  return undefined;
+  return dbSample ? mapDbDesignSampleToDesignSample(dbSample) : undefined;
 }

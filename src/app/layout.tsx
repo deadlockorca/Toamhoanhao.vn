@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
-import { headers } from "next/headers";
+import Script from "next/script";
 import { ConsultationProvider } from "@/components/consultation-popup";
-import { isSiteLocale } from "@/lib/locale";
+import { siteLocales } from "@/lib/locale";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -11,6 +11,29 @@ const beVietnamPro = Be_Vietnam_Pro({
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
 });
+
+/**
+ * Root layout phải là component tĩnh thì Next.js mới prerender được toàn site.
+ *
+ * Trước đây layout đọc locale qua `headers()` (do proxy set `x-site-locale`),
+ * và vì `headers()` là dynamic API nên nó kéo TOÀN BỘ cây route sang chế độ
+ * render theo yêu cầu: 60/60 route dynamic, 0 trang được prerender — kể cả
+ * ~460 trang bài viết/dự án vốn là nội dung tĩnh.
+ *
+ * Nay `lang` được đặt đúng ngay trước lần vẽ đầu tiên bằng script đồng bộ.
+ * Danh sách locale lấy trực tiếp từ `siteLocales` nên không lệch khi thêm
+ * ngôn ngữ mới. `ConsultationProvider` cũng đã tự suy locale từ `usePathname()`.
+ *
+ * Giới hạn còn lại: HTML tĩnh ban đầu luôn có `lang="vi"`. Với 8 trang chủ
+ * ngôn ngữ khác, `lang` đúng ngay khi script chạy (trước khi vẽ). Crawler không
+ * thực thi JavaScript sẽ thấy `lang="vi"`; muốn khắc phục triệt để cần tách
+ * route group với root layout riêng cho từng ngôn ngữ.
+ */
+const localeAlternation = siteLocales
+  .filter((locale) => locale !== "vi")
+  .join("|");
+
+const localeSyncScript = `(function(){try{var s=location.pathname.split("/")[1]||"";if(/${localeAlternation}/.test(s)){document.documentElement.lang=s}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   title: "Tổ Ấm Hoàn Hảo",
@@ -33,16 +56,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: LayoutProps<"/">) {
-  const requestedLocale = (await headers()).get("x-site-locale");
-  const locale = requestedLocale && isSiteLocale(requestedLocale) ? requestedLocale : "vi";
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang={locale}
-      className={`${beVietnamPro.variable} h-full antialiased`}
-    >
+    <html lang="vi" className={`${beVietnamPro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <ConsultationProvider locale={locale}>{children}</ConsultationProvider>
+        <Script id="locale-lang-sync" strategy="beforeInteractive">
+          {localeSyncScript}
+        </Script>
+        <ConsultationProvider>{children}</ConsultationProvider>
       </body>
     </html>
   );
