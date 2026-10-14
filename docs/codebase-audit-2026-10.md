@@ -7,7 +7,84 @@
 
 ---
 
-## 0. Tóm tắt điều hành
+## ⚠️ TRẠNG THÁI XỬ LÝ — cập nhật 2026-10-14
+
+Báo cáo dưới đây giữ nguyên số liệu đo tại thời điểm audit (baseline).
+Phần lớn vấn đề **đã được xử lý**, xem bảng đối chiếu bên dưới.
+
+### ❗ CÒN TỒN ĐỌNG — cần xử lý
+
+| # | Vấn đề | Mức độ |
+|---|---|---|
+| **1.1** | **`/admin` không có xác thực** — theo yêu cầu chủ dự án, tạm hoãn | 🔴 **P0** |
+
+> Đây là lỗ hổng duy nhất còn lại ở mức nghiêm trọng. Mọi việc khác trong báo
+> cáo đã xong, nhưng **không** bù đắp được cho việc này: hiện tại bất kỳ ai cũng
+> có thể xoá dự án, xoá ảnh trên R2 và tải file lên bucket.
+> `robots.txt` chỉ chặn index, **không** chặn truy cập.
+>
+> Giảm thiểu tạm thời: chặn `/admin` ở tầng hạ tầng (Vercel Password Protection /
+> Cloudflare Access / IP allowlist).
+
+### ✅ Đã xử lý
+
+| Commit | Nội dung |
+|---|---|
+| `ea8b570` | Xoá 43 file code chết (4.324 LOC) · 141 ESLint warning · 109 asset mồ côi (5,9 MB) · bỏ track SQL dump · thêm 2 công cụ audit |
+| `0a682a8` | `/api/contact`: escape HTML email, chặn header injection, bỏ rò rỉ `error.message`, giới hạn độ dài + validate email, rate limit 5 req/phút/IP |
+| `b9ada00` | Bỏ `headers()` ở root layout (**60 → 19 route dynamic**, prerender 1 → 464 file HTML) · xoá `proxy.ts` chết · thu hẹp query (bỏ 6 quan hệ khỏi trang listing) · `findFirst` thay `findUnique` · sửa rò rỉ object R2 · thêm 4 boundary |
+| `ffa050f` | `metadataBase` + OpenGraph/Twitter · sửa `siteBaseUrl` về đúng domain · title template + gỡ suffix trùng ở 47 trang · canonical cho 8 trang có query param · `sitemap.ts` (845 URL) · `robots.ts` · security headers · `.env.example` · tsconfig ES2022 · CI workflow |
+| `6e2698b` | Chạy Prettier toàn repo (320 → 20 dòng quá dài) |
+
+### Chỉ số trước / sau
+
+| Hạng mục | Trước | Sau |
+|---|---|---|
+| Code chết | 43 file · 4.324 LOC | **0** |
+| ESLint | 0 error · 142 warning | **0 / 0** |
+| Ảnh mồ côi | 104 file · 5,9 MB | **0** |
+| Route dynamic (SSR mọi request) | **60 / 60** | **20** |
+| Route tĩnh / SSG | 2 / 0 | **35 / 26** |
+| File HTML prerender | 1 | **464** |
+| Trang có OpenGraph | 0 / 58 | **tất cả** (kế thừa từ root layout) |
+| `sitemap.xml` | không có | **845 URL** |
+| `robots.txt` | không có | **có** |
+| Security headers | không có | **5 header + tắt `X-Powered-By`** |
+| `.env.example` | không có | **có (16 biến)** |
+| Prettier | không có | **có + CI check** |
+| CI | không có | **có (6 bước)** |
+
+### Kiểm chứng cuối cùng
+
+```
+tsc --noEmit        0 lỗi
+eslint .            0 vấn đề
+prettier --check    pass
+audit:dead-code     0 file chết
+audit:orphan-assets 0 asset mồ côi
+next build          pass, không warning
+smoke test          15/15 route chính trả 200 (9 ngôn ngữ + sitemap + robots)
+regression          30/30 trang render giống hệt baseline (so sánh text)
+```
+
+### Ghi chú kỹ thuật cần biết
+
+1. **Root layout phải giữ tĩnh.** Không dùng `headers()`, `cookies()` hay dynamic
+   API nào trong `src/app/layout.tsx` — chúng sẽ kéo toàn bộ site về SSR.
+2. **`lang` của 8 trang chủ ngôn ngữ khác**: HTML tĩnh ban đầu là `lang="vi"`,
+   được script `beforeInteractive` sửa trước khi vẽ. Crawler **không** chạy JS sẽ
+   thấy `lang="vi"`. Muốn triệt để cần tách route group với root layout riêng.
+3. **`notFound()` trên route có `[slug]` trả soft-404 (status 200)** kèm
+   `noindex`. Đây là hành vi được Next.js tài liệu hoá khi response đã bắt đầu
+   stream, không phải lỗi — Next chặn index bằng thẻ `noindex`.
+4. **`sitemap.xml` render theo yêu cầu** (đọc DB) — đúng thiết kế, để phản ánh
+   dự án vừa publish.
+5. **Rate limit hiện là in-memory**, chỉ hiệu lực trong một instance. Trên
+   serverless cần thay bằng Vercel KV/Upstash hoặc bảng đếm trong MariaDB.
+
+---
+
+## 0. Tóm tắt điều hành (số liệu gốc tại thời điểm audit)
 
 | Hạng mục | Kết quả đo được |
 |---|---|
