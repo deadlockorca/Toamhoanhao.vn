@@ -34,7 +34,7 @@ const paths = [
   "/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
   "/kien-thuc/phap-ly-xay-dung",
   "/thi-cong-noi-that/khong-gian-bep",
-  "/thi-cong-noi-that/nhon-gian-phong-ngu",
+  "/thi-cong-noi-that/khong-gian-phong-ngu",
   "/thi-cong-noi-that/thi-cong-son-ba",
   "/thi-cong-noi-that/thi-cong-tran-thach-cao",
   "/thi-cong-noi-that/thi-cong-phan-tho",
