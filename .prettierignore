@@ -1,0 +1,19 @@
+# Phụ thuộc và build, không bao giờ format
+node_modules
+.next
+out
+build
+
+# Prisma client sinh tự động
+src/generated
+
+# File khoá và build info
+package-lock.json
+tsconfig.tsbuildinfo
+
+# Asset và dữ liệu dump
+public
+exports
+
+# Tài liệu: giữ nguyên cách trình bày thủ công (bảng, sơ đồ)
+*.md

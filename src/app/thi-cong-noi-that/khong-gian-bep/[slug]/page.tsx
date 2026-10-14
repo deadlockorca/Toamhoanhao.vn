@@ -2,7 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Check, ChefHat, Phone, Ruler, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  ChefHat,
+  Phone,
+  Ruler,
+  Sparkles,
+} from "lucide-react";
 
 import { ConsultationButton } from "@/components/consultation-popup";
 import { ConsultationCta } from "@/components/home/consultation-cta";
@@ -25,7 +33,7 @@ export async function generateMetadata({
   const article = getKitchenSpaceArticleBySlug(slug);
 
   if (!article) {
-    return { title: "Bài viết không tồn tại | Tổ Ấm Hoàn Hảo" };
+    return { title: "Bài viết không tồn tại" };
   }
 
   return {
@@ -55,10 +63,18 @@ export default async function KitchenSpaceArticlePage({
         <div className="mx-auto grid min-h-[600px] max-w-[1320px] pt-20 lg:grid-cols-[0.92fr_1.08fr] xl:pt-[120px]">
           <div className="relative z-10 flex items-center px-6 py-16 sm:px-10 lg:px-8 lg:py-12">
             <div className="max-w-[600px]">
-              <nav aria-label="Điều hướng trang" className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#766d60]">
-                <Link href="/" className="transition hover:text-[#9a733e]">Trang chủ</Link>
+              <nav
+                aria-label="Điều hướng trang"
+                className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-[#766d60]"
+              >
+                <Link href="/" className="transition hover:text-[#9a733e]">
+                  Trang chủ
+                </Link>
                 <span>/</span>
-                <Link href="/thi-cong-noi-that/khong-gian-bep" className="transition hover:text-[#9a733e]">
+                <Link
+                  href="/thi-cong-noi-that/khong-gian-bep"
+                  className="transition hover:text-[#9a733e]"
+                >
                   Không gian bếp
                 </Link>
                 <span>/</span>
@@ -80,7 +96,10 @@ export default async function KitchenSpaceArticlePage({
                   Nhận tư vấn
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
                 </ConsultationButton>
-                <a href="tel:0903897555" className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]">
+                <a
+                  href="tel:0903897555"
+                  className="inline-flex min-h-12 items-center gap-2 border border-[#b9a689] px-6 text-xs font-bold uppercase tracking-[0.08em] text-[#5b4932] transition hover:bg-[#eee3d5]"
+                >
                   <Phone aria-hidden="true" className="h-4 w-4" />
                   0903.897.555
                 </a>
@@ -105,25 +124,43 @@ export default async function KitchenSpaceArticlePage({
       <section className="border-b border-[#e1d6c7] bg-[#fdfaf6]">
         <div className="mx-auto grid max-w-[1320px] sm:grid-cols-2 lg:grid-cols-3">
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <ChefHat aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <ChefHat
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Nhóm nội dung
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">{article.label}</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
+              {article.label}
+            </p>
           </article>
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 lg:border-r lg:px-8">
-            <Ruler aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <Ruler
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Chuyên mục
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">Không gian bếp</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
+              Không gian bếp
+            </p>
           </article>
           <article className="px-6 py-7 lg:px-8">
-            <Sparkles aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <Sparkles
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Đơn vị thực hiện
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">Tổ Ấm Hoàn Hảo</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
+              Tổ Ấm Hoàn Hảo
+            </p>
           </article>
         </div>
       </section>
@@ -139,8 +176,15 @@ export default async function KitchenSpaceArticlePage({
             </h2>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
               {article.highlights.map((item) => (
-                <p key={item} className="flex gap-3 border border-[#ded2c1] bg-[#fdfaf6] p-4 text-sm leading-6 text-[#62594d]">
-                  <Check aria-hidden="true" className="mt-0.5 h-4 w-4 shrink-0 text-[#8a7650]" strokeWidth={2.4} />
+                <p
+                  key={item}
+                  className="flex gap-3 border border-[#ded2c1] bg-[#fdfaf6] p-4 text-sm leading-6 text-[#62594d]"
+                >
+                  <Check
+                    aria-hidden="true"
+                    className="mt-0.5 h-4 w-4 shrink-0 text-[#8a7650]"
+                    strokeWidth={2.4}
+                  />
                   {item}
                 </p>
               ))}
@@ -162,12 +206,22 @@ export default async function KitchenSpaceArticlePage({
                     const content = paragraph.replace(/^[•♦♥Θ»→⇒Δ]\s*/, "");
 
                     return isListItem ? (
-                      <p key={`${section.title}-${paragraphIndex}`} className="flex gap-3 text-base leading-8 text-[#62594d]">
-                        <Check aria-hidden="true" className="mt-2 h-4 w-4 shrink-0 text-[#9a733e]" strokeWidth={2} />
+                      <p
+                        key={`${section.title}-${paragraphIndex}`}
+                        className="flex gap-3 text-base leading-8 text-[#62594d]"
+                      >
+                        <Check
+                          aria-hidden="true"
+                          className="mt-2 h-4 w-4 shrink-0 text-[#9a733e]"
+                          strokeWidth={2}
+                        />
                         <span>{content}</span>
                       </p>
                     ) : (
-                      <p key={`${section.title}-${paragraphIndex}`} className="text-base leading-8 text-[#62594d]">
+                      <p
+                        key={`${section.title}-${paragraphIndex}`}
+                        className="text-base leading-8 text-[#62594d]"
+                      >
                         {content}
                       </p>
                     );
@@ -175,9 +229,14 @@ export default async function KitchenSpaceArticlePage({
                 </div>
 
                 {section.images?.length ? (
-                  <div className={`mt-8 grid gap-4 ${section.images.length > 1 ? "sm:grid-cols-2" : ""}`}>
+                  <div
+                    className={`mt-8 grid gap-4 ${section.images.length > 1 ? "sm:grid-cols-2" : ""}`}
+                  >
                     {section.images.map((image) => (
-                      <figure key={image.src} className="overflow-hidden border border-[#ded2c1] bg-white">
+                      <figure
+                        key={image.src}
+                        className="overflow-hidden border border-[#ded2c1] bg-white"
+                      >
                         <Image
                           src={image.src}
                           alt={image.alt}
@@ -194,7 +253,10 @@ export default async function KitchenSpaceArticlePage({
             ))}
           </div>
 
-          <Link href="/thi-cong-noi-that/khong-gian-bep" className="inline-flex items-center gap-2 border-b border-[#8a7650] pb-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">
+          <Link
+            href="/thi-cong-noi-that/khong-gian-bep"
+            className="inline-flex items-center gap-2 border-b border-[#8a7650] pb-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]"
+          >
             <ArrowLeft aria-hidden="true" className="h-4 w-4" />
             Quay lại không gian bếp
           </Link>
@@ -208,8 +270,8 @@ export default async function KitchenSpaceArticlePage({
             Cần tư vấn không gian bếp cho tổ ấm của bạn?
           </h2>
           <p className="mt-4 text-sm leading-7 text-[#6b6154]">
-            Gửi diện tích, phong cách và nhu cầu sử dụng. Đội ngũ Tổ Ấm Hoàn Hảo sẽ
-            trao đổi để tư vấn phương án tối ưu nhất.
+            Gửi diện tích, phong cách và nhu cầu sử dụng. Đội ngũ Tổ Ấm Hoàn Hảo
+            sẽ trao đổi để tư vấn phương án tối ưu nhất.
           </p>
           <div className="mt-6 space-y-3 border-y border-[#ded2c1] py-5 text-sm text-[#584f43]">
             <p>
@@ -218,7 +280,9 @@ export default async function KitchenSpaceArticlePage({
             </p>
             <p>
               <span className="block text-xs text-[#8c795f]">Dịch vụ</span>
-              <strong className="mt-1 block">Thiết kế, sản xuất và thi công</strong>
+              <strong className="mt-1 block">
+                Thiết kế, sản xuất và thi công
+              </strong>
             </p>
           </div>
           <ConsultationButton className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
@@ -232,10 +296,17 @@ export default async function KitchenSpaceArticlePage({
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Đọc thêm</p>
-              <h2 className="mt-3 font-serif text-4xl text-[#30291f]">Bài viết không gian bếp liên quan</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
+                Đọc thêm
+              </p>
+              <h2 className="mt-3 font-serif text-4xl text-[#30291f]">
+                Bài viết không gian bếp liên quan
+              </h2>
             </div>
-            <Link href="/thi-cong-noi-that/khong-gian-bep" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">
+            <Link
+              href="/thi-cong-noi-that/khong-gian-bep"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]"
+            >
               Xem tất cả
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
@@ -243,7 +314,11 @@ export default async function KitchenSpaceArticlePage({
 
           <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {relatedArticles.map((item) => (
-              <Link key={item.slug} href={getKitchenSpaceArticleHref(item.slug)} className="group overflow-hidden border border-[#d7c9b6] bg-[#f9f4ed]">
+              <Link
+                key={item.slug}
+                href={getKitchenSpaceArticleHref(item.slug)}
+                className="group overflow-hidden border border-[#d7c9b6] bg-[#f9f4ed]"
+              >
                 <div className="relative aspect-[1.65] overflow-hidden">
                   <Image
                     src={item.image}
@@ -257,10 +332,15 @@ export default async function KitchenSpaceArticlePage({
                   <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#9a733e]">
                     {item.label}
                   </p>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#332b21]">{item.title}</h3>
+                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#332b21]">
+                    {item.title}
+                  </h3>
                   <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">
                     Xem bài viết
-                    <ArrowRight aria-hidden="true" className="h-4 w-4 transition group-hover:translate-x-1" />
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="h-4 w-4 transition group-hover:translate-x-1"
+                    />
                   </span>
                 </div>
               </Link>

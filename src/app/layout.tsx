@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import Script from "next/script";
 import { ConsultationProvider } from "@/components/consultation-popup";
-import { siteLocales } from "@/lib/locale";
+import { siteBaseUrl, siteLocales } from "@/lib/locale";
 import "./globals.css";
 
 const beVietnamPro = Be_Vietnam_Pro({
@@ -36,8 +36,42 @@ const localeAlternation = siteLocales
 const localeSyncScript = `(function(){try{var s=location.pathname.split("/")[1]||"";if(/${localeAlternation}/.test(s)){document.documentElement.lang=s}}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  title: "Tổ Ấm Hoàn Hảo",
-  description: "Thiết kế, thi công và sản xuất nội thất trọn gói.",
+  /**
+   * `metadataBase` là bắt buộc để Next.js dựng URL tuyệt đối cho canonical,
+   * OpenGraph và Twitter card. Thiếu nó thì ảnh chia sẻ sẽ trỏ sai.
+   */
+  metadataBase: new URL(siteBaseUrl),
+  title: {
+    default: "Tổ Ấm Hoàn Hảo",
+    template: "%s | Tổ Ấm Hoàn Hảo",
+  },
+  description:
+    "Thiết kế, thi công và sản xuất nội thất trọn gói. Tư vấn miễn phí, báo giá minh bạch, thi công đúng tiến độ.",
+  applicationName: "Tổ Ấm Hoàn Hảo",
+  openGraph: {
+    type: "website",
+    siteName: "Tổ Ấm Hoàn Hảo",
+    locale: "vi_VN",
+    url: siteBaseUrl,
+    title: "Tổ Ấm Hoàn Hảo | Thiết kế và thi công nội thất trọn gói",
+    description:
+      "Thiết kế, thi công và sản xuất nội thất trọn gói. Tư vấn miễn phí, báo giá minh bạch, thi công đúng tiến độ.",
+    images: [
+      {
+        url: "/images/trang-chu/nha-pho-dep-1.jpg",
+        width: 2048,
+        height: 1152,
+        alt: "Không gian nội thất do Tổ Ấm Hoàn Hảo thiết kế và thi công",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tổ Ấm Hoàn Hảo | Thiết kế và thi công nội thất trọn gói",
+    description:
+      "Thiết kế, thi công và sản xuất nội thất trọn gói. Tư vấn miễn phí, báo giá minh bạch.",
+    images: ["/images/trang-chu/nha-pho-dep-1.jpg"],
+  },
   icons: {
     icon: [
       {

@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+# Huỷ lần chạy cũ khi có commit mới trên cùng nhánh.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    env:
+      # Build không truy cập database: mọi trang đọc DB đều gọi `connection()`
+      # và được render theo yêu cầu. Giá trị dưới đây chỉ để `src/lib/prisma.ts`
+      # không ném lỗi lúc nạp module.
+      DATABASE_URL: "mysql://ci:ci@127.0.0.1:3306/ci_placeholder"
+      NEXT_PUBLIC_SITE_URL: "https://toamhoanhao.vn"
+      R2_PUBLIC_BASE_URL: "https://pub-b6d77d3bc0a843b0ae7d1e61de9c768b.r2.dev"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Cài phụ thuộc
+        run: npm ci
+
+      - name: Kiểm tra TypeScript
+        run: npm run typecheck
+
+      - name: ESLint
+        # Không dùng --max-warnings 0 vì repo còn warning lịch sử; hạ xuống 0
+        # sau khi đã dọn hết.
+        run: npm run lint
+
+      - name: Kiểm tra định dạng
+        run: npm run format:check
+
+      - name: Phát hiện code chết
+        run: npm run audit:dead-code
+
+      - name: Phát hiện asset mồ côi
+        run: npm run audit:orphan-assets
+
+      - name: Build production
+        run: npm run build

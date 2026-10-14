@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   if (!sample) {
     return {
-      title: "Mẫu thiết kế không tồn tại | Tổ Ấm Hoàn Hảo",
+      title: "Mẫu thiết kế không tồn tại",
     };
   }
 

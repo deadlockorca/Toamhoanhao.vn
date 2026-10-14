@@ -29,14 +29,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: PageProps<
-  "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/[slug]"
->): Promise<Metadata> {
+}: PageProps<"/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const article = getConstructionPricingArticle(slug);
 
   if (!article) {
-    return { title: "Bài viết không tồn tại | Tổ Ấm Hoàn Hảo" };
+    return { title: "Bài viết không tồn tại" };
   }
 
   return {
@@ -55,11 +53,14 @@ export default async function ConstructionPricingArticlePage({
     notFound();
   }
 
-  const contentSections = article.contentSections ??
+  const contentSections =
+    article.contentSections ??
     article.sections.map((section) => ({
       title: section.title,
       blocks: section.paragraphs.map((text) => ({
-        type: text.startsWith("• ") ? ("bullet" as const) : ("paragraph" as const),
+        type: text.startsWith("• ")
+          ? ("bullet" as const)
+          : ("paragraph" as const),
         text: text.replace(/^• /, ""),
       })),
     }));
@@ -104,9 +105,7 @@ export default async function ConstructionPricingArticlePage({
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <ConsultationButton
-                  className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
-                >
+                <ConsultationButton className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
                   Nhận dự toán mới
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
                 </ConsultationButton>
@@ -188,8 +187,8 @@ export default async function ConstructionPricingArticlePage({
           />
           <p>
             Nội dung được lưu từ website cũ, gồm các mốc giá và ví dụ theo thời
-            điểm xuất bản. Đây không phải báo giá hiện hành; dự toán mới cần được
-            khảo sát và lập theo vật liệu, điều kiện thực tế.
+            điểm xuất bản. Đây không phải báo giá hiện hành; dự toán mới cần
+            được khảo sát và lập theo vật liệu, điều kiện thực tế.
           </p>
         </div>
       </div>
@@ -302,9 +301,7 @@ export default async function ConstructionPricingArticlePage({
             Gửi diện tích, vị trí và nhu cầu. Đội ngũ sẽ hỗ trợ rà soát phạm vi
             và chuẩn bị dự toán phù hợp.
           </p>
-          <ConsultationButton
-            className="mt-7 inline-flex w-full min-h-12 items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
-          >
+          <ConsultationButton className="mt-7 inline-flex w-full min-h-12 items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
             Gửi yêu cầu tư vấn
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </ConsultationButton>

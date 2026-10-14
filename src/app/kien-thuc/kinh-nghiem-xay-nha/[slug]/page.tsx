@@ -32,7 +32,7 @@ export async function generateMetadata({
   const article = getBuildingExperienceArticle(slug);
 
   if (!article) {
-    return { title: "Bài viết không tồn tại | Tổ Ấm Hoàn Hảo" };
+    return { title: "Bài viết không tồn tại" };
   }
 
   return {
@@ -109,7 +109,11 @@ export default async function BuildingExperienceArticlePage({
       <section className="border-b border-[#e1d6c7] bg-[#fdfaf6]">
         <div className="mx-auto grid max-w-[1320px] sm:grid-cols-3">
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <House aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <House
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Chuyên mục
             </p>
@@ -118,7 +122,11 @@ export default async function BuildingExperienceArticlePage({
             </p>
           </article>
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <ClipboardList aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <ClipboardList
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Nội dung
             </p>
@@ -127,7 +135,11 @@ export default async function BuildingExperienceArticlePage({
             </p>
           </article>
           <article className="px-6 py-7 lg:px-8">
-            <CalendarDays aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <CalendarDays
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Ngày xuất bản
             </p>
@@ -154,7 +166,11 @@ export default async function BuildingExperienceArticlePage({
 
           <div className="divide-y divide-[#ded2c1]">
             {article.sections.map((section, sectionIndex) => (
-              <section key={`${section.title}-${sectionIndex}`} id={`section-${sectionIndex + 1}`} className="scroll-mt-32 py-12">
+              <section
+                key={`${section.title}-${sectionIndex}`}
+                id={`section-${sectionIndex + 1}`}
+                className="scroll-mt-32 py-12"
+              >
                 <p className="text-xs font-bold text-[#a0783e]">
                   {String(sectionIndex + 1).padStart(2, "0")}
                 </p>
@@ -171,7 +187,10 @@ export default async function BuildingExperienceArticlePage({
                         >
                           <Image
                             src={block.src}
-                            alt={block.alt || `${article.title} - hình ảnh minh họa ${blockIndex + 1}`}
+                            alt={
+                              block.alt ||
+                              `${article.title} - hình ảnh minh họa ${blockIndex + 1}`
+                            }
                             width={1400}
                             height={875}
                             sizes="(min-width: 1024px) 62vw, 100vw"
@@ -194,7 +213,10 @@ export default async function BuildingExperienceArticlePage({
                         <span>{block.text}</span>
                       </p>
                     ) : (
-                      <p key={`${block.text}-${blockIndex}`} className="text-base leading-8 text-[#62594d]">
+                      <p
+                        key={`${block.text}-${blockIndex}`}
+                        className="text-base leading-8 text-[#62594d]"
+                      >
                         {block.text}
                       </p>
                     );
@@ -215,12 +237,19 @@ export default async function BuildingExperienceArticlePage({
 
         <aside className="h-fit space-y-5 lg:sticky lg:top-28">
           <section className="border border-[#ded2c1] bg-[#fdfaf6] p-6 lg:p-7">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">Mục lục</p>
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">
+              Mục lục
+            </p>
             <ol className="mt-5 space-y-3 text-sm leading-6 text-[#6b6154]">
               {article.sections.map((section, index) => (
                 <li key={`${section.title}-${index}`} className="flex gap-3">
-                  <span className="font-bold text-[#a0783e]">{String(index + 1).padStart(2, "0")}</span>
-                  <a href={`#section-${index + 1}`} className="transition hover:text-[#8a6330]">
+                  <span className="font-bold text-[#a0783e]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <a
+                    href={`#section-${index + 1}`}
+                    className="transition hover:text-[#8a6330]"
+                  >
                     {section.title}
                   </a>
                 </li>
@@ -229,8 +258,14 @@ export default async function BuildingExperienceArticlePage({
           </section>
 
           <section className="border border-[#ded2c1] bg-[#f3eade] p-6 lg:p-7">
-            <BookOpenCheck aria-hidden="true" className="h-9 w-9 text-[#a0783e]" strokeWidth={1.15} />
-            <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">Cùng chuyên mục</p>
+            <BookOpenCheck
+              aria-hidden="true"
+              className="h-9 w-9 text-[#a0783e]"
+              strokeWidth={1.15}
+            />
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.16em] text-[#9a733e]">
+              Cùng chuyên mục
+            </p>
             <div className="mt-4 space-y-4">
               {relatedArticles.map((item) => (
                 <Link
@@ -256,10 +291,17 @@ export default async function BuildingExperienceArticlePage({
         <div className="mx-auto max-w-[1320px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">Xem thêm</p>
-              <h2 className="mt-2 font-serif text-3xl text-[#30291f]">Các bài cùng chủ đề</h2>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
+                Xem thêm
+              </p>
+              <h2 className="mt-2 font-serif text-3xl text-[#30291f]">
+                Các bài cùng chủ đề
+              </h2>
             </div>
-            <Link href={buildingExperienceListingHref} className="inline-flex items-center gap-2 text-sm font-bold text-[#70532b]">
+            <Link
+              href={buildingExperienceListingHref}
+              className="inline-flex items-center gap-2 text-sm font-bold text-[#70532b]"
+            >
               Xem tất cả
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
@@ -281,8 +323,12 @@ export default async function BuildingExperienceArticlePage({
                   />
                 </div>
                 <div className="p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#9a733e]">Kinh nghiệm xây nhà</p>
-                  <h3 className="mt-3 text-base font-bold leading-6 text-[#40362b]">{item.title}</h3>
+                  <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#9a733e]">
+                    Kinh nghiệm xây nhà
+                  </p>
+                  <h3 className="mt-3 text-base font-bold leading-6 text-[#40362b]">
+                    {item.title}
+                  </h3>
                   <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold text-[#70532b]">
                     Xem bài viết
                     <ArrowRight aria-hidden="true" className="h-4 w-4" />

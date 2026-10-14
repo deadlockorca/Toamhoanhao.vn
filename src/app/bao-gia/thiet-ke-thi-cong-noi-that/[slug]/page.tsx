@@ -34,7 +34,7 @@ export async function generateMetadata({
   const article = getPricingArticleBySlug(slug);
 
   if (!article) {
-    return { title: "Bài viết báo giá không tồn tại | Tổ Ấm Hoàn Hảo" };
+    return { title: "Bài viết báo giá không tồn tại" };
   }
 
   return {
@@ -93,9 +93,7 @@ export default async function PricingArticlePage({
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <ConsultationButton
-                  className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
-                >
+                <ConsultationButton className="inline-flex min-h-12 items-center gap-2 bg-[#777b61] px-6 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
                   Nhận báo giá mới
                   <ArrowRight aria-hidden="true" className="h-4 w-4" />
                 </ConsultationButton>
@@ -127,21 +125,37 @@ export default async function PricingArticlePage({
       <section className="border-b border-[#e1d6c7] bg-[#fdfaf6]">
         <div className="mx-auto grid max-w-[1320px] sm:grid-cols-2 lg:grid-cols-3">
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 sm:border-r lg:px-8">
-            <FileText aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <FileText
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Nhóm nội dung
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">{article.label}</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
+              {article.label}
+            </p>
           </article>
           <article className="border-b border-[#e1d6c7] px-6 py-7 sm:border-b-0 lg:border-r lg:px-8">
-            <ClipboardList aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <ClipboardList
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Phạm vi
             </p>
-            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">{article.scope}</p>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#3e352a]">
+              {article.scope}
+            </p>
           </article>
           <article className="px-6 py-7 lg:px-8">
-            <Calculator aria-hidden="true" className="h-7 w-7 text-[#a0783e]" strokeWidth={1.2} />
+            <Calculator
+              aria-hidden="true"
+              className="h-7 w-7 text-[#a0783e]"
+              strokeWidth={1.2}
+            />
             <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-[#8c795f]">
               Cơ sở lập giá
             </p>
@@ -276,22 +290,24 @@ export default async function PricingArticlePage({
             Cần một dự toán sát nhu cầu của bạn?
           </h2>
           <p className="mt-4 text-sm leading-7 text-[#6b6154]">
-            Gửi mặt bằng, diện tích và danh sách hạng mục dự kiến. Đội ngũ sẽ trao
-            đổi để xác định phạm vi trước khi bóc tách báo giá.
+            Gửi mặt bằng, diện tích và danh sách hạng mục dự kiến. Đội ngũ sẽ
+            trao đổi để xác định phạm vi trước khi bóc tách báo giá.
           </p>
           <div className="mt-6 space-y-3 border-y border-[#ded2c1] py-5 text-sm text-[#584f43]">
             <p>
-              <span className="block text-xs text-[#8c795f]">Phạm vi tham khảo</span>
+              <span className="block text-xs text-[#8c795f]">
+                Phạm vi tham khảo
+              </span>
               <strong className="mt-1 block">{article.scope}</strong>
             </p>
             <p>
-              <span className="block text-xs text-[#8c795f]">Cơ sở lập giá</span>
+              <span className="block text-xs text-[#8c795f]">
+                Cơ sở lập giá
+              </span>
               <strong className="mt-1 block">{article.pricingBasis}</strong>
             </p>
           </div>
-          <ConsultationButton
-            className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]"
-          >
+          <ConsultationButton className="mt-6 inline-flex min-h-12 w-full items-center justify-center gap-2 bg-[#777b61] px-5 text-xs font-bold uppercase tracking-[0.08em] text-white transition hover:bg-[#62674f]">
             Gửi yêu cầu báo giá
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </ConsultationButton>
@@ -305,7 +321,9 @@ export default async function PricingArticlePage({
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#9a733e]">
                 Đọc thêm
               </p>
-              <h2 className="mt-3 font-serif text-4xl text-[#30291f]">Bài viết báo giá liên quan</h2>
+              <h2 className="mt-3 font-serif text-4xl text-[#30291f]">
+                Bài viết báo giá liên quan
+              </h2>
             </div>
             <Link
               href="/bao-gia/thiet-ke-thi-cong-noi-that"
@@ -336,7 +354,9 @@ export default async function PricingArticlePage({
                   <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#9a733e]">
                     {item.label}
                   </p>
-                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#332b21]">{item.title}</h3>
+                  <h3 className="mt-3 font-serif text-xl leading-snug text-[#332b21]">
+                    {item.title}
+                  </h3>
                   <span className="mt-5 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.08em] text-[#725a36]">
                     Xem bài viết
                     <ArrowRight
