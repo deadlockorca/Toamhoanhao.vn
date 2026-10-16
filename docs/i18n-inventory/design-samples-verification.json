@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-16T07:09:29.786Z",
+  "checkedAt": "2026-10-16T11:48:11.175Z",
   "publishedSamples": 71,
   "coverage": {
     "vi": 71,
@@ -17,12 +17,6 @@
   "uiAndNavigationChecked": true,
   "nativeEditorialReview": "pending",
   "browserReview": "not_requested",
-  "http": {
-    "checked": 648,
-    "failed": [],
-    "filtersChecked": 153,
-    "sitemap": true,
-    "invalidRoutes404": true
-  },
+  "http": "not_run",
   "errors": []
 }

@@ -25,6 +25,7 @@ import { testimonials } from "@/data/site";
 import { homePath, type SiteLocale } from "@/lib/locale";
 import { localizedPageHref } from "@/lib/localized-pages";
 import { designText } from "@/data/design-samples-localized";
+import { formatDisplayTitle } from "@/lib/display-title";
 import styles from "@/components/projects/detail/project-detail-showcase.module.css";
 
 function imageIdentity(value: string) {
@@ -55,7 +56,7 @@ export function DesignDetailShowcase({
   const heroImage = detail?.heroImage || sample.thumbnail;
   const displayTitle =
     detail?.displayTitle && detail.italicTitle
-      ? `${detail.displayTitle} ${detail.italicTitle}`
+      ? `${formatDisplayTitle(detail.displayTitle, locale)} ${formatDisplayTitle(detail.italicTitle, locale)}`
       : sample.title;
   const overviewParagraphs = detail?.overviewParagraphs?.length
     ? detail.overviewParagraphs
@@ -127,10 +128,13 @@ export function DesignDetailShowcase({
                 {t("Mẫu thiết kế")}
               </Link>
               <ChevronRight size={11} />
-              <span>{sample.title}</span>
+              <span>{formatDisplayTitle(sample.title, locale)}</span>
             </div>
             <p className={styles.eyebrow}>
-              {detail?.eyebrow ?? t(sample.category)}
+              {formatDisplayTitle(
+                detail?.eyebrow ?? t(sample.category),
+                locale,
+              )}
             </p>
             <h1
               className={
@@ -139,12 +143,12 @@ export function DesignDetailShowcase({
             >
               {detail?.displayTitle && detail.italicTitle ? (
                 <>
-                  {detail.displayTitle}
+                  {formatDisplayTitle(detail.displayTitle, locale)}
                   <br />
-                  {detail.italicTitle}
+                  {formatDisplayTitle(detail.italicTitle, locale)}
                 </>
               ) : (
-                sample.title
+                formatDisplayTitle(sample.title, locale)
               )}
             </h1>
             <p className={styles.heroDescription}>
@@ -164,7 +168,7 @@ export function DesignDetailShowcase({
           <div className={styles.heroVisual}>
             <Image
               src={heroImage}
-              alt={sample.title}
+              alt={formatDisplayTitle(sample.title, locale)}
               fill
               priority
               sizes="(min-width: 800px) 55vw, 100vw"
@@ -226,8 +230,11 @@ export function DesignDetailShowcase({
                 {t("Tổng quan")}
               </a>
               {rooms.slice(0, 9).map((room, index) => (
-                <a key={`${room.title}-${index}`} href={`#phong-${index + 1}`}>
-                  {room.title}
+                <a
+                  key={`${formatDisplayTitle(room.title, locale)}-${index}`}
+                  href={`#phong-${index + 1}`}
+                >
+                  {formatDisplayTitle(room.title, locale)}
                 </a>
               ))}
               {rooms.length > 9 && (
@@ -246,7 +253,12 @@ export function DesignDetailShowcase({
           <div className={styles.mainContent}>
             <div className={styles.intro}>
               <p className={styles.eyebrow}>{t("TỔNG QUAN MẪU THIẾT KẾ")}</p>
-              <h2>{detail?.overviewTitle ?? sample.title}</h2>
+              <h2>
+                {formatDisplayTitle(
+                  detail?.overviewTitle ?? sample.title,
+                  locale,
+                )}
+              </h2>
               <div className={styles.introText}>
                 {overviewParagraphs.map((paragraph, index) => (
                   <p key={index}>{paragraph}</p>
@@ -267,12 +279,12 @@ export function DesignDetailShowcase({
                 <article
                   id={`phong-${index + 1}`}
                   className={styles.room}
-                  key={`${room.title}-${index}`}
+                  key={`${formatDisplayTitle(room.title, locale)}-${index}`}
                 >
                   <div className={styles.roomImage}>
                     <Image
                       src={room.image}
-                      alt={`${room.title} – ${sample.title}`}
+                      alt={`${formatDisplayTitle(room.title, locale)} – ${formatDisplayTitle(sample.title, locale)}`}
                       fill
                       sizes="(min-width: 900px) 850px, 100vw"
                     />
@@ -280,7 +292,7 @@ export function DesignDetailShowcase({
                   <div className={styles.roomBody}>
                     <div className={styles.roomHeading}>
                       <span>{String(index + 1).padStart(2, "0")}</span>
-                      <h3>{room.title}</h3>
+                      <h3>{formatDisplayTitle(room.title, locale)}</h3>
                     </div>
                     {room.description && (
                       <div className={styles.roomDescription}>

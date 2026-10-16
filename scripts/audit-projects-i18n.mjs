@@ -35,6 +35,7 @@ const {
 const { mapDbProjectToProject } = load("lib/admin-data-mappers");
 const { projectMetadata } = load("lib/project-metadata");
 const { localizedPageHref } = load("lib/localized-pages");
+const { formatDisplayTitle } = load("lib/display-title");
 const { createContentLibrary } = load("lib/content-library");
 const { apartmentMenuItems, matchesApartmentArea } = load(
   "data/apartment-menu",
@@ -409,7 +410,7 @@ if (baseArg && errors.length === 0) {
     if (job.sample) {
       const sample = localizeProject(job.sample, job.locale);
       assert(
-        decode(html).includes(sample.title),
+        decode(html).includes(formatDisplayTitle(sample.title, job.locale)),
         `${job.path}: missing translated title`,
       );
       for (const paragraph of sample.detail?.overviewParagraphs ?? [])
@@ -484,14 +485,16 @@ if (baseArg && errors.length === 0) {
       const visibleTitles = [...html.matchAll(/<h3[^>]*>(.*?)<\/h3>/gs)].map(
         (match) => match[1].replace(/<[^>]*>/g, ""),
       );
-      const allTitles = samples.map(
-        (sample) => localizeProject(sample, locale).title,
+      const allTitles = samples.map((sample) =>
+        formatDisplayTitle(localizeProject(sample, locale).title, locale),
       );
       const sampleTitles = visibleTitles.filter((title) =>
         allTitles.includes(title),
       );
       const expectedTitles = test.expected
-        .map((sample) => localizeProject(sample, locale).title)
+        .map((sample) =>
+          formatDisplayTitle(localizeProject(sample, locale).title, locale),
+        )
         .slice(0, test.query === "trang=2" ? 18 : 9);
       assert.deepEqual(
         sampleTitles,

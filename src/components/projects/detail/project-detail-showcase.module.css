@@ -62,12 +62,13 @@
   max-width: 460px;
   margin: 8px 0 18px;
   font-size: clamp(43px, 4.2vw, 66px);
-  line-height: 1.03;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 .hero h1.longTitle {
   font-size: clamp(32px, 3vw, 48px);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .heroDescription {
   max-width: 420px;

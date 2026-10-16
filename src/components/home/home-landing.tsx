@@ -31,6 +31,7 @@ import {
 import type { Project } from "@/data/projects";
 import { localizedPageHref } from "@/lib/localized-pages";
 import type { SiteLocale } from "@/lib/locale";
+import { formatDisplayTitle } from "@/lib/display-title";
 import styles from "./home-landing.module.css";
 
 const categories = [
@@ -313,7 +314,10 @@ export function HomeLanding({
                   <div className={styles.cardDetails}>
                     <div>
                       <h3>
-                        {homeProjectTitle(locale, project.slug, project.title)}
+                        {formatDisplayTitle(
+                          homeProjectTitle(locale, project.slug, project.title),
+                          locale,
+                        )}
                       </h3>
                       <p>
                         <Building2 size={13} /> {t(project.category)}

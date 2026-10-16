@@ -27,6 +27,7 @@ import type {
 } from "@/lib/content-library";
 import { localizedPageHref } from "@/lib/localized-pages";
 import type { SiteLocale } from "@/lib/locale";
+import { formatDisplayTitle } from "@/lib/display-title";
 import styles from "./portfolio-overview.module.css";
 
 type PortfolioOverviewProps = {
@@ -323,7 +324,7 @@ export function PortfolioOverview({
             <Image
               key={activeHero.thumbnail}
               src={activeHero.thumbnail}
-              alt={activeHero.title}
+              alt={formatDisplayTitle(activeHero.title, locale)}
               fill
               priority
               sizes="(max-width: 760px) 100vw, 60vw"
@@ -340,7 +341,7 @@ export function PortfolioOverview({
           {activeHero && (
             <div className={styles.heroCaption}>
               <div>
-                <strong>{activeHero.title}</strong>
+                <strong>{formatDisplayTitle(activeHero.title, locale)}</strong>
                 <span>
                   {activeHero.area
                     ? t(activeHero.area)
@@ -542,11 +543,11 @@ export function PortfolioOverview({
                         <div className={styles.cardImage}>
                           <Link
                             href={item.href}
-                            aria-label={`${t("Xem")} ${item.title}`}
+                            aria-label={`${t("Xem")} ${formatDisplayTitle(item.title, locale)}`}
                           >
                             <Image
                               src={item.thumbnail}
-                              alt={item.title}
+                              alt={formatDisplayTitle(item.title, locale)}
                               fill
                               sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 27vw"
                             />
@@ -561,8 +562,8 @@ export function PortfolioOverview({
                             onClick={() => toggleFavorite(key)}
                             aria-label={
                               isFavorite
-                                ? `${t("Bỏ yêu thích")} ${item.title}`
-                                : `${t("Yêu thích")} ${item.title}`
+                                ? `${t("Bỏ yêu thích")} ${formatDisplayTitle(item.title, locale)}`
+                                : `${t("Yêu thích")} ${formatDisplayTitle(item.title, locale)}`
                             }
                             aria-pressed={isFavorite}
                           >
@@ -574,7 +575,7 @@ export function PortfolioOverview({
                         </div>
                         <div className={styles.cardBody}>
                           <Link href={item.href}>
-                            <h3>{item.title}</h3>
+                            <h3>{formatDisplayTitle(item.title, locale)}</h3>
                           </Link>
                           <div className={styles.cardMeta}>
                             <span>
@@ -592,7 +593,7 @@ export function PortfolioOverview({
                             </span>
                             <Link
                               href={item.href}
-                              aria-label={`${t("Xem chi tiết")} ${item.title}`}
+                              aria-label={`${t("Xem chi tiết")} ${formatDisplayTitle(item.title, locale)}`}
                             >
                               <ArrowRight size={17} />
                             </Link>
