@@ -110,7 +110,10 @@ export async function POST(request: Request) {
   const clientIp = getClientIp(request);
   if (isRateLimited(clientIp)) {
     return NextResponse.json(
-      { error: "Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau ít phút." },
+      {
+        code: "rate_limited",
+        error: "Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau ít phút.",
+      },
       { status: 429, headers: { "Retry-After": "60" } },
     );
   }
@@ -120,7 +123,7 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return NextResponse.json(
-      { error: "Dữ liệu không hợp lệ" },
+      { code: "invalid_data", error: "Dữ liệu không hợp lệ" },
       { status: 400 },
     );
   }
@@ -136,14 +139,17 @@ export async function POST(request: Request) {
 
   if (!name || !phone || !email) {
     return NextResponse.json(
-      { error: "Vui lòng điền họ tên, số điện thoại và email" },
+      {
+        code: "required_fields",
+        error: "Vui lòng điền họ tên, số điện thoại và email",
+      },
       { status: 400 },
     );
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json(
-      { error: "Địa chỉ email không hợp lệ" },
+      { code: "invalid_email", error: "Địa chỉ email không hợp lệ" },
       { status: 400 },
     );
   }
@@ -192,7 +198,10 @@ export async function POST(request: Request) {
       error instanceof Error ? error.message : error,
     );
     return NextResponse.json(
-      { error: "Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau." },
+      {
+        code: "send_failed",
+        error: "Không thể gửi yêu cầu lúc này. Vui lòng thử lại sau.",
+      },
       { status: 500 },
     );
   }

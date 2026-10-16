@@ -12,7 +12,7 @@
 .page h1,
 .page h2,
 .page h3 {
-  font-family: "Times New Roman", Georgia, serif;
+  font-family: var(--font-be-vietnam-pro), sans-serif;
   font-weight: 700;
 }
 .page h1,
@@ -86,8 +86,8 @@
 .metrics dt {
   color: #b7652b;
   font:
-    700 36px Georgia,
-    serif;
+    700 36px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .metrics dd {
   font-size: 13px;
@@ -178,8 +178,8 @@
 .service strong {
   display: block;
   font:
-    700 19px Georgia,
-    serif;
+    700 19px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .service small {
   display: block;
@@ -381,15 +381,15 @@
 .contactActions small {
   display: block;
   font:
-    12px Georgia,
-    serif;
+    12px var(--font-be-vietnam-pro),
+    sans-serif;
   color: #f2dfcb;
 }
 .contactActions strong {
   display: block;
   font:
-    700 18px Georgia,
-    serif;
+    700 18px var(--font-be-vietnam-pro),
+    sans-serif;
   overflow-wrap: anywhere;
 }
 .consultation {

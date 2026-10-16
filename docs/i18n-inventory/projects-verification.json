@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-16T07:58:04.333Z",
+  "publishedProjects": 296,
+  "coverage": {
+    "vi": 296,
+    "en": 296,
+    "ja": 296,
+    "ko": 296,
+    "sv": 296,
+    "fr": 296,
+    "ru": 296,
+    "es": 296,
+    "zh": 296
+  },
+  "sourcePagesChecked": 2673,
+  "sourceDataUnchanged": true,
+  "imagesPreserved": true,
+  "uiAndNavigationChecked": true,
+  "nativeEditorialReview": "pending",
+  "browserReview": "not_requested",
+  "http": {
+    "checked": 72,
+    "sourcePagesChecked": 2673,
+    "failed": [],
+    "filtersChecked": 189,
+    "sitemap": true,
+    "invalidRoutes404": true
+  },
+  "errors": []
+}

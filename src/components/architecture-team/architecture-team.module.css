@@ -5,7 +5,7 @@
 .page h1,
 .page h2,
 .page h3 {
-  font-family: "Times New Roman", Georgia, serif;
+  font-family: var(--font-be-vietnam-pro), sans-serif;
   font-weight: 700;
 }
 .page h1,
@@ -204,8 +204,8 @@
 }
 .bigCount {
   font:
-    700 86px/1 "Times New Roman",
-    serif;
+    700 86px/1 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.035em;
 }
 .bigCount sup {
@@ -275,8 +275,8 @@
   box-shadow: 0 3px 8px #38251412;
   color: white;
   font:
-    700 30px "Times New Roman",
-    serif;
+    700 30px var(--font-be-vietnam-pro),
+    sans-serif;
   margin-bottom: 24px;
 }
 .memberCard:nth-child(2) .avatar {
@@ -380,8 +380,8 @@
   background: #b3662f;
   color: white;
   font:
-    700 23px "Times New Roman",
-    serif;
+    700 23px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .process li:not(:last-child)::after {
   content: "";
@@ -458,8 +458,8 @@
 }
 .metrics dt {
   font:
-    700 46px/1.15 "Times New Roman",
-    serif;
+    700 46px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .metrics dd {
   color: #b4a18b;

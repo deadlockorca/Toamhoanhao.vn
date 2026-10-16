@@ -35,9 +35,8 @@
 }
 .heroCopy h1 {
   font:
-    400 clamp(54px, 5.3vw, 76px)/1.06 "Times New Roman",
-    Georgia,
-    serif;
+    400 clamp(54px, 5.3vw, 76px)/1.06 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.025em;
   margin: 0;
 }
@@ -146,9 +145,8 @@
 }
 .libraryHeading h2 {
   font:
-    400 48px/1.13 "Times New Roman",
-    Georgia,
-    serif;
+    400 48px/1.13 var(--font-be-vietnam-pro),
+    sans-serif;
   margin: 0;
   letter-spacing: -0.02em;
 }
@@ -238,9 +236,8 @@
 }
 .featured h3 {
   font:
-    400 36px/1.08 "Times New Roman",
-    Georgia,
-    serif;
+    400 36px/1.08 var(--font-be-vietnam-pro),
+    sans-serif;
   margin: 0 0 18px;
   letter-spacing: -0.015em;
 }
@@ -282,9 +279,8 @@
 }
 .articleCard h3 {
   font:
-    400 23px/1.2 "Times New Roman",
-    Georgia,
-    serif;
+    400 23px/1.2 var(--font-be-vietnam-pro),
+    sans-serif;
   margin: 0 0 13px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -309,9 +305,8 @@
 }
 .processSection h2 {
   font:
-    400 44px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 44px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   margin: 0 0 40px;
 }
 .process {
@@ -377,9 +372,8 @@
 }
 .cta h2 {
   font:
-    400 56px/1.1 "Times New Roman",
-    Georgia,
-    serif;
+    400 56px/1.1 var(--font-be-vietnam-pro),
+    sans-serif;
   margin: 0;
   letter-spacing: -0.02em;
 }

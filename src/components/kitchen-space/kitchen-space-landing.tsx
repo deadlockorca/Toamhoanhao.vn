@@ -1,3 +1,4 @@
+import { localizedPageHref } from "@/lib/localized-pages";
 import { Factory, Hammer, PanelsTopLeft, Pencil } from "lucide-react";
 import { InteriorSpaceLanding } from "@/components/interior-space/interior-space-landing";
 import { kitchenSpaceCopy } from "@/data/kitchen-space";
@@ -16,7 +17,7 @@ export function KitchenSpaceLanding({
   const copy = kitchenSpaceCopy[locale];
   const articles = kitchenSpaceArticles.map((article, index) => ({
     slug: article.slug,
-    href: getKitchenSpaceArticleHref(article.slug),
+    href: localizedPageHref(getKitchenSpaceArticleHref(article.slug), locale),
     image: article.image,
     title: copy.articles[index].title,
     excerpt: copy.articles[index].description,

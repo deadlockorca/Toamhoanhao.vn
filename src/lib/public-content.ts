@@ -51,12 +51,13 @@ const designSampleDetailInclude = {
 const projectListingInclude = { detail: true } as const;
 const designSampleListingInclude = { detail: true } as const;
 
-export async function getPublicProjects() {
+/** Translated catalogues request full details to validate content coverage before linking. */
+export async function getPublicProjects(fullDetails = false) {
   await connection();
   const dbProjects = await prisma.project.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
-    include: projectListingInclude,
+    include: fullDetails ? projectDetailInclude : projectListingInclude,
   });
 
   return dbProjects.map(mapDbProjectToProject);
@@ -72,12 +73,14 @@ export async function getPublicProjectBySlug(slug: string) {
   return dbProject ? mapDbProjectToProject(dbProject) : undefined;
 }
 
-export async function getPublicDesignSamples() {
+export async function getPublicDesignSamples(fullDetails = false) {
   await connection();
   const dbSamples = await prisma.designSample.findMany({
     where: { status: "published" },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
-    include: designSampleListingInclude,
+    include: fullDetails
+      ? designSampleDetailInclude
+      : designSampleListingInclude,
   });
 
   return dbSamples.map(mapDbDesignSampleToDesignSample);

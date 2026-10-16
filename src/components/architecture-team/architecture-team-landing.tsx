@@ -1,3 +1,4 @@
+import { localizedPageHref } from "@/lib/localized-pages";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -66,7 +67,7 @@ export function ArchitectureTeamLanding({
   const about = capabilityCopy[locale].about;
   const title = copy.heroParts.join(" ");
   return (
-    <main className={styles.page}>
+    <main className={styles.page} lang={locale}>
       <SiteHeader locale={locale} />
       <div className={styles.headerSpacer} />
       <section className={styles.hero}>
@@ -75,7 +76,9 @@ export function ArchitectureTeamLanding({
             <nav className={styles.breadcrumb} aria-label={title}>
               <Link href={homePath(locale)}>{common.home}</Link>
               <span>/</span>
-              <Link href="/gioi-thieu">{about}</Link>
+              <Link href={localizedPageHref("/gioi-thieu", locale)}>
+                {about}
+              </Link>
               <span>/</span>
               <span>{title}</span>
             </nav>

@@ -35,7 +35,7 @@ export function ResidentialConstructionLanding({
   const common = kitchenSpaceCopy[locale];
   const title = copy.heroParts.join(" ");
   return (
-    <main className={shared.page}>
+    <main lang={locale} className={shared.page}>
       <SiteHeader locale={locale} />
       <div className={shared.headerSpacer} />
       <section className={shared.hero}>
@@ -44,7 +44,7 @@ export function ResidentialConstructionLanding({
             <nav className={shared.breadcrumb} aria-label={title}>
               <Link href={homePath(locale)}>{workshopCopy[locale].home}</Link>
               <span>/</span>
-              <Link href="/thi-cong-noi-that">{common.construction}</Link>
+              <span>{common.construction}</span>
               <span>/</span>
               <span>{title}</span>
             </nav>

@@ -1,3 +1,4 @@
+import { constructionPageMetadata } from "@/lib/construction-page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BedroomSpaceLanding } from "@/components/bedroom-space/bedroom-space-landing";
@@ -12,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
+  return constructionPageMetadata(locale, "khong-gian-phong-ngu", {
     title: bedroomSpaceCopy[locale].heroParts.join(" "),
     description: bedroomSpaceCopy[locale].intro,
-  };
+  });
 }
 export default async function LocalizedBedroomSpacePage({ params }: Props) {
   const { locale } = await params;

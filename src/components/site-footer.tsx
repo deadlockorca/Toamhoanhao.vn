@@ -1,3 +1,4 @@
+import { localizedPageHref } from "@/lib/localized-pages";
 import { ArrowRight, Clock3, Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,17 +92,22 @@ export function SiteFooter({ locale = "vi" }: { locale?: SiteLocale }) {
             {extra?.explore ??
               (ja ? "サイト案内" : en ? "EXPLORE" : "DANH MỤC CHÍNH")}
           </h3>
-          <Link href="/gioi-thieu">
+          <Link href={localizedPageHref("/gioi-thieu", locale)}>
             {extra?.about ?? (ja ? "会社紹介" : en ? "About us" : "Giới thiệu")}
           </Link>
-          <Link href="/du-an">
+          <Link href={localizedPageHref("/du-an", locale)}>
             {extra?.projects ?? (ja ? "施工事例" : en ? "Projects" : "Dự án")}
           </Link>
-          <Link href="/gioi-thieu/xuong-san-xuat-noi-that">
+          <Link
+            href={localizedPageHref(
+              "/gioi-thieu/xuong-san-xuat-noi-that",
+              locale,
+            )}
+          >
             {extra?.workshop ??
               (ja ? "製作工場" : en ? "Workshop" : "Xưởng sản xuất")}
           </Link>
-          <Link href="/lien-he">
+          <Link href={localizedPageHref("/lien-he", locale)}>
             {extra?.contactLink ??
               (ja ? "お問い合わせ" : en ? "Contact" : "Liên hệ")}
           </Link>
@@ -118,7 +124,12 @@ export function SiteFooter({ locale = "vi" }: { locale?: SiteLocale }) {
                   ? "Interior design"
                   : "Thiết kế nội thất")}
           </Link>
-          <Link href="/thi-cong-noi-that/thi-cong-chung-cu">
+          <Link
+            href={localizedPageHref(
+              "/thi-cong-noi-that/thi-cong-chung-cu",
+              locale,
+            )}
+          >
             {extra?.construction ??
               (ja
                 ? "内装施工"
@@ -126,7 +137,12 @@ export function SiteFooter({ locale = "vi" }: { locale?: SiteLocale }) {
                   ? "Interior construction"
                   : "Thi công nội thất")}
           </Link>
-          <Link href="/thi-cong-noi-that/thi-cong-nha-pho">
+          <Link
+            href={localizedPageHref(
+              "/thi-cong-noi-that/thi-cong-nha-pho",
+              locale,
+            )}
+          >
             {extra?.townhouse ??
               (ja
                 ? "都市型住宅の施工"
@@ -134,7 +150,12 @@ export function SiteFooter({ locale = "vi" }: { locale?: SiteLocale }) {
                   ? "Townhouse construction"
                   : "Thi công nhà phố")}
           </Link>
-          <Link href="/bao-gia/thiet-ke-thi-cong-noi-that">
+          <Link
+            href={localizedPageHref(
+              "/bao-gia/thiet-ke-thi-cong-noi-that",
+              locale,
+            )}
+          >
             {extra?.pricing ?? (ja ? "料金案内" : en ? "Pricing" : "Báo giá")}
           </Link>
         </div>

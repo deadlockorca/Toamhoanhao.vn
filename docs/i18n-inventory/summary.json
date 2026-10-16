@@ -1,0 +1,780 @@
+{
+  "generatedAt": "2026-10-16T10:09:24.060Z",
+  "locales": [
+    "vi",
+    "en",
+    "ja",
+    "ko",
+    "sv",
+    "fr",
+    "ru",
+    "es",
+    "zh"
+  ],
+  "scope": "Read-only inventory, not translation implementation or completion certification.",
+  "totalBasePages": 835,
+  "routeModules": 105,
+  "byKind": {
+    "static": 37,
+    "article": 431,
+    "database": 367
+  },
+  "byLocale": {
+    "vi": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "en": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "ja": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "ko": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "sv": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "fr": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "ru": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "es": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    },
+    "zh": {
+      "sourceRoutes": 835,
+      "missingRoutes": 0,
+      "verifiedComplete": 0
+    }
+  },
+  "database": {
+    "status": "read_only_verified",
+    "models": {
+      "Project": {
+        "total": 296,
+        "published": 296,
+        "draftsExcluded": 0,
+        "seedRecords": 12,
+        "seedOnlySlugs": [],
+        "databaseOnlySlugs": [
+          "test-database-project",
+          "test-project-with-blocks",
+          "cong-trinh-biet-thu-vinhomes-riverside-tieu-khu-phong-lan",
+          "du-an-anh-hung-biet-thu-nha-vuon-bac-ninh",
+          "du-an-chi-thuy-biet-thu-cao-cap-kdt-splendora",
+          "du-an-van-phong-duoc-pham-nano-khu-biet-thu-vuon-dao-lac-long-quan-tay-ho",
+          "thi-cong-biet-thu-ansshohavilla",
+          "thi-cong-thiet-ke-biet-thu-mai-thai-800m2-quang-binh",
+          "thiet-ke-kien-truc-biet-thu-vung-tau-anh-hung",
+          "thiet-ke-va-thi-cong-biet-thu-800-m2",
+          "noi-that-van-phong-011",
+          "noi-that-van-phong-khong-gian-mo-2",
+          "thiet-ke-noi-that-van-phong",
+          "thiet-ke-noi-that-van-phong-6",
+          "thiet-ke-noi-that-van-phong-8",
+          "thiet-ke-noi-that-van-phong-9",
+          "thiet-ke-noi-that-van-phong-ket-hop-cay-xanh-4",
+          "thiet-ke-noi-that-van-phong-tien-nghi-3",
+          "thiet-ke-van-phong-5",
+          "thiet-ke-noi-that-van-phong-7",
+          "cong-trinh-khach-san-yudu-le-van-luong-thanh-xuan-ha-noi",
+          "cong-trinh-quan-tra-sua-dai-loan-kien-an-hai-phong",
+          "cong-trinh-showroom-thoi-trang-anmonte-182-pho-hue-hoan-kiem-ha-noi",
+          "cong-trinh-showroom-thoi-trang-sohee-60-nguyen-duc-canh-hai-phong",
+          "cong-trinh-thi-cong-noi-that-showroom-thoi-trang-sohee-vincom-ba-trieu",
+          "cong-trinh-thien-kieu-decor-khu-do-thi-an-binh-city",
+          "cong-trinh-thiet-ke-thi-cong-noi-phong-giam-doc-anh-dung",
+          "cong-trinh-thuc-te-thi-cong-noi-that-showroom-thoi-trang-sohee-thanh-hoa",
+          "cong-trinh-tinh-cafe-so-178-2-quan-nhan-thanh-xuan-ha-noi",
+          "cong-trinh-van-phong-cong-ty-co-phan-dau-tu-phat-trien-sohee",
+          "cong-trinh-van-phong-emico-cong-ty-xuat-khau-lao-dong-nhat-ban",
+          "du-an-anh-chien-so-12-duong-3-2-kdt-gamuda-ha-noi",
+          "du-an-anh-hung-hp-lanmark-duong-to-huu-phuong-la-khe-ha-dong",
+          "du-an-anh-khanh-m3m4-nguyen-chi-thanh-duong-nguyen-chi-thanh-phuong-lang-ha-quan-dong-da-ha-noi",
+          "du-an-anh-phu-khu-do-thi-mo-lao-duong-nguyen-khac-hanh-ha-dong",
+          "du-an-anh-thang-duong-33-hoa-phuong-kdt-vinhomes-riverside",
+          "du-an-ba-minh-toa-a-921-park-hill-kdt-times-city",
+          "du-an-bac-phong-so-21-hong-bang-tp-hai-phong",
+          "du-an-bac-tam-so-68-duong-3-3-kdt-gamuda-ha-noi",
+          "du-an-canteen-benh-vien-nhi-28879-la-thanh-phuong-lang-thuong-dong-da-ha-noi",
+          "du-an-chi-giang-so-nha-42-duong-3-3-khu-do-thi-gamuda-ha-noi-2",
+          "du-an-chi-huong-duong-31-khu-do-thi-gamuda",
+          "du-an-chi-huong-so-nha-51-duong-3-3-khu-do-thi-gamuda-ha-noi",
+          "du-an-chi-lan-anh-p-1211-toa-r6-kdt-royal-city",
+          "du-an-chi-phuong-duong-to-van-tan-tp-da-nang",
+          "du-an-chi-van-pho-nguyen-khuyen-ha-dong",
+          "du-an-chu-hoa-so-44-duong-33-khu-do-thi-gamuda",
+          "du-an-chu-thau-so-70-duong-33-khu-do-thi-gamuda",
+          "du-an-spa-hebe-171-bui-thi-xuan-phuong-bui-thi-xuan-quan-hai-ba-trung-ha-noi",
+          "du-anh-hung-phong-807-toa-n02-t1-ngoai-giao-doan",
+          "du-anh-huynh-bt-25-khu-nha-o-trung-van-tu-liem-ha-noi",
+          "du-chu-viet-phong-3006-toa-a3-vinhomes-dinh",
+          "du-thiet-ke-thi-cong-noi-trung-tam-ky-nang-mem-vietskill",
+          "thi-cong-noi-that-showroom-thoi-trang-sohee",
+          "thi-cong-thuc-te-thiet-ke-thi-cong-noi-that-showroom-thoi-trang-sohee-nguyen-van-huyen-cau-giay-ha-noi",
+          "thiet-ke-noi-that-nha-chi-thu-tang-17-hongkong-tower",
+          "thiet-ke-spa",
+          "thiet-ke-va-thi-cong-quan-ca-phe",
+          "ban-giao-du-an-thi-cong-thiet-ke-anh-tung-chung-cu-duong-noi",
+          "can-ho-chi-lien-phong-306-toa-nha-oriental-westlake",
+          "cong-trinh-can-ho-anh-duong-can-1805-1905-toa-a2-vinhomes-my-dinh-ha-noi",
+          "cong-trinh-can-ho-anh-hoang-trung-giang-can-1817-toa-a3-vinhomes-my-dinh-ha-noi",
+          "cong-trinh-can-ho-anh-hung-phong-807-toa-n02-t1-ngoai-giao-doan",
+          "du-an-anh-dong-tang-15-chung-cu-lancaster-so-20-nui-truc",
+          "du-an-anh-duong-phong-cuoi-chung-cu-nam-do",
+          "du-an-anh-hung-can-18-toa-nha-t08-chung-cu-time-city-t8-minh-khai-ha-noi",
+          "du-an-anh-linh-chung-cu-mulbery-land-duong-nguyen-van-loc-trung-van-tu-liem-ha-noi",
+          "du-an-anh-linh-chung-cu-sunrise-apartment-kdt-ha-long-marina-phuong-bai-chay-tp-ha-long",
+          "du-an-anh-tuan-anh-khu-chung-cu-mipec-duong-phuc-la-van-phu-ha-dong",
+          "du-an-anh-tung-chung-cu-duong-noi-phuong-duong-noi-ha-dong-ha-noi",
+          "du-an-chi-hien-phong-khach-phong-bep-chung-cu-the-one-khu-do-thi-gamuda",
+          "du-an-chi-hoa-phong-912-toa-a-chung-cu-ecopark-rung-co-kdt-ecopark",
+          "du-an-chi-nga-chung-cu-cat-tuong-eco-le-thai-to-bac-ninh",
+          "du-an-chi-tam-phong-1802-chung-cu-cao-cap-vp2-ban-dao-linh-dam-hoang-mai-ha-noi",
+          "du-an-thiet-ke-noi-that-chung-cu-stela-12",
+          "du-an-thiet-ke-thi-cong-noi-that-chung-cu-vp2-nha-chi-tam-linh-dam",
+          "du-anh-nghia-chung-cu-cao-cap-ha-cau-giay-ha-noi",
+          "du-anh-quyen-chung-cu-ecopark-van-giang",
+          "du-anh-son-can-ho-1503-ct3d-chung-cu-nam-cuong-co-nhue-ha-noi",
+          "du-co-minh-pc1204-chung-cu-tt-riverview-hoang-mai-ha-noi",
+          "thi-cong-noi-that-chung-cu",
+          "thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18",
+          "thiet-ke-noi-that-chung-cu-2",
+          "thiet-ke-noi-that-chung-cu-5",
+          "thiet-ke-noi-that-penhouse-02",
+          "thiet-ke-thi-cong-noi-that-chung-cu-85-m2",
+          "thiet-ke-thi-cong-noi-that-chung-cu-lilama-nha-anh-trung",
+          "cong-trinh-thiet-ke-noi-that-chung-cu-82m2-khu-do-thi-times-city-chi-van-anh",
+          "cong-trinh-thiet-ke-noi-that-chung-cu-83m2-hh3-linh-dam-chi-mai-lan",
+          "cong-trinh-thiet-ke-noi-that-chung-cu-an-binh-city-81m2-anh-binh",
+          "hoa-quyen-2-phong-cach-trong-thiet-ke-noi-chung-cu-91m2",
+          "thi-cong-noi-that-chung-cu-50m2",
+          "thiet-ke-noi-can-ho-duplex-110m2-masteri",
+          "thiet-ke-noi-chung-cu-103m2-ecolife-capitol",
+          "thiet-ke-noi-chung-cu-115m2-e4-yen-hoa-chi-thu",
+          "thiet-ke-noi-chung-cu-115m2-times-city-chi-hao",
+          "thiet-ke-noi-chung-cu-116m2-toa-nha-md-complex-tower",
+          "thiet-ke-noi-chung-cu-117m2-anh-nam",
+          "thiet-ke-noi-chung-cu-259-yen-hoa-68m2-anh-tung",
+          "thiet-ke-noi-chung-cu-302-cau-giay-58m2-chi-thuy",
+          "thiet-ke-noi-chung-cu-47m2-tai-kim-ma-anh-thinh",
+          "thiet-ke-noi-chung-cu-64m2-oct5-resco-anh-son",
+          "thiet-ke-noi-chung-cu-65m2-dai-thanh-anh-phuc",
+          "thiet-ke-noi-chung-cu-65m2-hh2-linh-dam-anh-phong",
+          "thiet-ke-noi-chung-cu-66m2-handico-chi-trang",
+          "thiet-ke-noi-chung-cu-67m2-b1b2-linh-dam-anh-thang",
+          "thiet-ke-noi-chung-cu-67m2-thang-long-yen-hoa-chi-anh",
+          "thiet-ke-noi-chung-cu-68m2-219-trung-kinh-anh-trung",
+          "thiet-ke-noi-chung-cu-68m2-flc-anh-khoi",
+          "thiet-ke-noi-chung-cu-68m2-goldsilk-complex-chi-trinh",
+          "thiet-ke-noi-chung-cu-68m2-rainbow-chi-thanh",
+          "thiet-ke-noi-chung-cu-69m2-royal-city-chi-ngoc",
+          "thiet-ke-noi-chung-cu-70m2-celadon-city-chi-hoan",
+          "thiet-ke-noi-chung-cu-70m2-park-hill-7-anh-tai",
+          "thiet-ke-noi-chung-cu-75m2-tai-toa-nha-the-one-gamuda-land",
+          "thiet-ke-noi-chung-cu-77m2-khu-do-thi-my-dinh",
+          "thiet-ke-noi-chung-cu-79m2-center-point",
+          "thiet-ke-noi-chung-cu-89m2-lanscater-anh-hung",
+          "thiet-ke-noi-chung-cu-92m2-ct14a2-ciputra",
+          "thiet-ke-noi-chung-cu-95m2-viet-hung",
+          "thiet-ke-noi-chung-cu-97m2-richland-southerm",
+          "thiet-ke-noi-chung-cu-98m2-chelsea-park",
+          "thiet-ke-noi-chung-cu-a10-nam-trung-yen-58m2-chi-hong-binh",
+          "thiet-ke-noi-chung-cu-a10-nam-trung-yen-76m2-chi-thoa",
+          "thiet-ke-noi-chung-cu-airport-plaza-92m2-chi-trinh",
+          "thiet-ke-noi-chung-cu-aqua-spring-113m2-chi-dao",
+          "thiet-ke-noi-chung-cu-b14-kim-lien-62m2-anh-truong",
+          "thiet-ke-noi-chung-cu-complex-thong-nhat-65m2-anh-minh",
+          "thiet-ke-noi-chung-cu-ct16-kdt-dinh-cong-81m2-anh-manh",
+          "thiet-ke-noi-chung-cu-diamond-blue-62m2-anh-thang",
+          "thiet-ke-noi-chung-cu-dinh-plaza-73m2-anh-phuc",
+          "thiet-ke-noi-chung-cu-eco-city-viet-hung-66m2-chi-phuong",
+          "thiet-ke-noi-chung-cu-eurowindow-multicomplex-78m2-anh-tuan",
+          "thiet-ke-noi-chung-cu-flc-65m2-anh-trung",
+          "thiet-ke-noi-chung-cu-gamuda-103m2-chi-bich",
+          "thiet-ke-noi-chung-cu-gamuda-69m2-anh-cong",
+          "thiet-ke-noi-chung-cu-gelexia-riverside-90m2-anh-thanh",
+          "thiet-ke-noi-chung-cu-golden-palace-90m2-anh-phong",
+          "thiet-ke-noi-chung-cu-goldmark-city-67m2-anh-thanh",
+          "thiet-ke-noi-chung-cu-goldmark-city-78m2-anh-phuc",
+          "thiet-ke-noi-chung-cu-green-hoa-binh-109m2-chi-hai",
+          "thiet-ke-noi-chung-cu-green-hoa-binh-58m2-anh-loc",
+          "thiet-ke-noi-chung-cu-green-park-104m2",
+          "thiet-ke-noi-chung-cu-hanoi-landmark-51-86m2-anh-toan",
+          "thiet-ke-noi-chung-cu-hapulico-complex-75m2-chi-thao",
+          "thiet-ke-noi-chung-cu-hapulico-vu-trong-phung-77m2-anh-dinh",
+          "thiet-ke-noi-chung-cu-hh2-linh-dam-65m2-chi-thoa",
+          "thiet-ke-noi-chung-cu-hh3-linh-dam-59m2-anh-son",
+          "thiet-ke-noi-chung-cu-hoa-phat-65m2-anh-long",
+          "thiet-ke-noi-chung-cu-hoa-phat-70m2-anh-minh",
+          "thiet-ke-noi-chung-cu-hp-landmark-tower-71m2-chi-tuyet",
+          "thiet-ke-noi-chung-cu-icid-complex-ha-dong-68m2-chi-linh",
+          "thiet-ke-noi-chung-cu-imperia-garden-66m2-anh-lam",
+          "thiet-ke-noi-chung-cu-licogi-13-nhan-chinh-90m2-chi-ngoc",
+          "thiet-ke-noi-chung-cu-lilama-60m2-anh-minh",
+          "thiet-ke-noi-chung-cu-m1a-thanh-ha-cienco-74m2-chi-ha",
+          "thiet-ke-noi-chung-cu-mini-48m2-tai-linh-nam-chi-lien",
+          "thiet-ke-noi-chung-cu-mini-tai-cau-giay-485m2-anh-tung",
+          "thiet-ke-noi-chung-cu-mipec-tower-62m2-chi-lan",
+          "thiet-ke-noi-chung-cu-n07-dich-vong-68m2-chi-anh",
+          "thiet-ke-noi-chung-cu-pandora-52m2-anh-tan",
+          "thiet-ke-noi-chung-cu-plaschem-long-bien-66m2-chi-mai",
+          "thiet-ke-noi-chung-cu-rainbow-linh-dam-68m2-chi-nhung",
+          "thiet-ke-noi-chung-cu-richland-southern-cau-giay-90m2-anh-hieu",
+          "thiet-ke-noi-chung-cu-royal-city-109m2",
+          "thiet-ke-noi-chung-cu-star-city-le-van-luong-107m2-anh-trung",
+          "thiet-ke-noi-chung-cu-star-city-le-van-luong-70m2-anh-linh",
+          "thiet-ke-noi-chung-cu-star-tower-90m2-anh-phuong",
+          "thiet-ke-noi-chung-cu-tan-tay-do-66m2-chi-khanh",
+          "thiet-ke-noi-chung-cu-tay-ho-residence-64m2-anh-long",
+          "thiet-ke-noi-chung-cu-the-golden-an-khanh-69m2-anh-cuong",
+          "thiet-ke-noi-chung-cu-toa-hh2-truong-chinh-87m2-anh-thang",
+          "thiet-ke-noi-chung-cu-trang-complex-63m2-anh-chinh",
+          "thiet-ke-noi-chung-cu-tri-plaza-65m2-chi-thao",
+          "thiet-ke-noi-chung-cu-v3-prime-57m2-anh-bao",
+          "thiet-ke-noi-chung-cu-valencia-garden-66m2-anh-tuan",
+          "thiet-ke-noi-chung-cu-viet-hung-80m2",
+          "thiet-ke-noi-chung-cu-viglacera-62m2-anh-khoi",
+          "thiet-ke-noi-chung-cu-viglacera-65m2-chi-hue",
+          "thiet-ke-noi-chung-cu-vimeco-nguyen-chanh-70m2-chi-trang",
+          "thiet-ke-noi-chung-cu-vinhomes-green-bay-70m2-anh-trinh",
+          "thiet-ke-noi-chung-cu-vp6-linh-dam-50m2-anh-toan",
+          "thiet-ke-noi-chung-cu-westa-ha-dong-80m2-anh-kien",
+          "thiet-ke-noi-chung-cu-xuan-mai-ha-dong-73m2-anh-le",
+          "thiet-ke-noi-chung-cu-yen-hoa-47m2-chi-ngoc",
+          "thiet-ke-noi-that-can-ho-45m2-phong-cach-cuc-tay",
+          "thiet-ke-noi-that-chung-cu-100m2-29t4-hoang-dao-thuy",
+          "thiet-ke-noi-that-chung-cu-110m2-van-khe-anh-binh",
+          "thiet-ke-noi-that-chung-cu-112m2-garden-anh-phu",
+          "thiet-ke-noi-that-chung-cu-118m2-toa-intracom-trung-van",
+          "thiet-ke-noi-that-chung-cu-148m2-pacific-palace-anh-chung",
+          "thiet-ke-noi-that-chung-cu-30-pham-van-dong-70m2-chi-mai",
+          "thiet-ke-noi-that-chung-cu-40m2-flc-pham-hung",
+          "thiet-ke-noi-that-chung-cu-43m2-khu-can-ho-hateco",
+          "thiet-ke-noi-that-chung-cu-44m2-tay-nam-ho-linh-dam",
+          "thiet-ke-noi-that-chung-cu-45m2-green-pearl",
+          "thiet-ke-noi-that-chung-cu-46m2-anh-thanh",
+          "thiet-ke-noi-that-chung-cu-46m2-chi-lien",
+          "thiet-ke-noi-that-chung-cu-48m2-anh-nhat",
+          "thiet-ke-noi-that-chung-cu-48m2-chi-trang",
+          "thiet-ke-noi-that-chung-cu-48m2-roman-plaza-chi-trang",
+          "thiet-ke-noi-that-chung-cu-49m2-chi-van-anh-mipec",
+          "thiet-ke-noi-that-chung-cu-50m2-chi-chau-an",
+          "thiet-ke-noi-that-chung-cu-52m2",
+          "thiet-ke-noi-that-chung-cu-54m2",
+          "thiet-ke-noi-that-chung-cu-56m2-dinh-pearl-chi-tram-anh",
+          "thiet-ke-noi-that-chung-cu-56m2-hoang-mai-anh-tung",
+          "thiet-ke-noi-that-chung-cu-58m2-chi-huong",
+          "thiet-ke-noi-that-chung-cu-58m2-linh-nam-anh-hung1",
+          "thiet-ke-noi-that-chung-cu-60m2-anh-dung",
+          "thiet-ke-noi-that-chung-cu-60m2-anh-minh",
+          "thiet-ke-noi-that-chung-cu-60m2-complex-ha-dong-anh-dung",
+          "thiet-ke-noi-that-chung-cu-61m2-anh-tri",
+          "thiet-ke-noi-that-chung-cu-62m2-anh-chi-hoon",
+          "thiet-ke-noi-that-chung-cu-63m2-chi-ngoc-anh",
+          "thiet-ke-noi-that-chung-cu-64m2-chi-linh-an",
+          "thiet-ke-noi-that-chung-cu-65m2-anh-bach",
+          "thiet-ke-noi-that-chung-cu-65m2-hateco-xuan-phuong-anh-phat",
+          "thiet-ke-noi-that-chung-cu-65m2-nam-trung-yen-anh-huy",
+          "thiet-ke-noi-that-chung-cu-65m2-trung-hoa-nhan-chinh-anh-cuong",
+          "thiet-ke-noi-that-chung-cu-66m2-chi-tram",
+          "thiet-ke-noi-that-chung-cu-67m2-anh-huu",
+          "thiet-ke-noi-that-chung-cu-67m2-roman-plaza-chi-hong",
+          "thiet-ke-noi-that-chung-cu-68m2-chi-ngoc-anh",
+          "thiet-ke-noi-that-chung-cu-68m2-ha-thanh-plaza-chi-linh",
+          "thiet-ke-noi-that-chung-cu-69m2-anh-tran",
+          "thiet-ke-noi-that-chung-cu-70m2-green-stars-anh-tung",
+          "thiet-ke-noi-that-chung-cu-70m2-hp-landmark-anh-duc",
+          "thiet-ke-noi-that-chung-cu-70m2-starcity-anh-truong",
+          "thiet-ke-noi-that-chung-cu-75m2-diamond-house-chi-ngoc",
+          "thiet-ke-noi-that-chung-cu-77m2-center-point-anh-quang",
+          "thiet-ke-noi-that-chung-cu-77m2-dai-thanh-chi-anh",
+          "thiet-ke-noi-that-chung-cu-77m2-hapulico",
+          "thiet-ke-noi-that-chung-cu-78m2-flc-chi-minh",
+          "thiet-ke-noi-that-chung-cu-82m2-ecopark-anh-hieu",
+          "thiet-ke-noi-that-chung-cu-83m2-hh3-linh-dam-anh-duc",
+          "thiet-ke-noi-that-chung-cu-83m2-oct2-bac-linh-dam-anh-manh",
+          "thiet-ke-noi-that-chung-cu-85m2-hh2-khu-do-thi-linh-dam",
+          "thiet-ke-noi-that-chung-cu-85m2-pride-chi-hong",
+          "thiet-ke-noi-that-chung-cu-85m2-tan-tay-do-anh-cuong",
+          "thiet-ke-noi-that-chung-cu-88-lang-ha-108m2-chi-lan",
+          "thiet-ke-noi-that-chung-cu-88m2-ha-noi-pragon-anh-vinh",
+          "thiet-ke-noi-that-chung-cu-97m2-sail-tower-chi-dung",
+          "thiet-ke-noi-that-chung-cu-bac-ha-lucky-70m2-chi-minh-anh",
+          "thiet-ke-noi-that-chung-cu-bo-cong-an-anh-long",
+          "thiet-ke-noi-that-chung-cu-dai-thanh-113m2-chi-minh-phuong",
+          "thiet-ke-noi-that-chung-cu-golden-place-72m2-anh-phan-huy",
+          "thiet-ke-noi-that-chung-cu-green-star-100m2-chi-bich",
+          "thiet-ke-noi-that-chung-cu-hh2-linh-dam-80m2-chi-dieu-huong",
+          "thiet-ke-noi-that-chung-cu-imperia-garden-80m2-chi-linh",
+          "thiet-ke-noi-that-chung-cu-kim-van-kim-lu-115m2-anh-tri",
+          "thiet-ke-noi-that-chung-cu-lac-hong-109m2-anh-vinh",
+          "thiet-ke-noi-that-chung-cu-mandarin-garden-109m2-anh-hien",
+          "thiet-ke-noi-that-chung-cu-mulbery-land-102m2-chi-trang",
+          "thiet-ke-noi-that-chung-cu-my-dinh-plaza-84m2-anh-hung",
+          "thiet-ke-noi-that-chung-cu-sunshine-ciputra-95m2-chi-tam",
+          "thiet-ke-noi-that-chung-cu-the-golden-an-khanh-84m2-chi-tuyet",
+          "thiet-ke-noi-that-chung-cu-times-city-70m2-chi-ngoc",
+          "thiet-ke-noi-that-chung-cu-times-city-80m2-chi-ha",
+          "thiet-ke-noi-that-chung-cu-valencia-garden-72m2-anh-manh",
+          "thiet-ke-noi-that-chung-cu-viglacera-xuan-phuong-107m2-chi-nguyet",
+          "thiet-ke-noi-that-chung-cu-vimeco-114-anh-minh",
+          "thiet-ke-noi-that-chung-cu-vov-me-tri-112m2-anh-quang",
+          "thiet-ke-noi-vimhomes-tran-duy-hung-104m2-chi-hang",
+          "can-ho-chi-nhung-sun-grand-city-69b-thuy-khue",
+          "thiet-ke-noi-that-chung-cu-3",
+          "thiet-ke-noi-chung-cu-70m2-star-city-anh-thai",
+          "thiet-ke-noi-that-chung-cu-107m2-anh-minh",
+          "thiet-ke-noi-chung-cu-120m2-sky-center-anh-cong",
+          "cong-trinh-can-ho-penhouse-ecopark-van-giang-hung-yen",
+          "thiet-ke-can-ho-studio-30m2-tone-xanh-trang-01",
+          "thiet-ke-noi-that-chung-cu-vinhomes-ban-co-dien-05",
+          "thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17",
+          "noi-that-nha-pho",
+          "noi-that-nha-pho-binh-duong-chi-quyen",
+          "bali-coffee-thiet-ke-quan-ca-phe-diatrunghai-04",
+          "thiet-ke-quan-ca-phe-phong-cachtropical-shoha-02",
+          "thiet-ke-cua-hang-cat-toc-va-xam-hinh-120m2-tai-thanh-pho-ho-chi-minh",
+          "dream-bean-coffee-320m2-mau-thiet-ke-quan-ca-phe-2",
+          "ocean-coffee-thiet-ke-quan-ca-phe-170m2-tone-06",
+          "break-coffee-thiet-ke-quan-ca-phe-148m2-doc-la-05",
+          "jungle-coffee-thiet-ke-quan-ca-phe-90m2-03",
+          "thiet-ke-quan-ca-phe-chau-au-daily-dose-240m2-02",
+          "kaba-coffee-thiet-ke-quan-ca-phe-260m2-04"
+        ]
+      },
+      "DesignSample": {
+        "total": 71,
+        "published": 71,
+        "draftsExcluded": 0,
+        "seedRecords": 12,
+        "seedOnlySlugs": [
+          "mau-japandi-2pn",
+          "mau-modern-minimal-3pn",
+          "mau-biet-thu-riverside",
+          "mau-scandinavian-1pn",
+          "mau-nha-pho-urban-calm",
+          "mau-phong-khach-cozy-living",
+          "mau-phong-ngu-warm-nest",
+          "mau-bep-elegant-kitchen",
+          "mau-tu-bep-minimal-oak",
+          "mau-phong-tre-em-walnut-line",
+          "mau-can-ho-lumiere",
+          "mau-biet-thu-green-villa"
+        ],
+        "databaseOnlySlugs": [
+          "khac-phuc-han-che-phong-ngu-khong-cua-so",
+          "3-bang-mau-kinh-op-bep-cho-moi-thiet-ke-tu-bep",
+          "tong-hop-40-mau-tu-bep-tien-nghi-2023",
+          "thiet-ke-noi-that-giuong-tang-cho-tre-em-8",
+          "top-15-mau-thiet-ke-bep-chung-cu-dep",
+          "thiet-ke-noi-that-penthouse-320m2-dang-cap-sang-02",
+          "thiet-ke-noi-that-penthouse-280m2-hien-dai-luxury",
+          "top-4-thiet-ke-noi-that-phong-ngu-scandinavian-7",
+          "10-mau-thiet-ke-noi-that-phong-ngu-luxury-6",
+          "thiet-ke-noi-that-biet-thu-noi-that-go-oc-cho-23",
+          "10-mau-thiet-ke-noi-that-phong-ngu-tan-co-dien-5",
+          "vinhomes-1pn-94m2-thiet-ke-noi-that-chung-cu-21",
+          "50-mau-thiet-ke-tu-quan-ao-ben-dep-sang-trong-4",
+          "thiet-ke-noi-that-can-ho-95m2-1pn-rustic-21",
+          "20-mau-thiet-ke-noi-that-phong-ngu-tre-em-3",
+          "top-30-mau-thiet-ke-noi-that-phong-ngu-hien-dai-2",
+          "30-mau-noi-that-phong-khach-biet-thu-nha-pho-dep-2",
+          "30-mau-bep-xinh-danh-cho-biet-thu-nha-pho-2",
+          "20-mau-tu-bep-tien-nghi-xu-huong-moi-nhat-2023",
+          "thiet-ke-noi-that-chung-cu-sunshine-2pn-75m2-20",
+          "thiet-ke-biet-thu-villa-sieu-sang-22",
+          "thiet-ke-nha-pho-3-tang-hien-dai-30",
+          "thiet-ke-noi-that-can-hovinhome-centralpark95m2-20",
+          "an-tuong-thiet-ke-noi-that-can-ho-2-pn-70m2-19",
+          "thiet-ke-noi-that-chung-cu-vinhome-2pn-72m2-18",
+          "kinh-nghiem-thiet-ke-noi-that-phong-ngu-master-19",
+          "thiet-ke-biet-thu-nha-vuon-tong-dien-tich-372m2-21",
+          "thiet-ke-nha-pho-3-tang-hien-dai-29",
+          "thiet-ke-nha-pho-3-tang-sang-trong-ca-tinh-28",
+          "thiet-ke-nha-pho-2-tang-dien-tich-8m-x-16m-22",
+          "thiet-ke-nha-pho-21",
+          "kien-truc-biet-thu-dep-2-tang-xa-hoa-long-lay-20",
+          "bo-suu-tap-noi-that-phong-khach-chung-cu-2022",
+          "thiet-ke-nha-pho-3-tang-an-tuong-doc-la-20",
+          "thiet-ke-kien-truc-nha-pho-mai-thai-2-tang-19",
+          "thiet-ke-biet-thu-nha-vuon-2-tang-mai-thai-18",
+          "thiet-ke-nha-pho-20",
+          "thiet-ke-nha-pho-18-2",
+          "thiet-ke-nha-pho-3-tang-hien-dai-sang-trong-20-2",
+          "thiet-ke-nha-pho-phong-cach-hien-dai-14",
+          "thiet-ke-nha-pho-17",
+          "thiet-ke-nha-pho-6-tang-hien-dai-sang-trong-12",
+          "thiet-ke-biet-thu-dep-2-tang-quang-binh",
+          "thiet-ke-nha-pho-18",
+          "thiet-ke-nha-pho-17-2",
+          "thiet-ke-nha-pho-2-tang-hien-dai-xu-huong-2022-15",
+          "thiet-ke-nha-pho-16",
+          "thiet-ke-biet-thu-dep-2",
+          "thiet-ke-biet-thu-dep-nha-mai-thai-2-tang-17",
+          "thiet-ke-nha-pho-11",
+          "the-phonex-villa",
+          "thiet-ke-nha-pho-10",
+          "thiet-ke-biet-thu-dep-noi-that-go-oc-cho-01",
+          "mau-thiet-ke-biet-thu-dep-2-tang-tan-co-dien-01",
+          "mau-thiet-ke-nha-pho-2-tang-hien-dai-02-tphcm",
+          "mau-thiet-ke-nha-pho-dep-03",
+          "thiet-ke-nha-pho-2-tang-02",
+          "thiet-ke-nha-pho-hien-dai-3tang-01",
+          "thiet-ke-noi-that-penhouse-02-2",
+          "mau-thiet-ke-biet-thu-dep-2-tang-01",
+          "thiet-ke-biet-thu-dep-indochine-03",
+          "biet-thu-nha-vuon-dep-mai-thai-02",
+          "thiet-ke-biet-thu-dep-mai-thai-02",
+          "mau-thiet-ke-nha-pho-hien-dai-03",
+          "mau-thiet-ke-nha-pho-hien-dai-02",
+          "mau-thiet-ke-nha-pho-hien-dai-03-2",
+          "kien-truc-va-noi-that-biet-thu",
+          "mat-tien-nha-pho-tan-co-dien-15",
+          "thiet-ke-nha-pho-00",
+          "thiet-ke-thi-cong-nha-pho-02",
+          "thiet-ke-va-thi-cong-nha-pho-75m2-tp-ho-chi-minh-01"
+        ]
+      }
+    },
+    "translationSchema": "No locale or translation model/field found in current Prisma schema."
+  },
+  "collections": [
+    {
+      "prefix": "/kien-thuc/kien-thuc-nha-dep",
+      "records": 361,
+      "ownArticleRoutes": 361
+    },
+    {
+      "prefix": "/kien-thuc/kinh-nghiem-xay-nha",
+      "records": 9,
+      "ownArticleRoutes": 9
+    },
+    {
+      "prefix": "/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
+      "records": 28,
+      "ownArticleRoutes": 28
+    },
+    {
+      "prefix": "/kien-thuc/phap-ly-xay-dung",
+      "records": 2,
+      "ownArticleRoutes": 2
+    },
+    {
+      "prefix": "/bao-gia/thiet-ke-thi-cong-noi-that",
+      "records": 9,
+      "ownArticleRoutes": 9
+    },
+    {
+      "prefix": "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+      "records": 5,
+      "ownArticleRoutes": 5
+    },
+    {
+      "prefix": "/thi-cong-noi-that/khong-gian-bep",
+      "records": 7,
+      "ownArticleRoutes": 7
+    },
+    {
+      "prefix": "/thi-cong-noi-that/khong-gian-phong-khach",
+      "records": 4,
+      "ownArticleRoutes": 3
+    },
+    {
+      "prefix": "/thi-cong-noi-that/khong-gian-phong-ngu",
+      "records": 8,
+      "ownArticleRoutes": 7
+    }
+  ],
+  "aliases": [
+    {
+      "source": "/thi-cong-noi-that/khong-gian-phong-khach/bao-gia-thi-cong-noi-that-tron-goi",
+      "destination": "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
+      "evidence": "src/data/living-room-space-articles.ts"
+    },
+    {
+      "source": "/thi-cong-noi-that/khong-gian-phong-ngu/bao-gia-thi-cong-noi-that-tron-goi",
+      "destination": "/thi-cong-noi-that/khong-gian-bep/bao-gia-thi-cong-noi-that-tron-goi",
+      "evidence": "src/data/bedroom-space-articles.ts"
+    }
+  ],
+  "sitemap": {
+    "source": "src/app/sitemap.ts",
+    "staticEntriesWithoutInventory": [],
+    "translatedStaticPathsMissingFromSource": [
+      "/kien-thuc/kien-thuc-nha-dep",
+      "/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
+      "/kien-thuc/kinh-nghiem-xay-nha",
+      "/kien-thuc/phap-ly-xay-dung",
+      "/lien-he",
+      "/thi-cong-noi-that/khong-gian-bep",
+      "/thi-cong-noi-that/khong-gian-phong-khach",
+      "/thi-cong-noi-that/khong-gian-phong-ngu",
+      "/thi-cong-noi-that/nhat-ki-thi-cong",
+      "/thi-cong-noi-that/thi-cong-cai-tao",
+      "/thi-cong-noi-that/thi-cong-chung-cu",
+      "/thi-cong-noi-that/thi-cong-dien-nuoc",
+      "/thi-cong-noi-that/thi-cong-do-go",
+      "/thi-cong-noi-that/thi-cong-nha-pho",
+      "/thi-cong-noi-that/thi-cong-phan-tho",
+      "/thi-cong-noi-that/thi-cong-son-ba",
+      "/thi-cong-noi-that/thi-cong-tran-thach-cao",
+      "/thiet-ke-noi-that/biet-thu",
+      "/thiet-ke-noi-that/phong-bep",
+      "/thiet-ke-noi-that/phong-ngu",
+      "/thiet-ke-noi-that/phong-tre-em",
+      "/thiet-ke-noi-that/tan-co-dien",
+      "/thiet-ke-noi-that/thiet-ke-chung-cu",
+      "/thiet-ke-noi-that/thiet-ke-khach-san",
+      "/thiet-ke-noi-that/thiet-ke-nha-pho",
+      "/thiet-ke-noi-that/thiet-ke-showroom",
+      "/thiet-ke-noi-that/thong-minh"
+    ],
+    "note": "Source review: homepages, five introduction pages, two pricing overview pages, fourteen pricing articles and the design sample/project listings and published details expand across locales. Other translated static pages still need sitemap expansion. This command does not fetch the runtime sitemap; use the group audit commands with --base-url for server verification."
+  },
+  "missingMenuPaths": [],
+  "uncoveredDynamicTemplates": [],
+  "sharedComponents": [
+    {
+      "area": "Header/menu/language switcher",
+      "files": [
+        "src/components/site-header.tsx",
+        "src/data/navigation-english.ts",
+        "src/data/navigation-japanese.ts",
+        "src/data/navigation-additional.ts",
+        "src/data/site-chrome-additional.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Footer",
+      "files": [
+        "src/components/site-footer.tsx",
+        "src/data/site-chrome-additional.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Consultation popup, validation and success states",
+      "files": [
+        "src/components/consultation-popup.tsx",
+        "src/data/consultation-additional.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Contact page and form",
+      "files": [
+        "src/app/lien-he/page.tsx",
+        "src/app/api/contact/route.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Content form and API errors",
+      "files": [
+        "src/app/api"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "404 and errors",
+      "files": [
+        "src/app/not-found.tsx",
+        "src/app/global-error.tsx"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Home content",
+      "files": [
+        "src/components/home/home-landing.tsx",
+        "src/data/home-english.ts",
+        "src/data/home-japanese.ts",
+        "src/data/home-additional.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "HTML language",
+      "files": [
+        "src/app/layout.tsx"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "SEO and sitemap",
+      "files": [
+        "src/app/sitemap.ts",
+        "src/lib/locale.ts",
+        "src/lib/localized-pages.ts"
+      ],
+      "status": "needs_review_all_locales"
+    },
+    {
+      "area": "Image text, PDFs, captions and alt text",
+      "files": [
+        "public/images",
+        "public"
+      ],
+      "status": "needs_review_all_locales"
+    }
+  ],
+  "queryPages": [
+    {
+      "file": "src/app/[locale]/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/page.tsx",
+      "path": "/[locale]/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/bao-gia/thiet-ke-thi-cong-noi-that/page.tsx",
+      "path": "/[locale]/bao-gia/thiet-ke-thi-cong-noi-that",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/du-an/page.tsx",
+      "path": "/[locale]/du-an",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/kien-thuc/kien-thuc-nha-dep/page.tsx",
+      "path": "/[locale]/kien-thuc/kien-thuc-nha-dep",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/kien-thuc/kinh-nghiem-thiet-ke-noi-that/page.tsx",
+      "path": "/[locale]/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/kien-thuc/kinh-nghiem-xay-nha/page.tsx",
+      "path": "/[locale]/kien-thuc/kinh-nghiem-xay-nha",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/kien-thuc/phap-ly-xay-dung/page.tsx",
+      "path": "/[locale]/kien-thuc/phap-ly-xay-dung",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/[locale]/mau-thiet-ke/page.tsx",
+      "path": "/[locale]/mau-thiet-ke",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/page.tsx",
+      "path": "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/bao-gia/thiet-ke-thi-cong-noi-that/page.tsx",
+      "path": "/bao-gia/thiet-ke-thi-cong-noi-that",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/kien-thuc/kien-thuc-nha-dep/page.tsx",
+      "path": "/kien-thuc/kien-thuc-nha-dep",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/kien-thuc/kinh-nghiem-thiet-ke-noi-that/page.tsx",
+      "path": "/kien-thuc/kinh-nghiem-thiet-ke-noi-that",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/kien-thuc/kinh-nghiem-xay-nha/page.tsx",
+      "path": "/kien-thuc/kinh-nghiem-xay-nha",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    },
+    {
+      "file": "src/app/kien-thuc/phap-ly-xay-dung/page.tsx",
+      "path": "/kien-thuc/phap-ly-xay-dung",
+      "status": "Filter/search/pagination strings and locale retention need review"
+    }
+  ],
+  "excluded": [
+    {
+      "file": "src/app/admin/du-an/[slug]/page.tsx",
+      "path": "/admin/du-an/[slug]",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/du-an/new/page.tsx",
+      "path": "/admin/du-an/new",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/du-an/page.tsx",
+      "path": "/admin/du-an",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/mau-thiet-ke/[slug]/page.tsx",
+      "path": "/admin/mau-thiet-ke/[slug]",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/mau-thiet-ke/new/page.tsx",
+      "path": "/admin/mau-thiet-ke/new",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/mau-thiet-ke/page.tsx",
+      "path": "/admin/mau-thiet-ke",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    },
+    {
+      "file": "src/app/admin/page.tsx",
+      "path": "/admin",
+      "reason": "Internal administration; tracked separately from public website. Confirm admin localization scope in later implementation."
+    }
+  ],
+  "limitations": [
+    "Route existence is not proof of translated content or correct rendering.",
+    "No browser checks, translations, database writes or deployment performed.",
+    "Public database content only is included in page rows; drafts are counted and excluded.",
+    "Byte-identical source text, embedded image text, PDFs, runtime language tags, menu interactions and SEO remain review tasks.",
+    "Dynamic DB routes use published DB records; seed-vs-DB differences are recorded separately."
+  ],
+  "suspectedTestPages": [
+    "/du-an/test-database-project",
+    "/du-an/test-project-with-blocks"
+  ],
+  "tracking": {
+    "command": "npm run audit:i18n",
+    "generatedFiles": [
+      "pages.csv",
+      "inventory.json",
+      "summary.json",
+      "shared-components.csv"
+    ],
+    "manualProgressFile": "progress.json",
+    "rule": "Generated files are refreshed on every run. Existing progress rows are preserved by base path. Complete only after content, UI, links and SEO have been verified in every locale.",
+    "nextSteps": [
+      "Rà soát các đường dẫn hiện có ở mỗi ngôn ngữ theo progress.json: nội dung, liên kết, SEO.",
+      "Bổ sung các trang tĩnh còn thiếu và hoàn thiện thành phần dùng chung.",
+      "Thiết kế dữ liệu bản dịch cho dự án và mẫu thiết kế trong database.",
+      "Dịch các nhóm bài viết; kiểm tra chữ trong ảnh và tài liệu tải xuống.",
+      "Hoàn thiện sitemap, hreflang và kiểm tra tổng thể."
+    ]
+  }
+}

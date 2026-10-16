@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
 import { ArchitectureTeamLanding } from "@/components/architecture-team/architecture-team-landing";
-import { architectureTeamCopy } from "@/data/architecture-team";
-
-export const metadata: Metadata = {
-  title: "Đội ngũ kiến trúc sư",
-  description: architectureTeamCopy.vi.intro,
-};
-export default function ArchitectureTeamPage() {
+import { introductionMetadata } from "@/lib/introduction-metadata";
+export const metadata = introductionMetadata(
+  "/gioi-thieu/doi-ngu-kien-truc-su",
+  "vi",
+);
+export default function Page() {
   return <ArchitectureTeamLanding />;
 }

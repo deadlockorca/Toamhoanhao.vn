@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { WorkshopLanding } from "@/components/workshop/workshop-landing";
-import { workshopCopy } from "@/data/workshop";
+import { introductionMetadata } from "@/lib/introduction-metadata";
 import { isSiteLocale, siteLocales } from "@/lib/locale";
-
 type Props = { params: Promise<{ locale: string }> };
 export function generateStaticParams() {
   return siteLocales
@@ -13,12 +12,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
-    title: workshopCopy[locale].title,
-    description: workshopCopy[locale].intro,
-  };
+  return introductionMetadata("/gioi-thieu/xuong-san-xuat-noi-that", locale);
 }
-export default async function LocalizedWorkshopPage({ params }: Props) {
+export default async function Page({ params }: Props) {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
   return <WorkshopLanding locale={locale} />;

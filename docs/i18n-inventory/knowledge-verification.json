@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-16T10:01:29.187Z",
+  "groups": 4,
+  "articles": 400,
+  "locales": [
+    "vi",
+    "en",
+    "ja",
+    "ko",
+    "sv",
+    "fr",
+    "ru",
+    "es",
+    "zh"
+  ],
+  "sourcePagesChecked": 3636,
+  "sourceParagraphs": 7855,
+  "sourceImages": 1992,
+  "sourceDataUnchanged": true,
+  "metadataVerified": true,
+  "editorialReview": "pending",
+  "browserReview": "not_requested",
+  "errors": [],
+  "httpPagesChecked": 144,
+  "filteredListingsChecked": 135,
+  "sitemapPagesChecked": 3636
+}

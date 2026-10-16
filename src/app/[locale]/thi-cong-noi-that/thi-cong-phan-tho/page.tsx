@@ -1,3 +1,4 @@
+import { constructionPageMetadata } from "@/lib/construction-page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ShellConstructionLanding } from "@/components/shell-construction/shell-construction-landing";
@@ -12,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
+  return constructionPageMetadata(locale, "thi-cong-phan-tho", {
     title: shellConstructionCopy[locale].heroParts.join(" "),
     description: shellConstructionCopy[locale].intro,
-  };
+  });
 }
 export default async function LocalizedShellConstructionPage({
   params,

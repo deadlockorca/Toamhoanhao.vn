@@ -1,11 +1,12 @@
 import importedArticles from "./beautiful-home-article-blocks.json";
 
 export type BeautifulHomeBlock =
-  | { type: "paragraph" | "bullet"; text: string }
+  | { type: "paragraph" | "bullet"; text: string; sourceText?: string }
   | { type: "image"; src: string; alt: string };
 
 export type BeautifulHomeSection = {
   title: string;
+  sourceTitle?: string;
   blocks: BeautifulHomeBlock[];
 };
 

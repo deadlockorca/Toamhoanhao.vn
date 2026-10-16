@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-16T08:53:03.177Z",
+  "pages": 10,
+  "locales": [
+    "vi",
+    "en",
+    "ja",
+    "ko",
+    "sv",
+    "fr",
+    "ru",
+    "es",
+    "zh"
+  ],
+  "sourceRoutesChecked": 90,
+  "newPages": 5,
+  "translatedKeysUsed": 307,
+  "editorialReview": "pending",
+  "browserReview": "not_requested",
+  "errors": [],
+  "httpPagesChecked": 90,
+  "sitemapPagesChecked": 90
+}

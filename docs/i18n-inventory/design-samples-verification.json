@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-16T07:09:29.786Z",
+  "publishedSamples": 71,
+  "coverage": {
+    "vi": 71,
+    "en": 71,
+    "ja": 71,
+    "ko": 71,
+    "sv": 71,
+    "fr": 71,
+    "ru": 71,
+    "es": 71,
+    "zh": 71
+  },
+  "sourceDataUnchanged": true,
+  "imagesPreserved": true,
+  "uiAndNavigationChecked": true,
+  "nativeEditorialReview": "pending",
+  "browserReview": "not_requested",
+  "http": {
+    "checked": 648,
+    "failed": [],
+    "filtersChecked": 153,
+    "sitemap": true,
+    "invalidRoutes404": true
+  },
+  "errors": []
+}

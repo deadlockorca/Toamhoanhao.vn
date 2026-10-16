@@ -1,3 +1,4 @@
+import { constructionPageMetadata } from "@/lib/construction-page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ConstructionDiaryLanding } from "@/components/construction-diary/construction-diary-landing";
@@ -12,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
+  return constructionPageMetadata(locale, "nhat-ki-thi-cong", {
     title: constructionDiaryCopy[locale].heroParts.join(" "),
     description: constructionDiaryCopy[locale].intro,
-  };
+  });
 }
 export default async function LocalizedConstructionDiaryPage({
   params,

@@ -1,3 +1,4 @@
+import { constructionPageMetadata } from "@/lib/construction-page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { KitchenSpaceLanding } from "@/components/kitchen-space/kitchen-space-landing";
@@ -12,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
+  return constructionPageMetadata(locale, "khong-gian-bep", {
     title: kitchenSpaceCopy[locale].heroParts.join(" "),
     description: kitchenSpaceCopy[locale].intro,
-  };
+  });
 }
 export default async function LocalizedKitchenSpacePage({ params }: Props) {
   const { locale } = await params;

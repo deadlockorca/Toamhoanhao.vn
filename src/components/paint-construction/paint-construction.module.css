@@ -11,9 +11,8 @@
 .heading h2 {
   margin: 0;
   font:
-    400 42px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 42px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .heading p,
@@ -48,9 +47,8 @@
 .notes h3 {
   margin: 24px 0 12px;
   font:
-    400 26px/1.2 "Times New Roman",
-    Georgia,
-    serif;
+    400 26px/1.2 var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .notes p {
   margin: 0;

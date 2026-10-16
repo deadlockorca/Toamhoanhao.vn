@@ -1,3 +1,4 @@
+import { constructionPageMetadata } from "@/lib/construction-page-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PaintConstructionLanding } from "@/components/paint-construction/paint-construction-landing";
@@ -12,10 +13,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isSiteLocale(locale) || locale === "vi") notFound();
-  return {
+  return constructionPageMetadata(locale, "thi-cong-son-ba", {
     title: paintConstructionCopy[locale].heroParts.join(" "),
     description: paintConstructionCopy[locale].intro,
-  };
+  });
 }
 export default async function LocalizedPaintConstructionPage({
   params,

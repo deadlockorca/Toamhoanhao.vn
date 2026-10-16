@@ -1,4 +1,15 @@
+import knowledgePaths from "@/data/knowledge-paths.json";
+import constructionArticlePaths from "@/data/construction-article-paths.json";
+import {
+  constructionPageSlugs,
+  introductionPagePaths,
+  interiorDesignPagePaths,
+  localizedPageHref,
+} from "@/lib/localized-pages";
+import { hasDesignSampleTranslation } from "@/data/design-samples-localized";
+import { hasProjectTranslation } from "@/data/projects-localized";
 import type { MetadataRoute } from "next";
+import { pricingArticlePaths, pricingPagePaths } from "@/data/pricing-routes";
 
 import { beautifulHomeArticles } from "@/data/beautiful-home-articles";
 import { buildingExperienceArticles } from "@/data/building-experience-articles";
@@ -119,27 +130,121 @@ function toEntry(
   };
 }
 
+function translatedEntries(
+  path: string,
+  priority: number,
+  changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"],
+  lastModified: Date,
+): MetadataRoute.Sitemap {
+  const languages = {
+    ...Object.fromEntries(
+      siteLocales.map((locale) => [
+        locale,
+        siteBaseUrl + localizedPageHref(path, locale),
+      ]),
+    ),
+    "x-default": siteBaseUrl + path,
+  };
+  return siteLocales.map((locale) => ({
+    ...toEntry(
+      localizedPageHref(path, locale),
+      priority,
+      changeFrequency,
+      lastModified,
+    ),
+    alternates: { languages },
+  }));
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
 
   // Dự án và mẫu thiết kế nằm trong DB nên sitemap được render theo yêu cầu
   // (các hàm này gọi `connection()`), nhờ đó phản ánh nội dung mới publish.
   const [projects, designSamples] = await Promise.all([
-    getPublicProjects(),
-    getPublicDesignSamples(),
+    getPublicProjects(true),
+    getPublicDesignSamples(true),
   ]);
 
   return [
     ...homeRoutes.map((path) => toEntry(path, 1, "weekly", lastModified)),
-    ...staticRoutes.map((path) => toEntry(path, 0.8, "weekly", lastModified)),
-    ...projectArticleRoutes.map((path) =>
-      toEntry(path, 0.7, "monthly", lastModified),
-    ),
-    ...projects.map((project) =>
-      toEntry(`/du-an/${project.slug}`, 0.7, "monthly", lastModified),
-    ),
-    ...designSamples.map((sample) =>
-      toEntry(`/mau-thiet-ke/${sample.slug}`, 0.7, "monthly", lastModified),
-    ),
+    ...staticRoutes.flatMap((path) => {
+      if (
+        !(
+          [
+            ...introductionPagePaths,
+            ...knowledgePaths,
+            ...interiorDesignPagePaths,
+            ...constructionPageSlugs.map(
+              (slug) => `/thi-cong-noi-that/${slug}`,
+            ),
+            ...pricingPagePaths,
+            "/mau-thiet-ke",
+            "/du-an",
+            "/lien-he",
+          ] as readonly string[]
+        ).includes(path)
+      )
+        return [toEntry(path, 0.8, "weekly", lastModified)];
+      return translatedEntries(path, 0.8, "weekly", lastModified);
+    }),
+    ...projectArticleRoutes.flatMap((path) => {
+      if (Object.hasOwn(constructionArticlePaths, path)) {
+        if ((constructionArticlePaths as Record<string, string>)[path] !== path)
+          return [];
+        return translatedEntries(path, 0.7, "monthly", lastModified);
+      }
+      return knowledgePaths.includes(path) || pricingArticlePaths.includes(path)
+        ? translatedEntries(path, 0.7, "monthly", lastModified)
+        : [toEntry(path, 0.7, "monthly", lastModified)];
+    }),
+    ...projects.flatMap((project) => {
+      const path = "/du-an/" + project.slug;
+      const locales = siteLocales.filter((locale) =>
+        hasProjectTranslation(project, locale),
+      );
+      const languages = {
+        ...Object.fromEntries(
+          locales.map((locale) => [
+            locale,
+            siteBaseUrl + localizedPageHref(path, locale),
+          ]),
+        ),
+        "x-default": siteBaseUrl + path,
+      };
+      return locales.map((locale) => ({
+        ...toEntry(
+          localizedPageHref(path, locale),
+          0.7,
+          "monthly",
+          lastModified,
+        ),
+        alternates: { languages },
+      }));
+    }),
+    ...designSamples.flatMap((sample) => {
+      const path = `/mau-thiet-ke/${sample.slug}`;
+      const locales = siteLocales.filter((locale) =>
+        hasDesignSampleTranslation(sample, locale),
+      );
+      const languages = {
+        ...Object.fromEntries(
+          locales.map((locale) => [
+            locale,
+            siteBaseUrl + localizedPageHref(path, locale),
+          ]),
+        ),
+        "x-default": siteBaseUrl + path,
+      };
+      return locales.map((locale) => ({
+        ...toEntry(
+          localizedPageHref(path, locale),
+          0.7,
+          "monthly",
+          lastModified,
+        ),
+        alternates: { languages },
+      }));
+    }),
   ];
 }

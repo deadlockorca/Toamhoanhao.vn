@@ -24,7 +24,7 @@
 .ideaCard h2,
 .cta h2,
 .styleCopy h3 {
-  font-family: "Times New Roman", Georgia, serif;
+  font-family: var(--font-be-vietnam-pro), sans-serif;
   font-weight: 400;
 }
 .sectionHeading h2 {
@@ -72,9 +72,8 @@
 .number {
   display: block;
   font:
-    400 88px/1 "Times New Roman",
-    Georgia,
-    serif;
+    400 88px/1 var(--font-be-vietnam-pro),
+    sans-serif;
   color: #dfc6b2;
   margin-bottom: 8px;
 }

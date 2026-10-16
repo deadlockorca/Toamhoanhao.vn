@@ -29,6 +29,7 @@ import {
   homeText,
 } from "@/data/home-english";
 import type { Project } from "@/data/projects";
+import { localizedPageHref } from "@/lib/localized-pages";
 import type { SiteLocale } from "@/lib/locale";
 import styles from "./home-landing.module.css";
 
@@ -212,7 +213,10 @@ export function HomeLanding({
               )}
             </p>
             <div className={styles.heroActions}>
-              <Link className={styles.buttonPrimary} href="/du-an">
+              <Link
+                className={styles.buttonPrimary}
+                href={localizedPageHref("/du-an", locale)}
+              >
                 {t("Xem dự án")} <ArrowRight size={16} />
               </Link>
               <ConsultationButton className={styles.buttonOutline}>
@@ -290,7 +294,7 @@ export function HomeLanding({
             <div className={styles.projectGrid}>
               {visibleProjects.map((project) => (
                 <Link
-                  href={`/du-an/${project.slug}`}
+                  href={localizedPageHref(`/du-an/${project.slug}`, locale)}
                   className={styles.projectCard}
                   key={project.slug}
                 >
@@ -347,7 +351,7 @@ export function HomeLanding({
                 sizes="(max-width: 800px) 100vw, 55vw"
               />
               <Link
-                href={`/du-an/${caseProject.slug}`}
+                href={localizedPageHref(`/du-an/${caseProject.slug}`, locale)}
                 className={styles.videoPill}
               >
                 <Play size={16} fill="currentColor" /> {t("Xem công trình")}
@@ -406,7 +410,7 @@ export function HomeLanding({
               </div>
               <Link
                 className={styles.buttonPrimary}
-                href={`/du-an/${caseProject.slug}`}
+                href={localizedPageHref(`/du-an/${caseProject.slug}`, locale)}
               >
                 {t("Xem chi tiết case study")} <ArrowRight size={16} />
               </Link>

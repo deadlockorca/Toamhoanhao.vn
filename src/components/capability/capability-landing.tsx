@@ -1,3 +1,4 @@
+import { localizedPageHref } from "@/lib/localized-pages";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -84,7 +85,7 @@ export function CapabilityLanding({ locale = "vi" }: { locale?: SiteLocale }) {
   const common = workshopCopy[locale];
   const title = copy.heroParts.join(" ");
   return (
-    <main className={styles.page}>
+    <main className={styles.page} lang={locale}>
       <SiteHeader locale={locale} />
       <div className={styles.headerSpacer} />
       <section className={styles.hero}>
@@ -94,7 +95,9 @@ export function CapabilityLanding({ locale = "vi" }: { locale?: SiteLocale }) {
               <nav className={styles.breadcrumb} aria-label={title}>
                 <Link href={homePath(locale)}>{common.home}</Link>
                 <span>/</span>
-                <Link href="/gioi-thieu">{copy.about}</Link>
+                <Link href={localizedPageHref("/gioi-thieu", locale)}>
+                  {copy.about}
+                </Link>
                 <span>/</span>
                 <span>{title}</span>
               </nav>
@@ -234,7 +237,7 @@ export function CapabilityLanding({ locale = "vi" }: { locale?: SiteLocale }) {
           {gallery.map((item, i) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={localizedPageHref(item.href, locale)}
               className={styles.galleryCard}
             >
               <Image
@@ -288,7 +291,10 @@ export function CapabilityLanding({ locale = "vi" }: { locale?: SiteLocale }) {
             {workshopFactories.slice(1).map((factory, i) => (
               <Link
                 key={factory.region}
-                href={`${locale === "vi" ? "" : `/${locale}`}/gioi-thieu/xuong-san-xuat-noi-that`}
+                href={localizedPageHref(
+                  "/gioi-thieu/xuong-san-xuat-noi-that",
+                  locale,
+                )}
                 className={styles.factoryCard}
               >
                 <span>{factory.region}</span>

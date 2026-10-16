@@ -31,7 +31,7 @@ export function InteriorSpaceLanding({
   serviceIcons,
 }: Props) {
   return (
-    <main className={styles.page}>
+    <main lang={locale} className={styles.page}>
       <SiteHeader locale={locale} />
       <div className={styles.headerSpacer} />
       <section className={styles.hero}>
@@ -43,7 +43,7 @@ export function InteriorSpaceLanding({
             >
               <Link href={homePath(locale)}>{workshopCopy[locale].home}</Link>
               <span>/</span>
-              <Link href="/thi-cong-noi-that">{copy.construction}</Link>
+              <span>{copy.construction}</span>
               <span>/</span>
               <span>{copy.heroParts.join(" ")}</span>
             </nav>

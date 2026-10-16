@@ -12,9 +12,8 @@
   margin: 0 auto;
   max-width: 700px;
   font:
-    400 42px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 42px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .steps {
@@ -46,9 +45,8 @@
   background: #ad6635;
   color: white;
   font:
-    400 15px/1 "Times New Roman",
-    Georgia,
-    serif;
+    400 15px/1 var(--font-be-vietnam-pro),
+    sans-serif;
   box-shadow: 0 4px 8px #65492e15;
 }
 .steps p {

@@ -1,0 +1,22 @@
+{
+  "kinh-nghiem-xay-nha": {
+    "title": "Kinh nghiệm xây nhà trọn gói",
+    "description": "Những kinh nghiệm xây nhà thực tế về định hướng thiết kế, ngân sách, thi công và lựa chọn vật liệu.",
+    "component": "BuildingExperiencePage"
+  },
+  "kinh-nghiem-thiet-ke-noi-that": {
+    "title": "Kinh nghiệm thiết kế nội thất",
+    "description": "Cẩm nang thiết kế nội thất thực tế: quy trình, chi phí, lưu ý và kinh nghiệm tạo không gian sống phù hợp.",
+    "component": "InteriorDesignExperiencePage"
+  },
+  "phap-ly-xay-dung": {
+    "title": "Pháp lý xây dựng",
+    "description": "Cẩm nang các thủ tục pháp lý, giấy phép và hồ sơ cần chuẩn bị trước khi xây dựng.",
+    "component": "BuildingLegalPage"
+  },
+  "kien-thuc-nha-dep": {
+    "title": "Kiến thức nhà đẹp",
+    "description": "Gợi ý thực tế để kiến tạo không gian sống đẹp, tiện nghi và hài hòa với lối sống của gia đình.",
+    "component": "BeautifulHomeKnowledgePage"
+  }
+}

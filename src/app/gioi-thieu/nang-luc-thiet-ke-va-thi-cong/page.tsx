@@ -1,11 +1,9 @@
-import type { Metadata } from "next";
 import { CapabilityLanding } from "@/components/capability/capability-landing";
-import { capabilityCopy } from "@/data/capability";
-
-export const metadata: Metadata = {
-  title: "Năng lực thiết kế và thi công",
-  description: capabilityCopy.vi.intro,
-};
-export default function CapabilityPage() {
+import { introductionMetadata } from "@/lib/introduction-metadata";
+export const metadata = introductionMetadata(
+  "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+  "vi",
+);
+export default function Page() {
   return <CapabilityLanding />;
 }

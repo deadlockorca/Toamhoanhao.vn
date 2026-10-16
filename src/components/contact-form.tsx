@@ -2,9 +2,11 @@
 
 import { CheckCircle2, Loader2, ShieldCheck } from "lucide-react";
 import { useState, type FormEvent } from "react";
+import type { ContactMessages } from "@/data/contact";
 import styles from "@/app/lien-he/contact.module.css";
 
-export function ContactForm() {
+export function ContactForm({ messages }: { messages: ContactMessages }) {
+  const t = (text: string) => messages[text as keyof ContactMessages];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -32,16 +34,20 @@ export function ContactForm() {
       });
       if (!response.ok) {
         const data = await response.json().catch(() => null);
-        throw new Error(data?.error ?? "Gửi thất bại");
+        const key =
+          data?.code === "invalid_email"
+            ? "Địa chỉ email không hợp lệ"
+            : data?.code === "required_fields"
+              ? "Vui lòng điền họ tên, số điện thoại và email"
+              : response.status === 429
+                ? "Bạn đã gửi quá nhiều yêu cầu. Vui lòng thử lại sau ít phút."
+                : "Không thể gửi yêu cầu, vui lòng thử lại sau.";
+        setSubmitError(t(key));
+        return;
       }
       setIsSubmitted(true);
-    } catch (error) {
-      console.error("Send contact failed:", error);
-      setSubmitError(
-        error instanceof Error && error.message
-          ? error.message
-          : "Không thể gửi yêu cầu, vui lòng thử lại sau.",
-      );
+    } catch {
+      setSubmitError(t("Không thể gửi yêu cầu, vui lòng thử lại sau."));
     } finally {
       setIsSubmitting(false);
     }
@@ -51,25 +57,27 @@ export function ContactForm() {
     return (
       <div className={`${styles.form} ${styles.formSuccess}`}>
         <CheckCircle2 size={58} aria-hidden="true" />
-        <h2>Đã gửi yêu cầu thành công!</h2>
+        <h2>{t("Đã gửi yêu cầu thành công!")}</h2>
         <p>
-          Cảm ơn bạn đã tin tưởng. Đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ với bạn
-          trong thời gian sớm nhất.
+          {t(
+            "Cảm ơn bạn đã tin tưởng. Đội ngũ Tổ Ấm Hoàn Hảo sẽ liên hệ với bạn trong thời gian sớm nhất.",
+          )}
         </p>
       </div>
     );
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <p className={styles.eyebrow}>Đặt lịch tư vấn</p>
-      <h2>Gửi yêu cầu tư vấn</h2>
+      <p className={styles.eyebrow}>{t("Đặt lịch tư vấn")}</p>
+      <h2>{t("Gửi yêu cầu tư vấn")}</h2>
       <p className={styles.formIntro}>
-        Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại sớm nhất.
+        {t("Điền thông tin bên dưới, chúng tôi sẽ liên hệ lại sớm nhất.")}
       </p>
       <div className={styles.formFields}>
         <label className={styles.formLabel}>
           <span>
-            Họ và tên <b>*</b>
+            {t("Họ và tên")}
+            <b>*</b>
           </span>
           <input
             required
@@ -80,7 +88,8 @@ export function ContactForm() {
         </label>
         <label className={styles.formLabel}>
           <span>
-            Số điện thoại <b>*</b>
+            {t("Số điện thoại")}
+            <b>*</b>
           </span>
           <input
             required
@@ -92,7 +101,8 @@ export function ContactForm() {
         </label>
         <label className={styles.formLabel}>
           <span>
-            Email <b>*</b>
+            {t("Email")}
+            <b>*</b>
           </span>
           <input
             required
@@ -104,7 +114,8 @@ export function ContactForm() {
         </label>
         <label className={styles.formLabel}>
           <span>
-            Loại dịch vụ <b>*</b>
+            {t("Loại dịch vụ")}
+            <b>*</b>
           </span>
           <select
             required
@@ -113,22 +124,33 @@ export function ContactForm() {
             className={styles.formInput}
           >
             <option value="" disabled>
-              Chọn dịch vụ
+              {t("Chọn dịch vụ")}
             </option>
-            <option>Thiết kế nội thất</option>
-            <option>Thi công nội thất</option>
-            <option>Sản xuất nội thất</option>
-            <option>Xây dựng trọn gói</option>
-            <option>Cải tạo / nâng cấp</option>
+            <option value={"Thiết kế nội thất"}>
+              {t("Thiết kế nội thất")}
+            </option>
+            <option value={"Thi công nội thất"}>
+              {t("Thi công nội thất")}
+            </option>
+            <option value={"Sản xuất nội thất"}>
+              {t("Sản xuất nội thất")}
+            </option>
+            <option value={"Xây dựng trọn gói"}>
+              {t("Xây dựng trọn gói")}
+            </option>
+            <option value={"Cải tạo / nâng cấp"}>
+              {t("Cải tạo / nâng cấp")}
+            </option>
           </select>
         </label>
         <label className={styles.formLabel}>
-          Diện tích / Quy mô
+          {t("Diện tích / Quy mô")}
           <input name="scale" className={styles.formInput} />
         </label>
         <label className={styles.formLabel}>
           <span>
-            Khu vực <b>*</b>
+            {t("Khu vực")}
+            <b>*</b>
           </span>
           <select
             required
@@ -137,19 +159,19 @@ export function ContactForm() {
             className={styles.formInput}
           >
             <option value="" disabled>
-              Chọn khu vực
+              {t("Chọn khu vực")}
             </option>
-            <option>Hà Nội</option>
-            <option>TP. Hồ Chí Minh</option>
-            <option>Ninh Bình</option>
-            <option>Thanh Hóa</option>
-            <option>Bình Dương</option>
-            <option>Khu vực khác</option>
+            <option value={"Hà Nội"}>{t("Hà Nội")}</option>
+            <option value={"TP. Hồ Chí Minh"}>{t("TP. Hồ Chí Minh")}</option>
+            <option value={"Ninh Bình"}>{t("Ninh Bình")}</option>
+            <option value={"Thanh Hóa"}>{t("Thanh Hóa")}</option>
+            <option value={"Bình Dương"}>{t("Bình Dương")}</option>
+            <option value={"Khu vực khác"}>{t("Khu vực khác")}</option>
           </select>
         </label>
       </div>
       <fieldset className={styles.formFieldset}>
-        <legend>Dịch vụ bạn quan tâm</legend>
+        <legend>{t("Dịch vụ bạn quan tâm")}</legend>
         <div className={styles.interestList}>
           {[
             "Thiết kế nội thất",
@@ -160,17 +182,17 @@ export function ContactForm() {
           ].map((service) => (
             <label key={service} className={styles.interest}>
               <input type="checkbox" name="interests" value={service} />
-              <span>{service}</span>
+              <span>{t(service)}</span>
             </label>
           ))}
         </div>
       </fieldset>
       <label className={`${styles.formLabel} ${styles.messageLabel}`}>
-        Nội dung yêu cầu
+        {t("Nội dung yêu cầu")}
         <textarea
           name="message"
           rows={5}
-          placeholder="Vui lòng mô tả chi tiết nhu cầu của bạn..."
+          placeholder={t("Vui lòng mô tả chi tiết nhu cầu của bạn...")}
           className={styles.formTextarea}
         />
       </label>
@@ -182,11 +204,12 @@ export function ContactForm() {
         {isSubmitting ? (
           <>
             <Loader2 size={16} className="animate-spin" aria-hidden="true" />
-            Đang gửi...
+            {t("Đang gửi...")}
           </>
         ) : (
           <>
-            Gửi thông tin <span aria-hidden="true">→</span>
+            {t("Gửi thông tin")}
+            <span aria-hidden="true">→</span>
           </>
         )}
       </button>
@@ -197,7 +220,7 @@ export function ContactForm() {
       )}
       <p className={styles.formNote}>
         <ShieldCheck size={14} aria-hidden="true" />
-        Thông tin của bạn được bảo mật và chỉ dùng để hỗ trợ tư vấn.
+        {t("Thông tin của bạn được bảo mật và chỉ dùng để hỗ trợ tư vấn.")}
       </p>
     </form>
   );

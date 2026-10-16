@@ -1,3 +1,5 @@
+import { introTranslator } from "@/data/introduction";
+import { localizedPageHref } from "@/lib/localized-pages";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -53,8 +55,9 @@ function mapHref(address: string) {
 
 export function WorkshopLanding({ locale = "vi" }: { locale?: SiteLocale }) {
   const copy = workshopCopy[locale];
+  const t = introTranslator(locale);
   return (
-    <main className={styles.page}>
+    <main className={styles.page} lang={locale}>
       <SiteHeader locale={locale} />
       <div className={styles.headerSpacer} />
       <section className={styles.hero}>
@@ -121,7 +124,7 @@ export function WorkshopLanding({ locale = "vi" }: { locale?: SiteLocale }) {
               return (
                 <Link
                   key={label}
-                  href={serviceLinks[i]}
+                  href={localizedPageHref(serviceLinks[i], locale)}
                   className={styles.service}
                 >
                   <span className={styles.serviceIcon}>
@@ -189,7 +192,7 @@ export function WorkshopLanding({ locale = "vi" }: { locale?: SiteLocale }) {
                     sizes="(max-width: 760px) 90vw, (max-width: 1024px) 45vw, 370px"
                     className={i === 1 ? styles.hanoiImage : undefined}
                   />
-                  <span>{factory.region}</span>
+                  <span>{i === 0 ? t("centralRegion") : factory.region}</span>
                 </div>
                 <div className={styles.factoryCopy}>
                   <h3>{copy.factoryTitles[i]}</h3>
@@ -224,7 +227,9 @@ export function WorkshopLanding({ locale = "vi" }: { locale?: SiteLocale }) {
                 <a key={contact.value} href={contact.href}>
                   <Icon size={18} aria-hidden="true" />
                   <span>
-                    <small>{contact.label}</small>
+                    <small>
+                      {contact.icon === Mail ? t("email") : t("hotline")}
+                    </small>
                     <strong>{contact.value}</strong>
                   </span>
                 </a>

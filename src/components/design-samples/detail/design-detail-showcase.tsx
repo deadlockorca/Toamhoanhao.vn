@@ -22,6 +22,9 @@ import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteHeader } from "@/components/site-header";
 import type { DesignSample } from "@/data/design-samples";
 import { testimonials } from "@/data/site";
+import { homePath, type SiteLocale } from "@/lib/locale";
+import { localizedPageHref } from "@/lib/localized-pages";
+import { designText } from "@/data/design-samples-localized";
 import styles from "@/components/projects/detail/project-detail-showcase.module.css";
 
 function imageIdentity(value: string) {
@@ -40,7 +43,14 @@ function iconForSpecification(label: string): LucideIcon {
   return Home;
 }
 
-export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
+export function DesignDetailShowcase({
+  sample,
+  locale = "vi",
+}: {
+  sample: DesignSample;
+  locale?: SiteLocale;
+}) {
+  const t = (text: string) => designText(text, locale);
   const detail = sample.detail;
   const heroImage = detail?.heroImage || sample.thumbnail;
   const displayTitle =
@@ -105,20 +115,22 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
 
   return (
     <div className={styles.page}>
-      <SiteHeader />
+      <SiteHeader locale={locale} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <div className={styles.breadcrumb}>
-              <Link href="/">Trang chủ</Link>
+              <Link href={homePath(locale)}>{t("Trang chủ")}</Link>
               <ChevronRight size={11} />
-              <Link href="/mau-thiet-ke">Mẫu thiết kế</Link>
+              <Link href={localizedPageHref("/mau-thiet-ke", locale)}>
+                {t("Mẫu thiết kế")}
+              </Link>
               <ChevronRight size={11} />
               <span>{sample.title}</span>
             </div>
             <p className={styles.eyebrow}>
-              — &nbsp; {detail?.eyebrow ?? sample.category}
+              {detail?.eyebrow ?? t(sample.category)}
             </p>
             <h1
               className={
@@ -145,7 +157,8 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
               <span>{sample.style}</span>
             </div>
             <a className={styles.primaryButton} href="#tong-quan">
-              Khám phá mẫu thiết kế <ArrowRight size={15} />
+              {t("Khám phá mẫu thiết kế")}
+              <ArrowRight size={15} />
             </a>
           </div>
           <div className={styles.heroVisual}>
@@ -167,8 +180,10 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
       >
         <div className={styles.container}>
           <div className={styles.specHeading}>
-            <p className={styles.eyebrow}>— &nbsp; THÔNG TIN MẪU THIẾT KẾ</p>
-            <h2 id="design-specifications-title">Thông số mẫu thiết kế</h2>
+            <p className={styles.eyebrow}>{t("THÔNG TIN MẪU THIẾT KẾ")}</p>
+            <h2 id="design-specifications-title">
+              {t("Thông số mẫu thiết kế")}
+            </h2>
           </div>
           <div className={styles.specCard}>
             <div className={styles.specRows} style={specGridStyle}>
@@ -179,7 +194,7 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
                     <span className={styles.specIcon}>
                       <Icon size={22} strokeWidth={1.55} />
                     </span>
-                    <span className={styles.specLabel}>{label}</span>
+                    <span className={styles.specLabel}>{t(label)}</span>
                     <strong>{value}</strong>
                   </div>
                 );
@@ -189,7 +204,7 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
               <div className={styles.extraInfo}>
                 {extraInfo.map((row) => (
                   <p key={row.label}>
-                    <span>{row.label}</span>
+                    <span>{t(row.label)}</span>
                     <strong>{row.value}</strong>
                   </p>
                 ))}
@@ -201,11 +216,14 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
 
       <section className={styles.overview} id="tong-quan">
         <div className={styles.container}>
-          <aside className={styles.sidebar} aria-label="Nội dung mẫu thiết kế">
+          <aside
+            className={styles.sidebar}
+            aria-label={t("Nội dung mẫu thiết kế")}
+          >
             <nav className={styles.sideNav}>
-              <a href="#thong-so">Thông số mẫu</a>
+              <a href="#thong-so">{t("Thông số mẫu")}</a>
               <a href="#tong-quan" className={styles.active}>
-                Tổng quan
+                {t("Tổng quan")}
               </a>
               {rooms.slice(0, 9).map((room, index) => (
                 <a key={`${room.title}-${index}`} href={`#phong-${index + 1}`}>
@@ -213,20 +231,21 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
                 </a>
               ))}
               {rooms.length > 9 && (
-                <a href="#khong-gian">Xem tất cả không gian</a>
+                <a href="#khong-gian">{t("Xem tất cả không gian")}</a>
               )}
             </nav>
             <div className={styles.sideCta}>
-              <p>Bạn muốn thiết kế theo phong cách riêng?</p>
+              <p>{t("Bạn muốn thiết kế theo phong cách riêng?")}</p>
               <ConsultationButton className={styles.textButton}>
-                Liên hệ tư vấn <ArrowRight size={14} />
+                {t("Liên hệ tư vấn")}
+                <ArrowRight size={14} />
               </ConsultationButton>
             </div>
           </aside>
 
           <div className={styles.mainContent}>
             <div className={styles.intro}>
-              <p className={styles.eyebrow}>— &nbsp; TỔNG QUAN MẪU THIẾT KẾ</p>
+              <p className={styles.eyebrow}>{t("TỔNG QUAN MẪU THIẾT KẾ")}</p>
               <h2>{detail?.overviewTitle ?? sample.title}</h2>
               <div className={styles.introText}>
                 {overviewParagraphs.map((paragraph, index) => (
@@ -235,11 +254,11 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
               </div>
               <blockquote className={styles.introQuote}>
                 <p>
-                  “Chúng tôi luôn đặt mình vào vị trí của khách hàng để tạo nên
-                  những không gian sống phù hợp với phong cách và nhu cầu thực
-                  tế.”
+                  {t(
+                    "“Chúng tôi luôn đặt mình vào vị trí của khách hàng để tạo nên những không gian sống phù hợp với phong cách và nhu cầu thực tế.”",
+                  )}
                 </p>
-                <footer>— Đội ngũ Tổ Ấm Hoàn Hảo</footer>
+                <footer>{t("— Đội ngũ Tổ Ấm Hoàn Hảo")}</footer>
               </blockquote>
             </div>
 
@@ -289,33 +308,38 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
       >
         <div className={styles.container}>
           <div className={styles.ctaCopy}>
-            <p className={styles.eyebrow}>— &nbsp; TỔ ẤM HOÀN HẢO</p>
-            <h2>Hãy để chúng tôi hiện thực hóa tổ ấm của bạn</h2>
+            <p className={styles.eyebrow}>{t("TỔ ẤM HOÀN HẢO")}</p>
+            <h2>{t("Hãy để chúng tôi hiện thực hóa tổ ấm của bạn")}</h2>
             <p>
-              Đội ngũ kiến trúc sư, kỹ sư giàu kinh nghiệm luôn sẵn sàng tư vấn
-              và đồng hành cùng bạn.
+              {t(
+                "Đội ngũ kiến trúc sư, kỹ sư giàu kinh nghiệm luôn sẵn sàng tư vấn và đồng hành cùng bạn.",
+              )}
             </p>
             <ConsultationButton className={styles.ctaButton}>
-              Liên hệ tư vấn ngay <ArrowRight size={15} />
+              {t("Liên hệ tư vấn ngay")}
+              <ArrowRight size={15} />
             </ConsultationButton>
           </div>
           <div className={styles.contactCard}>
             <a href="tel:0903897555">
               <Phone size={19} />
               <span>
-                Gọi ngay<strong>0903.897.555</strong>
+                {t("Gọi ngay")}
+                <strong>0903.897.555</strong>
               </span>
             </a>
             <ConsultationButton>
               <MessageCircle size={19} />
               <span>
-                Chat Zalo<strong>Tư vấn miễn phí</strong>
+                {t("Chat Zalo")}
+                <strong>{t("Tư vấn miễn phí")}</strong>
               </span>
             </ConsultationButton>
             <ConsultationButton>
               <CalendarDays size={19} />
               <span>
-                Đặt lịch hẹn<strong>Chúng tôi sẽ liên hệ</strong>
+                {t("Đặt lịch hẹn")}
+                <strong>{t("Chúng tôi sẽ liên hệ")}</strong>
               </span>
             </ConsultationButton>
           </div>
@@ -324,11 +348,11 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
 
       <section className={styles.testimonials}>
         <div className={styles.container}>
-          <h2>Khách hàng nói gì về chúng tôi</h2>
+          <h2>{t("Khách hàng nói gì về chúng tôi")}</h2>
           <div className={styles.testimonialGrid}>
             {testimonials.map((item) => (
               <blockquote key={item.name}>
-                <p>“{item.quote}”</p>
+                <p>“{t(item.quote)}”</p>
                 <footer>
                   <span>{item.initials}</span>
                   <div>
@@ -339,8 +363,12 @@ export function DesignDetailShowcase({ sample }: { sample: DesignSample }) {
               </blockquote>
             ))}
           </div>
-          <Link href="/mau-thiet-ke" className={styles.allProjects}>
-            <ArrowLeft size={15} /> Xem các mẫu thiết kế khác
+          <Link
+            href={localizedPageHref("/mau-thiet-ke", locale)}
+            className={styles.allProjects}
+          >
+            <ArrowLeft size={15} />
+            {t("Xem các mẫu thiết kế khác")}
           </Link>
         </div>
       </section>

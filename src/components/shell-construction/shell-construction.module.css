@@ -37,9 +37,8 @@
 .rulesTitle {
   margin: 0 0 30px;
   font:
-    400 38px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 38px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .rules {

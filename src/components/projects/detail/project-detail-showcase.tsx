@@ -18,6 +18,9 @@ import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteHeader } from "@/components/site-header";
 import type { Project } from "@/data/projects";
 import { testimonials } from "@/data/site";
+import { projectText } from "@/data/projects-localized";
+import { localizedPageHref } from "@/lib/localized-pages";
+import { homePath, type SiteLocale } from "@/lib/locale";
 import styles from "./project-detail-showcase.module.css";
 
 function findInfo(project: Project, label: string) {
@@ -30,7 +33,14 @@ function imageIdentity(value: string) {
   return value.split("?")[0];
 }
 
-export function ProjectDetailShowcase({ project }: { project: Project }) {
+export function ProjectDetailShowcase({
+  project,
+  locale = "vi",
+}: {
+  project: Project;
+  locale?: SiteLocale;
+}) {
+  const t = (source: string) => projectText(source, locale);
   const detail = project.detail;
   const heroImage = detail?.heroImage || project.thumbnail;
   const overviewParagraphs = detail?.overviewParagraphs?.length
@@ -70,16 +80,19 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
   ].filter((room) => room.image);
   const specifications = [
     { label: "Vị trí", value: project.location, icon: MapPin },
-    { label: "Diện tích", value: project.area, icon: Ruler },
+    { label: "Diện tích", value: t(project.area), icon: Ruler },
     {
       label: "Hạng mục",
-      value: findInfo(project, "hạng mục") ?? detail?.scope ?? project.category,
+      value:
+        findInfo(project, "hạng mục") ?? detail?.scope ?? t(project.category),
       icon: Layers3,
     },
     {
       label: "Phòng ngủ",
       value:
-        findInfo(project, "phòng ngủ") ?? detail?.bedrooms ?? "Chưa cập nhật",
+        findInfo(project, "phòng ngủ") ??
+        detail?.bedrooms ??
+        t("Chưa cập nhật"),
       icon: BedDouble,
     },
     { label: "Phong cách", value: project.style, icon: Palette },
@@ -91,23 +104,25 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
 
   return (
     <div className={styles.page}>
-      <SiteHeader />
+      <SiteHeader locale={locale} />
 
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
             <div className={styles.breadcrumb}>
-              <Link href="/">Trang chủ</Link>
+              <Link href={homePath(locale)}>{t("Trang chủ")}</Link>
               <ChevronRight size={11} />
-              <Link href="/du-an">Dự án</Link>
+              <Link href={localizedPageHref("/du-an", locale)}>
+                {t("Dự án")}
+              </Link>
               <ChevronRight size={11} />
               <span>{project.title}</span>
             </div>
             <p className={styles.eyebrow}>
-              — &nbsp; {detail?.eyebrow ?? project.category}
+              — &nbsp; {detail?.eyebrow ?? t(project.category)}
             </p>
             <h1>
-              {detail?.displayTitle && detail.italicTitle ? (
+              {locale === "vi" && detail?.displayTitle && detail.italicTitle ? (
                 <>
                   {detail.displayTitle}
                   <br />
@@ -119,23 +134,25 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
             </h1>
             <p className={styles.heroDescription}>{heroDescription}</p>
             <div className={styles.heroChips}>
-              <span>{project.area}</span>
+              <span>{t(project.area)}</span>
               {detail?.bedrooms && <span>{detail.bedrooms}</span>}
-              {detail?.bathrooms &&
-                !/đang cập nhật/i.test(detail.bathrooms) && (
-                  <span>{detail.bathrooms} phòng tắm</span>
-                )}
+              {detail?.bathrooms && detail.bathrooms !== t("Đang cập nhật") && (
+                <span>
+                  {detail.bathrooms} {t("phòng tắm")}
+                </span>
+              )}
               <span>{project.style}</span>
               <span>{project.location}</span>
             </div>
             <a className={styles.primaryButton} href="#tong-quan">
-              Khám phá từng phòng <ArrowRight size={15} />
+              {t("Khám phá từng phòng")}
+              <ArrowRight size={15} />
             </a>
           </div>
           <div className={styles.heroVisual}>
             <Image
               src={heroImage}
-              alt={`Không gian ${project.title}`}
+              alt={`${t("Không gian")} ${project.title}`}
               fill
               priority
               sizes="(min-width: 800px) 55vw, 100vw"
@@ -151,8 +168,10 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
       >
         <div className={styles.container}>
           <div className={styles.specHeading}>
-            <p className={styles.eyebrow}>— &nbsp; THÔNG TIN CÔNG TRÌNH</p>
-            <h2 id="project-specifications-title">Thông số dự án</h2>
+            <p className={styles.eyebrow}>
+              — &nbsp; {t("THÔNG TIN CÔNG TRÌNH")}
+            </p>
+            <h2 id="project-specifications-title">{t("Thông số dự án")}</h2>
           </div>
           <div className={styles.specCard}>
             <div className={styles.specRows}>
@@ -161,7 +180,7 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
                   <span className={styles.specIcon}>
                     <Icon size={22} strokeWidth={1.55} />
                   </span>
-                  <span className={styles.specLabel}>{label}</span>
+                  <span className={styles.specLabel}>{t(label)}</span>
                   <strong>{value}</strong>
                 </div>
               ))}
@@ -170,7 +189,7 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
               <div className={styles.extraInfo}>
                 {extraInfo.map((row) => (
                   <p key={row.label}>
-                    <span>{row.label}</span>
+                    <span>{t(row.label)}</span>
                     <strong>{row.value}</strong>
                   </p>
                 ))}
@@ -182,11 +201,11 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
 
       <section className={styles.overview} id="tong-quan">
         <div className={styles.container}>
-          <aside className={styles.sidebar} aria-label="Nội dung dự án">
+          <aside className={styles.sidebar} aria-label={t("Nội dung dự án")}>
             <nav className={styles.sideNav}>
-              <a href="#thong-so">Thông số dự án</a>
+              <a href="#thong-so">{t("Thông số dự án")}</a>
               <a href="#tong-quan" className={styles.active}>
-                Tổng quan
+                {t("Tổng quan")}
               </a>
               {rooms.slice(0, 9).map((room, index) => (
                 <a key={`${room.title}-${index}`} href={`#phong-${index + 1}`}>
@@ -194,20 +213,21 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
                 </a>
               ))}
               {rooms.length > 9 && (
-                <a href="#khong-gian">Xem tất cả không gian</a>
+                <a href="#khong-gian">{t("Xem tất cả không gian")}</a>
               )}
             </nav>
             <div className={styles.sideCta}>
-              <p>Bạn muốn thiết kế theo phong cách riêng?</p>
+              <p>{t("Bạn muốn thiết kế theo phong cách riêng?")}</p>
               <ConsultationButton className={styles.textButton}>
-                Liên hệ tư vấn <ArrowRight size={14} />
+                {t("Liên hệ tư vấn")}
+                <ArrowRight size={14} />
               </ConsultationButton>
             </div>
           </aside>
 
           <div className={styles.mainContent}>
             <div className={styles.intro}>
-              <p className={styles.eyebrow}>— &nbsp; TỔNG QUAN DỰ ÁN</p>
+              <p className={styles.eyebrow}>— &nbsp; {t("TỔNG QUAN DỰ ÁN")}</p>
               <h2>{detail?.overviewTitle ?? project.title}</h2>
               <div className={styles.introText}>
                 {overviewParagraphs.map((paragraph, index) => (
@@ -216,11 +236,11 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
               </div>
               <blockquote className={styles.introQuote}>
                 <p>
-                  “Chúng tôi luôn đặt mình vào vị trí của khách hàng để tạo nên
-                  những không gian sống phù hợp với phong cách và nhu cầu thực
-                  tế.”
+                  {t(
+                    "“Chúng tôi luôn đặt mình vào vị trí của khách hàng để tạo nên những không gian sống phù hợp với phong cách và nhu cầu thực tế.”",
+                  )}
                 </p>
-                <footer>— Đội ngũ Tổ Ấm Hoàn Hảo</footer>
+                <footer>{t("— Đội ngũ Tổ Ấm Hoàn Hảo")}</footer>
               </blockquote>
             </div>
 
@@ -272,33 +292,38 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
       >
         <div className={styles.container}>
           <div className={styles.ctaCopy}>
-            <p className={styles.eyebrow}>— &nbsp; TỔ ẤM HOÀN HẢO</p>
-            <h2>Hãy để chúng tôi hiện thực hóa tổ ấm của bạn</h2>
+            <p className={styles.eyebrow}>— &nbsp; {t("TỔ ẤM HOÀN HẢO")}</p>
+            <h2>{t("Hãy để chúng tôi hiện thực hóa tổ ấm của bạn")}</h2>
             <p>
-              Đội ngũ kiến trúc sư, kỹ sư giàu kinh nghiệm luôn sẵn sàng tư vấn
-              và đồng hành cùng bạn.
+              {t(
+                "Đội ngũ kiến trúc sư, kỹ sư giàu kinh nghiệm luôn sẵn sàng tư vấn và đồng hành cùng bạn.",
+              )}
             </p>
             <ConsultationButton className={styles.ctaButton}>
-              Liên hệ tư vấn ngay <ArrowRight size={15} />
+              {t("Liên hệ tư vấn ngay")}
+              <ArrowRight size={15} />
             </ConsultationButton>
           </div>
           <div className={styles.contactCard}>
             <a href="tel:0903897555">
               <Phone size={19} />
               <span>
-                Gọi ngay<strong>0903.897.555</strong>
+                {t("Gọi ngay")}
+                <strong>0903.897.555</strong>
               </span>
             </a>
             <ConsultationButton>
               <MessageCircle size={19} />
               <span>
-                Chat Zalo<strong>Tư vấn miễn phí</strong>
+                {t("Chat Zalo")}
+                <strong>{t("Tư vấn miễn phí")}</strong>
               </span>
             </ConsultationButton>
             <ConsultationButton>
               <CalendarDays size={19} />
               <span>
-                Đặt lịch hẹn<strong>Chúng tôi sẽ liên hệ</strong>
+                {t("Đặt lịch hẹn")}
+                <strong>{t("Chúng tôi sẽ liên hệ")}</strong>
               </span>
             </ConsultationButton>
           </div>
@@ -307,11 +332,11 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
 
       <section className={styles.testimonials}>
         <div className={styles.container}>
-          <h2>Khách hàng nói gì về chúng tôi</h2>
+          <h2>{t("Khách hàng nói gì về chúng tôi")}</h2>
           <div className={styles.testimonialGrid}>
             {testimonials.map((item) => (
               <blockquote key={item.name}>
-                <p>“{item.quote}”</p>
+                <p>“{t(item.quote)}”</p>
                 <footer>
                   <span>{item.initials}</span>
                   <div>
@@ -322,8 +347,12 @@ export function ProjectDetailShowcase({ project }: { project: Project }) {
               </blockquote>
             ))}
           </div>
-          <Link href="/du-an" className={styles.allProjects}>
-            <ArrowLeft size={15} /> Xem các dự án khác
+          <Link
+            href={localizedPageHref("/du-an", locale)}
+            className={styles.allProjects}
+          >
+            <ArrowLeft size={15} />
+            {t("Xem các dự án khác")}
           </Link>
         </div>
       </section>

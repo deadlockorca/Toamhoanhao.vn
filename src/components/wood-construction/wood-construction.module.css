@@ -13,9 +13,8 @@
 .heading h2 {
   margin: 0;
   font:
-    400 42px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 42px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .intro > p:last-child {

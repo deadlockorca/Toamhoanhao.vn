@@ -8,9 +8,8 @@
   max-width: 720px;
   text-align: center;
   font:
-    400 42px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 42px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .notes {
@@ -36,9 +35,8 @@
 .notes h3 {
   margin: 22px 0 12px;
   font:
-    400 28px/1.2 "Times New Roman",
-    Georgia,
-    serif;
+    400 28px/1.2 var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .notes p,
 .priceCard > p:last-child {
@@ -63,17 +61,15 @@
 .priceCard h2 {
   margin: 0;
   font:
-    400 36px/1.15 "Times New Roman",
-    Georgia,
-    serif;
+    400 36px/1.15 var(--font-be-vietnam-pro),
+    sans-serif;
   letter-spacing: -0.02em;
 }
 .price {
   margin: 28px 0 24px;
   font:
-    400 clamp(26px, 2.6vw, 38px)/1.2 "Times New Roman",
-    Georgia,
-    serif;
+    400 clamp(26px, 2.6vw, 38px)/1.2 var(--font-be-vietnam-pro),
+    sans-serif;
   color: #ad6635;
 }
 .price span {

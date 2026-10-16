@@ -1,0 +1,83 @@
+{
+  "scope": {
+    "overviewPages": 2,
+    "interiorArticles": 9,
+    "constructionArticles": 5,
+    "locales": ["vi", "en", "ja", "ko", "sv", "fr", "ru", "es", "zh"],
+    "totalUrls": 144
+  },
+  "translation": {
+    "entriesPerTranslatedLanguage": 813,
+    "english": "Manually reviewed and edited from Vietnamese source, including material terms, construction methods and archived price conditions.",
+    "otherLanguages": "Generated locally from reviewed English using M2M100, with manual edits to key navigation, currency labels, construction terms, titles and selected text. Native editorial review pending.",
+    "runtime": "Static dictionaries in the repository; no translation service or model is called by the website.",
+    "model": "https://huggingface.co/JustFrederik/m2m_100_418m_ct2_int8",
+    "sourceNumericalInconsistencies": "Original figures, dimensions and dates retained; existing source discrepancies were not silently corrected.",
+    "images": "Original media retained. Image alt text translated; text embedded in images remains original."
+  },
+  "verification": {
+    "command": "npm run audit:i18n:pricing -- --base-url=http://localhost:3000",
+    "sourceCoverage": true,
+    "articleStructureAndImages": true,
+    "numericValues": true,
+    "serverHtmlAll144Urls": true,
+    "filters81Cases": true,
+    "canonicalAndHreflang": true,
+    "sitemapAll144Urls": true,
+    "invalidRoutes404": true,
+    "browserReview": false,
+    "nativeEditorialReview": false
+  },
+  "paths": [
+    "/bao-gia/thiet-ke-thi-cong-noi-that",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/bao-gia-thiet-ke-va-thi-cong-noi-that",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/bao-gia-noi-that-go-oc-cho",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/bao-gia-thiet-ke-thi-cong-tu-bep",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/thiet-ke-noi-that-van-phong-ha-noi-220m2",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/goi-noi-that-hoan-thien-400-trieu",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/goi-noi-that-hoan-thien-300-trieu",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/goi-noi-that-hoan-thien-250-trieu",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/goi-noi-that-hoan-thien-169-trieu",
+    "/bao-gia/thiet-ke-thi-cong-noi-that/bao-gia-thiet-ke-noi-that-chi-phi-hop-ly",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/chi-phi-nha-pho-1-tret-2-lau-5x20m",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/chi-phi-nha-pho-1-tret-1-lau-5x20m",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/chi-phi-nha-pho-1-tret-1-lau-5x15m",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/cach-tinh-gia-xay-dung-tron-goi-va-phan-tho",
+    "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi/quy-trinh-xay-nha-tron-goi"
+  ],
+  "layoutUpdates": {
+    "category": "/bao-gia/thiet-ke-thi-cong-noi-that",
+    "articleCount": 9,
+    "locales": 9,
+    "totalLocalizedArticleUrls": 81,
+    "sharedLayout": "src/components/pricing/pricing-article-layout.tsx",
+    "features": [
+      "Arched hero and floating metadata",
+      "Article-specific table of contents and sticky consultation panel",
+      "Correct archived package amount for 169/250/300/400 million VND",
+      "Original paragraphs, lists and all 35 article images retained",
+      "Image previews with native zoom dialogs",
+      "Numbered terms where applicable, related articles and rounded consultation section"
+    ],
+    "checks": "Full server HTML content, image presence, TOC anchors, package amounts and locale links verified. TypeScript, ESLint and formatting passed. Browser layout and dialog interaction review not performed."
+  },
+  "constructionLayout": {
+    "category": "/bao-gia/thiet-ke-kien-truc-va-xay-dung-tron-goi",
+    "articleCount": 5,
+    "locales": 9,
+    "totalLocalizedArticleUrls": 45,
+    "contentSections": 45,
+    "originalImages": 19,
+    "sharedLayout": "src/components/pricing/pricing-article-layout.tsx",
+    "features": [
+      "Arched hero and floating metadata",
+      "Article-specific table of contents and consultation sidebar",
+      "Original paragraph, bullet and image order preserved",
+      "Image previews and zoom dialogs using original image dimensions",
+      "Construction-category breadcrumb, return and related-article links",
+      "Related cards and rounded consultation section"
+    ],
+    "checks": "TypeScript, ESLint, formatting and all 144 pricing URLs passed. Construction paragraphs, image presence and section links verified in all nine locales. No browser layout or dialog interaction review performed."
+  }
+}

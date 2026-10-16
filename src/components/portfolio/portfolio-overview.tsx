@@ -25,10 +25,15 @@ import type {
   LibraryContentType,
   LibraryItem,
 } from "@/lib/content-library";
+import { localizedPageHref } from "@/lib/localized-pages";
+import type { SiteLocale } from "@/lib/locale";
 import styles from "./portfolio-overview.module.css";
 
 type PortfolioOverviewProps = {
   mode: "projects" | "designs";
+  locale?: SiteLocale;
+  messages?: Record<string, string>;
+  languageQuery?: string;
   items: LibraryItem[];
   initialCategory?: LibraryCategory;
   initialPage?: number;
@@ -105,11 +110,16 @@ function matchesArea(area: string | undefined, range: string) {
 
 export function PortfolioOverview({
   mode,
+  locale = "vi",
+  messages = {},
+  languageQuery,
   items,
   initialCategory,
   initialPage = 1,
   initialTopicLabel,
 }: PortfolioOverviewProps) {
+  const t = (text: string) =>
+    locale === "vi" ? text : (messages[text] ?? text);
   const isDesigns = mode === "designs";
   const heroItems = (
     isDesigns
@@ -182,9 +192,9 @@ export function PortfolioOverview({
   const styleOptions = useMemo(
     () =>
       [...new Set(items.map((item) => item.style).filter(Boolean))].sort(
-        (a, b) => a.localeCompare(b, "vi"),
+        (a, b) => a.localeCompare(b, locale),
       ),
-    [items],
+    [items, locale],
   );
   const bedroomOptions = useMemo(
     () => [
@@ -210,7 +220,7 @@ export function PortfolioOverview({
       return matchesArea(item.area, filters.area);
     });
     if (sort === "name")
-      return result.sort((a, b) => a.title.localeCompare(b.title, "vi"));
+      return result.sort((a, b) => a.title.localeCompare(b.title, locale));
     if (sort === "area-desc")
       return result.sort(
         (a, b) => (areaNumber(b.area) ?? 0) - (areaNumber(a.area) ?? 0),
@@ -220,7 +230,7 @@ export function PortfolioOverview({
         (a, b) => (areaNumber(a.area) ?? 0) - (areaNumber(b.area) ?? 0),
       );
     return result;
-  }, [filters, items, sort]);
+  }, [filters, items, sort, locale]);
 
   function applyFilters() {
     setFilters({
@@ -248,35 +258,39 @@ export function PortfolioOverview({
   }
 
   return (
-    <main className={styles.page}>
-      <SiteHeader />
+    <main className={styles.page} lang={locale}>
+      <SiteHeader locale={locale} languageQuery={languageQuery} />
       <section className={styles.hero}>
         <div className={styles.heroCopy}>
           <p className={styles.eyebrow}>
-            {isDesigns ? "BỘ SƯU TẬP THIẾT KẾ" : "DỰ ÁN NỔI BẬT"}
+            {isDesigns ? t("BỘ SƯU TẬP THIẾT KẾ") : t("DỰ ÁN NỔI BẬT")}
           </p>
           <h1>
-            {isDesigns ? (
+            {locale === "vi" ? (
               <>
-                Mẫu thiết kế
+                {isDesigns ? "Mẫu thiết kế" : "Dự án"}
                 <br />
                 của chúng tôi
               </>
             ) : (
-              <>
-                Dự án
-                <br />
-                của chúng tôi
-              </>
+              t(
+                isDesigns
+                  ? "Mẫu thiết kế của chúng tôi"
+                  : "Dự án của chúng tôi",
+              )
             )}
           </h1>
           <p className={styles.heroDescription}>
             {isDesigns
-              ? "Những ý tưởng nội thất được tuyển chọn để bạn tìm thấy phong cách phù hợp với không gian của mình."
-              : "Những không gian sống được kiến tạo bằng tâm huyết, tỉ mỉ trong từng chi tiết và sự thấu hiểu phong cách sống."}
+              ? t(
+                  "Những ý tưởng nội thất được tuyển chọn để bạn tìm thấy phong cách phù hợp với không gian của mình.",
+                )
+              : t(
+                  "Những không gian sống được kiến tạo bằng tâm huyết, tỉ mỉ trong từng chi tiết và sự thấu hiểu phong cách sống.",
+                )}
           </p>
           <a href="#portfolio-list" className={styles.pillButton}>
-            Khám phá {isDesigns ? "mẫu thiết kế" : "dự án"}{" "}
+            {t(isDesigns ? "Khám phá mẫu thiết kế" : "Khám phá dự án")}
             <ArrowRight size={16} />
           </a>
           <div className={styles.heroPagination}>
@@ -290,7 +304,7 @@ export function PortfolioOverview({
               type="button"
               onClick={() => moveSlide(-1)}
               disabled={heroItems.length < 2}
-              aria-label="Ảnh trước"
+              aria-label={t("Ảnh trước")}
             >
               <ArrowLeft size={16} />
             </button>
@@ -298,7 +312,7 @@ export function PortfolioOverview({
               type="button"
               onClick={() => moveSlide(1)}
               disabled={heroItems.length < 2}
-              aria-label="Ảnh tiếp theo"
+              aria-label={t("Ảnh tiếp theo")}
             >
               <ArrowRight size={16} />
             </button>
@@ -317,7 +331,7 @@ export function PortfolioOverview({
           ) : (
             <Image
               src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg"
-              alt="Không gian nội thất"
+              alt={t("Không gian nội thất")}
               fill
               priority
               sizes="(max-width: 760px) 100vw, 60vw"
@@ -328,8 +342,10 @@ export function PortfolioOverview({
               <div>
                 <strong>{activeHero.title}</strong>
                 <span>
-                  {activeHero.area || activeHero.category} &nbsp; | &nbsp;{" "}
-                  {activeHero.style}
+                  {activeHero.area
+                    ? t(activeHero.area)
+                    : t(displayCategory(activeHero.category, mode))}{" "}
+                  &nbsp; | &nbsp; {activeHero.style}
                 </span>
               </div>
               <div className={styles.heroVisualArrows}>
@@ -337,7 +353,7 @@ export function PortfolioOverview({
                   type="button"
                   onClick={() => moveSlide(-1)}
                   disabled={heroItems.length < 2}
-                  aria-label="Dự án trước"
+                  aria-label={t("Dự án trước")}
                 >
                   <ArrowLeft size={17} />
                 </button>
@@ -345,7 +361,7 @@ export function PortfolioOverview({
                   type="button"
                   onClick={() => moveSlide(1)}
                   disabled={heroItems.length < 2}
-                  aria-label="Dự án tiếp theo"
+                  aria-label={t("Dự án tiếp theo")}
                 >
                   <ArrowRight size={17} />
                 </button>
@@ -360,44 +376,58 @@ export function PortfolioOverview({
           <div className={styles.listHeader}>
             <div>
               <p className={styles.eyebrow}>
-                {isDesigns ? "DANH SÁCH MẪU THIẾT KẾ" : "DANH SÁCH DỰ ÁN"}
+                {isDesigns ? t("DANH SÁCH MẪU THIẾT KẾ") : t("DANH SÁCH DỰ ÁN")}
               </p>
               <h2>
-                {initialTopicLabel ?? (
-                  <>
-                    Khám phá các
-                    <br />
-                    {isDesigns
-                      ? "mẫu thiết kế tiêu biểu"
-                      : "công trình tiêu biểu"}
-                  </>
-                )}
+                {initialTopicLabel ??
+                  (locale === "vi" ? (
+                    <>
+                      Khám phá các
+                      <br />
+                      {isDesigns
+                        ? "mẫu thiết kế tiêu biểu"
+                        : "công trình tiêu biểu"}
+                    </>
+                  ) : (
+                    t(
+                      isDesigns
+                        ? "Khám phá các mẫu thiết kế tiêu biểu"
+                        : "Khám phá các công trình tiêu biểu",
+                    )
+                  ))}
               </h2>
               {initialTopicLabel && (
                 <Link
                   className={styles.clearTopic}
                   href={
                     isDesigns
-                      ? "/mau-thiet-ke#portfolio-list"
-                      : "/du-an?danh-muc=can-ho#portfolio-list"
+                      ? localizedPageHref(
+                          "/mau-thiet-ke#portfolio-list",
+                          locale,
+                        )
+                      : localizedPageHref(
+                          "/du-an?danh-muc=can-ho#portfolio-list",
+                          locale,
+                        )
                   }
                 >
-                  Xem tất cả {isDesigns ? "mẫu thiết kế" : "dự án căn hộ"}{" "}
+                  {t("Xem tất cả")}{" "}
+                  {isDesigns ? t("mẫu thiết kế") : t("dự án căn hộ")}{" "}
                   <ArrowRight size={14} />
                 </Link>
               )}
             </div>
             <label className={styles.sortControl}>
-              Sắp xếp:{" "}
+              {t("Sắp xếp:")}{" "}
               <select
                 value={sort}
                 onChange={(event) => setSort(event.target.value)}
-                aria-label="Sắp xếp"
+                aria-label={t("Sắp xếp")}
               >
-                <option value="newest">Mới nhất</option>
-                <option value="name">Tên A-Z</option>
-                <option value="area-desc">Diện tích lớn nhất</option>
-                <option value="area-asc">Diện tích nhỏ nhất</option>
+                <option value="newest">{t("Mới nhất")}</option>
+                <option value="name">{t("Tên A-Z")}</option>
+                <option value="area-desc">{t("Diện tích lớn nhất")}</option>
+                <option value="area-asc">{t("Diện tích nhỏ nhất")}</option>
               </select>
               <ChevronDown size={15} />
             </label>
@@ -408,7 +438,7 @@ export function PortfolioOverview({
               <div className={styles.filterPanel}>
                 {!isDesigns && (
                   <label>
-                    Loại nội dung
+                    {t("Loại nội dung")}
                     <select
                       value={draftType}
                       onChange={(event) =>
@@ -417,14 +447,14 @@ export function PortfolioOverview({
                         )
                       }
                     >
-                      <option value="project">Công trình thực tế</option>
-                      <option value="designSample">Mẫu thiết kế</option>
-                      <option value="all">Tất cả</option>
+                      <option value="project">{t("Công trình thực tế")}</option>
+                      <option value="designSample">{t("Mẫu thiết kế")}</option>
+                      <option value="all">{t("Tất cả")}</option>
                     </select>
                   </label>
                 )}
                 <label>
-                  Loại công trình
+                  {t("Loại công trình")}
                   <select
                     value={draftCategory}
                     onChange={(event) =>
@@ -433,46 +463,52 @@ export function PortfolioOverview({
                       )
                     }
                   >
-                    <option>Tất cả</option>
+                    <option value="Tất cả">{t("Tất cả")}</option>
                     {categoryOptions.map((item) => (
                       <option key={item} value={item}>
-                        {displayCategory(item, mode)}
+                        {t(displayCategory(item, mode))}
                       </option>
                     ))}
                   </select>
                 </label>
                 <label>
-                  Phong cách
+                  {t("Phong cách")}
                   <select
                     value={draftStyle}
                     onChange={(event) => setDraftStyle(event.target.value)}
                   >
-                    <option>Tất cả</option>
+                    <option value="Tất cả">{t("Tất cả")}</option>
                     {styleOptions.map((item) => (
-                      <option key={item}>{item}</option>
+                      <option key={item} value={item}>
+                        {t(item)}
+                      </option>
                     ))}
                   </select>
                 </label>
                 <label>
-                  Diện tích
+                  {t("Diện tích")}
                   <select
                     value={draftArea}
                     onChange={(event) => setDraftArea(event.target.value)}
                   >
                     {areaOptions.map((item) => (
-                      <option key={item}>{item}</option>
+                      <option key={item} value={item}>
+                        {t(item)}
+                      </option>
                     ))}
                   </select>
                 </label>
                 <label>
-                  Số phòng ngủ
+                  {t("Số phòng ngủ")}
                   <select
                     value={draftBedrooms}
                     onChange={(event) => setDraftBedrooms(event.target.value)}
                   >
-                    <option>Tất cả</option>
+                    <option value="Tất cả">{t("Tất cả")}</option>
                     {bedroomOptions.map((item) => (
-                      <option key={item}>{item}</option>
+                      <option key={item} value={item}>
+                        {t(item)}
+                      </option>
                     ))}
                   </select>
                 </label>
@@ -481,14 +517,16 @@ export function PortfolioOverview({
                   onClick={applyFilters}
                   className={styles.searchButton}
                 >
-                  <Search size={16} /> Tìm kiếm
+                  <Search size={16} />
+                  {t("Tìm kiếm")}
                 </button>
               </div>
               <div className={styles.consultCard}>
                 <Sprout size={28} />
-                <p>Bạn muốn thiết kế theo phong cách riêng?</p>
+                <p>{t("Bạn muốn thiết kế theo phong cách riêng?")}</p>
                 <ConsultationButton>
-                  Liên hệ tư vấn <ArrowRight size={15} />
+                  {t("Liên hệ tư vấn")}
+                  <ArrowRight size={15} />
                 </ConsultationButton>
               </div>
             </aside>
@@ -504,7 +542,7 @@ export function PortfolioOverview({
                         <div className={styles.cardImage}>
                           <Link
                             href={item.href}
-                            aria-label={`Xem ${item.title}`}
+                            aria-label={`${t("Xem")} ${item.title}`}
                           >
                             <Image
                               src={item.thumbnail}
@@ -515,16 +553,16 @@ export function PortfolioOverview({
                           </Link>
                           <span>
                             {item.contentType === "project"
-                              ? "CÔNG TRÌNH"
-                              : "MẪU THIẾT KẾ"}
+                              ? t("CÔNG TRÌNH")
+                              : t("MẪU THIẾT KẾ")}
                           </span>
                           <button
                             type="button"
                             onClick={() => toggleFavorite(key)}
                             aria-label={
                               isFavorite
-                                ? `Bỏ yêu thích ${item.title}`
-                                : `Yêu thích ${item.title}`
+                                ? `${t("Bỏ yêu thích")} ${item.title}`
+                                : `${t("Yêu thích")} ${item.title}`
                             }
                             aria-pressed={isFavorite}
                           >
@@ -542,11 +580,11 @@ export function PortfolioOverview({
                             <span>
                               <MapPin size={13} />{" "}
                               {item.location ||
-                                displayCategory(item.category, mode)}
+                                t(displayCategory(item.category, mode))}
                             </span>
                             {item.area && (
                               <span>
-                                <Ruler size={13} /> {item.area}
+                                <Ruler size={13} /> {t(item.area)}
                               </span>
                             )}
                             <span>
@@ -554,7 +592,7 @@ export function PortfolioOverview({
                             </span>
                             <Link
                               href={item.href}
-                              aria-label={`Xem chi tiết ${item.title}`}
+                              aria-label={`${t("Xem chi tiết")} ${item.title}`}
                             >
                               <ArrowRight size={17} />
                             </Link>
@@ -566,7 +604,7 @@ export function PortfolioOverview({
                 </div>
               ) : (
                 <p className={styles.empty}>
-                  Chưa có nội dung phù hợp với bộ lọc này.
+                  {t("Chưa có nội dung phù hợp với bộ lọc này.")}
                 </p>
               )}
               {filteredItems.length > visibleCount && (
@@ -575,7 +613,7 @@ export function PortfolioOverview({
                   onClick={() => setVisibleCount((count) => count + pageSize)}
                   className={styles.loadMore}
                 >
-                  Xem thêm {isDesigns ? "mẫu thiết kế" : "dự án"}{" "}
+                  {t(isDesigns ? "Xem thêm mẫu thiết kế" : "Xem thêm dự án")}
                   <ArrowRight size={16} />
                 </button>
               )}
@@ -587,15 +625,22 @@ export function PortfolioOverview({
       <section className={styles.valuesSection}>
         <div className={`${styles.container} ${styles.valuesGrid}`}>
           <div>
-            <p className={styles.eyebrow}>VÌ SAO CHỌN TỔ ẤM HOÀN HẢO</p>
+            <p className={styles.eyebrow}>{t("VÌ SAO CHỌN TỔ ẤM HOÀN HẢO")}</p>
             <h2>
-              Chúng tôi mang đến
-              <br />
-              điều gì cho bạn?
+              {locale === "vi" ? (
+                <>
+                  Chúng tôi mang đến
+                  <br />
+                  điều gì cho bạn?
+                </>
+              ) : (
+                t("Chúng tôi mang đến điều gì cho bạn?")
+              )}
             </h2>
             <p>
-              Không chỉ là thiết kế, chúng tôi tạo nên những không gian sống phù
-              hợp với cá tính, nhu cầu và phong cách riêng của bạn.
+              {t(
+                "Không chỉ là thiết kế, chúng tôi tạo nên những không gian sống phù hợp với cá tính, nhu cầu và phong cách riêng của bạn.",
+              )}
             </p>
           </div>
           {values.map(({ icon: Icon, title, description }) => (
@@ -603,8 +648,8 @@ export function PortfolioOverview({
               <span>
                 <Icon size={24} strokeWidth={1.4} />
               </span>
-              <h3>{title}</h3>
-              <p>{description}</p>
+              <h3>{t(title)}</h3>
+              <p>{t(description)}</p>
             </div>
           ))}
         </div>
@@ -612,15 +657,15 @@ export function PortfolioOverview({
 
       <section className={styles.processSection}>
         <div className={styles.container}>
-          <p className={styles.eyebrow}>QUY TRÌNH LÀM VIỆC</p>
-          <h2>5 bước kiến tạo tổ ấm</h2>
+          <p className={styles.eyebrow}>{t("QUY TRÌNH LÀM VIỆC")}</p>
+          <h2>{t("5 bước kiến tạo tổ ấm")}</h2>
           <ol>
             {processSteps.map(([title, description], index) => (
               <li key={title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
-                  <strong>{title}</strong>
-                  <small>{description}</small>
+                  <strong>{t(title)}</strong>
+                  <small>{t(description)}</small>
                 </div>
               </li>
             ))}
@@ -633,24 +678,37 @@ export function PortfolioOverview({
           <div className={styles.workshopImage}>
             <Image
               src="/images/xuong-san-xuat/banner.png"
-              alt="Xưởng sản xuất nội thất Tổ Ấm Hoàn Hảo"
+              alt={t("Xưởng sản xuất nội thất Tổ Ấm Hoàn Hảo")}
               fill
               sizes="(max-width: 760px) 100vw, 45vw"
             />
           </div>
           <div className={styles.workshopCopy}>
-            <p className={styles.eyebrow}>XƯỞNG SẢN XUẤT</p>
+            <p className={styles.eyebrow}>{t("XƯỞNG SẢN XUẤT")}</p>
             <h2>
-              Những tối ưu từ xưởng sản xuất
-              <br />
-              hiện đại, quy mô lớn
+              {locale === "vi" ? (
+                <>
+                  Những tối ưu từ xưởng sản xuất
+                  <br />
+                  hiện đại, quy mô lớn
+                </>
+              ) : (
+                t("Những tối ưu từ xưởng sản xuất hiện đại, quy mô lớn")
+              )}
             </h2>
             <p>
-              Chủ động về vật liệu, chất lượng và tiến độ thi công, giúp tối ưu
-              chi phí cho khách hàng.
+              {t(
+                "Chủ động về vật liệu, chất lượng và tiến độ thi công, giúp tối ưu chi phí cho khách hàng.",
+              )}
             </p>
-            <Link href="/gioi-thieu/xuong-san-xuat-noi-that">
-              Khám phá xưởng sản xuất <ArrowRight size={16} />
+            <Link
+              href={localizedPageHref(
+                "/gioi-thieu/xuong-san-xuat-noi-that",
+                locale,
+              )}
+            >
+              {t("Khám phá xưởng sản xuất")}
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -658,8 +716,8 @@ export function PortfolioOverview({
 
       <section className={styles.testimonialsSection}>
         <div className={styles.container}>
-          <p className={styles.eyebrow}>KHÁCH HÀNG NÓI VỀ CHÚNG TÔI</p>
-          <h2>Những chia sẻ chân thực</h2>
+          <p className={styles.eyebrow}>{t("KHÁCH HÀNG NÓI VỀ CHÚNG TÔI")}</p>
+          <h2>{t("Những chia sẻ chân thực")}</h2>
           <div className={styles.testimonialGrid}>
             {[
               "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_5.jpg",
@@ -670,16 +728,17 @@ export function PortfolioOverview({
                 <div>
                   <Image
                     src={src}
-                    alt={`Trải nghiệm khách hàng ${index + 1}`}
+                    alt={`${t("Trải nghiệm khách hàng")} ${index + 1}`}
                     fill
                     sizes="80px"
                   />
                 </div>
                 <p>
-                  Không gian sống được tạo nên từ sự lắng nghe và chăm chút
-                  trong từng chi tiết.
+                  {t(
+                    "Không gian sống được tạo nên từ sự lắng nghe và chăm chút trong từng chi tiết.",
+                  )}
                 </p>
-                <small>Hình ảnh thực tế từ khách hàng</small>
+                <small>{t("Hình ảnh thực tế từ khách hàng")}</small>
               </div>
             ))}
           </div>

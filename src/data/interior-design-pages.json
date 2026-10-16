@@ -1,0 +1,32 @@
+{
+  "thiet-ke-khach-san": {
+    "title": "Thiết kế nội thất khách sạn",
+    "description": "Thiết kế nội thất khách sạn 5 sao, 3 sao, khách sạn mini sang trọng, tiện nghi, đẳng cấp. Tư vấn thiết kế thi công trọn gói, đúng tiến độ và chi phí hợp lý.",
+    "image": "/images/thiet-ke-noi-that/khach-san/banner.webp",
+    "component": "HotelInteriorDesignPage"
+  },
+  "thiet-ke-nha-pho": {
+    "title": "Thiết kế nội thất nhà phố",
+    "description": "Bí quyết thiết kế nội thất nhà phố độc lạ: hiện đại tăng sức hút, điểm nhấn vật liệu trang trí, phân bổ diện tích đồng đều và hài hòa với thiên nhiên.",
+    "image": "/images/thiet-ke-noi-that/nha-pho/hero.webp",
+    "component": "TownhouseInteriorDesignPage"
+  },
+  "thiet-ke-showroom": {
+    "title": "Thiết kế showroom",
+    "description": "Thiết kế showroom ấn tượng, chi phí hiệu quả cho khởi đầu hoàn hảo. Màu sắc, ánh sáng và phong cách chuẩn thương hiệu, giúp showroom hút khách.",
+    "image": "/images/thiet-ke-noi-that/showroom/hero.webp",
+    "component": "ShowroomDesignPage"
+  },
+  "thiet-ke-chung-cu": {
+    "title": "Thiết kế nội thất chung cư",
+    "description": "Tư vấn thiết kế nội thất chung cư tối ưu, tiết kiệm chi phí và chuẩn đúng nhu cầu. Nhiều phong cách: Nhật Bản, Hàn Quốc, Âu Mỹ, Pháp, cổ điển, tân cổ điển, hiện đại.",
+    "image": "/images/thiet-ke-noi-that/chung-cu/hero.webp",
+    "component": "ApartmentInteriorDesignPage"
+  },
+  "tan-co-dien": {
+    "title": "Thiết kế nội thất tân cổ điển",
+    "description": "Thiết kế nội thất tân cổ điển cao cấp: sự kết hợp hài hòa giữa cổ điển và hiện đại, sang trọng và đầy tinh tế, thể hiện đẳng cấp và gu thẩm mỹ của gia chủ.",
+    "image": "/images/thiet-ke-noi-that/tan-co-dien/hero.webp",
+    "component": "NeoclassicalInteriorDesignPage"
+  }
+}

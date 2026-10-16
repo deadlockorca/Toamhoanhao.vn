@@ -5,7 +5,7 @@
 .page h1,
 .page h2,
 .page h3 {
-  font-family: "Times New Roman", Georgia, serif;
+  font-family: var(--font-be-vietnam-pro), sans-serif;
   font-weight: 700;
 }
 .page h1,
@@ -188,8 +188,8 @@
 }
 .metrics dt {
   font:
-    700 42px "Times New Roman",
-    serif;
+    700 42px var(--font-be-vietnam-pro),
+    sans-serif;
   color: #b76730;
 }
 .metrics dd {
@@ -276,8 +276,8 @@
   background: #b56a34;
   color: white;
   font:
-    700 27px "Times New Roman",
-    serif;
+    700 27px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .pillarCopy h3 {
   font-size: 35px;
@@ -428,8 +428,8 @@
   gap: 10px;
   color: white;
   font:
-    700 21px "Times New Roman",
-    serif;
+    700 21px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .galleryCard svg {
   opacity: 0;
@@ -474,8 +474,8 @@
   background: #b56a34;
   color: white;
   font:
-    700 20px "Times New Roman",
-    serif;
+    700 20px var(--font-be-vietnam-pro),
+    sans-serif;
 }
 .process p {
   font-size: 13px;
@@ -606,8 +606,8 @@
   padding: 22px 25px;
   list-style: none;
   font:
-    700 18px "Times New Roman",
-    serif;
+    700 18px var(--font-be-vietnam-pro),
+    sans-serif;
   cursor: pointer;
 }
 .questions summary::-webkit-details-marker {

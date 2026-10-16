@@ -1,3 +1,4 @@
+import { localizedPageHref } from "@/lib/localized-pages";
 import { BedDouble, BedSingle, Wrench, Factory } from "lucide-react";
 import { InteriorSpaceLanding } from "@/components/interior-space/interior-space-landing";
 import { bedroomSpaceCopy } from "@/data/bedroom-space";
@@ -15,7 +16,10 @@ export function BedroomSpaceLanding({
   const copy = bedroomSpaceCopy[locale];
   const articles = bedroomSpaceArticles.map((article, index) => ({
     slug: article.slug,
-    href: article.externalHref ?? getBedroomSpaceArticleHref(article.slug),
+    href: localizedPageHref(
+      article.externalHref ?? getBedroomSpaceArticleHref(article.slug),
+      locale,
+    ),
     image: article.image,
     title: copy.articles[index].title,
     excerpt: copy.articles[index].description,

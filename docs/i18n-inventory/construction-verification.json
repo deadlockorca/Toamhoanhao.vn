@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-16T09:08:59.538Z",
+  "listingPages": 12,
+  "articles": 17,
+  "aliases": 2,
+  "locales": ["vi", "en", "ja", "ko", "sv", "fr", "ru", "es", "zh"],
+  "sourcePagesChecked": 261,
+  "sourceParagraphs": 77,
+  "sourceImages": 294,
+  "sourceDataUnchanged": true,
+  "metadataVerified": true,
+  "editorialReview": "pending",
+  "browserReview": "not_requested",
+  "errors": [],
+  "httpPagesChecked": 261,
+  "redirectsChecked": 18,
+  "sitemapPagesChecked": 261
+}

@@ -1,5 +1,7 @@
 "use client";
 
+import { getLocalizedPagePath, localizedPageHref } from "@/lib/localized-pages";
+
 import { ArrowRight, ChevronDown, Globe2, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,7 +65,13 @@ function MenuChildren({
   );
 }
 
-export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
+export function SiteHeader({
+  locale = "vi",
+  languageQuery,
+}: {
+  locale?: SiteLocale;
+  languageQuery?: string;
+}) {
   const navigation = getNavigation(locale);
   const extra = isAdditionalLocale(locale)
     ? additionalHeaderCopy[locale]
@@ -91,23 +99,7 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
     (option) => option.code === locale,
   )!;
   const pathname = usePathname();
-  const localizedPage = [
-    "/gioi-thieu/xuong-san-xuat-noi-that",
-    "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
-    "/gioi-thieu/doi-ngu-kien-truc-su",
-    "/thi-cong-noi-that/khong-gian-bep",
-    "/thi-cong-noi-that/khong-gian-phong-khach",
-    "/thi-cong-noi-that/khong-gian-phong-ngu",
-    "/thi-cong-noi-that/thi-cong-nha-pho",
-    "/thi-cong-noi-that/thi-cong-chung-cu",
-    "/thi-cong-noi-that/thi-cong-phan-tho",
-    "/thi-cong-noi-that/thi-cong-cai-tao",
-    "/thi-cong-noi-that/thi-cong-son-ba",
-    "/thi-cong-noi-that/thi-cong-tran-thach-cao",
-    "/thi-cong-noi-that/thi-cong-do-go",
-    "/thi-cong-noi-that/thi-cong-dien-nuoc",
-    "/thi-cong-noi-that/nhat-ki-thi-cong",
-  ].find((path) => pathname.endsWith(path));
+  const localizedPage = getLocalizedPagePath(pathname);
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -235,7 +227,11 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
                     key={option.code}
                     href={
                       localizedPage
-                        ? `${option.code === "vi" ? "" : `/${option.code}`}${localizedPage}`
+                        ? localizedPageHref(
+                            localizedPage +
+                              (languageQuery ? `?${languageQuery}` : ""),
+                            option.code,
+                          )
                         : option.code === "vi" && locale === "vi"
                           ? pathname
                           : homePath(option.code)

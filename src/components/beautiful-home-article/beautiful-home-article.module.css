@@ -1,0 +1,89 @@
+.page h1 {
+  font-size: clamp(38px, 4vw, 58px);
+  overflow-wrap: anywhere;
+}
+.page h2,
+.page h3 {
+  overflow-wrap: anywhere;
+}
+.bullet {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.bullet svg {
+  flex: none;
+  margin-top: 6px;
+  color: #b27447;
+}
+.bullet p {
+  min-width: 0;
+}
+.toc {
+  max-height: calc(100dvh - 300px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.conclusionSection {
+  scroll-margin-top: 115px;
+}
+.conclusionSection .number {
+  color: #c5a778;
+}
+.closing {
+  background: #3e3e2e;
+  border-radius: 28px;
+  padding: 38px;
+  color: #fff7e6;
+  margin-top: 40px;
+}
+.closing .eyebrow {
+  color: #c5a778;
+}
+.closing h2 {
+  font-size: 31px;
+}
+.closing > p:not(.eyebrow) {
+  color: #d3c9b2;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+.closing > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.closing button,
+.closing a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ffffff38;
+  border-radius: 30px;
+  padding: 13px 19px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.closing button {
+  background: #fffaf2;
+  color: #494a34;
+  border-color: transparent;
+}
+@media (max-width: 760px) {
+  .page h1 {
+    font-size: 38px;
+  }
+  .toc {
+    max-height: none;
+  }
+  .closing {
+    border-radius: 22px;
+    padding: 26px;
+  }
+  .closing h2 {
+    font-size: 28px;
+  }
+}
