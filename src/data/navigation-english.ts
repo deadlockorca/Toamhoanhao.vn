@@ -8,7 +8,7 @@ const labels: Record<string, string> = {
   "Về Tổ Ấm Hoàn Hảo": "About To Am Hoan Hao",
   "Năng lực thiết kế và thi công": "Design and construction capabilities",
   "Đội ngũ kiến trúc sư": "Our architects",
-  "Xưởng sản xuất nội thất": "Furniture workshop",
+  "Hệ thống nhà xưởng sản xuất nội thất": "Furniture manufacturing network",
   "Tuyển dụng": "Careers",
   "Báo giá": "Pricing",
   "Báo giá thiết kế thi công nội thất":
@@ -74,11 +74,32 @@ function translateItem(item: NavigationItem): NavigationItem {
   };
 }
 
-export function getNavigation(locale: SiteLocale) {
+function translateNavigation(locale: SiteLocale) {
   if (locale === "ja") return navigation.map(translateJapaneseNavigation);
   if (isAdditionalLocale(locale))
     return navigation
       .map(translateItem)
       .map((item) => translateAdditionalNavigation(locale, item));
   return locale === "en" ? navigation.map(translateItem) : navigation;
+}
+
+export function getNavigation(locale: SiteLocale) {
+  const localizedPaths = [
+    "/gioi-thieu/xuong-san-xuat-noi-that",
+    "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+    "/gioi-thieu/doi-ngu-kien-truc-su",
+    "/thi-cong-noi-that/khong-gian-bep",
+    "/thi-cong-noi-that/khong-gian-phong-khach",
+    "/thi-cong-noi-that/khong-gian-phong-ngu",
+  ];
+  return translateNavigation(locale).map((item) => ({
+    ...item,
+    children: item.children?.map((child) => ({
+      ...child,
+      href:
+        child.href && localizedPaths.includes(child.href) && locale !== "vi"
+          ? `/${locale}${child.href}`
+          : child.href,
+    })),
+  }));
 }

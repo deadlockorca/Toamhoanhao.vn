@@ -91,6 +91,14 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
     (option) => option.code === locale,
   )!;
   const pathname = usePathname();
+  const localizedPage = [
+    "/gioi-thieu/xuong-san-xuat-noi-that",
+    "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong",
+    "/gioi-thieu/doi-ngu-kien-truc-su",
+    "/thi-cong-noi-that/khong-gian-bep",
+    "/thi-cong-noi-that/khong-gian-phong-khach",
+    "/thi-cong-noi-that/khong-gian-phong-ngu",
+  ].find((path) => pathname.endsWith(path));
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
@@ -217,9 +225,11 @@ export function SiteHeader({ locale = "vi" }: { locale?: SiteLocale }) {
                   <Link
                     key={option.code}
                     href={
-                      option.code === "vi" && locale === "vi"
-                        ? pathname
-                        : homePath(option.code)
+                      localizedPage
+                        ? `${option.code === "vi" ? "" : `/${option.code}`}${localizedPage}`
+                        : option.code === "vi" && locale === "vi"
+                          ? pathname
+                          : homePath(option.code)
                     }
                     hrefLang={option.code}
                     aria-current={locale === option.code ? "page" : undefined}

@@ -5,7 +5,7 @@ const labels: Record<string, string> = {
   "Về Tổ Ấm Hoàn Hảo": "私たちについて",
   "Năng lực thiết kế và thi công": "設計・施工力",
   "Đội ngũ kiến trúc sư": "建築家チーム",
-  "Xưởng sản xuất nội thất": "家具製作工場",
+  "Hệ thống nhà xưởng sản xuất nội thất": "家具製造工場ネットワーク",
   "Tuyển dụng": "採用情報",
   "Báo giá": "料金案内",
   "Báo giá thiết kế thi công nội thất": "インテリア設計・施工の料金",

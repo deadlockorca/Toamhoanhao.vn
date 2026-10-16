@@ -48,7 +48,7 @@ export const navigation: NavigationItem[] = [
         href: "/gioi-thieu/doi-ngu-kien-truc-su",
       },
       {
-        label: "Xưởng sản xuất nội thất",
+        label: "Hệ thống nhà xưởng sản xuất nội thất",
         href: "/gioi-thieu/xuong-san-xuat-noi-that",
       },
       { label: "Tuyển dụng", href: "/gioi-thieu/tuyen-dung" },

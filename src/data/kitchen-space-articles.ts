@@ -33,7 +33,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "3 bảng màu kính ốp bếp sang trọng – tạo sự hài hòa cho mọi thiết kế tủ bếp",
     excerpt:
       "Tìm hiểu kính ốp bếp là gì, những đặc điểm vượt trội và 3 bảng màu đón đầu xu hướng giúp tăng điểm nhấn, sự sang trọng cho không gian bếp.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-1.webp",
+    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-7.webp",
     highlights: [
       "Kính cường lực nguyên khối chống va đập, chịu nhiệt hơn 200°C",
       "Dễ vệ sinh, lau chùi, chống ẩm mốc",
@@ -54,7 +54,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "Tổng hợp 40+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
     excerpt:
       "Tuyển tập hơn 40 mẫu tủ bếp chữ I, chữ L, chữ U và bàn đảo hiện đại, sang trọng, phù hợp với mọi diện tích không gian bếp.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-2.webp",
+    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-6.webp",
     highlights: [
       "Tủ bếp chữ I tối ưu diện tích cho căn hộ nhỏ",
       "Tủ bếp chữ L phổ biến nhất cho căn bếp tiện nghi",
