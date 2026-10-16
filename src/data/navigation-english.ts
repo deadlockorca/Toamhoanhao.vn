@@ -91,6 +91,15 @@ export function getNavigation(locale: SiteLocale) {
     "/thi-cong-noi-that/khong-gian-bep",
     "/thi-cong-noi-that/khong-gian-phong-khach",
     "/thi-cong-noi-that/khong-gian-phong-ngu",
+    "/thi-cong-noi-that/thi-cong-nha-pho",
+    "/thi-cong-noi-that/thi-cong-chung-cu",
+    "/thi-cong-noi-that/thi-cong-phan-tho",
+    "/thi-cong-noi-that/thi-cong-cai-tao",
+    "/thi-cong-noi-that/thi-cong-son-ba",
+    "/thi-cong-noi-that/thi-cong-tran-thach-cao",
+    "/thi-cong-noi-that/thi-cong-do-go",
+    "/thi-cong-noi-that/thi-cong-dien-nuoc",
+    "/thi-cong-noi-that/nhat-ki-thi-cong",
   ];
   return translateNavigation(locale).map((item) => ({
     ...item,

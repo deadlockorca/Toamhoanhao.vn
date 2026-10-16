@@ -1,0 +1,91 @@
+.scopeSection {
+  background: #eee6da;
+  padding-block: 80px;
+  border-top: 1px solid #e6d9c8;
+}
+.scopeLayout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 70px;
+}
+.serviceCard {
+  background: #fffaf2;
+  border: 1px solid #e6d9c8;
+  border-radius: 30px;
+  padding: 36px;
+}
+.services,
+.rules {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.services {
+  display: grid;
+  gap: 22px;
+}
+.services li,
+.rules li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #766e5c;
+}
+.rulesTitle {
+  margin: 0 0 30px;
+  font:
+    400 38px/1.15 "Times New Roman",
+    Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.rules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.rules li {
+  background: #fffaf2;
+  border: 1px solid #e6d9c8;
+  border-radius: 22px;
+  padding: 22px;
+}
+.rules svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #b5754d;
+}
+@media (max-width: 1000px) {
+  .scopeLayout {
+    gap: 30px;
+  }
+  .serviceCard {
+    padding: 26px;
+  }
+  .rules {
+    gap: 14px;
+  }
+  .rules li {
+    padding: 18px;
+  }
+}
+@media (max-width: 760px) {
+  .scopeSection {
+    padding-block: 60px;
+  }
+  .scopeLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .rulesTitle {
+    font-size: 34px;
+  }
+}
+@media (max-width: 540px) {
+  .rules {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,336 @@
+.heroImage {
+  border-bottom-left-radius: 40px;
+}
+.stylesSection {
+  padding-block: 95px 165px;
+  scroll-margin-top: 110px;
+}
+.sectionHeading {
+  max-width: 720px;
+  margin: 0 auto 90px;
+  text-align: center;
+}
+.eyebrow {
+  margin: 0 0 20px;
+  color: #b5754d;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+.sectionHeading h2,
+.tipsIntro h2,
+.ideaCard h2,
+.cta h2,
+.styleCopy h3 {
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: 400;
+}
+.sectionHeading h2 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.sectionHeading > p:last-child {
+  margin: 22px auto 0;
+  max-width: 700px;
+}
+.sectionHeading > p:last-child,
+.styleCopy > p:last-child,
+.tipsIntro > p:last-child,
+.ideaCard > div > p:last-child {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #8c806d;
+}
+.styleList {
+  display: grid;
+  gap: 80px;
+}
+.styleRow {
+  scroll-margin-top: 110px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 80px;
+  align-items: center;
+}
+.reversed .styleImage {
+  order: 2;
+}
+.styleImage {
+  position: relative;
+  aspect-ratio: 1.5;
+  overflow: hidden;
+  border-radius: 34px;
+  box-shadow: 0 20px 30px #42351c1c;
+}
+.styleImage img {
+  object-fit: cover;
+}
+.number {
+  display: block;
+  font:
+    400 88px/1 "Times New Roman",
+    Georgia,
+    serif;
+  color: #dfc6b2;
+  margin-bottom: 8px;
+}
+.styleCopy .eyebrow {
+  margin-bottom: 12px;
+}
+.styleCopy h3 {
+  margin: 0 0 16px;
+  font-size: 36px;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+}
+.styleCopy > p:last-child {
+  margin: 0;
+}
+.adviceSection {
+  padding-block: 80px;
+  background: #fffaf2;
+  border-top: 1px solid #e9dfd2;
+}
+.tipsLayout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.tipsIntro .eyebrow {
+  margin-bottom: 20px;
+}
+.tipsIntro h2 {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.tipsIntro > p:last-child {
+  margin: 18px 0 0;
+}
+.tips {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tips li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border: 1px solid #e6d9c8;
+  border-radius: 24px;
+  padding: 22px;
+  color: #766e5c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.check {
+  background: #747b5e;
+  color: white;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+.ideaCard {
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 46px;
+  border: 1px solid #e6d9c8;
+  border-radius: 36px;
+}
+.houseIcon {
+  flex: 0 0 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f5efe5;
+  color: #b5754d;
+}
+.ideaCard > div {
+  flex: 1;
+}
+.ideaCard .eyebrow {
+  margin-bottom: 14px;
+}
+.ideaCard h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+.ideaCard > div > p:last-child {
+  margin: 0;
+}
+.ideaCard > button {
+  flex-shrink: 0;
+}
+.cta {
+  padding: 90px 24px 100px;
+  text-align: center;
+  background: #70795c;
+  border-radius: 58px 58px 0 0;
+  color: #f8f3e8;
+}
+.cta h2 {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 56px;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.cta > p {
+  margin: 24px auto 30px;
+  max-width: 650px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #e0dece;
+}
+.ctaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.booking {
+  background: white;
+  color: #4d513c;
+  border: 0;
+  border-radius: 40px;
+  padding: 16px 28px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.booking:hover {
+  background: #eee5d8;
+}
+.ctaActions > a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 1000px) {
+  .styleRow {
+    gap: 40px;
+  }
+  .tipsLayout {
+    gap: 36px;
+    grid-template-columns: 0.7fr 1.3fr;
+  }
+  .ideaCard {
+    padding: 30px;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .ideaCard > div {
+    flex-basis: 65%;
+  }
+  .ideaCard > button {
+    margin-left: 94px;
+  }
+}
+@media (max-width: 760px) {
+  .heroImage {
+    border-bottom-left-radius: 28px;
+  }
+  .stylesSection {
+    padding-block: 65px 75px;
+    scroll-margin-top: 90px;
+  }
+  .sectionHeading {
+    margin-bottom: 45px;
+  }
+  .sectionHeading h2 {
+    font-size: 36px;
+  }
+  .styleList {
+    gap: 52px;
+  }
+  .styleRow {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .reversed .styleImage {
+    order: 0;
+  }
+  .styleImage {
+    border-radius: 26px;
+  }
+  .number {
+    font-size: 66px;
+  }
+  .styleCopy h3 {
+    font-size: 30px;
+  }
+  .adviceSection {
+    padding-block: 60px;
+  }
+  .tipsLayout {
+    grid-template-columns: 1fr;
+  }
+  .tipsIntro h2 {
+    font-size: 36px;
+  }
+  .tips li {
+    padding: 18px;
+    border-radius: 20px;
+  }
+  .ideaCard {
+    margin-top: 40px;
+    padding: 26px;
+    border-radius: 28px;
+  }
+  .houseIcon {
+    flex-basis: 56px;
+    height: 56px;
+  }
+  .ideaCard h2 {
+    font-size: 26px;
+  }
+  .ideaCard > button {
+    margin-left: 0;
+  }
+  .cta {
+    padding-block: 70px;
+    border-radius: 36px 36px 0 0;
+  }
+  .cta h2 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 540px) {
+  .tips {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ideaCard {
+    display: grid;
+    gap: 20px;
+  }
+  .houseIcon {
+    width: 56px;
+  }
+  .ideaCard > button {
+    justify-self: start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking {
+    transition: none;
+  }
+}

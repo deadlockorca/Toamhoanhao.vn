@@ -1,0 +1,115 @@
+.materialsSection {
+  padding-block: 80px;
+  background: #eee6da;
+  border-top: 1px solid #e6d9c8;
+}
+.materialsLayout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.intro h2,
+.heading h2 {
+  margin: 0;
+  font:
+    400 42px/1.15 "Times New Roman",
+    Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.intro > p:last-child {
+  margin: 20px 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #8c806d;
+}
+.materials {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-content: center;
+}
+.materials li {
+  padding: 16px 26px;
+  border: 1px solid #dfd0bd;
+  border-radius: 30px;
+  background: #fffaf2;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #766e5c;
+}
+.commitmentsSection {
+  margin-top: 80px;
+  padding: 48px 36px;
+  background: #eee6da;
+  border-radius: 32px;
+}
+.heading {
+  text-align: center;
+  margin: 0 auto 36px;
+  max-width: 720px;
+}
+.commitments {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.commitments li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 24px;
+  border: 1px solid #e6d9c8;
+  border-radius: 22px;
+  background: #fffaf2;
+  color: #766e5c;
+  font-size: 14px;
+  line-height: 1.65;
+}
+@media (max-width: 1000px) {
+  .materialsLayout {
+    gap: 36px;
+  }
+  .commitments {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 760px) {
+  .materialsSection {
+    padding-block: 60px;
+  }
+  .materialsLayout {
+    grid-template-columns: 1fr;
+  }
+  .intro h2,
+  .heading h2 {
+    font-size: 34px;
+  }
+  .materials {
+    gap: 10px;
+  }
+  .materials li {
+    padding: 12px 20px;
+  }
+  .commitmentsSection {
+    margin-top: 55px;
+    padding: 36px 22px;
+    border-radius: 26px;
+  }
+}
+@media (max-width: 540px) {
+  .commitments {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .commitments li {
+    padding: 20px;
+  }
+}

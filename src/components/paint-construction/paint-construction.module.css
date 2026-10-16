@@ -1,0 +1,79 @@
+.notesSection {
+  padding-block: 80px;
+  background: #eee6da;
+  border-top: 1px solid #e6d9c8;
+}
+.heading {
+  max-width: 720px;
+  margin: 0 auto 45px;
+  text-align: center;
+}
+.heading h2 {
+  margin: 0;
+  font:
+    400 42px/1.15 "Times New Roman",
+    Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.heading p,
+.notes p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #8c806d;
+}
+.heading p {
+  margin: 20px 0 0;
+}
+.notes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.notes article {
+  padding: 32px;
+  border: 1px solid #e6d9c8;
+  border-radius: 28px;
+  background: #fffaf2;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #eee6da;
+  color: #ad6635;
+}
+.notes h3 {
+  margin: 24px 0 12px;
+  font:
+    400 26px/1.2 "Times New Roman",
+    Georgia,
+    serif;
+}
+.notes p {
+  margin: 0;
+}
+@media (max-width: 1000px) {
+  .notes {
+    gap: 16px;
+  }
+  .notes article {
+    padding: 24px;
+  }
+}
+@media (max-width: 760px) {
+  .notesSection {
+    padding-block: 60px;
+  }
+  .heading h2 {
+    font-size: 34px;
+  }
+  .notes {
+    grid-template-columns: 1fr;
+  }
+  .notes article {
+    border-radius: 24px;
+  }
+}

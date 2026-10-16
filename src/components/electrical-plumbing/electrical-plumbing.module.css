@@ -1,0 +1,139 @@
+.notesSection {
+  padding-block: 80px;
+  background: #eee6da;
+  border-top: 1px solid #e6d9c8;
+}
+.notesTitle {
+  margin: 0 auto 45px;
+  max-width: 720px;
+  text-align: center;
+  font:
+    400 42px/1.15 "Times New Roman",
+    Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.notes article {
+  padding: 30px;
+  border: 1px solid #e6d9c8;
+  border-radius: 28px;
+  background: #fffaf2;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: #eee6da;
+  color: #ad6635;
+}
+.notes h3 {
+  margin: 22px 0 12px;
+  font:
+    400 28px/1.2 "Times New Roman",
+    Georgia,
+    serif;
+}
+.notes p,
+.priceCard > p:last-child {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #8c806d;
+}
+.pricing {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 60px;
+  padding-block: 80px;
+}
+.priceCard {
+  padding: 36px;
+  border: 1px solid #e6d9c8;
+  border-radius: 30px;
+  background: #fffaf2;
+}
+.priceCard h2 {
+  margin: 0;
+  font:
+    400 36px/1.15 "Times New Roman",
+    Georgia,
+    serif;
+  letter-spacing: -0.02em;
+}
+.price {
+  margin: 28px 0 24px;
+  font:
+    400 clamp(26px, 2.6vw, 38px)/1.2 "Times New Roman",
+    Georgia,
+    serif;
+  color: #ad6635;
+}
+.price span {
+  display: block;
+  margin-top: 8px;
+  font:
+    400 14px/1.5 var(--font-be-vietnam-pro),
+    sans-serif;
+  color: #8c806d;
+}
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 20px;
+}
+.items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #766e5c;
+}
+@media (max-width: 1000px) {
+  .pricing {
+    gap: 30px;
+  }
+  .priceCard {
+    padding: 28px;
+  }
+}
+@media (max-width: 760px) {
+  .notesSection {
+    padding-block: 60px;
+  }
+  .notesTitle {
+    font-size: 34px;
+  }
+  .notes {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .notes article {
+    padding: 26px;
+    border-radius: 24px;
+  }
+  .pricing {
+    grid-template-columns: 1fr;
+    padding-block: 60px;
+    gap: 36px;
+  }
+  .priceCard {
+    border-radius: 26px;
+  }
+  .priceCard h2 {
+    font-size: 32px;
+  }
+  .price {
+    font-size: 34px;
+  }
+}
