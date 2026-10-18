@@ -104,6 +104,8 @@ export function HomeLanding({
     `${t("Ảnh phản hồi khách hàng")} ${number}`;
   const [slide, setSlide] = useState(0);
   const [category, setCategory] = useState("Tất cả");
+  const [mobileCategory, setMobileCategory] =
+    useState<(typeof mobileProjectTypes)[number]["category"]>("Căn hộ");
   const [feedbackIndex, setFeedbackIndex] = useState(0);
   const [selectedFeedback, setSelectedFeedback] = useState<{
     src: string;
@@ -141,6 +143,20 @@ export function HomeLanding({
           );
     return filtered.slice(0, 6);
   }, [category, projects]);
+  const mobileProjects = useMemo(
+    () =>
+      projects
+        .filter((project) => project.category === mobileCategory)
+        .slice(0, 6),
+    [mobileCategory, projects],
+  );
+  const mobileCategoryLabel = (value: string) =>
+    value === "Căn hộ" && locale === "vi"
+      ? "Chung cư"
+      : t(value === "Không gian kinh doanh" ? "Kinh doanh" : value);
+  const selectedMobileType = mobileProjectTypes.find(
+    (item) => item.category === mobileCategory,
+  )!;
   const visibleFeedback = Array.from({ length: 3 }, (_, offset) => ({
     src: customerFeedbackImages[
       (feedbackIndex + offset) % customerFeedbackImages.length
@@ -299,40 +315,70 @@ export function HomeLanding({
               ))}
             </div>
           </div>
-          <nav
+          <div
             className={styles.mobileProjectTypes}
-            aria-label={t("Khám phá theo loại công trình")}
+            role="group"
+            aria-label={t("Lọc dự án")}
           >
-            {mobileProjectTypes.map((item) => {
-              const project = projects.find(
-                (project) => project.category === item.category,
-              );
-              if (!project) return null;
-              return (
-                <Link
-                  key={item.query}
-                  href={localizedPageHref(
-                    `/du-an?danh-muc=${item.query}`,
-                    locale,
-                  )}
-                  className={styles.projectTypeCard}
-                >
-                  <Image
-                    src={imageFor(project)}
-                    alt=""
-                    fill
-                    sizes="(max-width: 620px) calc((100vw - 42px) / 2), 1px"
-                  />
-                  <span className={styles.projectTypeLabel}>
-                    {item.category !== "Nội thất trọn gói" && (
-                      <span>{t("Thiết kế nội thất")}</span>
-                    )}
-                    <strong>{t(item.category)}</strong>
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
+            {mobileProjectTypes.map((item) => (
+              <button
+                key={item.query}
+                type="button"
+                className={`${styles.projectTypeButton} ${mobileCategory === item.category ? styles.projectTypeActive : ""}`}
+                onClick={() => setMobileCategory(item.category)}
+                aria-pressed={mobileCategory === item.category}
+                aria-controls="mobile-project-products"
+              >
+                {mobileCategoryLabel(item.category)}
+              </button>
+            ))}
+          </div>
+          <div className={styles.mobileProducts}>
+            <div className={styles.mobileProductsHeading}>
+              <h3>{mobileCategoryLabel(mobileCategory)}</h3>
+              <Link
+                href={localizedPageHref(
+                  `/du-an?danh-muc=${selectedMobileType.query}`,
+                  locale,
+                )}
+              >
+                {t("Xem dự án")} <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </div>
+            <div
+              className={styles.mobileProductGrid}
+              id="mobile-project-products"
+            >
+              {mobileProjects.map((project) => {
+                const title = formatDisplayTitle(
+                  homeProjectTitle(locale, project.slug, project.title),
+                  locale,
+                );
+                return (
+                  <Link
+                    key={project.slug}
+                    href={localizedPageHref(`/du-an/${project.slug}`, locale)}
+                    className={styles.mobileProductCard}
+                  >
+                    <div className={styles.mobileProductPhoto}>
+                      <Image
+                        src={project.thumbnail}
+                        alt=""
+                        fill
+                        sizes="(max-width: 620px) calc((100vw - 40px) / 2), 1px"
+                      />
+                    </div>
+                    <h4>{title}</h4>
+                  </Link>
+                );
+              })}
+              {!mobileProjects.length && (
+                <p className={styles.mobileProductEmpty}>
+                  {t("Chưa có dự án thuộc danh mục này.")}
+                </p>
+              )}
+            </div>
+          </div>
           {visibleProjects.length ? (
             <div className={styles.projectGrid}>
               {visibleProjects.map((project) => (
