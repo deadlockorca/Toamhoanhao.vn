@@ -549,7 +549,7 @@ export function PortfolioOverview({
                               src={item.thumbnail}
                               alt={formatDisplayTitle(item.title, locale)}
                               fill
-                              sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 27vw"
+                              sizes="(max-width: 760px) calc((100vw - 42px) / 2), (max-width: 1100px) 40vw, 27vw"
                             />
                           </Link>
                           <span>

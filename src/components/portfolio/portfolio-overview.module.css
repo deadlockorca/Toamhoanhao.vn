@@ -710,9 +710,12 @@
     font-size: 32px;
   }
   .sidebar,
-  .cards,
   .testimonialGrid {
     grid-template-columns: 1fr;
+  }
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
   }
   .filterPanel {
     grid-template-columns: 1fr 1fr;
@@ -727,7 +730,36 @@
     min-height: 0;
   }
   .cardImage {
-    aspect-ratio: 1.9;
+    aspect-ratio: 4 / 3;
+  }
+  .cardImage > span {
+    top: 6px;
+    left: 6px;
+    padding: 5px 6px;
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .cardImage > button {
+    top: 6px;
+    right: 6px;
+  }
+  .cardBody {
+    padding: 9px 8px;
+  }
+  .cardBody h3 {
+    font-size: 11px;
+  }
+  .cardMeta {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .cardMeta > span:first-child {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .cardMeta > span:last-of-type {
+    flex: 1;
+    max-width: 100%;
   }
   .valuesGrid {
     grid-template-columns: 1fr 1fr;
