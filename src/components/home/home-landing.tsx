@@ -42,6 +42,14 @@ const categories = [
   "Văn phòng",
   "Kinh doanh",
 ];
+const mobileProjectTypes = [
+  { category: "Căn hộ", query: "can-ho" },
+  { category: "Nhà phố", query: "nha-pho" },
+  { category: "Biệt thự", query: "biet-thu" },
+  { category: "Văn phòng", query: "van-phong" },
+  { category: "Không gian kinh doanh", query: "khong-gian-kinh-doanh" },
+  { category: "Nội thất trọn gói", query: "noi-that-tron-goi" },
+] as const;
 const steps = [
   ["Tư vấn", "Tiếp nhận nhu cầu & định hướng phong cách"],
   ["Khảo sát", "Khảo sát hiện trạng & đo đạc chi tiết"],
@@ -291,6 +299,40 @@ export function HomeLanding({
               ))}
             </div>
           </div>
+          <nav
+            className={styles.mobileProjectTypes}
+            aria-label={t("Khám phá theo loại công trình")}
+          >
+            {mobileProjectTypes.map((item) => {
+              const project = projects.find(
+                (project) => project.category === item.category,
+              );
+              if (!project) return null;
+              return (
+                <Link
+                  key={item.query}
+                  href={localizedPageHref(
+                    `/du-an?danh-muc=${item.query}`,
+                    locale,
+                  )}
+                  className={styles.projectTypeCard}
+                >
+                  <Image
+                    src={imageFor(project)}
+                    alt=""
+                    fill
+                    sizes="(max-width: 620px) calc((100vw - 42px) / 2), 1px"
+                  />
+                  <span className={styles.projectTypeLabel}>
+                    {item.category !== "Nội thất trọn gói" && (
+                      <span>{t("Thiết kế nội thất")}</span>
+                    )}
+                    <strong>{t(item.category)}</strong>
+                  </span>
+                </Link>
+              );
+            })}
+          </nav>
           {visibleProjects.length ? (
             <div className={styles.projectGrid}>
               {visibleProjects.map((project) => (
@@ -333,7 +375,7 @@ export function HomeLanding({
               ))}
             </div>
           ) : (
-            <p className={styles.empty}>
+            <p className={`${styles.empty} ${styles.projectEmpty}`}>
               {t("Chưa có dự án thuộc danh mục này.")}
             </p>
           )}

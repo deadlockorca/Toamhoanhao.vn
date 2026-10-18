@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import { ConsultationProvider } from "@/components/consultation-popup";
+import { MobileContactNav } from "@/components/mobile-contact-nav";
 import { siteBaseUrl } from "@/lib/locale";
 import "./globals.css";
 
@@ -94,7 +95,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="vi" className={`${beVietnamPro.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
-        <ConsultationProvider>{children}</ConsultationProvider>
+        <ConsultationProvider>
+          {children}
+          <MobileContactNav />
+        </ConsultationProvider>
       </body>
     </html>
   );

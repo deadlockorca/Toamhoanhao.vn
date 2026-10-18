@@ -243,11 +243,7 @@
   background: #e6e1d8;
 }
 .roomImage img {
-  object-fit: cover;
-  transition: transform 0.35s;
-}
-.room:hover .roomImage img {
-  transform: scale(1.025);
+  object-fit: contain;
 }
 .roomBody {
   display: grid;

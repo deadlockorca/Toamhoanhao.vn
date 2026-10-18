@@ -42,7 +42,8 @@
     "audit:i18n:interior-design": "node scripts/audit-interior-design-i18n.mjs",
     "audit:i18n:construction": "node scripts/audit-construction-i18n.mjs",
     "audit:i18n:knowledge": "node scripts/audit-knowledge-i18n.mjs",
-    "audit:i18n:contact": "node scripts/audit-contact-i18n.mjs"
+    "audit:i18n:contact": "node scripts/audit-contact-i18n.mjs",
+    "audit:media:watermarks": "node scripts/audit-media-watermarks.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1111.0",

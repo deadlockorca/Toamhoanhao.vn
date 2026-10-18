@@ -1,0 +1,51 @@
+{
+  "createdAt": "2026-10-16T13:00:24.042Z",
+  "scope": "Only Project and DesignSample media, all statuses; no other website sections",
+  "counts": {
+    "project": 296,
+    "designSample": 71
+  },
+  "statusCounts": {
+    "project": {
+      "published": 296
+    },
+    "designSample": {
+      "published": 71
+    }
+  },
+  "uniqueUrls": 5426,
+  "analyzed": 5426,
+  "regionalOcrImages": 2800,
+  "ocrEngine": "macOS Vision — local text recognition",
+  "uniqueContentHashes": 4968,
+  "exactDuplicateUrls": 458,
+  "groups": {
+    "edge_or_corner": 2022,
+    "floor_plan": 14,
+    "text_unconfirmed": 385,
+    "no_text_detected": 2313,
+    "center_or_mixed": 692
+  },
+  "uniqueContentGroups": {
+    "edge_or_corner": 1683,
+    "floor_plan": 14,
+    "text_unconfirmed": 375,
+    "no_text_detected": 2249,
+    "center_or_mixed": 647
+  },
+  "review": "Machine classification only; every asset is pending visual review. Edge location does not imply easy removal.",
+  "databaseAndR2Writes": 0,
+  "artifactDirectory": "~/Documents/Toamhoanhao-media/media-watermark-audit",
+  "artifacts": {
+    "review": "review.html",
+    "csv": "classification.csv",
+    "manifest": "classification.json",
+    "queues": "queues/"
+  },
+  "verification": {
+    "originalHashesChecked": 5426,
+    "uniqueQueueJobs": 4968,
+    "usageReferencesPreserved": 7877,
+    "reviewFiltersChecked": true
+  }
+}
