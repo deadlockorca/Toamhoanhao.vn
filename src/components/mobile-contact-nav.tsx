@@ -1,9 +1,11 @@
 "use client";
 
-import { FilePenLine, MessageSquareMore, PhoneCall } from "lucide-react";
+import { FilePenLine, Images, PhoneCall } from "lucide-react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { ConsultationButton } from "@/components/consultation-popup";
+import { isSiteLocale } from "@/lib/locale";
 import styles from "./mobile-contact-nav.module.css";
 
 const phone = "0903897555";
@@ -16,10 +18,17 @@ const labels = {
     "Chat Zalo",
     "Gọi điện",
     "Messenger",
-    "Nhắn tin SMS",
+    "Bộ sưu tập",
   ],
-  en: ["Quick contact", "Get a quote", "Zalo", "Call us", "Messenger", "SMS"],
-  ja: ["お問い合わせ", "お見積もり", "Zalo", "電話", "Messenger", "SMS"],
+  en: [
+    "Quick contact",
+    "Get a quote",
+    "Zalo",
+    "Call us",
+    "Messenger",
+    "Collection",
+  ],
+  ja: ["お問い合わせ", "お見積もり", "Zalo", "電話", "Messenger", "作品集"],
 } as const;
 
 export function MobileContactNav() {
@@ -27,6 +36,8 @@ export function MobileContactNav() {
   const segment = pathname?.split("/")[1];
   if (segment === "admin") return null;
   const copy = labels[segment === "en" || segment === "ja" ? segment : "vi"];
+  const localePrefix =
+    segment && isSiteLocale(segment) && segment !== "vi" ? `/${segment}` : "";
 
   return (
     <>
@@ -79,10 +90,13 @@ export function MobileContactNav() {
           </svg>
           <span>{copy[4]}</span>
         </a>
-        <a className={styles.item} href={`sms:${phone}`}>
-          <MessageSquareMore className={styles.icon} aria-hidden="true" />
+        <Link
+          className={styles.item}
+          href={`${localePrefix}/du-an?danh-muc=can-ho`}
+        >
+          <Images className={styles.icon} aria-hidden="true" />
           <span>{copy[5]}</span>
-        </a>
+        </Link>
       </nav>
     </>
   );

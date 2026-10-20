@@ -8,10 +8,20 @@ const library = path.join(root, "Ảnh");
 const catalogFile = path.join(library, "danh-mục.json");
 const batch = path.join(root, "batch-1000-2026-10-17");
 const manifestFile = path.join(batch, "manifest.json");
-const runFile = path.join(
-  root,
-  "cleanup-runs/2026-10-17-stamp-category-1-120.json",
+const options = Object.fromEntries(
+  process.argv.slice(2).map((arg) => {
+    const index = arg.indexOf("=");
+    if (!arg.startsWith("--") || index < 0)
+      throw new Error("Expected --key=value");
+    return [arg.slice(2, index), arg.slice(index + 1)];
+  }),
 );
+const expected = Number(options.expected ?? 120);
+if (!Number.isInteger(expected) || expected < 1)
+  throw new Error("Invalid expected count");
+const runFile =
+  options.output ??
+  path.join(root, "cleanup-runs/2026-10-17-stamp-category-1-120.json");
 const read = async (p) => JSON.parse(await fs.readFile(p, "utf8"));
 const hash = (b) => crypto.createHash("sha256").update(b).digest("hex");
 const write = async (p, value) => {
@@ -31,9 +41,14 @@ const catalog = await read(catalogFile);
 const manifest = await read(manifestFile);
 if (await exists(runFile))
   throw new Error("Run already exists; inspect before resuming");
+const selection = options.selection ? await read(options.selection) : null;
+const sourceHashes = selection
+  ? new Set(selection.jobs.map((job) => job.sourceSha256))
+  : null;
 const selected = [];
 for (const row of catalog.images) {
   if (!row.category.startsWith("01 -") || !row.cleanAvailable) continue;
+  if (sourceHashes && !sourceHashes.has(row.sourceSha256)) continue;
   const folder = path.join(library, row.folder);
   const names = await fs.readdir(folder);
   if (names.some((n) => n.startsWith("03 -"))) continue;
@@ -62,16 +77,16 @@ for (const row of catalog.images) {
   });
 }
 if (
-  selected.length !== 120 ||
-  new Set(selected.map((j) => j.sourceSha256)).size !== 120
+  selected.length !== expected ||
+  new Set(selected.map((j) => j.sourceSha256)).size !== expected
 )
-  throw new Error(`Expected 120, found ${selected.length}`);
+  throw new Error(`Expected ${expected}, found ${selected.length}`);
 const logoFile = path.join(batch, manifest.logo);
 const logoBytes = await fs.readFile(logoFile);
 const logo = await sharp(logoBytes).trim({ threshold: 8 }).png().toBuffer();
 const run = {
   createdAt: new Date().toISOString(),
-  requested: 120,
+  requested: expected,
   scope: "category-1",
   logoFile,
   logoSha256: hash(logoBytes),
@@ -231,8 +246,7 @@ readme = readme.replace(
   "Chỉ tạo bản làm sạch từ ảnh gốc, chưa ghép logo mới; không thay đổi website, SQL hay R2.",
   "Giữ riêng bản sạch chưa logo và bản đã ghép logo; không thay đổi website, SQL hay R2.",
 );
-readme +=
-  "\nMục 01: đã ghép logo cho 120 bản sạch bổ sung ngày 17/10/2026; giữ bản 02 chưa logo, bản 03 có logo đang chờ duyệt.\n";
+readme += `\nMục 01: đã ghép logo cho ${expected} bản sạch bổ sung ngày ${new Date().toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}; giữ bản 02 chưa logo, bản 03 có logo đang chờ duyệt.\n`;
 await fs.writeFile(readmeFile, readme);
 run.status = "complete_pending_user_review";
 run.completedAt = new Date().toISOString();

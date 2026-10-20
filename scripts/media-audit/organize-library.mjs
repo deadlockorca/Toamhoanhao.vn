@@ -57,7 +57,7 @@ for (const entry of await fs.readdir(root, { withFileTypes: true })) {
   // These drawings were individually inspected in the current review.
   if (entry.name === "batch-1000-2026-10-17")
     for (const n of [
-      222, 249, 276, 305, 329, 354, 377, 402, 439, 443, 480, 517,
+      222, 249, 276, 305, 329, 354, 377, 402, 439, 443, 480, 517, 594, 626, 660, 688, 689, 709, 715, 733,
     ]) {
       const job = manifest.jobs.find((j) => j.number === n);
       if (job) drawings.add(job.sourceSha256);
