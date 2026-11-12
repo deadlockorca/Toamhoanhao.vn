@@ -35,7 +35,7 @@ const pricingArticleSummaries: PricingArticle[] = [
     title: "Báo giá thiết kế và thi công nội thất",
     excerpt:
       "Tổng quan các hạng mục thiết kế, sản xuất và thi công nội thất cần có trong một hồ sơ báo giá trọn gói.",
-    image: "/images/nang-luc/banner.png",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/nang-luc/c7541f8d6d7438a0.webp",
     scope: "Thiết kế, sản xuất và thi công nội thất",
     pricingBasis: "Diện tích, khối lượng và vật liệu",
     highlights: [
@@ -74,7 +74,7 @@ const pricingArticleSummaries: PricingArticle[] = [
     title: "Báo giá nội thất gỗ walnut (gỗ óc chó)",
     excerpt:
       "Những yếu tố cần làm rõ khi dự toán nội thất gỗ óc chó, từ chất lượng gỗ đến kết cấu, bề mặt và phụ kiện.",
-    image: "/images/bao-gia/hero.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/5492d44c843bedf4.webp",
     scope: "Đồ gỗ nội thất theo yêu cầu",
     pricingBasis: "Khối lượng, loại gỗ và quy cách hoàn thiện",
     highlights: [
@@ -112,7 +112,7 @@ const pricingArticleSummaries: PricingArticle[] = [
     title: "Báo giá thiết kế thi công tủ bếp của Tổ Ấm Hoàn Hảo",
     excerpt:
       "Cách tính chi phí tủ bếp theo kích thước, vật liệu thùng, cánh, mặt đá và hệ phụ kiện sử dụng.",
-    image: "/images/bao-gia/tu-bep.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/b8850da7f236574b.webp",
     scope: "Thiết kế, sản xuất và lắp đặt tủ bếp",
     pricingBasis: "Mét dài, vật liệu và phụ kiện",
     highlights: [
@@ -150,7 +150,7 @@ const pricingArticleSummaries: PricingArticle[] = [
     title: "Thiết kế nội thất văn phòng hiện đại, tiện nghi - Hà Nội 220m²",
     excerpt:
       "Tham khảo cách xác định phạm vi và ngân sách cho văn phòng dựa trên mật độ nhân sự, công năng và tiêu chuẩn kỹ thuật.",
-    image: "/images/bao-gia/van-phong.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/1f69e87b2c53922f.webp",
     scope: "Thiết kế và hoàn thiện văn phòng",
     pricingBasis: "Diện tích, công năng và tiêu chuẩn vận hành",
     highlights: [
@@ -189,7 +189,7 @@ const pricingArticleSummaries: PricingArticle[] = [
       "Gói nội thất hoàn thiện 400 triệu đồng - Không gian đẳng cấp, giá cả phải chăng",
     excerpt:
       "Hồ sơ tham khảo cũ về cách phân bổ một gói hoàn thiện nội thất ở mức đầu tư 400 triệu đồng.",
-    image: "/images/bao-gia/goi-400.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/f77e73fa16f20177.webp",
     scope: "Gói hoàn thiện nội thất tham khảo",
     pricingBasis: "Ngân sách mục tiêu 400 triệu đồng",
     archived: true,
@@ -229,7 +229,7 @@ const pricingArticleSummaries: PricingArticle[] = [
       "Gói nội thất hoàn thiện 300 triệu đồng - Đẹp từng chi tiết, giá hợp lý",
     excerpt:
       "Hồ sơ tham khảo cũ về giải pháp cân đối công năng, vật liệu và thẩm mỹ trong ngân sách 300 triệu đồng.",
-    image: "/images/bao-gia/goi-300.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/cf34fdd857f48663.webp",
     scope: "Gói hoàn thiện nội thất tham khảo",
     pricingBasis: "Ngân sách mục tiêu 300 triệu đồng",
     archived: true,
@@ -269,7 +269,7 @@ const pricingArticleSummaries: PricingArticle[] = [
       "Gói nội thất hoàn thiện 250 triệu đồng - Giải pháp cho không gian chất lượng",
     excerpt:
       "Hồ sơ tham khảo cũ về cách lựa chọn hạng mục thiết yếu cho một gói nội thất mức đầu tư 250 triệu đồng.",
-    image: "/images/bao-gia/goi-250.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/a5dac8d96e6ca8a8.webp",
     scope: "Gói hoàn thiện nội thất tham khảo",
     pricingBasis: "Ngân sách mục tiêu 250 triệu đồng",
     archived: true,
@@ -309,7 +309,7 @@ const pricingArticleSummaries: PricingArticle[] = [
       "Gói nội thất hoàn thiện 169 triệu đồng - Giá tốt, chất lượng không giảm",
     excerpt:
       "Hồ sơ tham khảo cũ về phương án hoàn thiện những hạng mục cơ bản trong ngân sách 169 triệu đồng.",
-    image: "/images/bao-gia/goi-169.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/973e169d67e1d832.webp",
     scope: "Gói hoàn thiện nội thất tham khảo",
     pricingBasis: "Ngân sách mục tiêu 169 triệu đồng",
     archived: true,
@@ -347,7 +347,7 @@ const pricingArticleSummaries: PricingArticle[] = [
     title: "Báo giá thiết kế nội thất: Chi phí nào hợp lý với bạn?",
     excerpt:
       "Cách đọc báo giá thiết kế nội thất và lựa chọn phạm vi hồ sơ phù hợp với nhu cầu triển khai thực tế.",
-    image: "/images/bao-gia/thiet-ke.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/0a0ff0419ffbac00.webp",
     scope: "Thiết kế nội thất",
     pricingBasis: "Diện tích và mức độ chi tiết hồ sơ",
     highlights: [

@@ -180,7 +180,7 @@ export async function InteriorPricingOverview({
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/bao-gia/hero.webp"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/5492d44c843bedf4.webp"
               alt={t("Không gian nội thất hoàn thiện")}
               fill
               priority
@@ -388,7 +388,7 @@ export async function InteriorPricingOverview({
         </div>
       </section>
       <section className={styles.bottomCta}>
-        <Image src="/images/bao-gia/hero.webp" alt="" fill sizes="100vw" />
+        <Image src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/5492d44c843bedf4.webp" alt="" fill sizes="100vw" />
         <div className={styles.bottomShade} />
         <div className={styles.bottomContent}>
           <p className={styles.eyebrow}>{t("Nhận dự toán theo nhu cầu")}</p>

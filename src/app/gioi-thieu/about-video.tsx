@@ -30,7 +30,7 @@ export function AboutVideo({ locale = "vi" }: { locale?: SiteLocale }) {
           aria-label={t("videoPlay")}
         >
           <Image
-            src="/images/gioi-thieu/xuong-san-xuat.png"
+            src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
             alt={t("workshopAlt")}
             fill
             sizes="(max-width: 800px) 100vw, 650px"

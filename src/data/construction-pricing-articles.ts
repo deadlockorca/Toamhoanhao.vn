@@ -27,7 +27,7 @@ const articleSummaries: ConstructionPricingArticle[] = [
     title: "Chi phí xây nhà phố 1 trệt 2 lầu 5m x 20m",
     excerpt:
       "Cách dự trù chi phí theo diện tích xây dựng, phần móng, sàn, mái và các hạng mục hoàn thiện.",
-    image: "/images/bao-gia/xay-dung/nha-pho.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/a783d11627aabd45.webp",
     images: [],
     sections: [
       {
@@ -51,7 +51,7 @@ const articleSummaries: ConstructionPricingArticle[] = [
     title: "Chi phí xây nhà phố 1 trệt 1 lầu 5m x 20m",
     excerpt:
       "Các nhóm chi phí thiết kế, thi công phần thô, hoàn thiện và những khoản cần dự phòng.",
-    image: "/images/bao-gia/xay-dung/kien-truc.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/81766742e2804757.webp",
     images: [],
     sections: [
       {
@@ -74,7 +74,7 @@ const articleSummaries: ConstructionPricingArticle[] = [
     title: "Chi phí xây nhà phố 1 trệt 1 lầu 5m x 15m",
     excerpt:
       "Hướng dẫn tham khảo cách tính diện tích móng, mái, các tầng và những lưu ý khi dự trù kinh phí.",
-    image: "/images/bao-gia/xay-dung/thiet-ke-nha-pho.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/ff2813b18d87c5cb.webp",
     images: [],
     sections: [
       {
@@ -97,7 +97,7 @@ const articleSummaries: ConstructionPricingArticle[] = [
     title: "Cách tính giá xây dựng trọn gói và phần thô",
     excerpt:
       "Phân biệt cách ước tính theo mét vuông với phương pháp bóc tách khối lượng theo hồ sơ thiết kế.",
-    image: "/images/bao-gia/xay-dung/nha-pho.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/a783d11627aabd45.webp",
     images: [],
     sections: [
       {
@@ -120,7 +120,7 @@ const articleSummaries: ConstructionPricingArticle[] = [
     title: "Quy trình xây nhà trọn gói",
     excerpt:
       "Các bước từ tiếp nhận nhu cầu, khảo sát, thiết kế, báo giá, pháp lý đến triển khai và bàn giao.",
-    image: "/images/bao-gia/xay-dung/kien-truc.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/81766742e2804757.webp",
     images: [],
     sections: [
       {

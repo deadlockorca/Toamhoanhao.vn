@@ -25,7 +25,7 @@ export function ApartmentConstructionLanding({
     <ResidentialConstructionLanding
       locale={locale}
       copy={copy}
-      heroImage="/images/thi-cong-noi-that/chung-cu/hero.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/chung-cu/384511f853785e3a.webp"
       featureImages={featureImages}
       sectionId="hang-muc"
       beforeAdvice={

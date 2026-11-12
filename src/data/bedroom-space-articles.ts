@@ -34,7 +34,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
       "10+ mẫu thiết kế nội thất giường tầng dành cho phòng ngủ trẻ em đẹp",
     excerpt:
       "Giường tầng là giải pháp tối ưu cho phòng ngủ trẻ em diện tích hạn chế, vừa sáng tạo vừa tiết kiệm không gian và đem lại sự bắt mắt cho căn phòng.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-1/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-1/a947a6a4066842c6.webp",
     highlights: [
       "10+ mẫu giường tầng cho bé trai, bé gái",
       "Tối ưu diện tích phòng ngủ trẻ em",
@@ -52,7 +52,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
       "10+ mẫu thiết kế nội thất phòng ngủ luxury sang chảnh và thời thượng",
     excerpt:
       "Phong cách luxury với gỗ tự nhiên, đá cẩm thạch, pha lê và chi tiết mạ vàng sang trọng – bộ sưu tập phòng ngủ đẳng cấp khó rời mắt.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-3/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-3/52f7554f0b9750a9.webp",
     highlights: [
       "Chất liệu cao cấp: gỗ tự nhiên, đá cẩm thạch, pha lê",
       "Chi tiết mạ vàng sang trọng, tinh tế",
@@ -70,7 +70,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
       "20+ mẫu thiết kế nội thất phòng ngủ tân cổ điển sang trọng và đẳng cấp",
     excerpt:
       "Phong cách tân cổ điển kết hợp cổ điển và hiện đại với hoa văn nhẹ nhàng, màu sắc Châu Âu kem, trắng, xám – sang trọng và đẳng cấp.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-4/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-4/6ac6aa68fcd27ba4.webp",
     highlights: [
       "Kết hợp phong cách cổ điển và hiện đại",
       "Hoa văn nhẹ nhàng, mềm mại",
@@ -87,7 +87,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     title: "50+ mẫu thiết kế tủ quần áo bền đẹp, sang trọng và chất lượng",
     excerpt:
       "Bộ sưu tập 50+ mẫu tủ quần áo gỗ công nghiệp, gỗ tự nhiên, cánh kính hiện đại – lựa chọn hoàn hảo cho không gian phòng ngủ của bạn.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-5/4.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-5/8c6445732fe0c0fd.webp",
     highlights: [
       "Tủ gỗ công nghiệp, gỗ tự nhiên, cánh kính",
       "Đa dạng kiểu dáng và chất liệu",
@@ -104,7 +104,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     title: "20+ mẫu thiết kế nội thất phòng ngủ trẻ em đẹp và đáng yêu",
     excerpt:
       "Bộ sưu tập phòng ngủ cho bé trai, bé gái với nhiều phong cách, giúp trẻ thỏa sức sáng tạo, vui chơi và phát triển tư duy.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-6/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-6/cb87c67f25acd285.webp",
     highlights: [
       "20+ mẫu phòng ngủ trẻ em đáng yêu",
       "Nhiều phong cách cho bé trai, bé gái",
@@ -122,7 +122,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
       "Top 60+ mẫu thiết kế nội thất phòng ngủ hiện đại hợp với mọi không gian",
     excerpt:
       "Bộ sưu tập 60+ mẫu phòng ngủ hiện đại với nhiều diện tích và phong cách, giúp bạn dễ dàng lựa chọn không gian thư giãn lý tưởng.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/f895457bd07675a3.webp",
     highlights: [
       "60+ mẫu phòng ngủ hiện đại đa dạng",
       "Phù hợp mọi không gian và diện tích",
@@ -139,7 +139,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     title: "Kinh nghiệm thiết kế nội thất phòng ngủ master xu hướng mới nhất",
     excerpt:
       "Phòng ngủ master là gì, diện tích bao nhiêu, lưu ý ánh sáng, màu sắc, nội thất, phong thủy – kinh nghiệm thiết kế phòng ngủ master đẳng cấp.",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-8/1.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/4b6424b7f70335bb.webp",
     highlights: [
       "Phòng ngủ master là gì, diện tích chuẩn",
       "Lưu ý ánh sáng, màu sắc, nội thất, phong thủy",
@@ -156,7 +156,7 @@ const bedroomSpaceArticleSummaries: BedroomSpaceArticle[] = [
     title: "Báo giá thi công nội thất trọn gói mới nhất năm 2023",
     excerpt:
       "Bảng báo giá thiết kế và thi công nội thất trọn gói theo chất liệu gỗ công nghiệp MFC, MDF kháng ẩm và gỗ tự nhiên.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-7.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/bai-6/cda5f5cc9a696c5b.webp",
     highlights: [
       "Chỉ thi công gỗ chống ẩm, bản lề inox SUS304 giảm chấn",
       "Báo giá chi tiết theo từng bộ phận nội thất",

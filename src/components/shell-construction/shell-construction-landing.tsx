@@ -23,7 +23,7 @@ export function ShellConstructionLanding({
     <ResidentialConstructionLanding
       locale={locale}
       copy={copy}
-      heroImage="/images/thi-cong-noi-that/phan-tho/hero.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/phan-tho/3412f8d1f9c4075c.webp"
       featureImages={featureImages}
       sectionId="yeu-cau"
       beforeAdvice={

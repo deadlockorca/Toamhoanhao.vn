@@ -23,38 +23,38 @@ import { workshopCopy, workshopFactories } from "@/data/workshop";
 import { homePath, type SiteLocale } from "@/lib/locale";
 import styles from "./capability.module.css";
 
-const livingImage = "/images/nang-luc/living-room-v2.webp";
+const livingImage = "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/nang-luc/08704159fda97c47.webp";
 const pillarImages = [
   livingImage,
-  "/images/nang-luc/site-inspection-v2.webp",
-  "/images/gioi-thieu/xuong-san-xuat.png",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/nang-luc/c88b5b340947ba98.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp",
 ];
 const qualityIcons = [BadgeCheck, ClipboardCheck, Check];
 const teamIcons = [PencilRuler, ShieldCheck, UsersRound, BriefcaseBusiness];
 const gallery = [
   {
-    image: "/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/c93f971e3d163463.webp",
     href: "/thiet-ke-noi-that/thiet-ke-chung-cu",
   },
   {
-    image: "/images/thiet-ke-noi-that/nha-pho/hero.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/f7d99f79601502e2.webp",
     href: "/thiet-ke-noi-that/thiet-ke-nha-pho",
   },
   {
-    image: "/images/thiet-ke-noi-that/biet-thu/hero.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/a9be0fcea5a96b9f.webp",
     href: "/thiet-ke-noi-that/biet-thu",
   },
   {
-    image: "/images/bao-gia/van-phong.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/1f69e87b2c53922f.webp",
     href: "/du-an?danh-muc=van-phong",
   },
   {
     image:
-      "/images/kien-thuc/kien-thuc-nha-dep/articles/7-phong-cach-thi-cong-noi-nha-hang-dang-cap-gioi.webp",
+      "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kien-thuc-nha-dep/articles/6ce9c501b08fdabd.webp",
     href: "/du-an?danh-muc=nha-hang",
   },
   {
-    image: "/images/thiet-ke-noi-that/khach-san/khach-san-5-sao.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/bf7fb49a8b813c24.webp",
     href: "/thiet-ke-noi-that/thiet-ke-khach-san",
   },
 ];

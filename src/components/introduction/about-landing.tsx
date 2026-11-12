@@ -65,7 +65,7 @@ export function AboutLanding({ locale = "vi" }: { locale?: SiteLocale }) {
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/gioi-thieu/banner.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"
               alt={t("warmSpace")}
               fill
               priority
@@ -99,7 +99,7 @@ export function AboutLanding({ locale = "vi" }: { locale?: SiteLocale }) {
             </div>
             <div className={styles.storyVisual}>
               <Image
-                src="/images/gioi-thieu/thuong-hieu.png"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/63fc61898a6e8022.webp"
                 alt={t("villaAlt")}
                 fill
                 sizes="(max-width: 800px) 100vw, 48vw"
@@ -145,7 +145,7 @@ export function AboutLanding({ locale = "vi" }: { locale?: SiteLocale }) {
         <div className={`${styles.container} ${styles.capabilityGrid}`}>
           <div className={styles.capabilityVisual}>
             <Image
-              src="/images/gioi-thieu/xuong-san-xuat.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
               alt={t("workshopAlt")}
               fill
               sizes="(max-width: 800px) 100vw, 48vw"
@@ -175,7 +175,7 @@ export function AboutLanding({ locale = "vi" }: { locale?: SiteLocale }) {
           </div>
           <div className={styles.closingVisual}>
             <Image
-              src="/images/gioi-thieu/banner.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"
               alt={t("warmSpace")}
               fill
               sizes="(max-width: 800px) 100vw, 50vw"

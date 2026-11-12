@@ -21,11 +21,11 @@ import styles from "./construction-diary.module.css";
 const base = "/images/thi-cong-noi-that/nhat-ki-thi-cong";
 const images = [
   `${base}/buoc-1.webp`,
-  "/images/nang-luc/site-inspection-v2.webp",
-  "/images/doi-ngu/banner.png",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/nang-luc/c88b5b340947ba98.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/doi-ngu/22e4686c98db9806.webp",
   `${base}/buoc-4.webp`,
-  "/images/thi-cong-noi-that/phan-tho/tran-thach-cao.webp",
-  "/images/gioi-thieu/xuong-san-xuat.png",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/phan-tho/92a7437bdd1d47da.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp",
   `${base}/buoc-7.webp`,
   `${base}/buoc-8.webp`,
 ];

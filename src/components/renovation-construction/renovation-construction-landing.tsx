@@ -16,7 +16,7 @@ export function RenovationConstructionLanding({
     <ResidentialConstructionLanding
       locale={locale}
       copy={copy}
-      heroImage="/images/thi-cong-noi-that/cai-tao/hero.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/cai-tao/39b018d31f593220.webp"
       featureImages={featureImages}
       sectionId="tinh-huong"
       afterTips={

@@ -52,7 +52,7 @@ export function HotelInteriorDesignPage({
       id: "khach-san-5-sao",
       label: t("Khách sạn 5 sao"),
       title: t("Đẳng cấp, hiện đại, sang trọng"),
-      image: "/images/thiet-ke-noi-that/khach-san/khach-san-5-sao.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/bf7fb49a8b813c24.webp",
       alt: t("Thiết kế nội thất khách sạn 5 sao sang trọng"),
       description: [
         t(
@@ -75,7 +75,7 @@ export function HotelInteriorDesignPage({
       id: "khach-san-3-sao",
       label: t("Khách sạn 3 sao"),
       title: t("Tiện nghi, lịch sự, thẩm mỹ"),
-      image: "/images/thiet-ke-noi-that/khach-san/khach-san-3-sao.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/09e2305ada37af12.webp",
       alt: t("Thiết kế nội thất khách sạn 3 sao"),
       description: [
         t(
@@ -93,7 +93,7 @@ export function HotelInteriorDesignPage({
       id: "khach-san-mini",
       label: t("Khách sạn mini"),
       title: t("Đơn giản mà độc đáo"),
-      image: "/images/thiet-ke-noi-that/khach-san/khach-san-mini.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/6d013b60ad80d292.webp",
       alt: t("Thiết kế nội thất khách sạn mini"),
       description: [
         t(
@@ -232,7 +232,7 @@ export function HotelInteriorDesignPage({
           <div className={styles.heroVisual}>
             <div className={styles.heroImage}>
               <Image
-                src="/images/thiet-ke-noi-that/khach-san/banner.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/bf7fb49a8b813c24.webp"
                 alt={t("Không gian nội thất khách sạn")}
                 fill
                 priority
@@ -420,7 +420,7 @@ export function HotelInteriorDesignPage({
 
       <section className={styles.finalCta}>
         <Image
-          src="/images/thiet-ke-noi-that/khach-san/banner.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/khach-san/bf7fb49a8b813c24.webp"
           alt={t("Không gian khách sạn")}
           fill
           sizes="100vw"

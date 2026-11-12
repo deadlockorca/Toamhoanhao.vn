@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const defaultR2PublicUrl =
-  "https://pub-b6d77d3bc0a843b0ae7d1e61de9c768b.r2.dev";
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev";
 const r2PublicUrl = new URL(
   process.env.R2_PUBLIC_BASE_URL || defaultR2PublicUrl,
 );
@@ -56,6 +56,9 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    // Media is already encoded as WebP; serve it directly from R2 without
+    // depending on Vercel's image transformation allowance.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

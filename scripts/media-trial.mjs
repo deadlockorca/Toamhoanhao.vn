@@ -5,6 +5,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 import { matchPatchColour } from "./media-audit/match-patch-colour.mjs";
+import { alignAiPatches } from "./media-audit/align-ai-patches.mjs";
 
 const repository = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -52,7 +53,7 @@ if (
   expectedCount > 1000 ||
   manifest.jobs.length !== expectedCount ||
   new Set(manifest.jobs.map((job) => job.number)).size !== expectedCount ||
-  manifest.jobs.some((job) => !["project", "designSample"].includes(job.kind))
+  manifest.jobs.some((job) => !["project", "designSample", "staticImage"].includes(job.kind))
 )
   throw new Error("Invalid project/design image batch manifest.");
 const sha256 = (buffer) =>
@@ -88,7 +89,15 @@ async function record(job, source) {
       `-v${version}.png`,
     );
   }
-  await fs.copyFile(source, resolve(job.aiCleaned), fs.constants.COPYFILE_EXCL);
+  try {
+    await fs.copyFile(source, resolve(job.aiCleaned), fs.constants.COPYFILE_EXCL);
+  } catch (error) {
+    // A recovered generation may already be copied into the batch. Only
+    // adopt it when its bytes match; never overwrite a different artifact.
+    if (error.code !== "EEXIST" ||
+        sha256(await fs.readFile(resolve(job.aiCleaned))) !== sha256(bytes))
+      throw error;
+  }
   job.aiSourceSha256 = sha256(bytes);
   job.generatedSource = source;
   job.aiDimensions = { width: metadata.width, height: metadata.height };
@@ -141,22 +150,44 @@ async function render(job) {
     const svg = Buffer.from(
       `<svg width="${width}" height="${height}"><rect width="100%" height="100%" fill="black"/>${rectangles}</svg>`,
     );
-    const mask = await sharp(svg)
-      .removeAlpha()
-      .greyscale()
-      .blur(2)
+    const maskImage = sharp(svg).removeAlpha().greyscale();
+    const feather = job.cleanupMaskFeather ?? 2;
+    if (!Number.isFinite(feather) || feather < 0 || feather > 20)
+      throw new Error("Invalid cleanup mask feather");
+    // Technical drawings can require exact boundaries beside rules and labels.
+    const mask = await (feather ? maskImage.blur(feather) : maskImage)
       .raw()
       .toBuffer({ resolveWithObject: true });
     maskData = mask.data;
     if (mask.info.channels !== 1)
       throw new Error("Expected a one-channel mask");
-    cleaned = await matchPatchColour(
-      original.data,
-      cleaned,
-      maskData,
-      width,
-      height,
-    );
+    if (job.protectOuterBlackFrame) {
+      // A footer logo can touch the drawing frame. Keep its original dark
+      // border pixels even where the feathered cleanup mask reaches the edge.
+      for (let y = 0; y < height; y++)
+        for (let x = 0; x < width; x++) {
+          if (x >= 3 && y >= 3 && x < width - 3 && y < height - 3) continue;
+          const i = y * width + x;
+          if (original.data[i * 4] < 80 && original.data[i * 4 + 1] < 80 && original.data[i * 4 + 2] < 80)
+            maskData[i] = 0;
+        }
+    }
+    if (job.alignAiPatches) {
+      const aligned = alignAiPatches(original.data, cleaned, maskData, width, height);
+      cleaned = aligned.pixels;
+      job.aiPatchAlignment = aligned.diagnostics;
+    }
+    // White drawing margins can sit beside dense annotations. Opt out when
+    // boundary matching would carry those dark pixels into the clean margin.
+    if (job.matchPatchColour !== false) {
+      cleaned = await matchPatchColour(
+        original.data,
+        cleaned,
+        maskData,
+        width,
+        height,
+      );
+    }
     for (let i = 0; i < width * height; i++) {
       const alpha = maskData[i];
       if (!alpha) continue;
@@ -194,7 +225,7 @@ async function render(job) {
     job.cleanedAt = new Date().toISOString();
     job.status = "cleaned_pending_visual_review";
     job.verification = {
-      boundaryColourMatched: true,
+      boundaryColourMatched: job.matchPatchColour !== false,
       originalHashVerified: true,
       dimensionsPreserved: true,
       outsideCleanupMaskUnchanged: true,

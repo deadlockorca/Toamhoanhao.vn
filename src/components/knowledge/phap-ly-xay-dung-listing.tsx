@@ -113,7 +113,7 @@ export async function BuildingLegalPage({
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/gioi-thieu/thuong-hieu.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/63fc61898a6e8022.webp"
               alt={t("Công trình nhà ở hiện đại")}
               fill
               priority
@@ -290,7 +290,7 @@ export async function BuildingLegalPage({
       </section>
       <section className={styles.bottomCta}>
         <Image
-          src="/images/gioi-thieu/thuong-hieu.png"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/63fc61898a6e8022.webp"
           alt=""
           fill
           sizes="100vw"

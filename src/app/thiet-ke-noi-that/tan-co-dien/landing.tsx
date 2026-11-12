@@ -53,7 +53,7 @@ export function NeoclassicalInteriorDesignPage({
       content: t(
         "Những chi tiết trang trí tỉ mỉ, cầu kỳ làm thủ công, lấy cảm hứng từ hình kỷ hà, cỏ hoa tự nhiên mang tính nghệ thuật cao và đồng bộ về phong cách.",
       ),
-      image: "/images/thiet-ke-noi-that/tan-co-dien/phong-khach.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/5f1d4cc0e4343dac.webp",
     },
     {
       id: "phong-ngu",
@@ -62,7 +62,7 @@ export function NeoclassicalInteriorDesignPage({
       content: t(
         "Kế thừa vẻ đẹp cổ điển nhưng đã lược bỏ những chi tiết quá cầu kỳ, phòng ngủ tân cổ điển gợi không gian sang trọng, tráng lệ nhưng vẫn vô cùng tinh tế.",
       ),
-      image: "/images/thiet-ke-noi-that/tan-co-dien/phong-ngu.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/0b99f1425cf8c4f7.webp",
     },
     {
       id: "phong-sach",
@@ -71,7 +71,7 @@ export function NeoclassicalInteriorDesignPage({
       content: t(
         "Ghế sofa kết hợp hài hòa kệ sách hoàn toàn biến căn phòng đọc sách thành nơi thư giãn tuyệt vời.",
       ),
-      image: "/images/thiet-ke-noi-that/tan-co-dien/phong-sach.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/6a4434709d25ab10.webp",
     },
     {
       id: "phong-an",
@@ -80,7 +80,7 @@ export function NeoclassicalInteriorDesignPage({
       content: t(
         "Chỉ cần thêm đèn chùm trang trí với thảm trải sàn, phòng ăn được khoác lên một ngoại hình mới mà vẫn giữ phong cách cổ điển.",
       ),
-      image: "/images/thiet-ke-noi-that/tan-co-dien/phong-an.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/a116c1bc2afccd46.webp",
     },
   ];
   const benefits = [
@@ -152,7 +152,7 @@ export function NeoclassicalInteriorDesignPage({
           <div className={styles.heroVisual}>
             <div className={styles.heroImage}>
               <Image
-                src="/images/thiet-ke-noi-that/tan-co-dien/hero.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/5f1d4cc0e4343dac.webp"
                 alt={t("Thiết kế nội thất tân cổ điển cao cấp")}
                 fill
                 priority
@@ -286,7 +286,7 @@ export function NeoclassicalInteriorDesignPage({
 
       <section className={styles.finalCta}>
         <Image
-          src="/images/thiet-ke-noi-that/tan-co-dien/hero.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/5f1d4cc0e4343dac.webp"
           alt={t("Không gian tân cổ điển")}
           fill
           sizes="100vw"

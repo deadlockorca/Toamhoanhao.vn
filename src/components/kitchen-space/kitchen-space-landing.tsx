@@ -28,7 +28,7 @@ export function KitchenSpaceLanding({
       locale={locale}
       copy={copy}
       articles={articles}
-      heroImage="/images/thi-cong-noi-that/khong-gian-bep/hero.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/c999ec10318c5db4.webp"
       libraryId="thu-vien-bep"
       serviceIcons={[Pencil, PanelsTopLeft, Hammer, Factory]}
     />

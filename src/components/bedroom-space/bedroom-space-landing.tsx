@@ -30,7 +30,7 @@ export function BedroomSpaceLanding({
       locale={locale}
       copy={copy}
       articles={articles}
-      heroImage="/images/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/1.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-phong-ngu/bai-7/f895457bd07675a3.webp"
       libraryId="thu-vien-phong-ngu"
       serviceIcons={[BedDouble, BedSingle, Wrench, Factory]}
     />

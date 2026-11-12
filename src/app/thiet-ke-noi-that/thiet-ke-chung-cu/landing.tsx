@@ -71,7 +71,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Tối giản, tinh tế, hòa hợp với thiên nhiên, màu sắc nhẹ nhàng. Giải pháp tiết kiệm chi phí mà vẫn cao cấp.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/nhat-ban-1.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/79bdc7b3e2d38c4c.webp",
     },
     {
       id: "han-quoc",
@@ -80,7 +80,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Hiệu ứng tương phản với gam nền trắng, vàng nhạt và tông màu điểm nhấn đỏ, nâu, hồng, phá cách và tiện nghi.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/han-quoc.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/a867ee24fa9f0834.webp",
     },
     {
       id: "au-my",
@@ -89,7 +89,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Ánh sáng và sự thoải mái là điểm nhấn xuyên suốt, cửa sổ lớn, phòng tràn ngập ánh sáng, nội thất bày trí tự do.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/au-my.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/878ee842644399a4.webp",
     },
     {
       id: "phap",
@@ -98,7 +98,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Chất Gothic cổ Châu Âu với gam màu trung tính, vàng, nâu đậm, nổi bật khi dùng đồ cổ hoặc giả cổ trang trí.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/phap.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/e64f0c4544446e7e.webp",
     },
     {
       id: "co-dien",
@@ -107,7 +107,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Sang trọng, giàu có với gam màu trắng kết hợp nhiều họa tiết vàng kim, chất liệu tự nhiên và hoa văn cầu kỳ.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/co-dien.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/81859110c060358b.webp",
     },
     {
       id: "tan-co-dien",
@@ -116,7 +116,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Sự pha trộn giữa cổ điển và hiện đại, ít hoa văn hơn, chú trọng hài hòa, đối xứng và màu sắc nhã nhặn.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/tan-co-dien.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/33ed4c6d5956718d.webp",
     },
     {
       id: "hien-dai",
@@ -125,7 +125,7 @@ export function ApartmentInteriorDesignPage({
       content: t(
         "Phổ biến nhất tại Việt Nam, tiện dụng, thông minh, tối ưu không gian sống vốn hạn chế của chung cư.",
       ),
-      image: "/images/thiet-ke-noi-that/chung-cu/hien-dai.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/6a730cc011e4bad7.webp",
     },
   ];
   const reasons: Feature[] = [
@@ -227,7 +227,7 @@ export function ApartmentInteriorDesignPage({
           <div className={styles.heroVisual}>
             <div className={styles.heroImage}>
               <Image
-                src="/images/thiet-ke-noi-that/chung-cu/hero.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/553ee61329b1eca5.webp"
                 alt={t("Thiết kế nội thất chung cư hiện đại")}
                 fill
                 priority
@@ -280,7 +280,7 @@ export function ApartmentInteriorDesignPage({
         <div className={`${styles.container} ${local.offerGrid}`}>
           <div className={local.offerGraphic}>
             <Image
-              src="/images/thiet-ke-noi-that/chung-cu/uu-dai.webp"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/9e976eda0ce16955.webp"
               alt={t("Bảng ưu đãi miễn 100% phí thiết kế nội thất theo gói")}
               width={493}
               height={142}
@@ -422,7 +422,7 @@ export function ApartmentInteriorDesignPage({
 
       <section className={styles.finalCta}>
         <Image
-          src="/images/thiet-ke-noi-that/chung-cu/hero.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/chung-cu/553ee61329b1eca5.webp"
           alt={t("Không gian chung cư")}
           fill
           sizes="100vw"

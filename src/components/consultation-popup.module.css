@@ -41,7 +41,7 @@
   content: "";
   background:
     linear-gradient(90deg, rgb(48 30 18 / 82%), rgb(49 33 22 / 69%)),
-    url("/images/gioi-thieu/banner.png") 72% center / cover no-repeat;
+    url("https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp") 72% center / cover no-repeat;
   transform: scale(1.02);
 }
 

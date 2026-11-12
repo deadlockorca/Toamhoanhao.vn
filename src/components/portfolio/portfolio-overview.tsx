@@ -331,7 +331,7 @@ export function PortfolioOverview({
             />
           ) : (
             <Image
-              src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/409e4e7e7b312574.webp"
               alt={t("Không gian nội thất")}
               fill
               priority
@@ -678,7 +678,7 @@ export function PortfolioOverview({
         <div className={styles.container}>
           <div className={styles.workshopImage}>
             <Image
-              src="/images/xuong-san-xuat/banner.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/xuong-san-xuat/ed477ebf8e9414cb.webp"
               alt={t("Xưởng sản xuất nội thất Tổ Ấm Hoàn Hảo")}
               fill
               sizes="(max-width: 760px) 100vw, 45vw"
@@ -721,9 +721,9 @@ export function PortfolioOverview({
           <h2>{t("Những chia sẻ chân thực")}</h2>
           <div className={styles.testimonialGrid}>
             {[
-              "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_5.jpg",
-              "/images/trang-chu/trai-nghiem-khach-hang/khachnoithat1.jpg",
-              "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_6.jpg",
+              "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/4cb1ef0616fcb2f4.webp",
+              "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/fd55d8da187d159f.webp",
+              "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/05cdc3d1b713b7f0.webp",
             ].map((src, index) => (
               <div className={styles.testimonial} key={src}>
                 <div>

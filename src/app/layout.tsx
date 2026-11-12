@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "Thiết kế, thi công và sản xuất nội thất trọn gói. Tư vấn miễn phí, báo giá minh bạch, thi công đúng tiến độ.",
     images: [
       {
-        url: "/images/trang-chu/nha-pho-dep-1.jpg",
+        url: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/53a076819878cbb2.webp",
         width: 2048,
         height: 1152,
         alt: "Không gian nội thất do Tổ Ấm Hoàn Hảo thiết kế và thi công",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title: "Tổ Ấm Hoàn Hảo | Thiết kế và thi công nội thất trọn gói",
     description:
       "Thiết kế, thi công và sản xuất nội thất trọn gói. Tư vấn miễn phí, báo giá minh bạch.",
-    images: ["/images/trang-chu/nha-pho-dep-1.jpg"],
+    images: ["https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/53a076819878cbb2.webp"],
   },
   icons: {
     icon: [

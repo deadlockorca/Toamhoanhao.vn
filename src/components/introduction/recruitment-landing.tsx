@@ -119,7 +119,7 @@ export function RecruitmentLanding({ locale = "vi" }: { locale?: SiteLocale }) {
             <div className={styles.heroCollage}>
               <div className={styles.heroFactory}>
                 <Image
-                  src="/images/gioi-thieu/xuong-san-xuat.png"
+                  src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
                   alt={t("factoryAlt")}
                   fill
                   priority
@@ -128,7 +128,7 @@ export function RecruitmentLanding({ locale = "vi" }: { locale?: SiteLocale }) {
               </div>
               <div className={styles.heroTop}>
                 <Image
-                  src="/images/gioi-thieu/banner.png"
+                  src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"
                   alt={t("interiorAlt")}
                   fill
                   priority
@@ -137,7 +137,7 @@ export function RecruitmentLanding({ locale = "vi" }: { locale?: SiteLocale }) {
               </div>
               <div className={styles.heroBottom}>
                 <Image
-                  src="/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp"
+                  src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/c93f971e3d163463.webp"
                   alt={t("livingRoomAlt")}
                   fill
                   priority
@@ -192,7 +192,7 @@ export function RecruitmentLanding({ locale = "vi" }: { locale?: SiteLocale }) {
           <div className={styles.benefitsGrid}>
             <div className={styles.benefitPhoto}>
               <Image
-                src="/images/gioi-thieu/xuong-san-xuat.png"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
                 alt={t("workshopTitle")}
                 fill
                 sizes="(max-width: 700px) 100vw, 340px"
@@ -255,7 +255,7 @@ export function RecruitmentLanding({ locale = "vi" }: { locale?: SiteLocale }) {
 
       <section className={styles.bottomCta}>
         <Image
-          src="/images/gioi-thieu/tuyen-dung.png"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"
           alt=""
           fill
           sizes="100vw"

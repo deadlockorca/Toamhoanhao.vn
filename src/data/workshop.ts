@@ -22,17 +22,17 @@ export const workshopOffices = [
 export const workshopFactories = [
   {
     region: "Miền Trung",
-    image: "/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/c93f971e3d163463.webp",
     address: null,
   },
   {
     region: "Hà Nội",
-    image: "/images/gioi-thieu/xuong-san-xuat.png",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp",
     address: "Số 2, Ngõ 67, Phú Đa, Xã Cấn Kiệm, Huyện Thạch Thất.",
   },
   {
     region: "Bình Dương",
-    image: "/images/gioi-thieu/xuong-san-xuat.png",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp",
     address: "569 Đường Bùi Thị Xuân, TP. Dĩ An, Tỉnh Bình Dương.",
   },
 ];

@@ -171,7 +171,7 @@ export function SmartInteriorLanding({
         <div className={`${styles.container} ${local.workshopGrid}`}>
           <div className={local.workshopImage}>
             <Image
-              src="/images/gioi-thieu/xuong-san-xuat.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
               alt={copy.workshopTitle}
               fill
               sizes="(max-width:700px) 92vw, 50vw"

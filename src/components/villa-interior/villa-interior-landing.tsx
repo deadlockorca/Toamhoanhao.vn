@@ -23,13 +23,13 @@ import local from "./villa-interior.module.css";
 
 const ids = ["tan-co-dien", "co-dien", "hien-dai", "duong-dai"];
 const images = [
-  "/images/thiet-ke-noi-that/tan-co-dien/phong-khach.webp",
-  "/images/thiet-ke-noi-that/biet-thu/hero.webp",
-  "/images/thiet-ke-noi-that/nha-pho/hien-dai.webp",
-  "/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/tan-co-dien/5f1d4cc0e4343dac.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/a9be0fcea5a96b9f.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/f7d99f79601502e2.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/c93f971e3d163463.webp",
 ];
 const concernIcons = [Lightbulb, Wallet, ClipboardCheck, ShieldCheck];
-const heroImage = "/images/thiet-ke-noi-that/biet-thu/hero.webp";
+const heroImage = "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/a9be0fcea5a96b9f.webp";
 export function VillaInteriorLanding({
   locale = "vi",
 }: {
@@ -110,12 +110,12 @@ export function VillaInteriorLanding({
           <div className={styles.sectionIntro}>
             <figure className={local.priceTable}>
               <a
-                href="/images/thiet-ke-noi-that/biet-thu/bao-gia.webp"
+                href="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/5f13c968887ffd08.webp"
                 target="_blank"
                 rel="noreferrer"
               >
                 <Image
-                  src="/images/thiet-ke-noi-that/biet-thu/bao-gia.webp"
+                  src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/5f13c968887ffd08.webp"
                   alt={copy.pricingLabel}
                   width={530}
                   height={278}

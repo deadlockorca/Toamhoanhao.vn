@@ -33,7 +33,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "3 bảng màu kính ốp bếp sang trọng – tạo sự hài hòa cho mọi thiết kế tủ bếp",
     excerpt:
       "Tìm hiểu kính ốp bếp là gì, những đặc điểm vượt trội và 3 bảng màu đón đầu xu hướng giúp tăng điểm nhấn, sự sang trọng cho không gian bếp.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-7.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/bai-6/cda5f5cc9a696c5b.webp",
     highlights: [
       "Kính cường lực nguyên khối chống va đập, chịu nhiệt hơn 200°C",
       "Dễ vệ sinh, lau chùi, chống ẩm mốc",
@@ -54,7 +54,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "Tổng hợp 40+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
     excerpt:
       "Tuyển tập hơn 40 mẫu tủ bếp chữ I, chữ L, chữ U và bàn đảo hiện đại, sang trọng, phù hợp với mọi diện tích không gian bếp.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-6.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/7a39d362e5772b25.webp",
     highlights: [
       "Tủ bếp chữ I tối ưu diện tích cho căn hộ nhỏ",
       "Tủ bếp chữ L phổ biến nhất cho căn bếp tiện nghi",
@@ -73,7 +73,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
     title: "Công trình bếp tại dự án The Manor Central Park – Quận Bình Thạnh",
     excerpt:
       "Tham quan công trình bếp khung plywood, tủ cánh kính được thiết kế và thi công trọn gói bởi Tổ Ấm Hoàn Hảo tại The Manor Central Park.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-3.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/bai-3/8f48d653e2e164a1.webp",
     highlights: [
       "Chất liệu khung plywood, tủ bếp cánh kính",
       "Gam màu trắng chủ đạo, tối ưu diện tích",
@@ -93,7 +93,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
     title: "Top 15 mẫu thiết kế bếp chung cư đẹp tối ưu diện tích",
     excerpt:
       "Bộ sưu tập 15 mẫu thiết kế bếp chung cư đẹp, tiện nghi, tối ưu diện tích với nhiều phong cách và chất liệu đa dạng.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-4.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/bai-3/8f48d653e2e164a1.webp",
     highlights: [
       "15 mẫu bếp chung cư đẹp, hiện đại",
       "Tối ưu diện tích và công năng sử dụng",
@@ -112,7 +112,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
     title: "30+ mẫu bếp xinh dành cho biệt thự, nhà phố, chung cư hiện đại",
     excerpt:
       "Tuyển tập hơn 30 mẫu bếp xinh cho biệt thự, nhà phố, chung cư với nhiều phong cách từ hiện đại, tân cổ điển đến vintage.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-5.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/c999ec10318c5db4.webp",
     highlights: [
       "30+ mẫu bếp cho biệt thự, nhà phố, chung cư",
       "Phong cách hiện đại, tân cổ điển, vintage",
@@ -133,7 +133,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
       "20+ mẫu tủ bếp tiện nghi “vạn người mê” – đừng bỏ lỡ xu hướng mới nhất năm 2023",
     excerpt:
       "Tuyển chọn hơn 20 mẫu tủ bếp chữ I, chữ L, chữ U tiện nghi và sang trọng theo xu hướng mới nhất, phù hợp mọi không gian.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-6.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/7a39d362e5772b25.webp",
     highlights: [
       "Mẫu tủ bếp chữ I tối ưu diện tích",
       "Mẫu tủ bếp chữ L phổ biến và tiện nghi",
@@ -153,7 +153,7 @@ const kitchenSpaceArticleSummaries: KitchenSpaceArticle[] = [
     title: "Báo giá thi công nội thất trọn gói mới nhất năm 2023",
     excerpt:
       "Bảng báo giá thiết kế và thi công nội thất trọn gói theo chất liệu gỗ công nghiệp MFC, MDF kháng ẩm và gỗ tự nhiên.",
-    image: "/images/thi-cong-noi-that/khong-gian-bep/bai-7.webp",
+    image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/khong-gian-bep/bai-6/cda5f5cc9a696c5b.webp",
     highlights: [
       "Chỉ thi công gỗ chống ẩm, bản lề inox SUS304 giảm chấn",
       "Báo giá chi tiết theo từng bộ phận nội thất",

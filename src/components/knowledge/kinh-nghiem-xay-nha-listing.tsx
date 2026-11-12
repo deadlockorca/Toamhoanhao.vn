@@ -40,7 +40,7 @@ export async function BuildingExperiencePage({
     {
       slug: "kinh-nghiem-chon-huong-nha-15",
       title: t("Kinh nghiệm chọn hướng nhà"),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/huong-nha.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/2866a54f04b8c06a.webp",
       description: t(
         "Chọn hướng nhà theo tuổi của gia chủ và điều kiện khí hậu để tạo nên không gian sống thuận tiện, hài hòa.",
       ),
@@ -49,7 +49,7 @@ export async function BuildingExperiencePage({
     {
       slug: "kinh-nghiem-do-be-tong-28",
       title: t("Kinh nghiệm đổ bê tông cột, dầm, sàn"),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/do-be-tong.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/6052b9bf0c9ff6c4.webp",
       description: t(
         "Những yêu cầu kỹ thuật cần nắm rõ khi triển khai các hạng mục kết cấu quan trọng của công trình.",
       ),
@@ -58,7 +58,7 @@ export async function BuildingExperiencePage({
     {
       slug: "chien-luoc-thiet-ke-nha-co-dien-tich-nho",
       title: t("Chiến lược thiết kế nhà có diện tích nhỏ"),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/nha-nho.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/ace65f989eb633f7.webp",
       description: t(
         "Gợi ý để một ngôi nhà diện tích nhỏ vẫn có đủ tiện ích và đáp ứng nhu cầu sử dụng của gia đình.",
       ),
@@ -67,7 +67,7 @@ export async function BuildingExperiencePage({
     {
       slug: "nhung-luu-y-khi-thi-cong-to-trat-tuong-nha",
       title: t("Những lưu ý khi thi công tô trát tường nhà"),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/to-trat.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/388c84e6088c7760.webp",
       description: t(
         "Các điểm cần kiểm tra trong công tác tô trát và nghiệm thu để tường phẳng, bền, hạn chế nứt hoặc bong tróc.",
       ),
@@ -78,7 +78,7 @@ export async function BuildingExperiencePage({
       title: t(
         "Phong thủy xây nhà: 5 điều cần lưu ý khi xây nhà cho hợp phong thủy",
       ),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/phong-thuy.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/d762ce27d96cbe51.webp",
       description: t(
         "Những nguyên tắc phong thủy cơ bản giúp gia chủ cân nhắc hướng, bố cục và không gian sống hài hòa.",
       ),
@@ -87,7 +87,7 @@ export async function BuildingExperiencePage({
     {
       slug: "5-dieu-can-luu-y-khi-thiet-ke-cua-cong-ra-vao",
       title: t("5 điều cần lưu ý khi thiết kế cửa cổng ra vào"),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/cua-cong.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/8f08f91d17054830.webp",
       description: t(
         "Cân đối phong thủy, an toàn, riêng tư, thông thoáng và thẩm mỹ cho lối vào của công trình.",
       ),
@@ -98,7 +98,7 @@ export async function BuildingExperiencePage({
       title: t(
         "4 kinh nghiệm thiết kế nhà để tận dụng được ánh sáng tự nhiên nhất",
       ),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/anh-sang.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/7c4d813e5bb76ab1.webp",
       description: t(
         "Gợi ý thiết kế để các không gian trong nhà đón được ánh sáng tự nhiên một cách hiệu quả.",
       ),
@@ -109,7 +109,7 @@ export async function BuildingExperiencePage({
       title: t(
         "Kinh nghiệm thi công nhà mái Thái 1 tầng siêu chất lượng khiến bạn không còn đắn đo",
       ),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/nha-mai-thai.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/f4e4433b2b40e3de.webp",
       description: t(
         "Những kinh nghiệm thực tế về giải pháp mái, tiến độ và chất lượng khi triển khai nhà mái Thái một tầng.",
       ),
@@ -120,7 +120,7 @@ export async function BuildingExperiencePage({
       title: t(
         "6 kinh nghiệm xây nhà - chọn vật liệu xây dựng trong thi công nhà ở",
       ),
-      image: "/images/kien-thuc/kinh-nghiem-xay-nha/vat-lieu.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/75e2ca2d4002f312.webp",
       description: t(
         "Kinh nghiệm lựa chọn vật liệu xây dựng hợp lý, tiết kiệm và phù hợp với nhu cầu sử dụng lâu dài.",
       ),
@@ -207,7 +207,7 @@ export async function BuildingExperiencePage({
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/kien-thuc/kinh-nghiem-xay-nha/hero.webp"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/ae11f3e53bb5d61f.webp"
               alt={t("Mẫu nhà phố của Tổ Ấm Hoàn Hảo")}
               fill
               priority
@@ -416,7 +416,7 @@ export async function BuildingExperiencePage({
 
       <section className={styles.bottomCta}>
         <Image
-          src="/images/kien-thuc/kinh-nghiem-xay-nha/hero.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/ae11f3e53bb5d61f.webp"
           alt=""
           fill
           sizes="100vw"

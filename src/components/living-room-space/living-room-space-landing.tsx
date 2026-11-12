@@ -30,7 +30,7 @@ export function LivingRoomSpaceLanding({
       locale={locale}
       copy={copy}
       articles={articles}
-      heroImage="/images/thi-cong-noi-that/khong-gian-phong-khach/bai-1-thumb.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/articles/c93f971e3d163463.webp"
       libraryId="thu-vien-phong-khach"
       serviceIcons={[Armchair, Sofa, Wrench, Factory]}
     />

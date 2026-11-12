@@ -24,7 +24,7 @@ import { workshopCopy } from "@/data/workshop";
 import { homePath, type SiteLocale } from "@/lib/locale";
 import styles from "./architecture-team.module.css";
 
-const teamImage = "/images/doi-ngu/banner.png";
+const teamImage = "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/doi-ngu/22e4686c98db9806.webp";
 const expertiseIcons = [
   Building2,
   House,

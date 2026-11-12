@@ -58,23 +58,23 @@ const steps = [
   ["Bàn giao", "Nghiệm thu & bàn giao đưa vào sử dụng"],
 ];
 const customerFeedbackImages = [
-  "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_5.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khachnoithat1.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_6.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khachnoithat2.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khachnoithat3.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khachnoithat4.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_zalo_1.jpg",
-  "/images/trang-chu/trai-nghiem-khach-hang/khach_noi_that_zalo_2.jpg",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/4cb1ef0616fcb2f4.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/fd55d8da187d159f.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/05cdc3d1b713b7f0.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/a2d2061d435e598c.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/42e25350ba162acc.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/71ad3cc4f7f2c8c1.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/734020aaf13f13fa.webp",
+  "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/3c59746298cf9fb9.webp",
 ];
 const heroImages = [
-  { src: "/images/trang-chu/nha-pho-dep-1.jpg", label: "Thiết kế nhà phố" },
+  { src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/53a076819878cbb2.webp", label: "Thiết kế nhà phố" },
   {
-    src: "/images/trang-chu/thiet-ke-noi-that-go-oc-cho.jpg",
+    src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/68e5cdd96569aec6.webp",
     label: "Nội thất gỗ óc chó",
   },
   {
-    src: "/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg",
+    src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/409e4e7e7b312574.webp",
     label: "Thiết kế thi công nhà phố",
   },
 ];
@@ -529,7 +529,7 @@ export function HomeLanding({
           <figure>
             <div className={`${styles.comparisonPhoto} ${styles.beforePhoto}`}>
               <Image
-                src="/images/kien-thuc/kinh-nghiem-xay-nha/to-trat.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/kien-thuc/kinh-nghiem-xay-nha/388c84e6088c7760.webp"
                 alt={t("Không gian trong giai đoạn thi công phần thô")}
                 fill
                 sizes="(max-width: 800px) 100vw, 34vw"
@@ -541,7 +541,7 @@ export function HomeLanding({
           <figure>
             <div className={styles.comparisonPhoto}>
               <Image
-                src="/images/trang-chu/thiet-ke-noi-that-go-oc-cho.jpg"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/68e5cdd96569aec6.webp"
                 alt={t("Không gian nội thất sau khi hoàn thiện")}
                 fill
                 sizes="(max-width: 800px) 100vw, 34vw"
@@ -752,7 +752,7 @@ export function HomeLanding({
 
       <section className={styles.leadSection} id="tu-van">
         <Image
-          src="/images/trang-chu/thiet-ke-thi-cong-nha-pho.jpg"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/409e4e7e7b312574.webp"
           alt=""
           fill
           sizes="100vw"

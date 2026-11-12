@@ -50,7 +50,7 @@ export function TownhouseInteriorDesignPage({
       id: "hien-dai",
       label: t("Phong cách hiện đại"),
       title: t("Đẹp, độc đáo và tích hợp công năng"),
-      image: "/images/thiet-ke-noi-that/nha-pho/hien-dai.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/f7d99f79601502e2.webp",
       alt: t("Thiết kế nội thất nhà phố hiện đại"),
       description: t(
         "Bí quyết đầu tiên để một căn nhà phố trở nên bắt mắt chính là lựa chọn thiết kế nội thất hiện đại. Không chỉ đáp ứng yếu tố đẹp, độc đáo, những mẫu thiết kế này còn vừa tích hợp công năng, vừa phù hợp với nguồn tài chính của gia đình.",
@@ -61,7 +61,7 @@ export function TownhouseInteriorDesignPage({
       id: "vat-lieu",
       label: t("Vật liệu trang trí"),
       title: t("Điểm nhấn hoàn hảo cho không gian"),
-      image: "/images/thiet-ke-noi-that/nha-pho/vat-lieu.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/b3fcc8c563d9b06d.webp",
       alt: t("Điểm nhấn từ vật liệu trang trí nhà phố"),
       description: t(
         "Với thiết kế nội thất nhà phố, ngoài việc tận dụng những vật liệu chính như gỗ, gạch ốp tường, cần làm tăng sức hút cho ngôi nhà bằng cách phối hợp các màu sắc và đồ dùng trong gia đình với nhau.",
@@ -72,7 +72,7 @@ export function TownhouseInteriorDesignPage({
       id: "khong-gian",
       label: t("Không gian"),
       title: t("Phân bổ diện tích đồng đều"),
-      image: "/images/thiet-ke-noi-that/nha-pho/phan-bo-dien-tich.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/8e5173aadcb498e9.webp",
       alt: t("Phân bổ diện tích đồng đều trong thiết kế nhà phố"),
       description: t(
         "Diện tích nhà phố phải phù hợp với đồ nội thất, không nên sử dụng các đồ nội thất quá lớn trong khi diện tích nhà lại nhỏ. Đặc trưng của nhà phố là kiến trúc được sắp xếp thành những đường, mảng, khối tạo không gian thoáng đãng, cùng ánh sáng được chú trọng làm điểm nhấn.",
@@ -83,7 +83,7 @@ export function TownhouseInteriorDesignPage({
       id: "thien-nhien",
       label: t("Thiên nhiên"),
       title: t("Hài hòa với thiên nhiên"),
-      image: "/images/thiet-ke-noi-that/nha-pho/thien-nhien.webp",
+      image: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/03d591f8a0f686a0.webp",
       alt: t("Thiết kế nhà phố hài hòa với thiên nhiên"),
       description: t(
         "Đây là yếu tố chủ chốt trong thiết kế nhà phố độc lạ. Nó góp phần điều hòa sinh khí, tăng cường bầu không khí trong lành đồng thời cân bằng cuộc sống trong ngôi nhà của bạn.",
@@ -161,7 +161,7 @@ export function TownhouseInteriorDesignPage({
           <div className={styles.heroVisual}>
             <div className={styles.heroImage}>
               <Image
-                src="/images/thiet-ke-noi-that/nha-pho/hero.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/f7d99f79601502e2.webp"
                 alt={t("Thiết kế nội thất nhà phố hiện đại")}
                 fill
                 priority
@@ -322,7 +322,7 @@ export function TownhouseInteriorDesignPage({
 
       <section className={styles.finalCta}>
         <Image
-          src="/images/thiet-ke-noi-that/nha-pho/hero.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/nha-pho/f7d99f79601502e2.webp"
           alt={t("Không gian nhà phố")}
           fill
           sizes="100vw"

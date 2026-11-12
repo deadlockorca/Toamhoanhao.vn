@@ -12,9 +12,16 @@ const write = async (file, value) => {
 const catalogFile = path.join(library, "danh-mục.json");
 const catalog = await read(catalogFile);
 const rows = new Map(catalog.images.map((row) => [row.sourceSha256, row]));
+const selectionFile = process.argv.find((a) => a.startsWith("--selection="))?.slice(12);
+const selection = selectionFile ? await read(selectionFile) : null;
+const category = selection?.libraryCategory ?? "01";
+if (!["01", "02", "03", "04"].includes(category)) throw new Error("Invalid library category");
+const selectedHashes = selection ? new Set(selection.jobs.map((j) => j.sourceSha256)) : null;
+const selectedBatch = selection ? path.basename(selection.batch) : null;
 let updated = 0;
 for (const entry of await fs.readdir(root, { withFileTypes: true })) {
   if (!entry.isDirectory()) continue;
+  if (selectedBatch && entry.name !== selectedBatch) continue;
   let manifest;
   try {
     manifest = await read(path.join(root, entry.name, "manifest.json"));
@@ -23,11 +30,12 @@ for (const entry of await fs.readdir(root, { withFileTypes: true })) {
     throw error;
   }
   for (const job of manifest.jobs ?? []) {
+    if (selectedHashes && !selectedHashes.has(job.sourceSha256)) continue;
     if (!job.cleanedAt || !job.cleanComposite) continue;
     const row = rows.get(job.sourceSha256);
     if (!row) throw new Error("Cleaned image not in library");
     if (row.cleanAvailable) continue;
-    if (!row.category.startsWith("01"))
+    if (!row.category.startsWith(category + " -"))
       throw new Error("Outside requested category");
     const source = path.join(root, entry.name, job.cleanComposite);
     await fs.access(source);
@@ -45,11 +53,15 @@ for (const entry of await fs.readdir(root, { withFileTypes: true })) {
       destination,
       "02 - Đã xóa dấu - chưa ghép logo.png",
     );
-    await fs.symlink(path.relative(destination, source), cleanFile);
+    await fs.copyFile(source, cleanFile, fs.constants.COPYFILE_EXCL);
     row.folder = newFolder;
     row.state = newState;
     row.cleanAvailable = true;
     row.blocker = null;
+    if (job.brandReview) {
+      row.brandReview = job.brandReview;
+      row.detail = job.brandReview.summary;
+    }
     row.provenance = {
       batch: entry.name,
       job: job.number,
@@ -93,7 +105,7 @@ await fs.writeFile(
       ...catalog.images.map((r) => [
         r.category,
         r.state,
-        r.kind === "project" ? "Dự án" : "Mẫu thiết kế",
+        r.kind === "project" ? "Dự án" : r.kind === "designSample" ? "Mẫu thiết kế" : "Nội dung khác",
         r.title,
         r.detail,
         r.cleanAvailable ? "Có" : "Không",

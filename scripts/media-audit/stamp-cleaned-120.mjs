@@ -2,12 +2,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import crypto from "node:crypto";
 import sharp from "sharp";
+import { blankMarginLogo } from "./blank-margin-logo.mjs";
 
 const root = "/Users/bowthoois/Documents/Toamhoanhao-media";
 const library = path.join(root, "Ảnh");
 const catalogFile = path.join(library, "danh-mục.json");
-const batch = path.join(root, "batch-1000-2026-10-17");
-const manifestFile = path.join(batch, "manifest.json");
 const options = Object.fromEntries(
   process.argv.slice(2).map((arg) => {
     const index = arg.indexOf("=");
@@ -38,16 +37,20 @@ const exists = async (p) => {
   }
 };
 const catalog = await read(catalogFile);
+const selection = options.selection ? await read(options.selection) : null;
+const category = selection?.libraryCategory ?? "01";
+if (!["01", "02", "03", "04"].includes(category)) throw new Error("Invalid library category");
+const batch = selection?.batch ?? path.join(root, "batch-1000-2026-10-17");
+const manifestFile = path.join(batch, "manifest.json");
 const manifest = await read(manifestFile);
 if (await exists(runFile))
   throw new Error("Run already exists; inspect before resuming");
-const selection = options.selection ? await read(options.selection) : null;
 const sourceHashes = selection
   ? new Set(selection.jobs.map((job) => job.sourceSha256))
   : null;
 const selected = [];
 for (const row of catalog.images) {
-  if (!row.category.startsWith("01 -") || !row.cleanAvailable) continue;
+  if (!row.category.startsWith(category + " -") || !row.cleanAvailable) continue;
   if (sourceHashes && !sourceHashes.has(row.sourceSha256)) continue;
   const folder = path.join(library, row.folder);
   const names = await fs.readdir(folder);
@@ -87,7 +90,7 @@ const logo = await sharp(logoBytes).trim({ threshold: 8 }).png().toBuffer();
 const run = {
   createdAt: new Date().toISOString(),
   requested: expected,
-  scope: "category-1",
+  scope: `category-${Number(category)}`,
   logoFile,
   logoSha256: hash(logoBytes),
   placement: manifest.logoPlacement,
@@ -103,7 +106,7 @@ for (const selectedJob of selected) {
     .raw()
     .toBuffer({ resolveWithObject: true });
   const { width, height } = source.info;
-  const stamp = await sharp(logo)
+  let stamp = await sharp(logo)
     .resize({
       width: Math.round(width * manifest.logoPlacement.visibleWidthRatio),
     })
@@ -113,13 +116,16 @@ for (const selectedJob of selected) {
     12,
     Math.round(height * manifest.logoPlacement.bottomMarginRatio),
   );
-  const box = {
+  let box = {
     left: Math.round((width - stamp.info.width) / 2),
     top: height - margin - stamp.info.height,
     width: stamp.info.width,
     height: stamp.info.height,
     bottomMargin: margin,
   };
+  if (job.logoPlacementPolicy === "blank_margin") {
+    ({ stamp, box } = await blankMarginLogo(source, logo, manifest.logoPlacement.visibleWidthRatio, job.blankMarginMinimumChannel ?? 245));
+  }
   if (box.top < 0) throw new Error("Logo does not fit");
   await sharp(source.data, { raw: source.info })
     .composite([{ input: stamp.data, left: box.left, top: box.top }])
@@ -169,9 +175,10 @@ for (const selectedJob of selected) {
   job.status = "rendered_pending_visual_review";
   const folder = path.join(library, selectedJob.folder);
   const libraryName = "03 - Đã ghép logo - chờ duyệt.png";
-  await fs.symlink(
-    path.relative(folder, selectedJob.after),
+  await fs.copyFile(
+    selectedJob.after,
     path.join(folder, libraryName),
+    fs.constants.COPYFILE_EXCL,
   );
   const receipt = {
     number: job.number,
@@ -209,7 +216,7 @@ for (const result of run.results) {
   const row = currentCatalog.images.find(
     (r) => r.sourceSha256 === result.sourceSha256,
   );
-  if (!row?.category.startsWith("01 -"))
+  if (!row?.category.startsWith(category + " -"))
     throw new Error("Library category changed");
   row.logoAvailable = true;
   row.logoOutput = {
@@ -246,7 +253,7 @@ readme = readme.replace(
   "Chỉ tạo bản làm sạch từ ảnh gốc, chưa ghép logo mới; không thay đổi website, SQL hay R2.",
   "Giữ riêng bản sạch chưa logo và bản đã ghép logo; không thay đổi website, SQL hay R2.",
 );
-readme += `\nMục 01: đã ghép logo cho ${expected} bản sạch bổ sung ngày ${new Date().toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}; giữ bản 02 chưa logo, bản 03 có logo đang chờ duyệt.\n`;
+readme += `\nMục ${category}: đã ghép logo cho ${expected} bản sạch bổ sung ngày ${new Date().toLocaleDateString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}; giữ bản 02 chưa logo, bản 03 có logo đang chờ duyệt.\n`;
 await fs.writeFile(readmeFile, readme);
 run.status = "complete_pending_user_review";
 run.completedAt = new Date().toISOString();

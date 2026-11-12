@@ -100,7 +100,7 @@ export function WorkshopLanding({ locale = "vi" }: { locale?: SiteLocale }) {
             <div className={styles.heroVisual}>
               <div className={styles.heroImage}>
                 <Image
-                  src="/images/gioi-thieu/xuong-san-xuat.png"
+                  src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp"
                   alt={copy.title}
                   fill
                   priority

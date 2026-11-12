@@ -156,7 +156,7 @@ export async function InteriorDesignExperiencePage({
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/gioi-thieu/banner.png"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"
               alt={t("Không gian phòng khách sáng và ấm áp")}
               fill
               priority
@@ -376,7 +376,7 @@ export async function InteriorDesignExperiencePage({
         </div>
       </section>
       <section className={styles.bottomCta}>
-        <Image src="/images/gioi-thieu/banner.png" alt="" fill sizes="100vw" />
+        <Image src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp" alt="" fill sizes="100vw" />
         <div className={styles.bottomShade} />
         <div className={styles.bottomContent}>
           <h2>{t("Bạn đang lên ý tưởng thiết kế nội thất?")}</h2>

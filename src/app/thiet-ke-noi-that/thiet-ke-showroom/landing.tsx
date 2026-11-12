@@ -141,7 +141,7 @@ export function ShowroomDesignPage({ locale = "vi" }: { locale?: SiteLocale }) {
           <div className={styles.heroVisual}>
             <div className={styles.heroImage}>
               <Image
-                src="/images/thiet-ke-noi-that/showroom/hero.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/articles/bao-gia-thiet-ke-noi-that-chi-phi-hop-ly/f82e0ced56a17952.webp"
                 alt={t("Thiết kế showroom ấn tượng")}
                 fill
                 priority
@@ -208,7 +208,7 @@ export function ShowroomDesignPage({ locale = "vi" }: { locale?: SiteLocale }) {
           >
             <div className={styles.showcaseImage}>
               <Image
-                src="/images/thiet-ke-noi-that/showroom/mau-sac.webp"
+                src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/articles/bao-gia-thiet-ke-noi-that-chi-phi-hop-ly/f82e0ced56a17952.webp"
                 alt={t("Phong cách trang trí đi đôi với màu sắc thương hiệu")}
                 fill
                 sizes="(min-width: 900px) 52vw, 100vw"
@@ -297,7 +297,7 @@ export function ShowroomDesignPage({ locale = "vi" }: { locale?: SiteLocale }) {
 
       <section className={styles.finalCta}>
         <Image
-          src="/images/thiet-ke-noi-that/showroom/hero.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/articles/bao-gia-thiet-ke-noi-that-chi-phi-hop-ly/f82e0ced56a17952.webp"
           alt={t("Không gian showroom")}
           fill
           sizes="100vw"

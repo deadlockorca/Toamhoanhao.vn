@@ -84,8 +84,8 @@ export function pricingOverviewMetadata(
     title,
     description,
     interior
-      ? "/images/bao-gia/hero.webp"
-      : "/images/bao-gia/xay-dung/nha-pho.webp",
+      ? "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/5492d44c843bedf4.webp"
+      : "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/a783d11627aabd45.webp",
     locale,
   );
 }

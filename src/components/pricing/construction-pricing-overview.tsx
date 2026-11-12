@@ -165,7 +165,7 @@ export async function ConstructionPricingOverview({
           </div>
           <div className={styles.heroVisual}>
             <Image
-              src="/images/bao-gia/xay-dung/nha-pho.webp"
+              src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/a783d11627aabd45.webp"
               alt={t("Thiết kế nhà phố")}
               fill
               priority
@@ -359,7 +359,7 @@ export async function ConstructionPricingOverview({
       </section>
       <section className={styles.bottomCta}>
         <Image
-          src="/images/bao-gia/xay-dung/nha-pho.webp"
+          src="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/bao-gia/xay-dung/a783d11627aabd45.webp"
           alt=""
           fill
           sizes="100vw"

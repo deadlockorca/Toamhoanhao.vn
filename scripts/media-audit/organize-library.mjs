@@ -124,7 +124,7 @@ async function link(source, relative, hard = false) {
   await fs.access(source);
   const target = path.join(stage, relative);
   if (hard) await fs.link(source, target);
-  else await fs.symlink(path.relative(path.dirname(target), source), target);
+  else await fs.copyFile(source, target, fs.constants.COPYFILE_EXCL);
 }
 for (const g of Object.keys(groups))
   for (const s of Object.keys(states))
@@ -236,7 +236,7 @@ const summary = {
   categories: counts,
   classificationOverrides: drawings.size,
   linkPolicy:
-    "Originals use hard links with image extensions; outputs use relative symbolic links",
+    "Originals use hard links with image extensions; outputs are independent regular files inside Ảnh",
   generationStarted: false,
   databaseAndR2Writes: 0,
 };

@@ -35,7 +35,7 @@ export function villaInteriorMetadata(locale: SiteLocale): Metadata {
       url,
       images: [
         {
-          url: "/images/thiet-ke-noi-that/biet-thu/hero.webp",
+          url: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/a9be0fcea5a96b9f.webp",
           alt: copy.title,
         },
       ],
@@ -44,7 +44,7 @@ export function villaInteriorMetadata(locale: SiteLocale): Metadata {
       card: "summary_large_image",
       title: copy.title,
       description: copy.intro,
-      images: ["/images/thiet-ke-noi-that/biet-thu/hero.webp"],
+      images: ["https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/biet-thu/a9be0fcea5a96b9f.webp"],
     },
   };
 }

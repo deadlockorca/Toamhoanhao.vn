@@ -35,7 +35,7 @@ export function kidsInteriorMetadata(locale: SiteLocale): Metadata {
       url,
       images: [
         {
-          url: "/images/thiet-ke-noi-that/phong-tre-em/hero.webp",
+          url: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/phong-tre-em/bd01c102c48666ea.webp",
           alt: copy.heroParts.join(" "),
         },
       ],
@@ -44,7 +44,7 @@ export function kidsInteriorMetadata(locale: SiteLocale): Metadata {
       card: "summary_large_image",
       title: copy.heroParts.join(" "),
       description: copy.intro,
-      images: ["/images/thiet-ke-noi-that/phong-tre-em/hero.webp"],
+      images: ["https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thiet-ke-noi-that/phong-tre-em/bd01c102c48666ea.webp"],
     },
   };
 }

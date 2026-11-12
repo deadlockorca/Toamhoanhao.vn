@@ -49,7 +49,7 @@ export function contactMetadata(locale: SiteLocale): Metadata {
         .map((language) => ogLocales[language]),
       images: [
         {
-          url: "/images/gioi-thieu/banner.png",
+          url: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp",
           alt: messages["Không gian nội thất Tổ Ấm Hoàn Hảo"],
         },
       ],
@@ -58,7 +58,7 @@ export function contactMetadata(locale: SiteLocale): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: ["/images/gioi-thieu/banner.png"],
+      images: ["https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp"],
     },
   };
 }

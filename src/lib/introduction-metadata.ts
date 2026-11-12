@@ -11,13 +11,13 @@ import {
 import { siteBaseUrl, siteLocales, type SiteLocale } from "@/lib/locale";
 
 const images: Record<IntroductionPagePath, string> = {
-  "/gioi-thieu": "/images/gioi-thieu/banner.png",
-  "/gioi-thieu/tuyen-dung": "/images/gioi-thieu/tuyen-dung.png",
-  "/gioi-thieu/doi-ngu-kien-truc-su": "/images/doi-ngu/banner.png",
+  "/gioi-thieu": "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp",
+  "/gioi-thieu/tuyen-dung": "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/7846233a5b933695.webp",
+  "/gioi-thieu/doi-ngu-kien-truc-su": "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/doi-ngu/22e4686c98db9806.webp",
   "/gioi-thieu/nang-luc-thiet-ke-va-thi-cong":
-    "/images/nang-luc/living-room-v2.webp",
+    "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/nang-luc/08704159fda97c47.webp",
   "/gioi-thieu/xuong-san-xuat-noi-that":
-    "/images/gioi-thieu/xuong-san-xuat.png",
+    "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/gioi-thieu/0a5ec0d1a4de0f3e.webp",
 };
 const ogLocales: Record<SiteLocale, string> = {
   vi: "vi_VN",

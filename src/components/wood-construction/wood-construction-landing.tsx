@@ -21,7 +21,7 @@ export function WoodConstructionLanding({
     <ResidentialConstructionLanding
       locale={locale}
       copy={copy}
-      heroImage="/images/thi-cong-noi-that/do-go/chuan-chat-luong.webp"
+      heroImage="https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/thi-cong-noi-that/do-go/5fac60ef33ae425f.webp"
       featureImages={featureImages}
       sectionId="yeu-cau"
       beforeAdvice={

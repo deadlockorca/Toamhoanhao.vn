@@ -7,6 +7,8 @@ if (!runFile) throw Error("Missing --run");
 const read = async (p) => JSON.parse(await fs.readFile(p, "utf8"));
 const run = await read(runFile),
   batch = run.batch;
+const category = run.libraryCategory ?? "01";
+if (!["01", "02", "03", "04"].includes(category)) throw new Error("Invalid library category");
 const library = path.join(path.dirname(batch), "Ảnh");
 const catalog = await read(path.join(library, "danh-mục.json"));
 const manifest = await read(path.join(batch, "manifest.json"));
@@ -78,7 +80,7 @@ for (const selected of run.jobs) {
   }
   const row = catalog.images.find((r) => r.sourceSha256 === j.sourceSha256);
   if (
-    !row?.category.startsWith("01 -") ||
+    !row?.category.startsWith(category + " -") ||
     !row.state.startsWith("02 -") ||
     !row.cleanAvailable ||
     !row.logoAvailable
