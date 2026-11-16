@@ -4,6 +4,10 @@ import {
 } from "@/lib/admin-data-mappers";
 import { connection } from "next/server";
 import { prisma } from "@/lib/prisma";
+import {
+  importedPortfolioProjects,
+  importedPortfolioSamples,
+} from "@/data/portfolio-imports";
 
 /**
  * Include đầy đủ cho trang chi tiết (cần metrics, thư viện ảnh, story, mặt bằng…).
@@ -55,43 +59,75 @@ const designSampleListingInclude = { detail: true } as const;
 export async function getPublicProjects(fullDetails = false) {
   await connection();
   const dbProjects = await prisma.project.findMany({
-    where: { status: "published" },
+    where: {
+      OR: [
+        { status: "published" },
+        { slug: { in: importedPortfolioProjects.map((item) => item.slug) } },
+      ],
+    },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
     include: fullDetails ? projectDetailInclude : projectListingInclude,
   });
 
-  return dbProjects.map(mapDbProjectToProject);
+  const existingSlugs = new Set(dbProjects.map((item) => item.slug));
+  return [
+    ...dbProjects
+      .filter((item) => item.status === "published")
+      .map(mapDbProjectToProject),
+    ...importedPortfolioProjects.filter(
+      (item) => !existingSlugs.has(item.slug),
+    ),
+  ];
 }
 
 export async function getPublicProjectBySlug(slug: string) {
   await connection();
   const dbProject = await prisma.project.findFirst({
-    where: { slug, status: "published" },
+    where: { slug },
     include: projectDetailInclude,
   });
 
-  return dbProject ? mapDbProjectToProject(dbProject) : undefined;
+  return dbProject
+    ? dbProject.status === "published"
+      ? mapDbProjectToProject(dbProject)
+      : undefined
+    : importedPortfolioProjects.find((item) => item.slug === slug);
 }
 
 export async function getPublicDesignSamples(fullDetails = false) {
   await connection();
   const dbSamples = await prisma.designSample.findMany({
-    where: { status: "published" },
+    where: {
+      OR: [
+        { status: "published" },
+        { slug: { in: importedPortfolioSamples.map((item) => item.slug) } },
+      ],
+    },
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
     include: fullDetails
       ? designSampleDetailInclude
       : designSampleListingInclude,
   });
 
-  return dbSamples.map(mapDbDesignSampleToDesignSample);
+  const existingSlugs = new Set(dbSamples.map((item) => item.slug));
+  return [
+    ...dbSamples
+      .filter((item) => item.status === "published")
+      .map(mapDbDesignSampleToDesignSample),
+    ...importedPortfolioSamples.filter((item) => !existingSlugs.has(item.slug)),
+  ];
 }
 
 export async function getPublicDesignSampleBySlug(slug: string) {
   await connection();
   const dbSample = await prisma.designSample.findFirst({
-    where: { slug, status: "published" },
+    where: { slug },
     include: designSampleDetailInclude,
   });
 
-  return dbSample ? mapDbDesignSampleToDesignSample(dbSample) : undefined;
+  return dbSample
+    ? dbSample.status === "published"
+      ? mapDbDesignSampleToDesignSample(dbSample)
+      : undefined
+    : importedPortfolioSamples.find((item) => item.slug === slug);
 }

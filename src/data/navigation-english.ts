@@ -1,3 +1,4 @@
+import { compactNavigationLabel } from "@/data/navigation-menu-copy";
 import { localizedPageHref } from "@/lib/localized-pages";
 import { navigation, type NavigationItem } from "@/data/site";
 import { translateJapaneseNavigation } from "@/data/navigation-japanese";
@@ -5,6 +6,11 @@ import { translateAdditionalNavigation } from "@/data/navigation-additional";
 import { isAdditionalLocale, type SiteLocale } from "@/lib/locale";
 
 const labels: Record<string, string> = {
+  "Mẫu nhà phố đẹp": "Townhouse designs",
+  "Mẫu nhà phố 2 tầng": "Two-storey townhouses",
+  "Mẫu nhà phố 3, 4 tầng": "Three- and four-storey townhouses",
+  "Mẫu nhà cấp 4 đẹp": "Single-storey houses",
+
   "Giới thiệu": "About us",
   "Về Tổ Ấm Hoàn Hảo": "About To Am Hoan Hao",
   "Năng lực thiết kế và thi công": "Design and construction capabilities",
@@ -85,12 +91,20 @@ function translateNavigation(locale: SiteLocale) {
 }
 
 export function getNavigation(locale: SiteLocale) {
-  return translateNavigation(locale).map((item) => ({
-    ...item,
-    href: item.href ? localizedPageHref(item.href, locale) : item.href,
-    children: item.children?.map((child) => ({
-      ...child,
-      href: child.href ? localizedPageHref(child.href, locale) : child.href,
-    })),
-  }));
+  function localize(
+    item: NavigationItem,
+    source: NavigationItem,
+  ): NavigationItem {
+    return {
+      ...item,
+      label: compactNavigationLabel(source.label, locale) ?? item.label,
+      href: source.href ? localizedPageHref(source.href, locale) : undefined,
+      children: item.children?.map((child, index) =>
+        localize(child, source.children![index]),
+      ),
+    };
+  }
+  return translateNavigation(locale).map((item, index) =>
+    localize(item, navigation[index]),
+  );
 }

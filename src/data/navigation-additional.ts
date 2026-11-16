@@ -12,6 +12,43 @@ const index: Record<AdditionalLocale, number> = {
 type Row = [string, string, string, string, string, string, string];
 const rows: Row[] = [
   [
+    "Townhouse designs",
+    "타운하우스 디자인",
+    "Radhusdesign",
+    "Modèles de maisons de ville",
+    "Дизайн городских домов",
+    "Diseños de casas urbanas",
+    "联排住宅设计",
+  ],
+  [
+    "Two-storey townhouses",
+    "2층 타운하우스",
+    "Radhus med två våningar",
+    "Maisons de ville à deux niveaux",
+    "Двухэтажные городские дома",
+    "Casas urbanas de dos plantas",
+    "两层联排住宅",
+  ],
+  [
+    "Three- and four-storey townhouses",
+    "3·4층 타운하우스",
+    "Radhus med tre och fyra våningar",
+    "Maisons de ville à trois et quatre niveaux",
+    "Трёх- и четырёхэтажные городские дома",
+    "Casas urbanas de tres y cuatro plantas",
+    "三层及四层联排住宅",
+  ],
+  [
+    "Single-storey houses",
+    "단층 주택",
+    "Enplanshus",
+    "Maisons de plain-pied",
+    "Одноэтажные дома",
+    "Casas de una planta",
+    "单层住宅",
+  ],
+
+  [
     "About us",
     "회사 소개",
     "Om oss",

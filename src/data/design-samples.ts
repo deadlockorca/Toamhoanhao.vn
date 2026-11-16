@@ -102,32 +102,32 @@ export type DesignCategoryCard = {
 export const designCategoryCards: DesignCategoryCard[] = [
   {
     title: "Mẫu thiết kế nội thất chung cư",
-    href: "/mau-thiet-ke?danh-muc=chung-cu#design-list",
+    href: "/mau-thiet-ke?danh-muc=chung-cu#portfolio-list",
     icon: Building2,
   },
   {
     title: "Mẫu thiết kế nhà phố",
-    href: "/mau-thiet-ke?danh-muc=nha-pho#design-list",
+    href: "/mau-thiet-ke?danh-muc=nha-pho#portfolio-list",
     icon: Home,
   },
   {
     title: "Mẫu thiết kế biệt thự",
-    href: "/mau-thiet-ke?danh-muc=biet-thu#design-list",
+    href: "/mau-thiet-ke?danh-muc=biet-thu#portfolio-list",
     icon: House,
   },
   {
     title: "Mẫu phòng khách",
-    href: "/mau-thiet-ke?danh-muc=phong-khach#design-list",
+    href: "/mau-thiet-ke?danh-muc=phong-khach#portfolio-list",
     icon: Sofa,
   },
   {
     title: "Mẫu phòng ngủ",
-    href: "/mau-thiet-ke?danh-muc=phong-ngu#design-list",
+    href: "/mau-thiet-ke?danh-muc=phong-ngu#portfolio-list",
     icon: BedDouble,
   },
   {
     title: "Mẫu phòng bếp",
-    href: "/mau-thiet-ke?danh-muc=phong-bep#design-list",
+    href: "/mau-thiet-ke?danh-muc=phong-bep#portfolio-list",
     icon: Utensils,
   },
 ];
@@ -157,8 +157,8 @@ const designCategorySlugs: Record<DesignSampleCategory, string | null> = {
 export function getDesignCategoryHref(category: DesignSampleCategory) {
   const slug = designCategorySlugs[category];
   return slug
-    ? `/mau-thiet-ke?danh-muc=${slug}#design-list`
-    : "/mau-thiet-ke#design-list";
+    ? `/mau-thiet-ke?danh-muc=${slug}#portfolio-list`
+    : "/mau-thiet-ke#portfolio-list";
 }
 
 export function getDesignCategoryFromQuery(

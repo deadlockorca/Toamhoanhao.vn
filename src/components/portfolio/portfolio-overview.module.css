@@ -167,6 +167,7 @@
 }
 
 .listSection {
+  scroll-margin-top: 96px;
   padding: 40px 0 30px;
   background: #fff;
 }
@@ -773,5 +774,155 @@
   }
   .workshopCopy {
     padding: 22px;
+  }
+}
+
+.filterSummary {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+.filterSummary > p {
+  margin: 0;
+  color: #687168;
+  font-size: 13px;
+}
+.filterChips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+}
+.filterChips > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  max-width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #dfdfd6;
+  border-radius: 20px;
+  background: #f2f3ec;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.filterChips svg {
+  flex: none;
+}
+.resetFilters {
+  color: #7b4c2e;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.filterPanel input[type="search"] {
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #e2e3df;
+  border-radius: 6px;
+  background: white;
+  color: #333d3a;
+  font: inherit;
+}
+.filterPanel select:focus-visible,
+.filterPanel input:focus-visible,
+.filterChips a:focus-visible {
+  outline: 2px solid #68715b;
+  outline-offset: 2px;
+}
+.mobileFilterTrigger {
+  display: none;
+}
+.filterDialog {
+  margin: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  width: min(100% - 24px, 560px);
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  color: #333d3a;
+  background: #fcfcfa;
+}
+.filterDialog::backdrop {
+  background: #1c231c88;
+}
+.dialogHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 14px 18px;
+  background: #fcfcfa;
+  border-bottom: 1px solid #e2e3df;
+}
+.dialogHeading h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.dialogHeading button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #eef0e9;
+  color: #333d3a;
+  cursor: pointer;
+}
+.filterDialog .filterPanel {
+  border: 0;
+  box-shadow: none;
+  padding: 18px 18px max(24px, env(safe-area-inset-bottom));
+}
+@media (max-width: 900px) {
+  .listGrid {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    display: block;
+  }
+  .desktopFilters,
+  .sidebar .consultCard {
+    display: none;
+  }
+  .mobileFilterTrigger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 45px;
+    border: 1px solid #68715b;
+    border-radius: 8px;
+    background: white;
+    color: #47503f;
+    font: inherit;
+    cursor: pointer;
+  }
+  .mobileFilterTrigger span {
+    padding: 2px 7px;
+    border-radius: 12px;
+    background: #68715b;
+    color: white;
+    font-size: 12px;
+  }
+  .filterDialog .filterPanel {
+    grid-template-columns: 1fr;
+  }
+  .filterDialog .filterPanel label,
+  .filterDialog .searchButton {
+    grid-column: 1;
+  }
+  .filterDialog select,
+  .filterDialog input[type="search"] {
+    font-size: 16px;
+    min-height: 44px;
   }
 }

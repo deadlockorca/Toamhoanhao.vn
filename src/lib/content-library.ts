@@ -1,7 +1,7 @@
 import type { DesignSample } from "@/data/design-samples";
 import type { Project } from "@/data/projects";
 
-export type LibraryContentType = "project" | "designSample";
+export type LibraryContentType = "project" | "designSample" | "article";
 
 export type LibraryCategory =
   | "Căn hộ"
@@ -46,17 +46,21 @@ export type LibraryItem = {
   href: string;
   thumbnail: string;
   style: string;
+  styleKey?: string;
+  bedroomsKey?: string;
   area?: string;
   bedrooms?: string;
   location?: string;
   summary: string;
   featured?: boolean;
+  topics?: string[];
 };
 
 export const contentTypeFilters = [
   { value: "all", label: "Tất cả" },
   { value: "project", label: "Công trình thực tế" },
   { value: "designSample", label: "Mẫu thiết kế" },
+  { value: "article", label: "Bài tham khảo" },
 ] as const;
 
 export function createContentLibrary(

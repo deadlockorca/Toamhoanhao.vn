@@ -1,5 +1,8 @@
 import {
-  projectText,
+  parsePortfolioFilters,
+  type PortfolioQuery,
+} from "@/lib/portfolio-filters";
+import {
   getProjectUiMessages,
   hasProjectTranslation,
   localizeProject,
@@ -13,13 +16,10 @@ import { localizedPageHref } from "@/lib/localized-pages";
 import { PortfolioOverview } from "@/components/portfolio/portfolio-overview";
 import { SiteFooter } from "@/components/site-footer";
 import {
-  createContentLibrary,
-  getProjectCategoryFromQuery,
-} from "@/lib/content-library";
-import {
-  getApartmentAreaTopic,
-  matchesApartmentArea,
-} from "@/data/apartment-menu";
+  createPortfolioLibrary,
+  getPortfolioTopic,
+  portfolioTopicLabel,
+} from "@/lib/portfolio-topics";
 import {
   getPublicDesignSamples,
   getPublicProjects,
@@ -27,11 +27,7 @@ import {
 import type { SiteLocale } from "@/lib/locale";
 
 export type ProjectsPageProps = {
-  searchParams: Promise<{
-    "danh-muc"?: string | string[];
-    "dien-tich"?: string | string[];
-    trang?: string | string[];
-  }>;
+  searchParams: Promise<PortfolioQuery>;
 };
 
 export async function ProjectsContent({
@@ -39,37 +35,27 @@ export async function ProjectsContent({
   locale = "vi",
 }: ProjectsPageProps & { locale?: SiteLocale }) {
   const query = await searchParams;
-  const categoryQuery = Array.isArray(query["danh-muc"])
-    ? query["danh-muc"][0]
-    : query["danh-muc"];
-  const initialCategory = getProjectCategoryFromQuery(categoryQuery);
-  const areaQuery = Array.isArray(query["dien-tich"])
-    ? query["dien-tich"][0]
-    : query["dien-tich"];
-  const activeArea = getApartmentAreaTopic(areaQuery);
+  const initialFilters = parsePortfolioFilters(query, "projects");
   const [projects, designSamples] = await Promise.all([
-    getPublicProjects(true),
-    getPublicDesignSamples(true),
+    getPublicProjects(locale !== "vi"),
+    getPublicDesignSamples(locale !== "vi"),
   ]);
-  const visibleProjects = activeArea
-    ? projects.filter(
-        (project) =>
-          project.category === "Căn hộ" &&
-          matchesApartmentArea(project.area, activeArea),
-      )
-    : projects;
-  const visibleSamples = activeArea
-    ? designSamples.filter(
-        (sample) =>
-          sample.category === "Chung cư" &&
-          matchesApartmentArea(sample.area, activeArea),
-      )
-    : designSamples;
-  const pageQuery = Array.isArray(query.trang) ? query.trang[0] : query.trang;
-  const requestedPage = Number.parseInt(pageQuery ?? "1", 10);
+  const activeTopic = getPortfolioTopic(initialFilters.topic);
+  const library = createPortfolioLibrary(
+    projects
+      .filter((project) => hasProjectTranslation(project, locale))
+      .map((project) => localizeProject(project, locale)),
+    designSamples
+      .filter((sample) => hasDesignSampleTranslation(sample, locale))
+      .map((sample) => localizeDesignSample(sample, locale)),
+    locale,
+    { projects, samples: designSamples },
+  );
+  const visibleItems = library;
   return (
     <>
       <PortfolioOverview
+        key={JSON.stringify([locale, initialFilters])}
         mode="projects"
         locale={locale}
         messages={getProjectUiMessages(locale)}
@@ -82,23 +68,13 @@ export async function ProjectsContent({
                 ),
           ),
         ).toString()}
-        initialPage={
-          Number.isFinite(requestedPage) ? Math.max(1, requestedPage) : 1
-        }
-        items={createContentLibrary(
-          visibleProjects
-            .filter((project) => hasProjectTranslation(project, locale))
-            .map((project) => localizeProject(project, locale)),
-          visibleSamples
-            .filter((sample) => hasDesignSampleTranslation(sample, locale))
-            .map((sample) => localizeDesignSample(sample, locale)),
-        ).map((item) => ({
+        items={visibleItems.map((item) => ({
           ...item,
           href: localizedPageHref(item.href, locale),
         }))}
-        initialCategory={activeArea ? "Căn hộ" : initialCategory}
+        initialFilters={initialFilters}
         initialTopicLabel={
-          activeArea ? projectText(activeArea.label, locale) : undefined
+          activeTopic ? portfolioTopicLabel(activeTopic, locale) : undefined
         }
       />
       <SiteFooter locale={locale} />

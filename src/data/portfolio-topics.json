@@ -1,0 +1,186 @@
+[
+  {
+    "slug": "mau-biet-thu-dep",
+    "label": "Mẫu biệt thự đẹp",
+    "legacyUrl": "https://toamhoanhao.vn/mau-biet-thu-dep/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-biet-thu-2-tang",
+    "label": "Mẫu biệt thự 2 tầng",
+    "legacyUrl": "https://toamhoanhao.vn/mau-biet-thu-2-tang/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-biet-thu-3-tang",
+    "label": "Mẫu biệt thự 3 tầng",
+    "legacyUrl": "https://toamhoanhao.vn/mau-biet-thu-3-tang/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-biet-thu-co-dien",
+    "label": "Mẫu biệt thự cổ điển",
+    "legacyUrl": "https://toamhoanhao.vn/mau-biet-thu-vuon/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-nha-vuon-dep",
+    "label": "Mẫu nhà vườn đẹp",
+    "legacyUrl": "https://toamhoanhao.vn/mau-nha-vuon-dep/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-biet-thu-mai-thai-mai-nhat",
+    "label": "Mẫu biệt thự mái Thái, mái Nhật",
+    "legacyUrl": "https://toamhoanhao.vn/mau-biet-thu-mini/",
+    "group": "villa"
+  },
+  {
+    "slug": "resort-khach-san-nha-hang",
+    "label": "Resort, khách sạn, nhà hàng",
+    "legacyUrl": "https://toamhoanhao.vn/cac-thiet-ke-resort-khach-san-to-am-hoan-hao/",
+    "group": "villa"
+  },
+  {
+    "slug": "mau-nha-pho-dep",
+    "label": "Mẫu nhà phố đẹp",
+    "legacyUrl": "https://toamhoanhao.vn/mau-nha-pho-dep/",
+    "group": "townhouse"
+  },
+  {
+    "slug": "mau-nha-pho-2-tang",
+    "label": "Mẫu nhà phố 2 tầng",
+    "legacyUrl": "https://toamhoanhao.vn/bo-suu-tap-thiet-ke-nha-pho-2-tang-dep-an-tuong/",
+    "group": "townhouse"
+  },
+  {
+    "slug": "mau-nha-pho-3-4-tang",
+    "label": "Mẫu nhà phố 3, 4 tầng",
+    "legacyUrl": "https://toamhoanhao.vn/mau-nha-3-tang-dep/",
+    "group": "townhouse"
+  },
+  {
+    "slug": "mau-nha-cap-4",
+    "label": "Mẫu nhà cấp 4 đẹp",
+    "legacyUrl": "https://toamhoanhao.vn/mau-nha-cap-4-dep/",
+    "group": "townhouse"
+  },
+  {
+    "slug": "penthouse-duplex",
+    "label": "Penthouse, Duplex",
+    "legacyUrl": "https://toamhoanhao.vn/thiet-ke-penhouse-sieu-sang-202/",
+    "group": "apartment"
+  },
+  {
+    "slug": "can-ho-115-120",
+    "label": "Chung cư 115–120m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-115m2-120m2/",
+    "group": "area",
+    "min": 115,
+    "max": 120
+  },
+  {
+    "slug": "can-ho-110-115",
+    "label": "Chung cư 110–115m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-110m2-115m2/",
+    "group": "area",
+    "min": 110,
+    "max": 115
+  },
+  {
+    "slug": "can-ho-105-110",
+    "label": "Chung cư 105–110m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-105m2-110m2/",
+    "group": "area",
+    "min": 105,
+    "max": 110
+  },
+  {
+    "slug": "can-ho-95-100",
+    "label": "Chung cư 95–100m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-100m2-105m2/",
+    "group": "area",
+    "min": 95,
+    "max": 100
+  },
+  {
+    "slug": "can-ho-90-95",
+    "label": "Chung cư 90–95m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-90m2-95m2/",
+    "group": "area",
+    "min": 90,
+    "max": 95
+  },
+  {
+    "slug": "can-ho-85-90",
+    "label": "Chung cư 85–90m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-85m2-90m2/",
+    "group": "area",
+    "min": 85,
+    "max": 90
+  },
+  {
+    "slug": "can-ho-80-85",
+    "label": "Chung cư 80–85m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-80m2-85m2/",
+    "group": "area",
+    "min": 80,
+    "max": 85
+  },
+  {
+    "slug": "can-ho-75-80",
+    "label": "Chung cư 75–80m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-75m2-80m2/",
+    "group": "area",
+    "min": 75,
+    "max": 80
+  },
+  {
+    "slug": "can-ho-70-75",
+    "label": "Chung cư 70–75m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-70m2-75m2/",
+    "group": "area",
+    "min": 70,
+    "max": 75
+  },
+  {
+    "slug": "can-ho-65-70",
+    "label": "Chung cư 65–70m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-65m2-70m2/",
+    "group": "area",
+    "min": 65,
+    "max": 70
+  },
+  {
+    "slug": "can-ho-55-60",
+    "label": "Chung cư 55–60m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-55m2-60m2/",
+    "group": "area",
+    "min": 55,
+    "max": 60
+  },
+  {
+    "slug": "can-ho-50-55",
+    "label": "Chung cư 50–55m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-50m2-55m2/",
+    "group": "area",
+    "min": 50,
+    "max": 55
+  },
+  {
+    "slug": "can-ho-45-50",
+    "label": "Chung cư 45–50m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-45m2-50m2/",
+    "group": "area",
+    "min": 45,
+    "max": 50
+  },
+  {
+    "slug": "can-ho-40-45",
+    "label": "Chung cư 40–45m²",
+    "legacyUrl": "https://toamhoanhao.vn/tag/chung-cu-40m2-45m2/",
+    "group": "area",
+    "min": 40,
+    "max": 45
+  }
+]

@@ -1,0 +1,773 @@
+{
+  "project:test-database-project": ["can-ho-115-120"],
+  "project:test-project-with-blocks": ["can-ho-85-90"],
+  "project:can-ho-the-matrix-one": ["can-ho-115-120"],
+  "project:vinhomes-ocean-park": ["can-ho-85-90", "can-ho-90-95"],
+  "project:biet-thu-riverside": ["mau-biet-thu-dep"],
+  "project:nha-pho-modern-garden": ["mau-nha-pho-dep"],
+  "project:can-ho-sun-grand-city": ["can-ho-105-110", "can-ho-110-115"],
+  "project:biet-thu-green-villa": ["mau-biet-thu-dep"],
+  "project:nha-pho-harmony-house": ["mau-nha-pho-dep"],
+  "project:can-ho-lumiere-riverside": ["can-ho-90-95", "can-ho-95-100"],
+  "project:biet-thu-lakeview": ["mau-biet-thu-dep"],
+  "project:cong-trinh-biet-thu-vinhomes-riverside-tieu-khu-phong-lan": [
+    "mau-biet-thu-dep"
+  ],
+  "project:du-an-anh-hung-biet-thu-nha-vuon-bac-ninh": [
+    "mau-biet-thu-co-dien",
+    "mau-biet-thu-dep",
+    "mau-nha-vuon-dep"
+  ],
+  "project:du-an-chi-thuy-biet-thu-cao-cap-kdt-splendora": ["mau-biet-thu-dep"],
+  "project:thi-cong-biet-thu-ansshohavilla": ["mau-biet-thu-dep"],
+  "project:thi-cong-thiet-ke-biet-thu-mai-thai-800m2-quang-binh": [
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat"
+  ],
+  "project:thiet-ke-kien-truc-biet-thu-vung-tau-anh-hung": ["mau-biet-thu-dep"],
+  "project:thiet-ke-va-thi-cong-biet-thu-800-m2": ["mau-biet-thu-dep"],
+  "project:cong-trinh-khach-san-yudu-le-van-luong-thanh-xuan-ha-noi": [
+    "resort-khach-san-nha-hang"
+  ],
+  "project:can-ho-chi-lien-phong-306-toa-nha-oriental-westlake": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:cong-trinh-can-ho-anh-duong-can-1805-1905-toa-a2-vinhomes-my-dinh-ha-noi": [
+    "can-ho-110-115",
+    "can-ho-115-120"
+  ],
+  "project:cong-trinh-can-ho-anh-hung-phong-807-toa-n02-t1-ngoai-giao-doan": [
+    "can-ho-115-120"
+  ],
+  "project:du-an-anh-duong-phong-cuoi-chung-cu-nam-do": ["can-ho-40-45"],
+  "project:du-an-anh-linh-chung-cu-mulbery-land-duong-nguyen-van-loc-trung-van-tu-liem-ha-noi": [
+    "can-ho-95-100"
+  ],
+  "project:du-an-anh-linh-chung-cu-sunrise-apartment-kdt-ha-long-marina-phuong-bai-chay-tp-ha-long": [
+    "can-ho-115-120"
+  ],
+  "project:du-an-anh-tuan-anh-khu-chung-cu-mipec-duong-phuc-la-van-phu-ha-dong": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:du-an-chi-hien-phong-khach-phong-bep-chung-cu-the-one-khu-do-thi-gamuda": [
+    "can-ho-45-50",
+    "can-ho-50-55"
+  ],
+  "project:du-an-chi-tam-phong-1802-chung-cu-cao-cap-vp2-ban-dao-linh-dam-hoang-mai-ha-noi": [
+    "can-ho-105-110"
+  ],
+  "project:du-an-thiet-ke-thi-cong-noi-that-chung-cu-vp2-nha-chi-tam-linh-dam": [
+    "can-ho-105-110"
+  ],
+  "project:du-anh-quyen-chung-cu-ecopark-van-giang": [
+    "can-ho-95-100",
+    "penthouse-duplex"
+  ],
+  "project:du-co-minh-pc1204-chung-cu-tt-riverview-hoang-mai-ha-noi": [
+    "can-ho-115-120"
+  ],
+  "project:thi-cong-noi-that-chung-cu": ["can-ho-85-90"],
+  "project:thiet-ke-noi-that-can-ho-72m2-tone-den-ca-tinh-18": ["can-ho-70-75"],
+  "project:thiet-ke-noi-that-chung-cu-2": ["can-ho-85-90"],
+  "project:thiet-ke-noi-that-chung-cu-5": ["can-ho-75-80"],
+  "project:thiet-ke-noi-that-penhouse-02": ["penthouse-duplex"],
+  "project:thiet-ke-thi-cong-noi-that-chung-cu-85-m2": [
+    "can-ho-80-85",
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-thi-cong-noi-that-chung-cu-lilama-nha-anh-trung": [
+    "can-ho-115-120"
+  ],
+  "project:cong-trinh-thiet-ke-noi-that-chung-cu-82m2-khu-do-thi-times-city-chi-van-anh": [
+    "can-ho-80-85"
+  ],
+  "project:cong-trinh-thiet-ke-noi-that-chung-cu-83m2-hh3-linh-dam-chi-mai-lan": [
+    "can-ho-80-85"
+  ],
+  "project:cong-trinh-thiet-ke-noi-that-chung-cu-an-binh-city-81m2-anh-binh": [
+    "can-ho-80-85"
+  ],
+  "project:hoa-quyen-2-phong-cach-trong-thiet-ke-noi-chung-cu-91m2": [
+    "can-ho-90-95"
+  ],
+  "project:thi-cong-noi-that-chung-cu-50m2": ["can-ho-45-50", "can-ho-50-55"],
+  "project:thiet-ke-noi-can-ho-duplex-110m2-masteri": [
+    "can-ho-105-110",
+    "can-ho-110-115"
+  ],
+  "project:thiet-ke-noi-chung-cu-115m2-e4-yen-hoa-chi-thu": [
+    "can-ho-110-115",
+    "can-ho-115-120"
+  ],
+  "project:thiet-ke-noi-chung-cu-115m2-times-city-chi-hao": [
+    "can-ho-110-115",
+    "can-ho-115-120"
+  ],
+  "project:thiet-ke-noi-chung-cu-116m2-toa-nha-md-complex-tower": [
+    "can-ho-115-120"
+  ],
+  "project:thiet-ke-noi-chung-cu-117m2-anh-nam": ["can-ho-115-120"],
+  "project:thiet-ke-noi-chung-cu-259-yen-hoa-68m2-anh-tung": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-302-cau-giay-58m2-chi-thuy": ["can-ho-55-60"],
+  "project:thiet-ke-noi-chung-cu-47m2-tai-kim-ma-anh-thinh": ["can-ho-45-50"],
+  "project:thiet-ke-noi-chung-cu-65m2-dai-thanh-anh-phuc": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-65m2-hh2-linh-dam-anh-phong": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-66m2-handico-chi-trang": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-67m2-b1b2-linh-dam-anh-thang": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-67m2-thang-long-yen-hoa-chi-anh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-68m2-219-trung-kinh-anh-trung": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-68m2-flc-anh-khoi": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-68m2-goldsilk-complex-chi-trinh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-68m2-rainbow-chi-thanh": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-69m2-royal-city-chi-ngoc": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-70m2-celadon-city-chi-hoan": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-70m2-park-hill-7-anh-tai": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-75m2-tai-toa-nha-the-one-gamuda-land": [
+    "can-ho-70-75",
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-chung-cu-77m2-khu-do-thi-my-dinh": ["can-ho-75-80"],
+  "project:thiet-ke-noi-chung-cu-79m2-center-point": ["can-ho-75-80"],
+  "project:thiet-ke-noi-chung-cu-89m2-lanscater-anh-hung": ["can-ho-85-90"],
+  "project:thiet-ke-noi-chung-cu-92m2-ct14a2-ciputra": ["can-ho-90-95"],
+  "project:thiet-ke-noi-chung-cu-95m2-viet-hung": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-chung-cu-97m2-richland-southerm": ["can-ho-95-100"],
+  "project:thiet-ke-noi-chung-cu-98m2-chelsea-park": ["can-ho-95-100"],
+  "project:thiet-ke-noi-chung-cu-a10-nam-trung-yen-58m2-chi-hong-binh": [
+    "can-ho-55-60"
+  ],
+  "project:thiet-ke-noi-chung-cu-a10-nam-trung-yen-76m2-chi-thoa": [
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-chung-cu-airport-plaza-92m2-chi-trinh": [
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-chung-cu-aqua-spring-113m2-chi-dao": ["can-ho-110-115"],
+  "project:thiet-ke-noi-chung-cu-complex-thong-nhat-65m2-anh-minh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-ct16-kdt-dinh-cong-81m2-anh-manh": [
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-chung-cu-dinh-plaza-73m2-anh-phuc": ["can-ho-70-75"],
+  "project:thiet-ke-noi-chung-cu-eco-city-viet-hung-66m2-chi-phuong": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-eurowindow-multicomplex-78m2-anh-tuan": [
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-chung-cu-gamuda-69m2-anh-cong": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-gelexia-riverside-90m2-anh-thanh": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-chung-cu-golden-palace-90m2-anh-phong": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-chung-cu-goldmark-city-67m2-anh-thanh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-goldmark-city-78m2-anh-phuc": ["can-ho-75-80"],
+  "project:thiet-ke-noi-chung-cu-green-hoa-binh-109m2-chi-hai": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-chung-cu-green-hoa-binh-58m2-anh-loc": ["can-ho-55-60"],
+  "project:thiet-ke-noi-chung-cu-hanoi-landmark-51-86m2-anh-toan": [
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-noi-chung-cu-hapulico-complex-75m2-chi-thao": [
+    "can-ho-70-75",
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-chung-cu-hapulico-vu-trong-phung-77m2-anh-dinh": [
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-chung-cu-hh2-linh-dam-65m2-chi-thoa": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-hh3-linh-dam-59m2-anh-son": ["can-ho-55-60"],
+  "project:thiet-ke-noi-chung-cu-hoa-phat-65m2-anh-long": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-hoa-phat-70m2-anh-minh": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-hp-landmark-tower-71m2-chi-tuyet": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-icid-complex-ha-dong-68m2-chi-linh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-imperia-garden-66m2-anh-lam": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-licogi-13-nhan-chinh-90m2-chi-ngoc": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-chung-cu-lilama-60m2-anh-minh": ["can-ho-55-60"],
+  "project:thiet-ke-noi-chung-cu-m1a-thanh-ha-cienco-74m2-chi-ha": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-mini-48m2-tai-linh-nam-chi-lien": [
+    "can-ho-45-50"
+  ],
+  "project:thiet-ke-noi-chung-cu-mini-tai-cau-giay-485m2-anh-tung": [
+    "can-ho-45-50"
+  ],
+  "project:thiet-ke-noi-chung-cu-n07-dich-vong-68m2-chi-anh": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-pandora-52m2-anh-tan": ["can-ho-50-55"],
+  "project:thiet-ke-noi-chung-cu-plaschem-long-bien-66m2-chi-mai": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-rainbow-linh-dam-68m2-chi-nhung": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-richland-southern-cau-giay-90m2-anh-hieu": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-chung-cu-royal-city-109m2": ["can-ho-105-110"],
+  "project:thiet-ke-noi-chung-cu-star-city-le-van-luong-107m2-anh-trung": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-chung-cu-star-city-le-van-luong-70m2-anh-linh": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-star-tower-90m2-anh-phuong": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-tan-tay-do-66m2-chi-khanh": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-the-golden-an-khanh-69m2-anh-cuong": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-toa-hh2-truong-chinh-87m2-anh-thang": [
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-noi-chung-cu-tri-plaza-65m2-chi-thao": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-v3-prime-57m2-anh-bao": ["can-ho-55-60"],
+  "project:thiet-ke-noi-chung-cu-valencia-garden-66m2-anh-tuan": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-chung-cu-viet-hung-80m2": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-chung-cu-viglacera-65m2-chi-hue": ["can-ho-65-70"],
+  "project:thiet-ke-noi-chung-cu-vimeco-nguyen-chanh-70m2-chi-trang": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-vinhomes-green-bay-70m2-anh-trinh": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-vp6-linh-dam-50m2-anh-toan": [
+    "can-ho-45-50",
+    "can-ho-50-55"
+  ],
+  "project:thiet-ke-noi-chung-cu-westa-ha-dong-80m2-anh-kien": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-chung-cu-xuan-mai-ha-dong-73m2-anh-le": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-chung-cu-yen-hoa-47m2-chi-ngoc": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-can-ho-45m2-phong-cach-cuc-tay": [
+    "can-ho-40-45",
+    "can-ho-45-50"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-100m2-29t4-hoang-dao-thuy": [
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-110m2-van-khe-anh-binh": [
+    "can-ho-105-110",
+    "can-ho-110-115"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-112m2-garden-anh-phu": ["can-ho-110-115"],
+  "project:thiet-ke-noi-that-chung-cu-118m2-toa-intracom-trung-van": [
+    "can-ho-115-120"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-30-pham-van-dong-70m2-chi-mai": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-40m2-flc-pham-hung": ["can-ho-40-45"],
+  "project:thiet-ke-noi-that-chung-cu-43m2-khu-can-ho-hateco": ["can-ho-40-45"],
+  "project:thiet-ke-noi-that-chung-cu-44m2-tay-nam-ho-linh-dam": [
+    "can-ho-40-45"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-45m2-green-pearl": [
+    "can-ho-40-45",
+    "can-ho-45-50"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-46m2-anh-thanh": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-chung-cu-46m2-chi-lien": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-chung-cu-48m2-anh-nhat": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-chung-cu-48m2-chi-trang": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-chung-cu-48m2-roman-plaza-chi-trang": [
+    "can-ho-45-50"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-49m2-chi-van-anh-mipec": ["can-ho-45-50"],
+  "project:thiet-ke-noi-that-chung-cu-50m2-chi-chau-an": ["can-ho-50-55"],
+  "project:thiet-ke-noi-that-chung-cu-52m2": ["can-ho-50-55"],
+  "project:thiet-ke-noi-that-chung-cu-54m2": ["can-ho-50-55"],
+  "project:thiet-ke-noi-that-chung-cu-56m2-dinh-pearl-chi-tram-anh": [
+    "can-ho-55-60"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-56m2-hoang-mai-anh-tung": [
+    "can-ho-55-60"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-58m2-chi-huong": ["can-ho-55-60"],
+  "project:thiet-ke-noi-that-chung-cu-58m2-linh-nam-anh-hung1": [
+    "can-ho-55-60"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-60m2-anh-dung": ["can-ho-55-60"],
+  "project:thiet-ke-noi-that-chung-cu-60m2-anh-minh": ["can-ho-55-60"],
+  "project:thiet-ke-noi-that-chung-cu-60m2-complex-ha-dong-anh-dung": [
+    "can-ho-55-60"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-65m2-anh-bach": ["can-ho-65-70"],
+  "project:thiet-ke-noi-that-chung-cu-65m2-hateco-xuan-phuong-anh-phat": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-65m2-nam-trung-yen-anh-huy": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-65m2-trung-hoa-nhan-chinh-anh-cuong": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-66m2-chi-tram": ["can-ho-65-70"],
+  "project:thiet-ke-noi-that-chung-cu-67m2-anh-huu": ["can-ho-65-70"],
+  "project:thiet-ke-noi-that-chung-cu-67m2-roman-plaza-chi-hong": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-68m2-chi-ngoc-anh": ["can-ho-65-70"],
+  "project:thiet-ke-noi-that-chung-cu-68m2-ha-thanh-plaza-chi-linh": [
+    "can-ho-65-70"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-69m2-anh-tran": ["can-ho-65-70"],
+  "project:thiet-ke-noi-that-chung-cu-70m2-green-stars-anh-tung": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-70m2-hp-landmark-anh-duc": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-70m2-starcity-anh-truong": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-75m2-diamond-house-chi-ngoc": [
+    "can-ho-70-75",
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-77m2-center-point-anh-quang": [
+    "can-ho-75-80"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-77m2-dai-thanh-chi-anh": ["can-ho-75-80"],
+  "project:thiet-ke-noi-that-chung-cu-77m2-hapulico": ["can-ho-75-80"],
+  "project:thiet-ke-noi-that-chung-cu-78m2-flc-chi-minh": ["can-ho-75-80"],
+  "project:thiet-ke-noi-that-chung-cu-82m2-ecopark-anh-hieu": ["can-ho-80-85"],
+  "project:thiet-ke-noi-that-chung-cu-83m2-hh3-linh-dam-anh-duc": [
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-83m2-oct2-bac-linh-dam-anh-manh": [
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-85m2-hh2-khu-do-thi-linh-dam": [
+    "can-ho-80-85",
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-85m2-pride-chi-hong": [
+    "can-ho-80-85",
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-85m2-tan-tay-do-anh-cuong": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-88-lang-ha-108m2-chi-lan": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-88m2-ha-noi-pragon-anh-vinh": [
+    "can-ho-85-90"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-97m2-sail-tower-chi-dung": [
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-bac-ha-lucky-70m2-chi-minh-anh": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-bo-cong-an-anh-long": ["can-ho-70-75"],
+  "project:thiet-ke-noi-that-chung-cu-dai-thanh-113m2-chi-minh-phuong": [
+    "can-ho-110-115"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-golden-place-72m2-anh-phan-huy": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-green-star-100m2-chi-bich": [
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-hh2-linh-dam-80m2-chi-dieu-huong": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-imperia-garden-80m2-chi-linh": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-kim-van-kim-lu-115m2-anh-tri": [
+    "can-ho-110-115",
+    "can-ho-115-120"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-lac-hong-109m2-anh-vinh": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-mandarin-garden-109m2-anh-hien": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-my-dinh-plaza-84m2-anh-hung": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-sunshine-ciputra-95m2-chi-tam": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-the-golden-an-khanh-84m2-chi-tuyet": [
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-times-city-70m2-chi-ngoc": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-times-city-80m2-chi-ha": [
+    "can-ho-75-80",
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-valencia-garden-72m2-anh-manh": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-viglacera-xuan-phuong-107m2-chi-nguyet": [
+    "can-ho-105-110"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-vimeco-114-anh-minh": ["can-ho-110-115"],
+  "project:thiet-ke-noi-that-chung-cu-vov-me-tri-112m2-anh-quang": [
+    "can-ho-110-115"
+  ],
+  "project:can-ho-chi-nhung-sun-grand-city-69b-thuy-khue": [
+    "can-ho-85-90",
+    "can-ho-90-95"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-3": ["can-ho-70-75"],
+  "project:thiet-ke-noi-chung-cu-70m2-star-city-anh-thai": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-107m2-anh-minh": ["can-ho-105-110"],
+  "project:thiet-ke-noi-chung-cu-120m2-sky-center-anh-cong": ["can-ho-115-120"],
+  "project:cong-trinh-can-ho-penhouse-ecopark-van-giang-hung-yen": [
+    "can-ho-95-100",
+    "penthouse-duplex"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-vinhomes-ban-co-dien-05": [
+    "can-ho-80-85"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-vinhomes-grandpark-17": ["can-ho-80-85"],
+  "project:noi-that-nha-pho": ["mau-nha-pho-dep"],
+  "project:noi-that-nha-pho-binh-duong-chi-quyen": ["mau-nha-pho-dep"],
+  "project:thiet-ke-noi-that-chung-cu-72m2-xuan-mai-complex-anh-nhan": [
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-88m2-dai-kim-chi-trang": ["can-ho-85-90"],
+  "project:thiet-ke-noi-that-indochine": ["mau-biet-thu-dep"],
+  "designSample:thiet-ke-noi-that-penthouse-320m2-dang-cap-sang-02": [
+    "penthouse-duplex"
+  ],
+  "designSample:thiet-ke-noi-that-penthouse-280m2-hien-dai-luxury": [
+    "penthouse-duplex"
+  ],
+  "designSample:thiet-ke-noi-that-biet-thu-noi-that-go-oc-cho-23": [
+    "mau-biet-thu-dep"
+  ],
+  "designSample:thiet-ke-noi-that-can-ho-95m2-1pn-rustic-21": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "designSample:30-mau-noi-that-phong-khach-biet-thu-nha-pho-dep-2": [
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-noi-that-chung-cu-sunshine-2pn-75m2-20": [
+    "can-ho-70-75",
+    "can-ho-75-80"
+  ],
+  "designSample:thiet-ke-biet-thu-villa-sieu-sang-22": ["mau-biet-thu-dep"],
+  "designSample:thiet-ke-nha-pho-3-tang-hien-dai-30": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-noi-that-can-hovinhome-centralpark95m2-20": [
+    "can-ho-90-95",
+    "can-ho-95-100"
+  ],
+  "designSample:an-tuong-thiet-ke-noi-that-can-ho-2-pn-70m2-19": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "designSample:thiet-ke-noi-that-chung-cu-vinhome-2pn-72m2-18": [
+    "can-ho-70-75"
+  ],
+  "designSample:thiet-ke-biet-thu-nha-vuon-tong-dien-tich-372m2-21": [
+    "mau-biet-thu-dep",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-3-tang-hien-dai-29": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-3-tang-sang-trong-ca-tinh-28": [
+    "mau-biet-thu-3-tang",
+    "mau-biet-thu-dep",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-2-tang-dien-tich-8m-x-16m-22": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-21": ["mau-nha-pho-dep"],
+  "designSample:kien-truc-biet-thu-dep-2-tang-xa-hoa-long-lay-20": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat"
+  ],
+  "designSample:thiet-ke-nha-pho-3-tang-an-tuong-doc-la-20": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-kien-truc-nha-pho-mai-thai-2-tang-19": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-biet-thu-nha-vuon-2-tang-mai-thai-18": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-20": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-18-2": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-3-tang-hien-dai-sang-trong-20-2": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-phong-cach-hien-dai-14": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-17": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-6-tang-hien-dai-sang-trong-12": [
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-biet-thu-dep-2-tang-quang-binh": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-18": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-17-2": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-2-tang-hien-dai-xu-huong-2022-15": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-16": ["mau-nha-pho-2-tang", "mau-nha-pho-dep"],
+  "designSample:thiet-ke-biet-thu-dep-2": ["mau-biet-thu-dep"],
+  "designSample:thiet-ke-biet-thu-dep-nha-mai-thai-2-tang-17": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-cap-4"
+  ],
+  "designSample:thiet-ke-nha-pho-11": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:the-phonex-villa": ["mau-biet-thu-dep"],
+  "designSample:thiet-ke-nha-pho-10": [
+    "mau-biet-thu-3-tang",
+    "mau-biet-thu-dep",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-biet-thu-dep-noi-that-go-oc-cho-01": [
+    "mau-biet-thu-3-tang",
+    "mau-biet-thu-co-dien",
+    "mau-biet-thu-dep"
+  ],
+  "designSample:mau-thiet-ke-biet-thu-dep-2-tang-tan-co-dien-01": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-co-dien",
+    "mau-biet-thu-dep"
+  ],
+  "designSample:mau-thiet-ke-nha-pho-2-tang-hien-dai-02-tphcm": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:mau-thiet-ke-nha-pho-dep-03": ["mau-nha-pho-dep"],
+  "designSample:thiet-ke-nha-pho-2-tang-02": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-nha-pho-hien-dai-3tang-01": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-noi-that-penhouse-02-2": ["penthouse-duplex"],
+  "designSample:mau-thiet-ke-biet-thu-dep-2-tang-01": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep"
+  ],
+  "designSample:thiet-ke-biet-thu-dep-indochine-03": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "resort-khach-san-nha-hang"
+  ],
+  "designSample:biet-thu-nha-vuon-dep-mai-thai-02": [
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:thiet-ke-biet-thu-dep-mai-thai-02": [
+    "mau-biet-thu-2-tang",
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-cap-4"
+  ],
+  "designSample:mau-thiet-ke-nha-pho-hien-dai-03": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:mau-thiet-ke-nha-pho-hien-dai-02": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:mau-thiet-ke-nha-pho-hien-dai-03-2": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:kien-truc-va-noi-that-biet-thu": ["mau-biet-thu-dep"],
+  "designSample:mat-tien-nha-pho-tan-co-dien-15": ["mau-nha-pho-dep"],
+  "designSample:thiet-ke-nha-pho-00": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-thi-cong-nha-pho-02": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-va-thi-cong-nha-pho-75m2-tp-ho-chi-minh-01": [
+    "mau-nha-pho-3-4-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:thiet-ke-noi-that-penhouse-01": ["penthouse-duplex"],
+  "designSample:le-amant-resort": [
+    "mau-biet-thu-dep",
+    "resort-khach-san-nha-hang"
+  ],
+  "designSample:mau-nha-vuon-dep-1-tang-tai-ninh-thuan-viet-nam": [
+    "mau-biet-thu-dep",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:thiet-ke-nha-vuon-dep-mai-thai-hien-dai-19": [
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-cap-4",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:thiet-ke-nha-vuon-dep-binh-di-trong-khung-canh-nong-thon-nhung-khong-kem-phan-hien-dai": [
+    "mau-biet-thu-dep",
+    "mau-nha-vuon-dep"
+  ],
+  "designSample:ngat-ngay-voi-mau-thiet-ke-noi-that-biet-thu-cao-cap-tri-gia-chuc-ty-tai-kdt-gamuda": [
+    "mau-biet-thu-dep"
+  ],
+  "project:noi-that-chung-cu-1": ["can-ho-95-100"],
+  "designSample:thiet-ke-biet-thu-dep-3-tang-mai-nhat-01": [
+    "mau-biet-thu-3-tang",
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat"
+  ],
+  "designSample:biet-thu-dep-02": ["mau-biet-thu-dep"],
+  "designSample:kien-truc-nha-pho-dep-0": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "designSample:biet-thu-co-dien-04": [
+    "mau-biet-thu-3-tang",
+    "mau-biet-thu-co-dien",
+    "mau-biet-thu-dep"
+  ],
+  "project:thiet-ke-thi-cong-noi-that-tron-goi-chung-cu-2pn-1": [
+    "can-ho-65-70",
+    "can-ho-70-75"
+  ],
+  "project:thiet-ke-noi-that-chung-cu-4": ["can-ho-55-60"],
+  "project:thiet-ke-noi-that-khach-san-sang-trong-va-dang-cap": [
+    "resort-khach-san-nha-hang"
+  ],
+  "project:thiet-ke-noi-that-nha-hang-beer-day-01": [
+    "resort-khach-san-nha-hang"
+  ],
+  "article:bi-quyet-thiet-ke-noi-that-khach-san-sang-trong-hut-khach-nuom-nuop": [
+    "resort-khach-san-nha-hang"
+  ],
+  "article:thi-cong-noi-that-khach-san-dep-hut-khach-nuom-nuop": [
+    "resort-khach-san-nha-hang"
+  ],
+  "designSample:thiet-ke-nha-vuon-dep-01": [
+    "mau-biet-thu-dep",
+    "mau-biet-thu-mai-thai-mai-nhat",
+    "mau-nha-vuon-dep"
+  ],
+  "article:thiet-ke-noi-nha-2-tang-tien-nghi-nhu-biet-thu": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ],
+  "article:thiet-ke-noi-that-nha-pho-13": ["mau-nha-pho-dep"],
+  "article:thiet-ke-va-thi-cong-tron-goi": [
+    "mau-nha-pho-2-tang",
+    "mau-nha-pho-dep"
+  ]
+}

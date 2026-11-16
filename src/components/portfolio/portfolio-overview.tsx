@@ -9,7 +9,6 @@ import {
   Heart,
   MapPin,
   Ruler,
-  Search,
   ShieldCheck,
   Sprout,
   UsersRound,
@@ -17,14 +16,22 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { PortfolioFilterPanel } from "./portfolio-filter-panel";
+import {
+  areaRanges,
+  categoryQueries,
+  filterPortfolio,
+  portfolioFilterHref,
+  type PortfolioFilters,
+} from "@/lib/portfolio-filters";
+import { getPortfolioFilterCopy } from "@/data/portfolio-filter-copy";
+import { getPortfolioTopic, portfolioTopicLabel } from "@/lib/portfolio-topics";
+import { X } from "lucide-react";
 
 import { ConsultationButton } from "@/components/consultation-popup";
 import { SiteHeader } from "@/components/site-header";
-import type {
-  LibraryCategory,
-  LibraryContentType,
-  LibraryItem,
-} from "@/lib/content-library";
+import type { LibraryItem } from "@/lib/content-library";
 import { localizedPageHref } from "@/lib/localized-pages";
 import type { SiteLocale } from "@/lib/locale";
 import { formatDisplayTitle } from "@/lib/display-title";
@@ -36,19 +43,11 @@ type PortfolioOverviewProps = {
   messages?: Record<string, string>;
   languageQuery?: string;
   items: LibraryItem[];
-  initialCategory?: LibraryCategory;
-  initialPage?: number;
+  initialFilters: PortfolioFilters;
   initialTopicLabel?: string;
 };
 
 const pageSize = 9;
-const areaOptions = [
-  "Tất cả",
-  "Dưới 50m²",
-  "50–100m²",
-  "100–200m²",
-  "Trên 200m²",
-];
 const processSteps = [
   ["Tư vấn & khảo sát", "Lắng nghe nhu cầu, khảo sát thực tế"],
   ["Thiết kế ý tưởng", "Lên concept, mặt bằng 2D – 3D"],
@@ -86,37 +85,13 @@ function displayCategory(
   return mode === "designs" && category === "Căn hộ" ? "Chung cư" : category;
 }
 
-function areaNumber(area?: string) {
-  const match = area?.match(/(\d+(?:[,.]\d+)?)/);
-  return match ? Number(match[1].replace(",", ".")) : null;
-}
-
-function matchesArea(area: string | undefined, range: string) {
-  if (range === "Tất cả") return true;
-  const value = areaNumber(area);
-  if (value === null) return false;
-  switch (range) {
-    case "Dưới 50m²":
-      return value < 50;
-    case "50–100m²":
-      return value >= 50 && value < 100;
-    case "100–200m²":
-      return value >= 100 && value < 200;
-    case "Trên 200m²":
-      return value >= 200;
-    default:
-      return true;
-  }
-}
-
 export function PortfolioOverview({
   mode,
   locale = "vi",
   messages = {},
   languageQuery,
   items,
-  initialCategory,
-  initialPage = 1,
+  initialFilters,
   initialTopicLabel,
 }: PortfolioOverviewProps) {
   const t = (text: string) =>
@@ -144,36 +119,12 @@ export function PortfolioOverview({
     )
     .slice(0, 3);
   const [slide, setSlide] = useState(0);
-  const [draftType, setDraftType] = useState<"all" | LibraryContentType>(
-    isDesigns ||
-      (initialCategory &&
-        [
-          "Phòng khách",
-          "Phòng ngủ",
-          "Phòng bếp",
-          "Tủ bếp",
-          "Phòng trẻ em",
-        ].includes(initialCategory))
-      ? "designSample"
-      : "project",
-  );
-  const [draftCategory, setDraftCategory] = useState(
-    initialCategory ?? "Tất cả",
-  );
-  const [draftStyle, setDraftStyle] = useState("Tất cả");
-  const [draftArea, setDraftArea] = useState("Tất cả");
-  const [draftBedrooms, setDraftBedrooms] = useState("Tất cả");
-  const [filters, setFilters] = useState({
-    type: draftType,
-    category: draftCategory,
-    style: draftStyle,
-    area: draftArea,
-    bedrooms: draftBedrooms,
-  });
-  const [sort, setSort] = useState("newest");
-  const [visibleCount, setVisibleCount] = useState(
-    Math.max(1, initialPage) * pageSize,
-  );
+  const filters = initialFilters;
+  const sort = filters.sort;
+  const visibleCount = filters.page * pageSize;
+  const base = usePathname();
+  const router = useRouter();
+  const copy = getPortfolioFilterCopy(locale);
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
@@ -186,62 +137,48 @@ export function PortfolioOverview({
   }, [heroItems.length]);
 
   const activeHero = heroItems[slide];
-  const categoryOptions = useMemo(
-    () => [...new Set(items.map((item) => item.category))],
-    [items],
+  const filteredItems = useMemo(
+    () => filterPortfolio(items, filters, locale),
+    [items, filters, locale],
   );
-  const styleOptions = useMemo(
-    () =>
-      [...new Set(items.map((item) => item.style).filter(Boolean))].sort(
-        (a, b) => a.localeCompare(b, locale),
-      ),
-    [items, locale],
-  );
-  const bedroomOptions = useMemo(
-    () => [
-      ...new Set(
-        items
-          .map((item) => item.bedrooms)
-          .filter((value): value is string => Boolean(value)),
-      ),
-    ],
-    [items],
-  );
-
-  const filteredItems = useMemo(() => {
-    const result = items.filter((item) => {
-      if (filters.type !== "all" && item.contentType !== filters.type)
-        return false;
-      if (filters.category !== "Tất cả" && item.category !== filters.category)
-        return false;
-      if (filters.style !== "Tất cả" && item.style !== filters.style)
-        return false;
-      if (filters.bedrooms !== "Tất cả" && item.bedrooms !== filters.bedrooms)
-        return false;
-      return matchesArea(item.area, filters.area);
+  const topic = getPortfolioTopic(filters.topic);
+  const typeLabels: Record<string, string> = {
+    project: "Công trình thực tế",
+    designSample: "Mẫu thiết kế",
+    article: "Bài tham khảo",
+  };
+  const chips: [keyof PortfolioFilters, string][] = [];
+  if (filters.type !== "all") chips.push(["type", t(typeLabels[filters.type])]);
+  if (filters.category !== "all")
+    chips.push([
+      "category",
+      t(displayCategory(categoryQueries[filters.category], mode)),
+    ]);
+  if (topic) chips.push(["topic", portfolioTopicLabel(topic, locale)]);
+  if (filters.area)
+    chips.push([
+      "area",
+      areaRanges.find((range) => range.value === filters.area)?.label ??
+        filters.area,
+    ]);
+  if (filters.style)
+    chips.push([
+      "style",
+      items.find((item) => (item.styleKey ?? item.style) === filters.style)
+        ?.style ?? filters.style,
+    ]);
+  if (filters.bedrooms)
+    chips.push([
+      "bedrooms",
+      `${t("Số phòng ngủ")}: ${filters.bedrooms === "0" ? "Studio" : filters.bedrooms}`,
+    ]);
+  if (filters.q) chips.push(["q", filters.q]);
+  function removeFilter(key: keyof PortfolioFilters) {
+    return portfolioFilterHref(base, {
+      ...filters,
+      [key]: key === "category" || key === "type" ? "all" : "",
+      page: 1,
     });
-    if (sort === "name")
-      return result.sort((a, b) => a.title.localeCompare(b.title, locale));
-    if (sort === "area-desc")
-      return result.sort(
-        (a, b) => (areaNumber(b.area) ?? 0) - (areaNumber(a.area) ?? 0),
-      );
-    if (sort === "area-asc")
-      return result.sort(
-        (a, b) => (areaNumber(a.area) ?? 0) - (areaNumber(b.area) ?? 0),
-      );
-    return result;
-  }, [filters, items, sort, locale]);
-
-  function applyFilters() {
-    setFilters({
-      type: draftType,
-      category: draftCategory,
-      style: draftStyle,
-      area: draftArea,
-      bedrooms: draftBedrooms,
-    });
-    setVisibleCount(pageSize);
   }
 
   function moveSlide(direction: number) {
@@ -422,10 +359,18 @@ export function PortfolioOverview({
               {t("Sắp xếp:")}{" "}
               <select
                 value={sort}
-                onChange={(event) => setSort(event.target.value)}
+                onChange={(event) =>
+                  router.push(
+                    portfolioFilterHref(base, {
+                      ...filters,
+                      sort: event.target.value,
+                      page: 1,
+                    }),
+                  )
+                }
                 aria-label={t("Sắp xếp")}
               >
-                <option value="newest">{t("Mới nhất")}</option>
+                <option value="recommended">{copy.recommended}</option>
                 <option value="name">{t("Tên A-Z")}</option>
                 <option value="area-desc">{t("Diện tích lớn nhất")}</option>
                 <option value="area-asc">{t("Diện tích nhỏ nhất")}</option>
@@ -434,94 +379,41 @@ export function PortfolioOverview({
             </label>
           </div>
 
+          <div className={styles.filterSummary}>
+            <p role="status">
+              {filteredItems.length} {copy.results}
+            </p>
+            <div className={styles.filterChips}>
+              {chips.map(([key, label]) => (
+                <Link
+                  key={key}
+                  href={removeFilter(key)}
+                  aria-label={`${copy.remove}: ${label}`}
+                >
+                  {label}
+                  <X size={13} aria-hidden="true" />
+                </Link>
+              ))}
+              {chips.length > 0 && (
+                <Link
+                  className={styles.resetFilters}
+                  href={`${base}#portfolio-list`}
+                >
+                  {copy.clear}
+                </Link>
+              )}
+            </div>
+          </div>
           <div className={styles.listGrid}>
             <aside className={styles.sidebar}>
-              <div className={styles.filterPanel}>
-                {!isDesigns && (
-                  <label>
-                    {t("Loại nội dung")}
-                    <select
-                      value={draftType}
-                      onChange={(event) =>
-                        setDraftType(
-                          event.target.value as "all" | LibraryContentType,
-                        )
-                      }
-                    >
-                      <option value="project">{t("Công trình thực tế")}</option>
-                      <option value="designSample">{t("Mẫu thiết kế")}</option>
-                      <option value="all">{t("Tất cả")}</option>
-                    </select>
-                  </label>
-                )}
-                <label>
-                  {t("Loại công trình")}
-                  <select
-                    value={draftCategory}
-                    onChange={(event) =>
-                      setDraftCategory(
-                        event.target.value as LibraryCategory | "Tất cả",
-                      )
-                    }
-                  >
-                    <option value="Tất cả">{t("Tất cả")}</option>
-                    {categoryOptions.map((item) => (
-                      <option key={item} value={item}>
-                        {t(displayCategory(item, mode))}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  {t("Phong cách")}
-                  <select
-                    value={draftStyle}
-                    onChange={(event) => setDraftStyle(event.target.value)}
-                  >
-                    <option value="Tất cả">{t("Tất cả")}</option>
-                    {styleOptions.map((item) => (
-                      <option key={item} value={item}>
-                        {t(item)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  {t("Diện tích")}
-                  <select
-                    value={draftArea}
-                    onChange={(event) => setDraftArea(event.target.value)}
-                  >
-                    {areaOptions.map((item) => (
-                      <option key={item} value={item}>
-                        {t(item)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  {t("Số phòng ngủ")}
-                  <select
-                    value={draftBedrooms}
-                    onChange={(event) => setDraftBedrooms(event.target.value)}
-                  >
-                    <option value="Tất cả">{t("Tất cả")}</option>
-                    {bedroomOptions.map((item) => (
-                      <option key={item} value={item}>
-                        {t(item)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <button
-                  type="button"
-                  onClick={applyFilters}
-                  className={styles.searchButton}
-                >
-                  <Search size={16} />
-                  {t("Tìm kiếm")}
-                </button>
-              </div>
+              <PortfolioFilterPanel
+                items={items}
+                filters={filters}
+                base={base}
+                locale={locale}
+                messages={messages}
+                mode={mode}
+              />
               <div className={styles.consultCard}>
                 <Sprout size={28} />
                 <p>{t("Bạn muốn thiết kế theo phong cách riêng?")}</p>
@@ -555,7 +447,9 @@ export function PortfolioOverview({
                           <span>
                             {item.contentType === "project"
                               ? t("CÔNG TRÌNH")
-                              : t("MẪU THIẾT KẾ")}
+                              : item.contentType === "article"
+                                ? t("BÀI THAM KHẢO")
+                                : t("MẪU THIẾT KẾ")}
                           </span>
                           <button
                             type="button"
@@ -609,14 +503,16 @@ export function PortfolioOverview({
                 </p>
               )}
               {filteredItems.length > visibleCount && (
-                <button
-                  type="button"
-                  onClick={() => setVisibleCount((count) => count + pageSize)}
+                <Link
+                  href={portfolioFilterHref(base, {
+                    ...filters,
+                    page: filters.page + 1,
+                  })}
                   className={styles.loadMore}
                 >
                   {t(isDesigns ? "Xem thêm mẫu thiết kế" : "Xem thêm dự án")}
                   <ArrowRight size={16} />
-                </button>
+                </Link>
               )}
             </div>
           </div>

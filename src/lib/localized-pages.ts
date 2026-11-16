@@ -42,6 +42,7 @@ export const interiorDesignPagePaths = [
 ] as const;
 
 const localizedPagePaths: readonly string[] = [
+  "/tim-kiem",
   "/lien-he",
   ...interiorDesignPagePaths,
   ...introductionPagePaths,

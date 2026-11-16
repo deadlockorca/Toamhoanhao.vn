@@ -1,6 +1,11 @@
 import type { NavigationItem } from "@/data/site";
 
 const labels: Record<string, string> = {
+  "Mẫu nhà phố đẹp": "街なか住宅のデザイン",
+  "Mẫu nhà phố 2 tầng": "2階建ての街なか住宅",
+  "Mẫu nhà phố 3, 4 tầng": "3・4階建ての街なか住宅",
+  "Mẫu nhà cấp 4 đẹp": "平屋のデザイン",
+
   "Giới thiệu": "会社紹介",
   "Về Tổ Ấm Hoàn Hảo": "私たちについて",
   "Năng lực thiết kế và thi công": "設計・施工力",

@@ -365,6 +365,16 @@
 .mobileProducts {
   display: none;
 }
+.mobileProductPhoto {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #e9e3db;
+}
+.mobileProductPhoto img {
+  object-fit: cover;
+}
 .projectCard {
   min-width: 0;
   border: 1px solid #e9e3db;
@@ -1262,16 +1272,6 @@
   .mobileProductCard {
     min-width: 0;
     color: #273747;
-  }
-  .mobileProductPhoto {
-    position: relative;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border-radius: 6px;
-    background: #e9e3db;
-  }
-  .mobileProductPhoto img {
-    object-fit: cover;
   }
   .mobileProductCard h4 {
     display: -webkit-box;

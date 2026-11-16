@@ -2,7 +2,9 @@
 
 import { getLocalizedPagePath, localizedPageHref } from "@/lib/localized-pages";
 
-import { ArrowRight, ChevronDown, Globe2, Menu, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Globe2, Menu, Search, X } from "lucide-react";
+import Form from "next/form";
+import { getSearchCopy, searchPath } from "@/data/search-copy";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -23,44 +25,80 @@ import styles from "./site-header.module.css";
 function MenuChildren({
   items,
   onNavigate,
+  layout,
+  mobile = false,
   uppercase = false,
 }: {
   items: NonNullable<NavigationItem["children"]>;
   onNavigate: () => void;
+  layout?: NavigationItem["layout"];
+  mobile?: boolean;
   uppercase?: boolean;
 }) {
   return (
     <div
-      className={`${styles.menuChildren} ${uppercase ? styles.menuChildrenUppercase : ""}`}
+      className={`${styles.menuChildren} ${uppercase ? styles.menuChildrenUppercase : ""} ${layout === "portfolio" ? styles.portfolioMenu : layout === "services" ? styles.servicesMenu : ""}`}
     >
-      {items.map((item) => (
-        <div key={item.label} className={styles.menuChild}>
-          {item.href ? (
-            <Link href={item.href} onClick={onNavigate}>
-              {item.label}
-            </Link>
-          ) : (
-            <span>{item.label}</span>
-          )}
-          {item.children && (
-            <div className={styles.menuGrandchildren}>
-              {item.children.map((child) =>
-                child.href ? (
-                  <Link
-                    key={child.label}
-                    href={child.href}
-                    onClick={onNavigate}
-                  >
-                    {child.label}
-                  </Link>
-                ) : (
-                  <span key={child.label}>{child.label}</span>
-                ),
-              )}
-            </div>
-          )}
-        </div>
-      ))}
+      {items.map((item) => {
+        if (mobile && layout === "services" && item.children)
+          return (
+            <details
+              key={item.label}
+              name="site-mobile-services"
+              className={styles.mobileServiceGroup}
+            >
+              <summary>
+                {item.label}
+                <ChevronDown size={16} aria-hidden="true" />
+              </summary>
+              <MenuChildren items={item.children} onNavigate={onNavigate} />
+            </details>
+          );
+        return (
+          <div
+            key={item.label}
+            className={`${styles.menuChild} ${layout === "portfolio" && !item.image ? styles.menuQuickLink : ""}`}
+          >
+            {item.href ? (
+              <Link href={item.href} onClick={onNavigate}>
+                {item.image && (
+                  <Image
+                    src={item.image}
+                    alt=""
+                    width={96}
+                    height={72}
+                    className={styles.menuThumbnail}
+                    sizes="96px"
+                  />
+                )}
+                <span>{item.label}</span>
+                {layout === "portfolio" && (
+                  <ArrowRight size={15} aria-hidden="true" />
+                )}
+              </Link>
+            ) : (
+              <span>{item.label}</span>
+            )}
+            {item.children && (
+              <div className={styles.menuGrandchildren}>
+                {item.children.map((child) =>
+                  child.href ? (
+                    <Link
+                      key={child.label}
+                      href={child.href}
+                      onClick={onNavigate}
+                    >
+                      {child.label}
+                    </Link>
+                  ) : (
+                    <span key={child.label}>{child.label}</span>
+                  ),
+                )}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -103,15 +141,30 @@ export function SiteHeader({
   const [openDesktop, setOpenDesktop] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [languageOpen, setLanguageOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchCopy = getSearchCopy(locale);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const searchToggleRef = useRef<HTMLButtonElement>(null);
+  const searchOpenRef = useRef(false);
+  useEffect(() => {
+    searchOpenRef.current = searchOpen;
+  }, [searchOpen]);
   const headerRef = useRef<HTMLElement>(null);
   const languageRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
+        headerRef.current
+          ?.querySelector<HTMLButtonElement>(
+            '[data-nav-trigger][aria-expanded="true"], [data-mobile-trigger][aria-expanded="true"]',
+          )
+          ?.focus();
         setOpenDesktop(null);
         setMobileOpen(false);
         setLanguageOpen(false);
+        setSearchOpen(false);
+        if (searchOpenRef.current) searchToggleRef.current?.focus();
       }
     }
     function closeOnOutside(event: PointerEvent) {
@@ -120,6 +173,7 @@ export function SiteHeader({
       if (!headerRef.current?.contains(event.target as Node)) {
         setOpenDesktop(null);
         setMobileOpen(false);
+        setSearchOpen(false);
       }
     }
     document.addEventListener("keydown", closeOnEscape);
@@ -129,6 +183,33 @@ export function SiteHeader({
       document.removeEventListener("pointerdown", closeOnOutside);
     };
   }, []);
+
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 768px)");
+    const closeMenus = () => {
+      setOpenDesktop(null);
+      setMobileOpen(false);
+      setSearchOpen(false);
+      setLanguageOpen(false);
+    };
+    desktop.addEventListener("change", closeMenus);
+    return () => desktop.removeEventListener("change", closeMenus);
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const wide = window.matchMedia("(min-width: 768px)");
+    const close = () => {
+      if (wide.matches) setMobileOpen(false);
+    };
+    wide.addEventListener("change", close);
+    return () => {
+      document.body.style.overflow = previous;
+      wide.removeEventListener("change", close);
+    };
+  }, [mobileOpen]);
 
   return (
     <header ref={headerRef} className={styles.header}>
@@ -155,34 +236,50 @@ export function SiteHeader({
         </Link>
 
         <nav className={styles.desktopNav} aria-label={navLabel}>
-          {navigation.map((item) =>
+          {navigation.map((item, index) =>
             item.children ? (
               <div
                 key={item.label}
-                className={`${styles.navItem} ${openDesktop === item.label ? styles.navOpen : ""}`}
+                className={`${styles.navItem} ${item.layout ? styles.wideNavItem : ""} ${openDesktop === item.label ? styles.navOpen : ""}`}
                 onMouseEnter={() => {
                   setOpenDesktop(item.label);
                   setLanguageOpen(false);
                 }}
                 onMouseLeave={() => setOpenDesktop(null)}
+                onBlur={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget))
+                    setOpenDesktop(null);
+                }}
               >
                 <button
                   type="button"
+                  data-nav-trigger
+                  aria-controls={`site-desktop-menu-${index}`}
                   aria-expanded={openDesktop === item.label}
-                  onClick={() =>
-                    setOpenDesktop(
-                      openDesktop === item.label ? null : item.label,
-                    )
-                  }
+                  onClick={(event) => {
+                    setLanguageOpen(false);
+                    // Pointer entry already opens the panel; a click keeps it
+                    // open. Keyboard activation retains disclosure toggling.
+                    setOpenDesktop((current) =>
+                      event.detail === 0 && current === item.label
+                        ? null
+                        : item.label,
+                    );
+                  }}
                 >
                   {item.label}
                   <ChevronDown size={14} aria-hidden="true" />
                 </button>
-                <div className={styles.dropdown}>
+                <div
+                  id={`site-desktop-menu-${index}`}
+                  hidden={openDesktop !== item.label}
+                  className={`${styles.dropdown} ${item.layout === "portfolio" ? styles.portfolioDropdown : item.layout === "services" ? styles.servicesDropdown : ""}`}
+                >
                   <MenuChildren
                     items={item.children}
                     onNavigate={() => setOpenDesktop(null)}
                     uppercase={item.uppercaseChildren}
+                    layout={item.layout}
                   />
                 </div>
               </div>
@@ -197,6 +294,48 @@ export function SiteHeader({
         </nav>
 
         <div className={styles.headerActions}>
+          <button
+            ref={searchToggleRef}
+            type="button"
+            className={styles.searchToggle}
+            aria-label={searchOpen ? searchCopy.close : searchCopy.title}
+            aria-expanded={searchOpen}
+            aria-controls="header-search"
+            onClick={() => {
+              setSearchOpen(!searchOpen);
+              setMobileOpen(false);
+              setLanguageOpen(false);
+              setOpenDesktop(null);
+              if (!searchOpen)
+                requestAnimationFrame(() => searchInputRef.current?.focus());
+            }}
+          >
+            {searchOpen ? <X size={21} /> : <Search size={21} />}
+          </button>
+          <Form
+            id="header-search"
+            action={searchPath(locale)}
+            role="search"
+            aria-label={searchCopy.title}
+            className={`${styles.searchForm} ${searchOpen ? styles.searchOpen : ""}`}
+            onSubmit={() => {
+              setSearchOpen(false);
+              searchInputRef.current?.blur();
+            }}
+          >
+            <input
+              ref={searchInputRef}
+              type="search"
+              name="q"
+              aria-label={searchCopy.title}
+              placeholder={searchCopy.placeholder}
+              maxLength={120}
+              required
+            />
+            <button type="submit" aria-label={searchCopy.title}>
+              <Search size={18} aria-hidden="true" />
+            </button>
+          </Form>
           <nav
             ref={languageRef}
             className={styles.languageSwitch}
@@ -210,6 +349,7 @@ export function SiteHeader({
               aria-controls="site-language-options"
               onClick={() => {
                 setOpenDesktop(null);
+                setSearchOpen(false);
                 setLanguageOpen((open) => !open);
               }}
             >
@@ -251,6 +391,7 @@ export function SiteHeader({
           </ConsultationButton>
         </div>
         <button
+          data-mobile-trigger
           className={styles.mobileToggle}
           type="button"
           aria-label={
@@ -270,7 +411,11 @@ export function SiteHeader({
           }
           aria-expanded={mobileOpen}
           aria-controls="site-mobile-menu"
-          onClick={() => setMobileOpen((open) => !open)}
+          onClick={() => {
+            setMobileOpen((open) => !open);
+            setSearchOpen(false);
+            setLanguageOpen(false);
+          }}
         >
           {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
@@ -292,7 +437,7 @@ export function SiteHeader({
           <div className={styles.mobileInner}>
             {navigation.map((item) =>
               item.children ? (
-                <details key={item.label}>
+                <details key={item.label} name="site-mobile-navigation">
                   <summary>
                     {item.label}
                     <ChevronDown size={17} aria-hidden="true" />
@@ -301,6 +446,8 @@ export function SiteHeader({
                     items={item.children}
                     onNavigate={() => setMobileOpen(false)}
                     uppercase={item.uppercaseChildren}
+                    layout={item.layout}
+                    mobile
                   />
                 </details>
               ) : item.href ? (
