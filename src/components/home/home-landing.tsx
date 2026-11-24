@@ -29,6 +29,7 @@ import {
   homeText,
 } from "@/data/home-english";
 import type { Project } from "@/data/projects";
+import type { DesignSample } from "@/data/design-samples";
 import { localizedPageHref } from "@/lib/localized-pages";
 import type { SiteLocale } from "@/lib/locale";
 import { formatDisplayTitle } from "@/lib/display-title";
@@ -68,7 +69,10 @@ const customerFeedbackImages = [
   "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/trai-nghiem-khach-hang/3c59746298cf9fb9.webp",
 ];
 const heroImages = [
-  { src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/53a076819878cbb2.webp", label: "Thiết kế nhà phố" },
+  {
+    src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/53a076819878cbb2.webp",
+    label: "Thiết kế nhà phố",
+  },
   {
     src: "https://pub-60e849316d5f4103a68fd38bd1f50344.r2.dev/web-moi/content/trang-chu/68e5cdd96569aec6.webp",
     label: "Nội thất gỗ óc chó",
@@ -94,9 +98,14 @@ function imageFor(project: Project) {
 
 export function HomeLanding({
   projects,
+  designSamples,
   locale = "vi",
 }: {
   projects: Project[];
+  designSamples: Pick<
+    DesignSample,
+    "slug" | "title" | "category" | "thumbnail"
+  >[];
   locale?: SiteLocale;
 }) {
   const t = (source: string) => homeText(locale, source);
@@ -106,6 +115,7 @@ export function HomeLanding({
   const [category, setCategory] = useState("Tất cả");
   const [mobileCategory, setMobileCategory] =
     useState<(typeof mobileProjectTypes)[number]["category"]>("Căn hộ");
+  const [mobilePage, setMobilePage] = useState(1);
   const [feedbackIndex, setFeedbackIndex] = useState(0);
   const [selectedFeedback, setSelectedFeedback] = useState<{
     src: string;
@@ -143,20 +153,60 @@ export function HomeLanding({
           );
     return filtered.slice(0, 6);
   }, [category, projects]);
-  const mobileProjects = useMemo(
-    () =>
-      projects
-        .filter((project) => project.category === mobileCategory)
-        .slice(0, 6),
-    [mobileCategory, projects],
+  const filteredMobileProjects = useMemo(() => {
+    const projectCards = projects
+      .filter((project) => project.category === mobileCategory)
+      .map((project) => ({
+        ...project,
+        title: homeProjectTitle(locale, project.slug, project.title),
+        href: `/du-an/${project.slug}`,
+      }));
+    const sampleCards = designSamples
+      .filter(
+        (sample) =>
+          (sample.category === "Chung cư" ? "Căn hộ" : sample.category) ===
+          mobileCategory,
+      )
+      .map((sample) => ({
+        ...sample,
+        href: `/mau-thiet-ke/${sample.slug}`,
+      }));
+    return Array.from(
+      { length: Math.max(projectCards.length, sampleCards.length) },
+      (_, index) => [projectCards[index], sampleCards[index]],
+    )
+      .flat()
+      .filter((item) => item !== undefined);
+  }, [mobileCategory, projects, designSamples, locale]);
+  const mobilePageCount = Math.ceil(filteredMobileProjects.length / 6);
+  const currentMobilePage = Math.min(mobilePage, mobilePageCount || 1);
+  const mobilePageStart = Math.max(
+    1,
+    Math.min(currentMobilePage - 1, mobilePageCount - 2),
+  );
+  const mobilePageNumbers = Array.from(
+    new Set([
+      1,
+      ...Array.from(
+        { length: Math.min(3, mobilePageCount) },
+        (_, index) => mobilePageStart + index,
+      ),
+      mobilePageCount,
+    ]),
+  ).filter((page) => page > 0);
+  const mobilePaginationItems = mobilePageNumbers.flatMap((page, index) =>
+    index > 0 && page - mobilePageNumbers[index - 1] > 1
+      ? [`gap-${page}`, page]
+      : [page],
+  );
+  const mobileProjects = filteredMobileProjects.slice(
+    (currentMobilePage - 1) * 6,
+    currentMobilePage * 6,
   );
   const mobileCategoryLabel = (value: string) =>
     value === "Căn hộ" && locale === "vi"
       ? "Chung cư"
       : t(value === "Không gian kinh doanh" ? "Kinh doanh" : value);
-  const selectedMobileType = mobileProjectTypes.find(
-    (item) => item.category === mobileCategory,
-  )!;
   const visibleFeedback = Array.from({ length: 3 }, (_, offset) => ({
     src: customerFeedbackImages[
       (feedbackIndex + offset) % customerFeedbackImages.length
@@ -227,11 +277,6 @@ export function HomeLanding({
         <div className={`${styles.container} ${styles.heroInner}`}>
           <div className={styles.heroCopy}>
             <Eyebrow>{t("PORTFOLIO NỘI THẤT")}</Eyebrow>
-            <h1>
-              {t("Những công trình")}
-              <br />
-              {t("kể câu chuyện sống")}
-            </h1>
             <p>
               {t(
                 "Khám phá các dự án thực tế được Tổ Ấm Hoàn Hảo thiết kế và thi công – từ ý tưởng đến hoàn thiện, kiến tạo nên những không gian sống trọn vẹn.",
@@ -325,7 +370,10 @@ export function HomeLanding({
                 key={item.query}
                 type="button"
                 className={`${styles.projectTypeButton} ${mobileCategory === item.category ? styles.projectTypeActive : ""}`}
-                onClick={() => setMobileCategory(item.category)}
+                onClick={() => {
+                  setMobileCategory(item.category);
+                  setMobilePage(1);
+                }}
                 aria-pressed={mobileCategory === item.category}
                 aria-controls="mobile-project-products"
               >
@@ -336,28 +384,17 @@ export function HomeLanding({
           <div className={styles.mobileProducts}>
             <div className={styles.mobileProductsHeading}>
               <h3>{mobileCategoryLabel(mobileCategory)}</h3>
-              <Link
-                href={localizedPageHref(
-                  `/du-an?danh-muc=${selectedMobileType.query}`,
-                  locale,
-                )}
-              >
-                {t("Xem dự án")} <ArrowRight size={14} aria-hidden="true" />
-              </Link>
             </div>
             <div
               className={styles.mobileProductGrid}
               id="mobile-project-products"
             >
               {mobileProjects.map((project) => {
-                const title = formatDisplayTitle(
-                  homeProjectTitle(locale, project.slug, project.title),
-                  locale,
-                );
+                const title = formatDisplayTitle(project.title, locale);
                 return (
                   <Link
-                    key={project.slug}
-                    href={localizedPageHref(`/du-an/${project.slug}`, locale)}
+                    key={project.href}
+                    href={localizedPageHref(project.href, locale)}
                     className={styles.mobileProductCard}
                   >
                     <div className={styles.mobileProductPhoto}>
@@ -378,6 +415,35 @@ export function HomeLanding({
                 </p>
               )}
             </div>
+            {mobilePageCount > 0 && (
+              <nav
+                className={styles.mobilePagination}
+                aria-label={mobileCategoryLabel(mobileCategory)}
+              >
+                {mobilePaginationItems.map((page) => {
+                  if (typeof page === "string") {
+                    return (
+                      <span key={page} aria-hidden="true">
+                        …
+                      </span>
+                    );
+                  }
+                  return (
+                    <button
+                      key={page}
+                      type="button"
+                      aria-current={
+                        page === currentMobilePage ? "page" : undefined
+                      }
+                      aria-controls="mobile-project-products"
+                      onClick={() => setMobilePage(page)}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+              </nav>
+            )}
           </div>
           {visibleProjects.length ? (
             <div className={styles.projectGrid}>

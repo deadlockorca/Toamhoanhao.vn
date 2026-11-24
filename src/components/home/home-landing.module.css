@@ -1257,12 +1257,37 @@
     font-size: 17px;
     font-weight: 700;
   }
-  .mobileProductsHeading > a {
+  .mobilePagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+  }
+  .mobilePagination > span {
+    color: #34465a;
+    font-size: 13px;
+  }
+  .mobilePagination > button {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    color: #6b5644;
-    font-size: 11px;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background: #f7f8fa;
+    color: #34465a;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .mobilePagination > button[aria-current="page"] {
+    border-color: #082e54;
+    background: #082e54;
+    color: #fff;
   }
   .mobileProductGrid {
     display: grid;
@@ -1290,6 +1315,7 @@
     font-size: 13px;
   }
   .projectTypeButton:focus-visible,
+  .mobilePagination > button:focus-visible,
   .mobileProductCard:focus-visible {
     outline: 2px solid #a3673d;
     outline-offset: 3px;

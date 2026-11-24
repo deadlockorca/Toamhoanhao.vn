@@ -1,3 +1,4 @@
+import { getHomeDesignSamples } from "@/lib/home-design-samples";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HomeLanding } from "@/components/home/home-landing";
@@ -68,10 +69,14 @@ export default async function AdditionalLanguageHome({
 }: PageProps<"/[locale]">) {
   const { locale } = await params;
   if (!isAdditionalLocale(locale)) notFound();
-  const projects = await getPublicProjects();
+  const [projects, designSamples] = await Promise.all([
+    getPublicProjects(),
+    getHomeDesignSamples(locale),
+  ]);
   return (
     <HomeLanding
       projects={projects.length ? projects : sampleProjects}
+      designSamples={designSamples}
       locale={locale}
     />
   );

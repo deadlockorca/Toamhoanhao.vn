@@ -1,3 +1,4 @@
+import { getHomeDesignSamples } from "@/lib/home-design-samples";
 import type { Metadata } from "next";
 import { HomeLanding } from "@/components/home/home-landing";
 import { projects as sampleProjects } from "@/data/projects";
@@ -19,10 +20,14 @@ export const metadata: Metadata = {
 };
 
 export default async function EnglishHome() {
-  const projects = await getPublicProjects();
+  const [projects, designSamples] = await Promise.all([
+    getPublicProjects(),
+    getHomeDesignSamples("en"),
+  ]);
   return (
     <HomeLanding
       projects={projects.length ? projects : sampleProjects}
+      designSamples={designSamples}
       locale="en"
     />
   );
